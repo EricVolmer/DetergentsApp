@@ -1,5 +1,26 @@
 ﻿@model IEnumerable<DetergentsApp.Models.Product>
 
+
+@(Html.Kendo().Grid(Model)
+    .Name("ProductsList")
+    .Columns(columns => 
+    {
+        columns.Bound(c => c.productName).Width(300);
+        columns.Bound(c => c.productDescription).Width(300);
+        columns.Bound(c => c.EAN).Width(300);
+        columns.Bound(c => c.Category).Width(300);
+    })
+    .Editable(e => e.Mode((GridEditMode.InLine)))
+    .DataSource(d => d 
+        .Server()
+        .Model(m =>
+        {
+            m.Id("ProductID");
+        })
+        )
+    .HtmlAttributes(new { style = "width : 800px"})
+    )
+
 @{
     ViewBag.Title = "Index";
 }
@@ -8,29 +29,12 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    
+    
 </p>
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.EAN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.productName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.productDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.validFrom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </th>
-        <th></th>
-    </tr>
+    
 
     @foreach (var item in Model)
     {

@@ -11,6 +11,7 @@ namespace DetergentsApp.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Product
     {
@@ -20,8 +21,13 @@ namespace DetergentsApp.Models
         public string productName { get; set; }
         public string productDescription { get; set; }
         public int CategoryID { get; set; }
-        public System.DateTime validFrom { get; set; }
+        
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Valid From")]
+        public DateTime validFrom { get; set; }
     
         public virtual Category Category { get; set; }
     }
 }
+
