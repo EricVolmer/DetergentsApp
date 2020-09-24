@@ -15,11 +15,14 @@ namespace DetergentsApp.Models
     
     public partial class Product
     {
+        // In order to hide a field in edit tab use this function
+        [ScaffoldColumn(false)]
         public int ProductID { get; set; }
         public int EAN { get; set; }
         public string Title { get; set; }
         public string productName { get; set; }
         public string productDescription { get; set; }
+      //  [ScaffoldColumn(false)]
         public int CategoryID { get; set; }
         
         [DataType(DataType.Date)]

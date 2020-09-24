@@ -1,26 +1,5 @@
 ﻿@model IEnumerable<DetergentsApp.Models.Product>
 
-
-@(Html.Kendo().Grid(Model)
-    .Name("ProductsList")
-    .Columns(columns => 
-    {
-        columns.Bound(c => c.productName).Width(300);
-        columns.Bound(c => c.productDescription).Width(300);
-        columns.Bound(c => c.EAN).Width(300);
-        columns.Bound(c => c.Category).Width(300);
-    })
-    .Editable(e => e.Mode((GridEditMode.InLine)))
-    .DataSource(d => d 
-        .Server()
-        .Model(m =>
-        {
-            m.Id("ProductID");
-        })
-        )
-    .HtmlAttributes(new { style = "width : 800px"})
-    )
-
 @{
     ViewBag.Title = "Index";
 }
@@ -29,12 +8,37 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
-    
-    
+
+
 </p>
 
+<div class="row">
+    <div class="col-12">
+        @(Html.Kendo().Grid(Model)
+            .Name("grid")
+            .Columns(columns =>
+            {
+                columns.Bound(c => c.productName);
+                columns.Bound(c => c.productDescription);
+                columns.Bound(c => c.EAN);
+                columns.Bound(c => c.Category).Width(150);
+                columns.Command(command => { command.Edit(); }).Width(180);
+            })
+            .HtmlAttributes(new {style = "width : 900px"})
+            .ToolBar(toolbar => { toolbar.Search(); })
+            .Sortable()
+            .DataSource(d => d
+                .Server()
+                .Model(m => { m.Id("ProductID"); })
+                .Read(read => read.Action("Index", "Grid"))
+                .Update("Edit", "Products")
+            ))
+    </div>
+</div>
+
+
 <table class="table">
-    
+
 
     @foreach (var item in Model)
     {

@@ -53,6 +53,16 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Kendo.Mvc, Version=2020.3.915.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\Kendo.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kendo.Mvc.Export, Version=2020.3.915.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\export\binaries\net40\Kendo.Mvc.Export.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -117,6 +127,71 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.Documents.SpreadsheetStreaming, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Documents.SpreadsheetStreaming.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Web.Spreadsheet, Version=2020.3.915.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Web.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.CMapUtils, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Documents.CMapUtils.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Documents.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Fixed, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Documents.Fixed.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Documents.Flow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Xls, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Xls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip.Extensions, Version=2020.3.910.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2020.3.915.545\spreadsheet\binaries\net40\Telerik.Windows.Zip.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -131,6 +206,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\GridController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,6 +285,7 @@
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Scripts\kendo.modernizr.custom.js" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
@@ -225,6 +302,22 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Grid\Grid.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Country.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Views\Grid\Productt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -273,6 +366,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties UseCdnSupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

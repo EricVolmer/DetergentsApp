@@ -49,7 +49,7 @@ namespace DetergentsApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
+            ViewBag.Category = new SelectList(db.Categories, "CategoryID", "CategoryName", product.Category);
             return View(product);
         }
 
@@ -59,7 +59,7 @@ namespace DetergentsApp.Controllers
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var product = db.Products.Find(id);
             if (product == null) return HttpNotFound();
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.Category);
             return View(product);
         }
 
@@ -69,7 +69,7 @@ namespace DetergentsApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
-            [Bind(Include = "ProductID,EAN,Title,productName,productDescription,CategoryID,validFrom")]
+            [Bind(Include = "EAN,Title,productName,productDescription,validFrom")]
             Product product)
         {
             if (ModelState.IsValid)
@@ -79,7 +79,7 @@ namespace DetergentsApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.Category);
             return View(product);
         }
 

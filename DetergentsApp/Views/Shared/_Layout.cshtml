@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Resources
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -6,6 +7,16 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="https://kendo.cdn.telerik.com/2020.3.915/styles/kendo.common.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://kendo.cdn.telerik.com/2020.3.915/styles/kendo.uniform.min.css" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css"/>
+    <script src="https://kendo.cdn.telerik.com/2020.3.915/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.3.915/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.aspnetmvc.min.js"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -16,13 +27,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink(Resources.Global.APP_NAME, "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+            @Html.ActionLink(Global.APP_NAME, "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink(Resources.Global.Home_Menu, "Index", "Home")</li>
-                <li>@Html.ActionLink(Resources.Global.Products_Menu, "Index", "Products")</li>
-                <li>@Html.ActionLink(Resources.Global.Category_Menu, "Index", "Categories")</li>
+                <li>@Html.ActionLink(Global.Home_Menu, "Index", "Home")</li>
+                <li>@Html.ActionLink(Global.Products_Menu, "Index", "Products")</li>
+                <li>@Html.ActionLink(Global.Category_Menu, "Index", "Categories")</li>
+                <li>@Html.ActionLink("Grid", "Grid", "Grid")</li>
             </ul>
         </div>
     </div>
@@ -31,8 +43,8 @@
     @RenderBody()
     <hr/>
     <footer>
-        
-        
+
+
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     </footer>
 </div>

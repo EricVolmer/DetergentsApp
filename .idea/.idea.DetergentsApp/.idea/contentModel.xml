@@ -27,6 +27,7 @@
         </e>
         <e p="Controllers" t="Include">
           <e p="CategoriesController.cs" t="Include" />
+          <e p="GridController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
         </e>
@@ -90,8 +91,15 @@
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
           </e>
+          <e p="Grid" t="Include">
+            <e p="Grid.cshtml" t="Include" />
+            <e p="Productt.cshtml" t="Include" />
+          </e>
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="kendo.modernizr.custom.js" t="Include" />
+            </e>
           </e>
           <e p="Products" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -102,6 +110,22 @@
           </e>
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
+            <e p="EditorTemplates" t="Include">
+              <e p="Boolean.cshtml" t="Include" />
+              <e p="Country.cshtml" t="Include" />
+              <e p="Currency.cshtml" t="Include" />
+              <e p="Date.cshtml" t="Include" />
+              <e p="DateTime.cshtml" t="Include" />
+              <e p="Email.cshtml" t="Include" />
+              <e p="EmailAddress.cshtml" t="Include" />
+              <e p="GridForeignKey.cshtml" t="Include" />
+              <e p="Integer.cshtml" t="Include" />
+              <e p="Number.cshtml" t="Include" />
+              <e p="Password.cshtml" t="Include" />
+              <e p="String.cshtml" t="Include" />
+              <e p="Time.cshtml" t="Include" />
+              <e p="Url.cshtml" t="Include" />
+            </e>
             <e p="Error.cshtml" t="Include" />
           </e>
           <e p="Web.config" t="Include" />

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DetergentsApp.Models.Product>
+
+@(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(columns =>
+    {
+        columns.Bound(c => c.EAN);
+        columns.Bound(c => c.Title);
+        columns.Bound(c => c.productName);
+        columns.Bound(c => c.productDescription);
+        columns.Bound(c => c.validFrom);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+    })
+    .ToolBar(toolbar => {
+                            toolbar.Create();
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .Events(events => {
+                          events.Remove("onRemove");
+                          events.DetailExpand("onDetailExpand");
+                          events.Edit("onEdit");
+    })
+    .Events(e => e.Edit("hideProductID"))
+    .DataSource(dataSource => dataSource
+        .Server()
+        .Model(model => model.Id(p => p.ProductID))
+        .Read(read => read.Action("Grid", "Grid"))
+        .Create("Products_Create", "Grid")
+        .Update("Products_Update", "Grid")
+        .Destroy("Products_Destroy", "Grid")
+    )
+    )
+    
+<script>
+
+    function onRemove(e){
+        //Implement the event handler for Remove
+    }
+
+    function onDetailExpand(e){
+        //Implement the event handler for DetailExpand
+    }
+
+    function onEdit(e){
+        //Implement the event handler for Edit
+    }
+
+</script>
