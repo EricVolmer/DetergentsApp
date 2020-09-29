@@ -118,3 +118,5 @@ C:\Users\Eric\source\repos\DetergentsApp\DetergentsApp\obj\Debug\da\DetergentsAp
 C:\Users\Eric\source\repos\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csproj.CopyComplete
 C:\Users\Eric\source\repos\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.dll
 C:\Users\Eric\source\repos\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.pdb
+C:\Users\Eric\source\repos\DetergentsApp\DetergentsApp\bin\NLite.dll
+C:\Users\Eric\source\repos\DetergentsApp\DetergentsApp\bin\NLite.xml

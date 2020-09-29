@@ -30,7 +30,7 @@
             .DataSource(d => d
                 .Server()
                 .Model(m => { m.Id("ProductID"); })
-                .Read(read => read.Action("Index", "Grid"))
+                .Read(read => read.Action("Grid", "Grid"))
                 .Update("Edit", "Products")
             ))
     </div>

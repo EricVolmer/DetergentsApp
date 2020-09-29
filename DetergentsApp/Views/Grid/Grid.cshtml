@@ -1,4 +1,6 @@
-﻿@model IEnumerable<DetergentsApp.Models.Product>
+﻿@using DetergentsApp.Models
+@model IEnumerable<DetergentsApp.Models.Product>
+
 
 @(Html.Kendo().Grid(Model)
     .Name("Grid")
@@ -9,32 +11,60 @@
         columns.Bound(c => c.productName);
         columns.Bound(c => c.productDescription);
         columns.Bound(c => c.validFrom);
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+
+        columns.ForeignKey(c => c.CategoryID, (List<Category>)
+            ViewData["categories"], "CategoryID", "CategoryName").Title("Category").Width(150);
+
+        columns.Command(command =>
+        {
+            command.Edit();
+            command.Destroy();
+        }).Width(180);
     })
-    .ToolBar(toolbar => {
-                            toolbar.Create();
+    .ToolBar(toolbar =>
+    {
+        toolbar.Create();
+        toolbar.Search();
     })
     .Editable(editable => editable.Mode(GridEditMode.PopUp))
     .Pageable()
     .Sortable()
     .Scrollable()
+    .Search(s =>
+    {
+        s.Field(f => f.productName);
+        s.Field(f => f.EAN);
+        s.Field(f => f.Title);
+        
+    })
     .Filterable()
-    .Events(events => {
-                          events.Remove("onRemove");
-                          events.DetailExpand("onDetailExpand");
-                          events.Edit("onEdit");
+    .Events(events =>
+    {
+        events.Remove("onRemove");
+        events.DetailExpand("onDetailExpand");
+        events.Edit("onEdit");
     })
     .Events(e => e.Edit("hideProductID"))
     .DataSource(dataSource => dataSource
         .Server()
-        .Model(model => model.Id(p => p.ProductID))
+        .Model(model =>
+        {
+            model.Id(c => c.ProductID);
+
+            model.Field(c => c.productName);
+            model.Field(c => c.productDescription);
+            model.Field(c => c.EAN);
+            model.Field(c => c.validFrom);
+            model.Field(c => c.Category);
+        }
+        )
         .Read(read => read.Action("Grid", "Grid"))
         .Create("Products_Create", "Grid")
         .Update("Products_Update", "Grid")
         .Destroy("Products_Destroy", "Grid")
     )
     )
-    
+
 <script>
 
     function onRemove(e){

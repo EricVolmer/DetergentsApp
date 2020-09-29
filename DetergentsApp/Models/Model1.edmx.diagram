@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="de670d8cbec54ed38cc32eb750e129db" Name="Diagram1">
+      <Diagram DiagramId="de670d8cbec54ed38cc32eb750e129db" Name="Diagram1" ZoomLevel="150">
         <EntityTypeShape EntityType="DetergentsModel.Category" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DetergentsModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DetergentsModel.FK__Product__Categor__38996AB5" ManuallyRouted="false" />

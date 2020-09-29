@@ -23,35 +23,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/NLite.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/NLite.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/v16/Server/sqlite3/storage.ide" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DetergentsApp/v16/Server/sqlite3/storage.ide" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Start/BundleConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/App_Start/BundleConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Start/FilterConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/App_Start/FilterConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Start/RouteConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/App_Start/RouteConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/v16/Server/sqlite3/storage.ide-shm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/v16/Server/sqlite3/storage.ide-wal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/GridController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/GridController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Global.asax" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Global.asax" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Global.asax.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Global.asax.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Category.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.Context.tt" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.Context.tt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.diagram" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.diagram" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.tt" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.tt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery-3.5.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery-3.5.1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery-3.5.1.slim.js" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery-3.5.1.slim.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate-vsdoc.js" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate-vsdoc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Scripts/modernizr-2.8.3.js" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/modernizr-2.8.3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Grid/Grid.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Grid/Grid.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Grid/Productt.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Grid/Productt.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Shared/Error.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Shared/Error.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/_ViewStart.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/_ViewStart.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" afterDir="false" />
@@ -60,8 +49,11 @@
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/build.force" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/TempPE/Models.Model1.Designer.cs.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/TempPE/Models.Model1.Designer.cs.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/TempPE/Models.Model1.cs.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/TempPE/Models.Model1.cs.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.csdl" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.csdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/packages.config" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +79,6 @@
         <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Details.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Edit.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" />
-        <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Create.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Delete.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Details.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" />
@@ -99,25 +90,32 @@
         <option value="$PROJECT_DIR$/DetergentsApp/Web.config" />
         <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" />
-        <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/GridController.cs" />
         <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Views/Grid/Productt.cshtml" />
-        <option value="$PROJECT_DIR$/DetergentsApp/Models/Category.cs" />
-        <option value="$PROJECT_DIR$/DetergentsApp/Views/Grid/Grid.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" />
+        <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Create.cshtml" />
+        <option value="$PROJECT_DIR$/DetergentsApp/Views/Shared/EditorTemplates/CategoryEditor.cshtml" />
+        <option value="$PROJECT_DIR$/DetergentsApp/Models/Category.cs" />
+        <option value="$PROJECT_DIR$/DetergentsApp/Views/Shared/EditorTemplates/_CategoryDropdown.cshtml" />
+        <option value="$PROJECT_DIR$/DetergentsApp/Views/Shared/EditorTemplates/GridForeignKey.cshtml" />
+        <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" />
+        <option value="$PROJECT_DIR$/DetergentsApp/Views/Grid/Grid.cshtml" />
         <option value="$PROJECT_DIR$/DetergentsApp/Controllers/GridController.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1hosMQCbLmUhIQlUT0gZJvhJoGG" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="sqlserver" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -160,7 +158,9 @@
       <workItem from="1600755637068" duration="13102000" />
       <workItem from="1600796557629" duration="613000" />
       <workItem from="1600841250896" duration="8363000" />
-      <workItem from="1600866168645" duration="12359000" />
+      <workItem from="1600866168645" duration="16154000" />
+      <workItem from="1600952049113" duration="87000" />
+      <workItem from="1600952291728" duration="27636000" />
     </task>
     <task id="LOCAL-00001" summary="Kendo Grid start">
       <created>1600795493153</created>
@@ -169,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600795493153</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Kendo UI edit delete tab half done">
+      <created>1600948783764</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1600948783765</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,19 +197,26 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Kendo Grid start" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kendo Grid start" />
+    <MESSAGE value="Kendo UI edit delete tab half done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kendo UI edit delete tab half done" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="218" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600938622405">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="552" y="218" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600938622405" />
-    <state x="1187" y="405" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1600939956071">
+    <state x="1187" y="405" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1601291947627">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="1187" y="405" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600939956071" />
+    <state x="1187" y="405" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601291947627" />
+    <state x="184" y="126" key="DiffContextDialog" timestamp="1600948809925">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="184" y="126" key="DiffContextDialog/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600948809925" />
     <state x="826" y="458" key="Github.ShareDialog" timestamp="1600689899896">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
@@ -211,25 +225,29 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="660" y="266" key="Github.UntrackedFilesDialog/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600689909638" />
-    <state width="1877" height="221" key="GridCell.Tab.0.bottom" timestamp="1600947801882">
+    <state width="916" height="218" key="GridCell.Tab.0.bottom" timestamp="1601379631200">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1877" height="221" key="GridCell.Tab.0.bottom/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600947801882" />
+    <state width="1877" height="221" key="GridCell.Tab.0.bottom/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600952796548" />
+    <state width="916" height="218" key="GridCell.Tab.0.bottom/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601379631200" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1600805855256" />
-    <state width="1877" height="221" key="GridCell.Tab.0.center" timestamp="1600947801882">
+    <state width="916" height="218" key="GridCell.Tab.0.center" timestamp="1601379631200">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1877" height="221" key="GridCell.Tab.0.center/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600947801882" />
+    <state width="1877" height="221" key="GridCell.Tab.0.center/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600952796548" />
+    <state width="916" height="218" key="GridCell.Tab.0.center/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601379631200" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.40.1920.1040@0.40.1920.1040" timestamp="1600805855256" />
-    <state width="1877" height="221" key="GridCell.Tab.0.left" timestamp="1600947801881">
+    <state width="916" height="218" key="GridCell.Tab.0.left" timestamp="1601379631200">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1877" height="221" key="GridCell.Tab.0.left/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600947801881" />
+    <state width="1877" height="221" key="GridCell.Tab.0.left/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600952796548" />
+    <state width="916" height="218" key="GridCell.Tab.0.left/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601379631200" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.40.1920.1040@0.40.1920.1040" timestamp="1600805855256" />
-    <state width="1877" height="221" key="GridCell.Tab.0.right" timestamp="1600947801882">
+    <state width="916" height="218" key="GridCell.Tab.0.right" timestamp="1601379631200">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1877" height="221" key="GridCell.Tab.0.right/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600947801882" />
+    <state width="1877" height="221" key="GridCell.Tab.0.right/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600952796548" />
+    <state width="916" height="218" key="GridCell.Tab.0.right/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601379631200" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1600805855256" />
     <state x="1032" y="292" key="Rider.ProjectTemplateDialog.Size" timestamp="1600866763099">
       <screen x="0" y="40" width="1920" height="1040" />
@@ -239,9 +257,13 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="461" y="205" key="SettingsEditor/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600765252892" />
-    <state x="552" y="293" key="Vcs.Push.Dialog.v2" timestamp="1600795496442">
+    <state x="552" y="293" key="Vcs.Push.Dialog.v2" timestamp="1600948829988">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="552" y="293" key="Vcs.Push.Dialog.v2/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600795496442" />
+    <state x="552" y="293" key="Vcs.Push.Dialog.v2/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600948829988" />
+    <state x="1959" y="16" width="1477" height="834" maximized="true" key="dock-window-1" timestamp="1601387452521">
+      <screen x="1920" y="0" width="1463" height="783" />
+    </state>
+    <state x="1959" y="16" width="1477" height="834" maximized="true" key="dock-window-1/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601387452521" />
   </component>
 </project>

@@ -7,30 +7,35 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Kendo.Mvc.UI;
+
 namespace DetergentsApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     
     public partial class Product
     {
-        // In order to hide a field in edit tab use this function
-        [ScaffoldColumn(false)]
+        [Key][ScaffoldColumn(false)]
         public int ProductID { get; set; }
         public int EAN { get; set; }
+        public int articleNR { get; set; }
         public string Title { get; set; }
         public string productName { get; set; }
         public string productDescription { get; set; }
-      //  [ScaffoldColumn(false)]
-        public int CategoryID { get; set; }
+        
+        public Nullable<int> CategoryID { get; set; }
+        public virtual Category Category { get; set; }
+        
         
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString ="{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = false)]
         [Display(Name = "Valid From")]
-        public DateTime validFrom { get; set; }
+        public System.DateTime validFrom { get; set; }
     
-        public virtual Category Category { get; set; }
+        
     }
 }
-

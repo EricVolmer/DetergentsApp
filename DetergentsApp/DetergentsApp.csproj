@@ -72,6 +72,10 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NLite, Version=0.9.6.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\NLite.0.9.6\lib\net40\NLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
