@@ -234,6 +234,7 @@ C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\sv-SE\Kendo.Mvc.r
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\tr-TR\Kendo.Mvc.resources.dll
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\uk-UA\Kendo.Mvc.resources.dll
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\zh-CN\Kendo.Mvc.resources.dll
+C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csprojAssemblyReference.cache
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.Resources.Global.resources
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.Resources.Global.da.resources
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csproj.GenerateResource.cache
@@ -241,4 +242,3 @@ C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\da\Detergen
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csproj.CopyComplete
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.dll
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.pdb
-C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csprojAssemblyReference.cache

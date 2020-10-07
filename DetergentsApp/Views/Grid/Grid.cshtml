@@ -1,25 +1,24 @@
 ﻿@using DetergentsApp.Models
 @model IEnumerable<DetergentsApp.Models.Product>
 
-
 @(Html.Kendo().Grid(Model)
-    .Name("Grid")
+    .Name("grid")
     .Columns(columns =>
     {
-        columns.Bound(c => c.EAN);
-        columns.Bound(c => c.Title);
-        columns.Bound(c => c.productName);
-        columns.Bound(c => c.productDescription);
-        columns.Bound(c => c.validFrom);
+        columns.Bound(c => c.EAN).Width(150);
+        columns.Bound(c => c.Title).Width(150);
+        columns.Bound(c => c.productName).Width(200);
+        columns.Bound(c => c.productDescription).Width(250);
+        columns.Bound(c => c.validFrom).Width(200);
 
         columns.ForeignKey(c => c.CategoryID, (List<Category>)
-            ViewData["categories"], "CategoryID", "CategoryName").Title("Category").Width(150);
+            ViewData["categories"], "CategoryID", "CategoryName").Title("Category").Width(200);
 
         columns.Command(command =>
         {
             command.Edit();
             command.Destroy();
-        }).Width(180);
+        }).Width(200);
     })
     .ToolBar(toolbar =>
     {
@@ -29,14 +28,7 @@
     .Editable(editable => editable.Mode(GridEditMode.InLine))
     .Pageable()
     .Sortable()
-    .Scrollable()
-    .Search(s =>
-    {
-        s.Field(f => f.productName);
-        s.Field(f => f.EAN);
-        s.Field(f => f.Title);
-    })
-    .Filterable()
+    .Scrollable(scr => scr.Height(430))
     .Events(events =>
     {
         events.Remove("onRemove");
@@ -54,7 +46,7 @@
             model.Field(c => c.productDescription);
             model.Field(c => c.EAN);
             model.Field(c => c.validFrom);
-            model.Field(c => c.Category);
+            model.Field(c => c.Category).DefaultValue(new Category {CategoryID = 1, CategoryName = "Water"});
         }
         )
         .Read(read => read.Action("Grid", "Grid"))
@@ -63,7 +55,6 @@
         .Destroy("Products_Destroy", "Grid")
     )
     )
-
 <script>
 
     function onRemove(e){
@@ -77,5 +68,18 @@
     function onEdit(e){
         //Implement the event handler for Edit
     }
+     function error_handler(e) {    
+            if (e.errors) {
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function() {
+                            message += this + "\n";
+                        });
+                    }
+                });        
+                alert(message);
+            }
+        }
 
 </script>

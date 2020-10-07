@@ -36,6 +36,8 @@
                 <li>@Html.ActionLink(Global.Category_Menu, "Index", "Categories")</li>
                 <li>@Html.ActionLink("Grid", "Grid", "Grid")</li>
             </ul>
+            <p class="nav navbar-text navbar-right">Hello, @User.Identity.Name!</p>
+
         </div>
     </div>
 </div>
@@ -54,3 +56,13 @@
 @RenderSection("scripts", false)
 </body>
 </html>
+<style>
+.container
+{
+width: auto;
+margin-left: 15px;
+margin-right: 15px;
+
+}    
+                    
+</style>

@@ -5,6 +5,7 @@
     <e p="C:\Users\Eric\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_DetergentsApp.878162441.00" t="ExcludeRecursive" />
     <e p="C:\Users\Eric\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\Eric\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Eric\AppData\Roaming\JetBrains\Rider2020.2\javascript\extLibs\http_kendo.cdn.telerik.com_2020.3.915_styles_kendo.common.min.css" t="IncludeRecursive" />
     <e p="C:\Users\Eric\Documents\GitHub\DetergentsApp" t="IncludeFlat">
       <e p="DetergentsApp" t="IncludeRecursive">
         <e p="App_Data" t="Include" />
@@ -80,6 +81,7 @@
           <e p="jquery.validate.min.js" t="Include" />
           <e p="jquery.validate.unobtrusive.js" t="Include" />
           <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+          <e p="kendo.modernizr.custom.js" t="Include" />
           <e p="modernizr-2.8.3.js" t="Include" />
         </e>
         <e p="Views" t="Include">
