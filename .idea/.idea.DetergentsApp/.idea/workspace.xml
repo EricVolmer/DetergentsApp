@@ -23,19 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/kendo.modernizr.custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Grid/Grid.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Grid/Grid.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" afterDir="false" />
@@ -152,7 +144,9 @@
       <workItem from="1600952049113" duration="87000" />
       <workItem from="1600952291728" duration="27636000" />
       <workItem from="1601461662211" duration="22201000" />
-      <workItem from="1601885143501" duration="8503000" />
+      <workItem from="1601885143501" duration="8708000" />
+      <workItem from="1602065165826" duration="12969000" />
+      <workItem from="1602227746672" duration="1628000" />
     </task>
     <task id="LOCAL-00001" summary="Kendo Grid start">
       <created>1600795493153</created>
@@ -175,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601554063523</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="View Update">
+      <created>1602064037319</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1602064037320</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,7 +202,8 @@
     <MESSAGE value="Kendo Grid start" />
     <MESSAGE value="Kendo UI edit delete tab half done" />
     <MESSAGE value="Working Add, Edit and Delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working Add, Edit and Delete" />
+    <MESSAGE value="View Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="View Update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="218" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601464160560">
@@ -213,9 +215,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="852" y="314" width="386" height="492" key="#xdebugger.XInspectDialog/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601471330213" />
-    <state x="1187" y="405" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1601553977918">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state x="904" y="315" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1602066058404">
+      <screen x="0" y="40" width="1463" height="783" />
     </state>
+    <state x="904" y="315" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.40.1463.783@0.40.1463.783" timestamp="1602066058404" />
     <state x="1187" y="405" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600939956071" />
     <state x="1187" y="405" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601553977918" />
     <state x="184" y="126" key="DiffContextDialog" timestamp="1600948809925">
@@ -230,31 +233,31 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="660" y="266" key="Github.UntrackedFilesDialog/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600689909638" />
-    <state width="1420" height="145" key="GridCell.Tab.0.bottom" timestamp="1602062659344">
+    <state width="1420" height="136" key="GridCell.Tab.0.bottom" timestamp="1602229343724">
       <screen x="0" y="40" width="1463" height="783" />
     </state>
-    <state width="1420" height="145" key="GridCell.Tab.0.bottom/0.40.1463.783@0.40.1463.783" timestamp="1602062659344" />
+    <state width="1420" height="136" key="GridCell.Tab.0.bottom/0.40.1463.783@0.40.1463.783" timestamp="1602229343724" />
     <state width="1877" height="221" key="GridCell.Tab.0.bottom/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600952796548" />
     <state width="1877" height="195" key="GridCell.Tab.0.bottom/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601893706777" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1600805855256" />
-    <state width="1420" height="145" key="GridCell.Tab.0.center" timestamp="1602062659344">
+    <state width="1420" height="136" key="GridCell.Tab.0.center" timestamp="1602229343724">
       <screen x="0" y="40" width="1463" height="783" />
     </state>
-    <state width="1420" height="145" key="GridCell.Tab.0.center/0.40.1463.783@0.40.1463.783" timestamp="1602062659344" />
+    <state width="1420" height="136" key="GridCell.Tab.0.center/0.40.1463.783@0.40.1463.783" timestamp="1602229343724" />
     <state width="1877" height="221" key="GridCell.Tab.0.center/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600952796548" />
     <state width="1877" height="195" key="GridCell.Tab.0.center/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601893706777" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.40.1920.1040@0.40.1920.1040" timestamp="1600805855256" />
-    <state width="1420" height="145" key="GridCell.Tab.0.left" timestamp="1602062659344">
+    <state width="1420" height="136" key="GridCell.Tab.0.left" timestamp="1602229343724">
       <screen x="0" y="40" width="1463" height="783" />
     </state>
-    <state width="1420" height="145" key="GridCell.Tab.0.left/0.40.1463.783@0.40.1463.783" timestamp="1602062659344" />
+    <state width="1420" height="136" key="GridCell.Tab.0.left/0.40.1463.783@0.40.1463.783" timestamp="1602229343724" />
     <state width="1877" height="221" key="GridCell.Tab.0.left/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600952796548" />
     <state width="1877" height="195" key="GridCell.Tab.0.left/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601893706776" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.40.1920.1040@0.40.1920.1040" timestamp="1600805855256" />
-    <state width="1420" height="145" key="GridCell.Tab.0.right" timestamp="1602062659344">
+    <state width="1420" height="136" key="GridCell.Tab.0.right" timestamp="1602229343724">
       <screen x="0" y="40" width="1463" height="783" />
     </state>
-    <state width="1420" height="145" key="GridCell.Tab.0.right/0.40.1463.783@0.40.1463.783" timestamp="1602062659344" />
+    <state width="1420" height="136" key="GridCell.Tab.0.right/0.40.1463.783@0.40.1463.783" timestamp="1602229343724" />
     <state width="1877" height="221" key="GridCell.Tab.0.right/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600952796548" />
     <state width="1877" height="195" key="GridCell.Tab.0.right/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601893706777" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1600805855256" />
@@ -330,9 +333,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="461" y="205" key="SettingsEditor/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600765252892" />
-    <state x="552" y="293" key="Vcs.Push.Dialog.v2" timestamp="1601554068609">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state x="421" y="230" key="Vcs.Push.Dialog.v2" timestamp="1602064040864">
+      <screen x="0" y="40" width="1463" height="783" />
     </state>
+    <state x="421" y="230" key="Vcs.Push.Dialog.v2/0.40.1463.783@0.40.1463.783" timestamp="1602064040864" />
     <state x="552" y="293" key="Vcs.Push.Dialog.v2/0.40.1920.1040/-2560.-360.1463.783@0.40.1920.1040" timestamp="1600948829988" />
     <state x="552" y="293" key="Vcs.Push.Dialog.v2/0.40.1920.1040/1920.0.1463.783@0.40.1920.1040" timestamp="1601554068609" />
     <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1601471284762">

@@ -1,6 +1,7 @@
 ﻿@using DetergentsApp.Models
 @model IEnumerable<DetergentsApp.Models.Product>
 
+
 @(Html.Kendo().Grid(Model)
     .Name("grid")
     .Columns(columns =>
@@ -10,9 +11,7 @@
         columns.Bound(c => c.productName).Width(200);
         columns.Bound(c => c.productDescription).Width(250);
         columns.Bound(c => c.validFrom).Width(200);
-
-        columns.ForeignKey(c => c.CategoryID, (List<Category>)
-            ViewData["categories"], "CategoryID", "CategoryName").Title("Category").Width(200);
+        columns.Bound(c => c.Category.CategoryName).Title("Category").EditorTemplateName("ClientCategoryEditor").ClientGroupHeaderTemplate("Category: #=category.name#").Width(125);
 
         columns.Command(command =>
         {
@@ -28,6 +27,8 @@
     .Editable(editable => editable.Mode(GridEditMode.InLine))
     .Pageable()
     .Sortable()
+    .Groupable(g=>g.ShowFooter(false))
+
     .Scrollable(scr => scr.Height(430))
     .Events(events =>
     {
@@ -49,12 +50,16 @@
             model.Field(c => c.Category).DefaultValue(new Category {CategoryID = 1, CategoryName = "Water"});
         }
         )
+        .Group(group=>group.Add("Category.CategoryName", typeof(string), System.ComponentModel.ListSortDirection.Descending))
+
         .Read(read => read.Action("Grid", "Grid"))
         .Create("Products_Create", "Grid")
         .Update("Products_Update", "Grid")
         .Destroy("Products_Destroy", "Grid")
     )
     )
+    
+}
 <script>
 
     function onRemove(e){
@@ -83,3 +88,4 @@
         }
 
 </script>
+
