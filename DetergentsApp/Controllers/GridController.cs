@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using DetergentsApp.Models;
 using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 
 namespace DetergentsApp.Controllers
 {
@@ -86,6 +87,10 @@ namespace DetergentsApp.Controllers
             var categories = db.Categories.ToList();
             ViewData["categories"] = categories;
             return View(products);
+        }
+        public ActionResult Products_Read([DataSourceRequest]DataSourceRequest request)
+        {
+            return Json(db.Products.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
 

@@ -1,91 +1,91 @@
 ﻿@using DetergentsApp.Models
 @model IEnumerable<DetergentsApp.Models.Product>
 
-
 @(Html.Kendo().Grid(Model)
     .Name("grid")
+    .Pageable()
+    .Sortable(sortable => sortable
+        .AllowUnsort(true))    
+    .Navigatable()
+    .Resizable(r=>r.Columns(true))
+    .Reorderable(r => r.Columns(true))
+    .Groupable(g=>g.ShowFooter(false))
+    .Filterable()
+    .Scrollable(scr => scr.Height(430))
     .Columns(columns =>
     {
-        columns.Bound(c => c.EAN).Width(150);
-        columns.Bound(c => c.Title).Width(150);
-        columns.Bound(c => c.productName).Width(200);
-        columns.Bound(c => c.productDescription).Width(250);
-        columns.Bound(c => c.validFrom).Width(200);
-        columns.Bound(c => c.Category.CategoryName).Title("Category").EditorTemplateName("ClientCategoryEditor").ClientGroupHeaderTemplate("Category: #=category.name#").Width(125);
-
+        columns.Select().Width(75).HtmlAttributes(new { @class="checkbox-align"}).HeaderHtmlAttributes(new { @class = "checkbox-align" });
+        columns.Bound(p => p.productName).Title("Product Name");
+        columns.Bound(p => p.productDescription).Title("Product Description");
+        columns.Bound(p => p.EAN).Title("EAN Number")
+                            .ClientTemplate("<span id='badge_#=ProductID#' class='badgeTemplate'></span>");
+        columns.ForeignKey(c => c.CategoryID, (List<Category>)
+            ViewData["categories"], "CategoryID", "CategoryName").Title("Category").Width(150);
+        columns.Bound(p => p.validFrom).Title("Valid From");
         columns.Command(command =>
         {
-            command.Edit();
             command.Destroy();
-        }).Width(200);
+            command.Edit();
+        });
     })
     .ToolBar(toolbar =>
     {
         toolbar.Create();
         toolbar.Search();
     })
+    .ColumnMenu(col=>col.Filterable(false))
     .Editable(editable => editable.Mode(GridEditMode.InLine))
-    .Pageable()
-    .Sortable()
-    .Groupable(g=>g.ShowFooter(false))
-
-    .Scrollable(scr => scr.Height(430))
-    .Events(events =>
-    {
-        events.Remove("onRemove");
-        events.DetailExpand("onDetailExpand");
-        events.Edit("onEdit");
-    })
-    .Events(e => e.Edit("hideProductID"))
+    .Events(events => events.DataBound("onDataBound"))
     .DataSource(dataSource => dataSource
         .Server()
+        .PageSize(20)
         .Model(model =>
         {
-            model.Id(c => c.ProductID);
-
-            model.Field(c => c.productName);
-            model.Field(c => c.productDescription);
-            model.Field(c => c.EAN);
-            model.Field(c => c.validFrom);
-            model.Field(c => c.Category).DefaultValue(new Category {CategoryID = 1, CategoryName = "Water"});
-        }
-        )
+            model.Id(p => p.ProductID);
+            model.Field(p => p.ProductID).Editable(false);
+            model.Field(p => p.productDescription).Editable(true);
+            model.Field(p => p.EAN).Editable(false);
+            model.Field(p => p.Category).Editable(true);
+            model.Field(p => p.validFrom).Editable(true);
+        })
         .Group(group=>group.Add("Category.CategoryName", typeof(string), System.ComponentModel.ListSortDirection.Descending))
-
-        .Read(read => read.Action("Grid", "Grid"))
         .Create("Products_Create", "Grid")
+        .Read("Grid", "Grid")
         .Update("Products_Update", "Grid")
         .Destroy("Products_Destroy", "Grid")
     )
-    )
-    
-}
-<script>
 
-    function onRemove(e){
-        //Implement the event handler for Remove
-    }
+)
 
-    function onDetailExpand(e){
-        //Implement the event handler for DetailExpand
-    }
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>
 
-    function onEdit(e){
-        //Implement the event handler for Edit
-    }
-     function error_handler(e) {    
-            if (e.errors) {
-                var message = "Errors:\n";
-                $.each(e.errors, function (key, value) {
-                    if ('errors' in value) {
-                        $.each(value.errors, function() {
-                            message += this + "\n";
-                        });
-                    }
-                });        
-                alert(message);
-            }
+<script type="text/javascript">
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
         }
+    }
 
+
+    function returnFalse() {
+        return false;
+    }
 </script>
 
+
+@section styles {
+    <style>
+    .k-grid {
+        font-family: "DejaVu Sans", "Arial", sans-serif;
+    }
+    
+</style>
+}
