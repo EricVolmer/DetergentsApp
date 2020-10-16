@@ -9,46 +9,16 @@ using Kendo.Mvc.Extensions;
 
 namespace DetergentsApp.Controllers
 {
-
-    public class CategoryService : IDisposable
-    {
-        private readonly DetergentsEntities db;
-
-        public CategoryService(DetergentsEntities db)
-        {
-            this.db = db;
-        }
-        
-        public void Delete(Category category)
-        {
-            var entity = new Category
-            {
-                CategoryName = category.CategoryName,
-                CategoryID = category.CategoryID
-            };
-
-            db.Categories.Attach(entity);
-            db.Categories.Remove(entity);
-            db.SaveChanges();
-        }
-
-        public void Dispose()
-        {
-            db.Dispose();
-        }
-    }
-
     public class CategoriesController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
-        private readonly CategoryService categoryService;
-
-
 
         // GET: Categories
         public ActionResult Index()
         {
+
             return View(db.Categories.ToList());
+            
         }
 
         // GET: Categories/Details/5
@@ -112,31 +82,33 @@ namespace DetergentsApp.Controllers
         }
 
         // GET: Categories/Delete/5
-        /*
+        
         public ActionResult Delete(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var category = db.Categories.Find(id);
             if (category == null) return HttpNotFound();
+            
+            // How to find the products inside the category to delete them also.
+      //      var product = db.Products.Find(id);
+      //      if (product == null) return HttpNotFound();
             return View(category);
         }
-        */
         
-        
-
         // POST: Categories/Delete/5
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Category category)
+        public ActionResult DeleteConfirmed(int id)
         {
-            RouteValueDictionary routeValues;
-
-            categoryService.Delete(category);
-
-            routeValues = this.GridRouteValues();
-
-            return RedirectToAction("Delete", routeValues);
+           
+            var category = db.Categories.Find(id);
+            // How to find the products inside the category to delete them also.
+         //   var product = db.Products.Find(id);
+            db.Categories.Remove(category);
+         //   db.Products.Remove(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

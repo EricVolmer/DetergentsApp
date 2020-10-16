@@ -10,31 +10,6 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<div class="row">
-    <div class="col-12">
-        @(Html.Kendo().Grid(Model)
-            .Name("grid")
-            .Columns(columns =>
-            {
-                columns.Bound(c => c.productName);
-                columns.Bound(c => c.productDescription);
-                columns.Bound(c => c.EAN);
-                columns.Bound(c => c.Category).Width(150);
-                columns.Command(command => { command.Edit(); }).Width(180);
-            })
-            .HtmlAttributes(new {style = "width : 900px"})
-            .ToolBar(toolbar => { toolbar.Search(); })
-            .Sortable()
-            .DataSource(d => d
-                .Server()
-                .Model(m => { m.Id("ProductID"); })
-                .Read(read => read.Action("Grid", "Grid"))
-                .Update("Edit", "Products")
-            ))
-    </div>
-</div>
-
-
 <table class="table">
 
 
