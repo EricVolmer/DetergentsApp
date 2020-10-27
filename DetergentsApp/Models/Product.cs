@@ -6,6 +6,7 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
 using System.ComponentModel.DataAnnotations;
 
 namespace DetergentsApp.Models
@@ -24,5 +25,7 @@ namespace DetergentsApp.Models
         public int CategoryID { get; set; }
     
         public virtual Category Category { get; set; }
+        public Nullable<int> FileID { get; set; }
+
     }
 }

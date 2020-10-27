@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using DetergentsApp.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using DetergentsApp.Models;
 
 namespace DetergentsApp.Controllers
 {
@@ -13,21 +12,17 @@ namespace DetergentsApp.Controllers
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
 
-        public ActionResult Admin2( )
+        public ActionResult Admin2()
         {
-            
-
-            
-         //   var products = db.Products.Include(product => viewModel.categoryName);
+            //   var products = db.Products.Include(product => viewModel.categoryName);
             var categories = db.Categories.Select(c => c.CategoryName).ToList();
             ViewBag.Category = categories;
-            
+
             ViewData["categories"] = categories;
             return View();
-            
         }
 
-        public ActionResult Products_Read([DataSourceRequest]DataSourceRequest request)
+        public ActionResult Products_Read([DataSourceRequest] DataSourceRequest request)
         {
             // IQueryable<Product> products = db.Products;
             // DataSourceResult result = products.ToDataSourceResult(request, product => new {
@@ -44,7 +39,7 @@ namespace DetergentsApp.Controllers
             {
                 var result = db.Products;
 
-                 var list = result.Select(entity => new ProductViewModel()
+                var list = result.Select(entity => new ProductViewModel
                     {
                         productID = entity.ProductID,
                         EAN = entity.EAN,
@@ -54,20 +49,17 @@ namespace DetergentsApp.Controllers
                         categoryName = entity.Category.CategoryName
                     })
                     .ToList();
-                 return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+                return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw;
             }
-            
-            
-          
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Products_Create([DataSourceRequest]DataSourceRequest request, Product product)
+        public ActionResult Products_Create([DataSourceRequest] DataSourceRequest request, Product product)
         {
             if (ModelState.IsValid)
             {
@@ -85,11 +77,11 @@ namespace DetergentsApp.Controllers
                 product.ProductID = entity.ProductID;
             }
 
-            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
+            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Products_Update([DataSourceRequest]DataSourceRequest request, Product product)
+        public ActionResult Products_Update([DataSourceRequest] DataSourceRequest request, Product product)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +91,7 @@ namespace DetergentsApp.Controllers
                     EAN = product.EAN,
                     Title = product.Title,
                     productName = product.productName,
-                    productDescription = product.productDescription,
+                    productDescription = product.productDescription
                 };
 
                 db.Products.Attach(entity);
@@ -107,11 +99,11 @@ namespace DetergentsApp.Controllers
                 db.SaveChanges();
             }
 
-            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
+            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Products_Destroy([DataSourceRequest]DataSourceRequest request, Product product)
+        public ActionResult Products_Destroy([DataSourceRequest] DataSourceRequest request, Product product)
         {
             if (ModelState.IsValid)
             {
@@ -121,7 +113,7 @@ namespace DetergentsApp.Controllers
                     EAN = product.EAN,
                     Title = product.Title,
                     productName = product.productName,
-                    productDescription = product.productDescription,
+                    productDescription = product.productDescription
                 };
 
                 db.Products.Attach(entity);
@@ -129,7 +121,7 @@ namespace DetergentsApp.Controllers
                 db.SaveChanges();
             }
 
-            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
+            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
         }
 
         protected override void Dispose(bool disposing)

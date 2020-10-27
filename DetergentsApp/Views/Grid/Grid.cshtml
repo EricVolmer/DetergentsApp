@@ -4,7 +4,7 @@
 
 @helper RenderGrid()
 {
-    @(Html.Kendo().Grid<DetergentsApp.Models.Product>()
+    @(Html.Kendo().Grid<Product>()
         .Name("filesGrid")
         .ToolBar(t => t.Template(
             @<text>
@@ -15,11 +15,11 @@
                     )
              </text>
             ))
-        .Columns(columns => 
+        .Columns(columns =>
         {
             columns.Bound(f => f.productName).ClientTemplate("<a href='Home/Download?id=#= Id #'>#= Name #</a>").Title("File name");
-                                              
-                                              
+
+
             columns.Command(command => command.Destroy()).Width(100);
         })
         .Sortable()
@@ -32,112 +32,91 @@
             .Destroy(update => update.Action("FilesDestroy", "Grid"))
         )
         )
-    
 }
 
-@{ Html.Kendo().Grid(Model)
-    .Name("Categories")
-    .Columns(columns =>
-    {
-        columns.Bound(e => e.CategoryID).Width(140).Visible(false);
-        columns.Bound(e => e.CategoryName).Width(140);
-        
-    })
-       
-    .DetailTemplate(e =>
-    {            
-            Html.Kendo().TabStrip()
-                    .Name("TabStrip_" + e.CategoryID)
-                    .SelectedIndex(0)
-                    .Items(items =>
-                    {
-                        items.Add().Text("Articles").Content(@<text>
-                                
-                                @(Html.Kendo().Grid(e.Products)
-                                        .Name("Articles_" + e.CategoryID)
-                                        .Columns(columns =>
-                                        {
-                                            columns.Select().Width(75).HtmlAttributes(new { @class="checkbox-align"}).HeaderHtmlAttributes(new { @class = "checkbox-align" }).Width(20);
-                                            columns.Bound(c => c.ProductID).Visible(false);
-
-                                            columns.Bound(o => o.Title).Width(101);
-                                            columns.Bound(o => o.productName).Width(140);
-                                            columns.Bound(o => o.productDescription).Width(200);
-                                            columns.Bound(o => o.EAN).Width(200);
-                                            columns.Bound(o => o.Category.CategoryName).Format("{0:d}");
-                                            columns.ForeignKey(c => c.Category.CategoryName, (List<Category>)
-                                                     @ViewBag.Category , "CategoryID", "CategoryName").Title("Category").Width(150);
-                                            columns.Command(command => { command.Edit();}).Width(180);
-
-                                        })
-                                        .Pageable()
-                                        .Sortable()
-                                    .ToolBar(toolbar => {
-                                                            toolbar.Create();
-                                    })
-                                    .Editable(editable => editable.Mode(GridEditMode.PopUp))
-
-                                    .DataSource(dataSource => dataSource
-                                        .Server()
-                                        .PageSize(5)
-                                        .Model(model =>
-                                        {
-                                            model.Id(p => p.ProductID);
-                                            model.Field(p => p.ProductID).Editable(false);
-                                        })
-                                        .Create(create => create.Action("Products_Create", "Grid"))
-                                        .Update(update => update.Action("Products_Update", "Grid"))
-                                    
-                                    ))
-                                
-                                
-                        </text>);
-                        items.Add().Text("List of files uploaded").Content(                                
-                            @<div class="file-details">       
-                                <text>
-                                          @RenderGrid()
-                                       </text>
-                                    
-                            </div>);                                                       
-
-                    })
-                
-                    .Render();
-        
-    })
-    .RowAction(row =>
-    {
-        if (row.Index == 0)
+@{
+    Html.Kendo().Grid(Model)
+        .Name("Categories")
+        .Columns(columns =>
         {
-            row.DetailRow.Expanded = true;
-        }
-    })
-          
-    .Pageable()
-       .ToolBar(toolbar => {
-                               toolbar.Create();
-       })
-       .Editable(editable => editable.Mode(GridEditMode.PopUp))
-
-       
-    .DataSource(dataSource => dataSource
-        .Server()
-        .PageSize(5)
-        .Model(model =>
-        {
-            model.Id(p => p.Products);
+            columns.Bound(e => e.CategoryID).Width(140).Visible(false);
+            columns.Bound(e => e.CategoryName).Width(140);
         })
-     //   .Read(read => read.Action("Products_Read", "Grid"))
-        .Create(create => create.Action("Category_Create", "Grid"))
-        .Update(update => update.Action("Products_Update", "Grid"))
-    //    .Destroy(destroy => destroy.Action("Products_Destroy", "Grid"))
+        .DetailTemplate(e =>
+        {
+            Html.Kendo().TabStrip()
+                .Name("TabStrip_" + e.CategoryID)
+                .SelectedIndex(0)
+                .Items(items =>
+                {
+                    items.Add().Text("Articles").Content(@<text>
 
-    )
-    .Sortable()
-    .Render();
+                                                             @(Html.Kendo().Grid(e.Products)
+                                                                 .Name("Articles_" + e.CategoryID)
+                                                                 .Columns(columns =>
+                                                                 {
+                                                                     columns.Select().Width(75).HtmlAttributes(new {@class = "checkbox-align"}).HeaderHtmlAttributes(new {@class = "checkbox-align"}).Width(20);
+                                                                     columns.Bound(c => c.ProductID).Visible(false);
+
+                                                                     columns.Bound(o => o.Title).Width(101);
+                                                                     columns.Bound(o => o.productName).Width(140);
+                                                                     columns.Bound(o => o.productDescription).Width(200);
+                                                                     columns.Bound(o => o.EAN).Width(200);
+                                                                     columns.Bound(o => o.Category.CategoryName).Format("{0:d}");
+                                                                     columns.ForeignKey(c => c.Category.CategoryName, (List<Category>)
+                                                                         ViewBag.Category, "CategoryID", "CategoryName").Title("Category").Width(150);
+                                                                     columns.Command(command => { command.Edit(); }).Width(180);
+                                                                 })
+                                                                 .Pageable()
+                                                                 .Sortable()
+                                                                 .ToolBar(toolbar => { toolbar.Create(); })
+                                                                 .Editable(editable => editable.Mode(GridEditMode.PopUp))
+                                                                 .DataSource(dataSource => dataSource
+                                                                     .Server()
+                                                                     .PageSize(5)
+                                                                     .Model(model =>
+                                                                     {
+                                                                         model.Id(p => p.ProductID);
+                                                                         model.Field(p => p.ProductID).Editable(false);
+                                                                     })
+                                                                     .Create(create => create.Action("Products_Create", "Grid"))
+                                                                     .Update(update => update.Action("Products_Update", "Grid"))
+                                                                 ))
+
+
+                                                          </text>);
+                    items.Add().Text("List of files uploaded").Content(
+                        @<div class="file-details">
+                            <text>
+                                @RenderGrid()
+                            </text>
+
+                        </div>);
+                })
+                .Render();
+        })
+        .RowAction(row =>
+        {
+            if (row.Index == 0)
+            {
+                row.DetailRow.Expanded = true;
+            }
+        })
+        .Pageable()
+        .ToolBar(toolbar => { toolbar.Create(); })
+        .Editable(editable => editable.Mode(GridEditMode.PopUp))
+        .DataSource(dataSource => dataSource
+            .Server()
+            .PageSize(5)
+            .Model(model => { model.Id(p => p.Products); })
+            //   .Read(read => read.Action("Products_Read", "Grid"))
+            .Create(create => create.Action("Category_Create", "Grid"))
+            .Update(update => update.Action("Products_Update", "Grid"))
+        //    .Destroy(destroy => destroy.Action("Products_Destroy", "Grid"))
+        )
+        .Sortable()
+        .Render();
 }
-
-
 
 
 <style>
@@ -156,7 +135,3 @@
             font-weight:bold;
         }
     </style>
-
-
-
-
