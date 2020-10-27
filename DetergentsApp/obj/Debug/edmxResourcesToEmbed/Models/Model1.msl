@@ -18,7 +18,6 @@
           <ScalarProperty Name="productName" ColumnName="productName" />
           <ScalarProperty Name="productDescription" ColumnName="productDescription" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-          <ScalarProperty Name="validFrom" ColumnName="validFrom" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

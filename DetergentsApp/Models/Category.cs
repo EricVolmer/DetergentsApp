@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace DetergentsApp.Models
 {
     using System;
@@ -21,8 +19,6 @@ namespace DetergentsApp.Models
             this.Products = new HashSet<Product>();
         }
     
-        [Key]
-        [ScaffoldColumn(false)]
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
     

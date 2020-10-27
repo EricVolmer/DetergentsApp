@@ -18,7 +18,6 @@
     <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="productDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CategoryID" Type="Int32" Nullable="false" />
-    <Property Name="validFrom" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__38996AB5" FromRole="Product" ToRole="Category" />
   </EntityType>
   <Association Name="FK__Product__Categor__38996AB5">

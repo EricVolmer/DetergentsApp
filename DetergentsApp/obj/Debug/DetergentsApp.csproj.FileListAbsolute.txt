@@ -238,6 +238,7 @@ C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsA
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.Resources.Global.resources
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.Resources.Global.da.resources
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csproj.GenerateResource.cache
+C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csproj.CoreCompileInputs.cache
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\da\DetergentsApp.resources.dll
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csproj.CopyComplete
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.dll

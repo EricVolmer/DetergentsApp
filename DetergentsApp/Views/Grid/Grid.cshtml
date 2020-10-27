@@ -1,91 +1,162 @@
 ﻿@using DetergentsApp.Models
-@model IEnumerable<DetergentsApp.Models.Product>
+@model IEnumerable<DetergentsApp.Models.Category>
 
-@(Html.Kendo().Grid(Model)
-    .Name("grid")
-    .Pageable()
-    .Sortable(sortable => sortable
-        .AllowUnsort(true))    
-    .Navigatable()
-    .Resizable(r=>r.Columns(true))
-    .Reorderable(r => r.Columns(true))
-    .Groupable(g=>g.ShowFooter(false))
-    .Filterable()
-    .Scrollable(scr => scr.Height(430))
+
+@helper RenderGrid()
+{
+    @(Html.Kendo().Grid<DetergentsApp.Models.Product>()
+        .Name("filesGrid")
+        .ToolBar(t => t.Template(
+            @<text>
+                @(Html.Kendo().Upload()
+                    .Name("files")
+                    .Async(a => a.Save("Save", "Grid"))
+                    .ShowFileList(true) // Hide the file list as we're displaying uploaded files in the Grid
+                    )
+             </text>
+            ))
+        .Columns(columns => 
+        {
+            columns.Bound(f => f.productName).ClientTemplate("<a href='Home/Download?id=#= Id #'>#= Name #</a>").Title("File name");
+                                              
+                                              
+            columns.Command(command => command.Destroy()).Width(100);
+        })
+        .Sortable()
+        .Pageable()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(10)
+            .Model(m => m.Id(f => f.ProductID))
+            .Read(read => read.Action("FilesRead", "Grid"))
+            .Destroy(update => update.Action("FilesDestroy", "Grid"))
+        )
+        )
+    
+}
+
+@{ Html.Kendo().Grid(Model)
+    .Name("Categories")
     .Columns(columns =>
     {
-        columns.Select().Width(75).HtmlAttributes(new { @class="checkbox-align"}).HeaderHtmlAttributes(new { @class = "checkbox-align" });
-        columns.Bound(p => p.productName).Title("Product Name");
-        columns.Bound(p => p.productDescription).Title("Product Description");
-        columns.Bound(p => p.EAN).Title("EAN Number")
-                            .ClientTemplate("<span id='badge_#=ProductID#' class='badgeTemplate'></span>");
-        columns.ForeignKey(c => c.CategoryID, (List<Category>)
-            ViewData["categories"], "CategoryID", "CategoryName").Title("Category").Width(150);
-        columns.Bound(p => p.validFrom).Title("Valid From");
-        columns.Command(command =>
-        {
-            command.Destroy();
-            command.Edit();
-        });
+        columns.Bound(e => e.CategoryID).Width(140).Visible(false);
+        columns.Bound(e => e.CategoryName).Width(140);
+        
     })
-    .ToolBar(toolbar =>
+       
+    .DetailTemplate(e =>
+    {            
+            Html.Kendo().TabStrip()
+                    .Name("TabStrip_" + e.CategoryID)
+                    .SelectedIndex(0)
+                    .Items(items =>
+                    {
+                        items.Add().Text("Articles").Content(@<text>
+                                
+                                @(Html.Kendo().Grid(e.Products)
+                                        .Name("Articles_" + e.CategoryID)
+                                        .Columns(columns =>
+                                        {
+                                            columns.Select().Width(75).HtmlAttributes(new { @class="checkbox-align"}).HeaderHtmlAttributes(new { @class = "checkbox-align" }).Width(20);
+                                            columns.Bound(c => c.ProductID).Visible(false);
+
+                                            columns.Bound(o => o.Title).Width(101);
+                                            columns.Bound(o => o.productName).Width(140);
+                                            columns.Bound(o => o.productDescription).Width(200);
+                                            columns.Bound(o => o.EAN).Width(200);
+                                            columns.Bound(o => o.Category.CategoryName).Format("{0:d}");
+                                            columns.ForeignKey(c => c.Category.CategoryName, (List<Category>)
+                                                     @ViewBag.Category , "CategoryID", "CategoryName").Title("Category").Width(150);
+                                            columns.Command(command => { command.Edit();}).Width(180);
+
+                                        })
+                                        .Pageable()
+                                        .Sortable()
+                                    .ToolBar(toolbar => {
+                                                            toolbar.Create();
+                                    })
+                                    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+
+                                    .DataSource(dataSource => dataSource
+                                        .Server()
+                                        .PageSize(5)
+                                        .Model(model =>
+                                        {
+                                            model.Id(p => p.ProductID);
+                                            model.Field(p => p.ProductID).Editable(false);
+                                        })
+                                        .Create(create => create.Action("Products_Create", "Grid"))
+                                        .Update(update => update.Action("Products_Update", "Grid"))
+                                    
+                                    ))
+                                
+                                
+                        </text>);
+                        items.Add().Text("List of files uploaded").Content(                                
+                            @<div class="file-details">       
+                                <text>
+                                          @RenderGrid()
+                                       </text>
+                                    
+                            </div>);                                                       
+
+                    })
+                
+                    .Render();
+        
+    })
+    .RowAction(row =>
     {
-        toolbar.Create();
-        toolbar.Search();
+        if (row.Index == 0)
+        {
+            row.DetailRow.Expanded = true;
+        }
     })
-    .ColumnMenu(col=>col.Filterable(false))
-    .Editable(editable => editable.Mode(GridEditMode.InLine))
-    .Events(events => events.DataBound("onDataBound"))
+          
+    .Pageable()
+       .ToolBar(toolbar => {
+                               toolbar.Create();
+       })
+       .Editable(editable => editable.Mode(GridEditMode.PopUp))
+
+       
     .DataSource(dataSource => dataSource
         .Server()
-        .PageSize(20)
+        .PageSize(5)
         .Model(model =>
         {
-            model.Id(p => p.ProductID);
-            model.Field(p => p.ProductID).Editable(false);
-            model.Field(p => p.productDescription).Editable(true);
-            model.Field(p => p.EAN).Editable(false);
-            model.Field(p => p.Category).Editable(true);
-            model.Field(p => p.validFrom).Editable(true);
+            model.Id(p => p.Products);
         })
-        .Group(group=>group.Add("Category.CategoryName", typeof(string), System.ComponentModel.ListSortDirection.Descending))
-        .Create("Products_Create", "Grid")
-        .Read("Grid", "Grid")
-        .Update("Products_Update", "Grid")
-        .Destroy("Products_Destroy", "Grid")
+     //   .Read(read => read.Action("Products_Read", "Grid"))
+        .Create(create => create.Action("Category_Create", "Grid"))
+        .Update(update => update.Action("Products_Update", "Grid"))
+    //    .Destroy(destroy => destroy.Action("Products_Destroy", "Grid"))
+
     )
-
-)
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>
-
-<script type="text/javascript">
-    function error_handler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function () {
-                        message += this + "\n";
-                    });
-                }
-            });
-            alert(message);
-        }
-    }
-
-
-    function returnFalse() {
-        return false;
-    }
-</script>
-
-
-@section styles {
-    <style>
-    .k-grid {
-        font-family: "DejaVu Sans", "Arial", sans-serif;
-    }
-    
-</style>
+    .Sortable()
+    .Render();
 }
+
+
+
+
+<style>
+	    .file-details ul
+        {
+            list-style:none;
+            font-style:italic;
+            margin-bottom: 20px;
+        }
+
+        .file-details label
+        {
+            display:inline-block;
+            width:90px;
+            font-style:normal;
+            font-weight:bold;
+        }
+    </style>
+
+
+
+

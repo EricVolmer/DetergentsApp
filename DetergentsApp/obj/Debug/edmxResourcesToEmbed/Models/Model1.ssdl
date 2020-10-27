@@ -17,7 +17,6 @@
     <Property Name="productName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="productDescription" Type="nvarchar" MaxLength="50" />
     <Property Name="CategoryID" Type="int" Nullable="false" />
-    <Property Name="validFrom" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK__Product__Categor__38996AB5">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
