@@ -1,8 +1,11 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using System.Web.Routing;
 using DetergentsApp.Models;
+using Kendo.Mvc.Extensions;
 
 namespace DetergentsApp.Controllers
 {
@@ -13,7 +16,9 @@ namespace DetergentsApp.Controllers
         // GET: Categories
         public ActionResult Index()
         {
+
             return View(db.Categories.ToList());
+            
         }
 
         // GET: Categories/Details/5
@@ -77,22 +82,31 @@ namespace DetergentsApp.Controllers
         }
 
         // GET: Categories/Delete/5
+        
         public ActionResult Delete(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var category = db.Categories.Find(id);
             if (category == null) return HttpNotFound();
+            
+            // How to find the products inside the category to delete them also.
+      //      var product = db.Products.Find(id);
+      //      if (product == null) return HttpNotFound();
             return View(category);
         }
-
+        
         // POST: Categories/Delete/5
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+           
             var category = db.Categories.Find(id);
+            // How to find the products inside the category to delete them also.
+         //   var product = db.Products.Find(id);
             db.Categories.Remove(category);
+         //   db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
