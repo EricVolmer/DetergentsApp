@@ -15,7 +15,7 @@ namespace DetergentsApp.Controllers
         public ActionResult Admin2()
         {
             //   var products = db.Products.Include(product => viewModel.categoryName);
-            var categories = db.Categories.Select(c => c.CategoryName).ToList();
+            var categories = db.Categories.Select(c => c.categoryName).ToList();
             ViewBag.Category = categories;
 
             ViewData["categories"] = categories;
@@ -41,12 +41,12 @@ namespace DetergentsApp.Controllers
 
                 var list = result.Select(entity => new ProductViewModel
                     {
-                        productID = entity.ProductID,
+                        productID = entity.productID,
                         EAN = entity.EAN,
-                        title = entity.Title,
+                        title = entity.title,
                         productName = entity.productName,
                         productDescription = entity.productDescription,
-                        categoryName = entity.Category.CategoryName
+                        categoryName = entity.Category.categoryName
                     })
                     .ToList();
                 return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -66,7 +66,7 @@ namespace DetergentsApp.Controllers
                 var entity = new Product
                 {
                     EAN = product.EAN,
-                    Title = product.Title,
+                    title = product.title,
                     productName = product.productName,
                     productDescription = product.productDescription,
                     Category = product.Category
@@ -74,7 +74,7 @@ namespace DetergentsApp.Controllers
 
                 db.Products.Add(entity);
                 db.SaveChanges();
-                product.ProductID = entity.ProductID;
+                product.productID = entity.productID;
             }
 
             return Json(new[] {product}.ToDataSourceResult(request, ModelState));
@@ -87,9 +87,9 @@ namespace DetergentsApp.Controllers
             {
                 var entity = new Product
                 {
-                    ProductID = product.ProductID,
+                    productID = product.productID,
                     EAN = product.EAN,
-                    Title = product.Title,
+                    title = product.title,
                     productName = product.productName,
                     productDescription = product.productDescription
                 };
@@ -109,9 +109,9 @@ namespace DetergentsApp.Controllers
             {
                 var entity = new Product
                 {
-                    ProductID = product.ProductID,
+                    productID = product.productID,
                     EAN = product.EAN,
-                    Title = product.Title,
+                    title = product.title,
                     productName = product.productName,
                     productDescription = product.productDescription
                 };

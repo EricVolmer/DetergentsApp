@@ -20,7 +20,7 @@
                 @Html.DisplayFor(modelItem => item.EAN)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @Html.DisplayFor(modelItem => item.title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.productName)
@@ -30,12 +30,12 @@
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                @Html.DisplayFor(modelItem => item.Category.categoryName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.ProductID}) |
-                @Html.ActionLink("Details", "Details", new {id = item.ProductID}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.ProductID})
+                @Html.ActionLink("Edit", "Edit", new {id = item.productID}) |
+                @Html.ActionLink("Details", "Details", new {id = item.productID}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.productID})
             </td>
         </tr>
     }

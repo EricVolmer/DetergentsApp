@@ -9,7 +9,7 @@ namespace DetergentsApp.Models
         public string title { get; set; }
         public string productName { get; set; }
         public string productDescription { get; set; }
-        public int EAN { get; set; }
+        public long EAN { get; set; }
         public string categoryName { get; set; }
     }
 }

@@ -2,40 +2,66 @@
 <Schema Namespace="DetergentsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Category">
     <Key>
-      <PropertyRef Name="CategoryID" />
+      <PropertyRef Name="categoryID" />
     </Key>
-    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
-      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="productID" />
     </Key>
-    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="EAN" Type="int" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="productID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EAN" Type="bigint" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="productName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="productDescription" Type="nvarchar" MaxLength="50" />
-    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="productDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="categoryID" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Product__Categor__38996AB5">
+  <EntityType Name="UserFile">
+    <Key>
+      <PropertyRef Name="fileID" />
+    </Key>
+    <Property Name="fileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fileName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fileData" Type="varbinary(max)" Nullable="false" />
+    <Property Name="productID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Product__categor__3E1D39E1">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Category">
-        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="categoryID" />
       </Principal>
       <Dependent Role="Product">
-        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserFile__produc__40F9A68C">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="UserFile" Type="Self.UserFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productID" />
+      </Principal>
+      <Dependent Role="UserFile">
+        <PropertyRef Name="productID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DetergentsModelStoreContainer">
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Product__Categor__38996AB5" Association="Self.FK__Product__Categor__38996AB5">
+    <EntitySet Name="UserFile" EntityType="Self.UserFile" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Product__categor__3E1D39E1" Association="Self.FK__Product__categor__3E1D39E1">
       <End Role="Category" EntitySet="Category" />
       <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserFile__produc__40F9A68C" Association="Self.FK__UserFile__produc__40F9A68C">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="UserFile" EntitySet="UserFile" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="de670d8cbec54ed38cc32eb750e129db" Name="Diagram1" ZoomLevel="108">
+      <Diagram DiagramId="5a602e1bbac847b780ee6f53fd22a637" Name="Diagram1">
         <EntityTypeShape EntityType="DetergentsModel.Category" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DetergentsModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="DetergentsModel.FK__Product__Categor__38996AB5" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DetergentsModel.UserFile" Width="1.5" PointX="5" PointY="1.375" />
-        <AssociationConnector Association="DetergentsModel.ProductUserFile" />
+        <EntityTypeShape EntityType="DetergentsModel.UserFile" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="DetergentsModel.FK__Product__categor__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="DetergentsModel.FK__UserFile__produc__40F9A68C" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

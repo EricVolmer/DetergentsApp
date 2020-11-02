@@ -56,6 +56,7 @@
           <e p="Model1.tt" t="Include" />
           <e p="Product.cs" t="Include" />
           <e p="ProductViewModel.cs" t="Include" />
+          <e p="UserFile.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />

@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace DetergentsApp.Models
 {
     using System;
@@ -16,16 +14,21 @@ namespace DetergentsApp.Models
     
     public partial class Product
     {
-        [ScaffoldColumn(false)]
-        public int ProductID { get; set; }
-        public int EAN { get; set; }
-        public string Title { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Product()
+        {
+            this.UserFiles = new HashSet<UserFile>();
+        }
+    
+        public int productID { get; set; }
+        public long EAN { get; set; }
+        public string title { get; set; }
         public string productName { get; set; }
         public string productDescription { get; set; }
-        public int CategoryID { get; set; }
+        public int categoryID { get; set; }
     
         public virtual Category Category { get; set; }
-        public Nullable<int> FileID { get; set; }
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserFile> UserFiles { get; set; }
     }
 }

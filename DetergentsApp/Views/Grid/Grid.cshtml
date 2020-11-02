@@ -27,7 +27,7 @@
         .DataSource(dataSource => dataSource
             .Ajax()
             .PageSize(10)
-            .Model(m => m.Id(f => f.ProductID))
+            .Model(m => m.Id(f => f.productID))
             .Read(read => read.Action("FilesRead", "Grid"))
             .Destroy(update => update.Action("FilesDestroy", "Grid"))
         )
@@ -39,31 +39,31 @@
         .Name("Categories")
         .Columns(columns =>
         {
-            columns.Bound(e => e.CategoryID).Width(140).Visible(false);
-            columns.Bound(e => e.CategoryName).Width(140);
+            columns.Bound(e => e.categoryID).Width(140).Visible(false);
+            columns.Bound(e => e.categoryName).Width(140);
         })
         .DetailTemplate(e =>
         {
             Html.Kendo().TabStrip()
-                .Name("TabStrip_" + e.CategoryID)
+                .Name("TabStrip_" + e.categoryID)
                 .SelectedIndex(0)
                 .Items(items =>
                 {
                     items.Add().Text("Articles").Content(@<text>
 
                                                              @(Html.Kendo().Grid(e.Products)
-                                                                 .Name("Articles_" + e.CategoryID)
+                                                                 .Name("Articles_" + e.categoryID)
                                                                  .Columns(columns =>
                                                                  {
                                                                      columns.Select().Width(75).HtmlAttributes(new {@class = "checkbox-align"}).HeaderHtmlAttributes(new {@class = "checkbox-align"}).Width(20);
-                                                                     columns.Bound(c => c.ProductID).Visible(false);
+                                                                     columns.Bound(c => c.productID).Visible(false);
 
-                                                                     columns.Bound(o => o.Title).Width(101);
+                                                                     columns.Bound(o => o.title).Width(101);
                                                                      columns.Bound(o => o.productName).Width(140);
                                                                      columns.Bound(o => o.productDescription).Width(200);
                                                                      columns.Bound(o => o.EAN).Width(200);
-                                                                     columns.Bound(o => o.Category.CategoryName).Format("{0:d}");
-                                                                     columns.ForeignKey(c => c.Category.CategoryName, (List<Category>)
+                                                                     columns.Bound(o => o.Category.categoryName).Format("{0:d}");
+                                                                     columns.ForeignKey(c => c.Category.categoryName, (List<Category>)
                                                                          ViewBag.Category, "CategoryID", "CategoryName").Title("Category").Width(150);
                                                                      columns.Command(command => { command.Edit(); }).Width(180);
                                                                  })
@@ -76,8 +76,8 @@
                                                                      .PageSize(5)
                                                                      .Model(model =>
                                                                      {
-                                                                         model.Id(p => p.ProductID);
-                                                                         model.Field(p => p.ProductID).Editable(false);
+                                                                         model.Id(p => p.productID);
+                                                                         model.Field(p => p.productID).Editable(false);
                                                                      })
                                                                      .Create(create => create.Action("Products_Create", "Grid"))
                                                                      .Update(update => update.Action("Products_Update", "Grid"))

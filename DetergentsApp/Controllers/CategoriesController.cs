@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -6,7 +8,7 @@ using DetergentsApp.Models;
 
 namespace DetergentsApp.Controllers
 {
-    public class CategoriesController : Controller
+    public class  CategoriesController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
 
@@ -36,19 +38,37 @@ namespace DetergentsApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CategoryID,CategoryName")]
+        public ActionResult Create([Bind(Include = "categoryName")]
             Category category)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    category.categoryID = 0;
+                    db.Categories.Add(category);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                return View(category);
+                
             }
-
-            return View(category);
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
         }
-
         // GET: Categories/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -63,7 +83,7 @@ namespace DetergentsApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CategoryID,CategoryName")]
+        public ActionResult Edit([Bind(Include = "categoryID,categoryName")]
             Category category)
         {
             if (ModelState.IsValid)

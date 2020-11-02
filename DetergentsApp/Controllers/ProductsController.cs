@@ -29,7 +29,7 @@ namespace DetergentsApp.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
+            ViewBag.CategoryID = new SelectList(db.Categories, "categoryID", "categoryName");
             return View();
         }
 
@@ -39,7 +39,7 @@ namespace DetergentsApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(
-            [Bind(Include = "ProductID,EAN,Title,productName,productDescription,CategoryID,validFrom")]
+            [Bind(Include = "productID,EAN,title,productName,productDescription,categoryID,validFrom")]
             Product product)
         {
             if (ModelState.IsValid)
@@ -49,7 +49,7 @@ namespace DetergentsApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Category = new SelectList(db.Categories, "CategoryID", "CategoryName", product.Category);
+            ViewBag.Category = new SelectList(db.Categories, "categoryID", "categoryName", product.Category);
             return View(product);
         }
 
@@ -59,7 +59,7 @@ namespace DetergentsApp.Controllers
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var product = db.Products.Find(id);
             if (product == null) return HttpNotFound();
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.Category);
+            ViewBag.categoryID = new SelectList(db.Categories, "categoryID", "categoryName", product.Category);
             return View(product);
         }
 
@@ -69,7 +69,7 @@ namespace DetergentsApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
-            [Bind(Include = "EAN,Title,productName,productDescription,validFrom")]
+            [Bind(Include = "EAN,title,productName,productDescription,validFrom")]
             Product product)
         {
             if (ModelState.IsValid)
@@ -79,7 +79,7 @@ namespace DetergentsApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.Category);
+            ViewBag.CategoryID = new SelectList(db.Categories, "categoryID", "categoryName", product.Category);
             return View(product);
         }
 

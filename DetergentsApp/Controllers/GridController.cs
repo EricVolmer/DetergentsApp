@@ -37,7 +37,7 @@ namespace DetergentsApp.Controllers
             db.Products.Add(product);
             db.SaveChanges();
 
-            product.ProductID = product.ProductID;
+            product.productID = product.productID;
         }
 
         public void CatCreat(Category category)
@@ -45,7 +45,7 @@ namespace DetergentsApp.Controllers
             db.Categories.Add(category);
             db.SaveChanges();
 
-            category.CategoryID = category.CategoryID;
+            category.categoryID = category.categoryID;
         }
 
         public void Update(Product product)
@@ -59,9 +59,9 @@ namespace DetergentsApp.Controllers
         {
             var entity = new Product
             {
-                ProductID = product.ProductID,
+                productID = product.productID,
                 EAN = product.EAN,
-                Title = product.Title,
+                title = product.title,
                 productName = product.productName,
                 productDescription = product.productDescription,
                 Category = product.Category
@@ -196,7 +196,7 @@ namespace DetergentsApp.Controllers
         {
             if (file != null)
             {
-                db.Products.Remove(db.Products.FirstOrDefault(f => f.ProductID == file.productID));
+                db.Products.Remove(db.Products.FirstOrDefault(f => f.productID == file.productID));
 
                 db.SaveChanges();
             }
