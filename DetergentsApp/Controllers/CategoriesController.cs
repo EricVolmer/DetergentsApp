@@ -8,7 +8,7 @@ using DetergentsApp.Models;
 
 namespace DetergentsApp.Controllers
 {
-    public class  CategoriesController : Controller
+    public class CategoriesController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
 
@@ -38,8 +38,7 @@ namespace DetergentsApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "categoryName")]
-            Category category)
+        public ActionResult Create([Bind(Include = "categoryName")] Category category)
         {
             try
             {
@@ -52,7 +51,6 @@ namespace DetergentsApp.Controllers
                 }
 
                 return View(category);
-                
             }
             catch (DbEntityValidationException e)
             {
@@ -61,14 +59,14 @@ namespace DetergentsApp.Controllers
                     Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
                         eve.Entry.Entity.GetType().Name, eve.Entry.State);
                     foreach (var ve in eve.ValidationErrors)
-                    {
                         Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
                             ve.PropertyName, ve.ErrorMessage);
-                    }
                 }
+
                 throw;
             }
         }
+
         // GET: Categories/Edit/5
         public ActionResult Edit(int? id)
         {

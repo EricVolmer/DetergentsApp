@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -170,25 +171,18 @@ namespace DetergentsApp.Controllers
         }
 
 
-        public ActionResult FilesRead(string[] fileNames)
+        public ActionResult FilesRead([DataSourceRequest] DataSourceRequest request)
         {
-            if (fileNames != null)
-                foreach (var fullName in fileNames)
-                {
-                    var fileName = Path.GetFileName(fullName);
-                    var physicalPath = Path.Combine(Server.MapPath("~/App_Data"), fileName).ToList();
-                }
+            var db = new DetergentsEntities();
 
-            return Content("");
+            var userFiles = db.UserFiles.Select(f => new UserFileViewModel
+            {
+                Id = f.fileID,
+                Name = f.fileName,
+                DataLength = SqlFunctions.DataLength(f.fileData)
+            });
 
-
-            // var userFiles = db.Products.Select(f => new ProductViewModel()
-            // {
-            //     productID = f.ProductID,
-            //     productName = f.productName,
-            // });
-            //
-            // return Json(userFiles.ToDataSourceResult(request));
+            return Json(userFiles.ToDataSourceResult(request));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

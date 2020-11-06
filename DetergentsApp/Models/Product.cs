@@ -14,7 +14,6 @@ namespace DetergentsApp.Models
     
     public partial class Product
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
             this.UserFiles = new HashSet<UserFile>();
@@ -28,7 +27,6 @@ namespace DetergentsApp.Models
         public int categoryID { get; set; }
     
         public virtual Category Category { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFile> UserFiles { get; set; }
     }
 }

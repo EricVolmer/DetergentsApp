@@ -39,7 +39,7 @@ namespace DetergentsApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(
-            [Bind(Include = "productID,EAN,title,productName,productDescription,categoryID,validFrom")]
+            [Bind(Include = "EAN,productName,productDescription,categoryID")]
             Product product)
         {
             if (ModelState.IsValid)

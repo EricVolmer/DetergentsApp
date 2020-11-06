@@ -1,14 +1,48 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
 
 <div class="jumbotron">
     <h1>Forbruger- og sikkerhedsdatablade</h1>
     <p class="lead">På denne side findes sikkerhedsdatablade og forbrugerdatablade på Salling Groups produkter.</p>
-    <p>
-        <a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a>
-    </p>
 </div>
+
+<div class="search-section k-content">
+
+    <h4>Categories:</h4>
+    @(Html.Kendo().DropDownList()
+        .Name("categories")
+        .HtmlAttributes(new {style = "width:50%"})
+        .OptionLabel("Select category...")
+        .DataTextField("CategoryName")
+        .DataValueField("CategoryId")
+        .DataSource(source => { source.Read(read => { read.Action("Cascading_Get_Categories", "Home"); }); })
+        )
+
+    <h4 style="margin-top: 2em;">Products:</h4>
+    @(Html.Kendo().DropDownList()
+        .Name("products")
+        .HtmlAttributes(new {style = "width:50%"})
+        .OptionLabel("Select product...")
+        .DataTextField("ProductName")
+        .DataValueField("ProductID")
+        .DataSource(source =>
+        {
+            source.Read(read =>
+            {
+                read.Action("Cascading_Get_Products", "Home")
+                    .Data("filterProducts");
+            })
+                .ServerFiltering(true);
+        })
+        .Enable(false)
+        .AutoBind(false)
+        .CascadeFrom("categories")
+        )
+    <button class="k-button k-primary" id="get" style=" margin: 2px">Display files attached</button>
+
+</div>
+
 
 <div class="row">
     <div class="col-md-4">
@@ -35,3 +69,38 @@
         </p>
     </div>
 </div>
+
+
+<script>
+    function filterOrders() {
+        return {
+            products: $("#products").val()
+        };
+    }
+
+    function filterProducts() {
+        return {
+            categories: $("#categories").val()
+        };
+    }
+
+    $(document).ready( function () {
+        var categories = $("#categories").data("kendoDropDownList"),
+            products = $("#products").data("kendoDropDownList"),
+
+        $
+        ("#get").click(function () {
+            
+            var categoryInfo = "\nCategory: { id: " + categories.value() + ", name: " + categories.text() + " }",
+                productInfo = "\nProduct: { id: " + products.value() + ", name: " + products.text() + " }"
+
+
+            alert("Order details:\n" + categoryInfo + productInfo);
+        });
+    });
+</script>
+<style>
+    .k-readonly {
+        color: gray;
+    }
+</style>

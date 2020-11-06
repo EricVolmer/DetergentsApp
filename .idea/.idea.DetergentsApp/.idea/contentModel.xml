@@ -56,10 +56,16 @@
           <e p="Model1.tt" t="Include" />
           <e p="Product.cs" t="Include" />
           <e p="ProductViewModel.cs" t="Include" />
+          <e p="SearchViewModel.cs" t="Include" />
           <e p="UserFile.cs" t="Include" />
+          <e p="UserFileViewModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
+        <e p="Pictures" t="Include">
+          <e p="SallingGroup.png" t="Include" />
+          <e p="sallingPicture.jpg" t="Include" />
+        </e>
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
@@ -108,6 +114,7 @@
             <e p="Scripts" t="Include">
               <e p="kendo.modernizr.custom.js" t="Include" />
             </e>
+            <e p="UploadedFiles.cshtml" t="Include" />
           </e>
           <e p="Products" t="Include">
             <e p="Create.cshtml" t="Include" />
