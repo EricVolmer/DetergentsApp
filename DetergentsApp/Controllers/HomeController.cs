@@ -1,34 +1,147 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
 using DetergentsApp.Models;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 
 namespace DetergentsApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly DetergentsEntities db = new DetergentsEntities();
+
         public ActionResult Index()
         {
+            try
+            {
+                var result = db.Categories;
+
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new ProductViewModel
+                    {
+                        categoryName = entity.categoryName,
+                        categoryID = entity.categoryID
+                    })
+                    .ToList();
+
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.categoryName, Value = productViewModel.categoryID.ToString()});
+
+                ViewBag.Category = containerList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
             return View();
         }
 
-        public JsonResult Cascading_Get_Categories()
+        public ActionResult Product_Read([DataSourceRequest] DataSourceRequest request)
         {
-            var northwind = new DetergentsEntities();
+            try
+            {
+                var result = db.Products;
 
-            return Json(
-                northwind.Categories.Select(c => new {CategoryId = c.categoryID, CategoryName = c.categoryName}),
-                JsonRequestBehavior.AllowGet);
+                var vesselsList = result.Select(entity => new ProductViewModel
+                    {
+                        title = entity.title,
+                        productID = entity.productID,
+                        productName = entity.productName,
+                        productDescription = entity.productDescription,
+                        EAN = entity.EAN,
+                        categoryID = entity.Category.categoryID
+                    })
+                    .ToList();
+
+
+                return Json(vesselsList.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
-        public JsonResult Cascading_Get_Products(int? categories)
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Products_Create([DataSourceRequest] DataSourceRequest request, ProductViewModel product)
         {
-            var northwind = new DetergentsEntities();
-            var products = northwind.Products.AsQueryable();
+            if (ModelState.IsValid)
+            {
+                var category = db.Categories.Find(product.categoryID);
+                var entity = new Product
 
-            if (categories != null) products = products.Where(p => p.categoryID == categories);
+                {
+                    EAN = product.EAN,
+                    title = product.title,
+                    productName = product.productName,
+                    productDescription = product.productDescription,
+                    Category = category
+                };
+                product.productID = entity.productID;
+                product.categoryID = entity.categoryID;
+                db.Products.Add(entity);
+                db.SaveChanges();
+            }
 
-            return Json(products.Select(p => new {ProductID = p.productID, ProductName = p.productName}),
-                JsonRequestBehavior.AllowGet);
+            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Products_Update([DataSourceRequest] DataSourceRequest request, Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                var entity = new Product
+                {
+                    productID = product.productID,
+                    EAN = product.EAN,
+                    title = product.title,
+                    productName = product.productName,
+                    productDescription = product.productDescription
+                };
+
+                db.Products.Attach(entity);
+                db.Entry(entity).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Products_Destroy([DataSourceRequest] DataSourceRequest request, Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                var entity = new Product
+                {
+                    productID = product.productID,
+                    EAN = product.EAN,
+                    title = product.title,
+                    productName = product.productName,
+                    productDescription = product.productDescription
+                };
+
+                db.Products.Attach(entity);
+                db.Products.Remove(entity);
+                db.SaveChanges();
+            }
+
+            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

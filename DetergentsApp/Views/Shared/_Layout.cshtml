@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    @RenderSection("Kendo", false)
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Salling Group Detergents</title>
@@ -20,12 +20,7 @@
     <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
 </head>
 <body>
-<div class="background">
-    <a href="#">
-        <img src="~/Pictures/sallingPicture.jpg" alt="?" width="100%" id="Insert_logo" style="background: #C6D580; display:block;"/>
-    </a>
 
-</div>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
 

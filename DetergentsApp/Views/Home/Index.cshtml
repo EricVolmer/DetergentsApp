@@ -1,4 +1,5 @@
-﻿@{
+﻿@using DetergentsApp.Models
+@{
     ViewBag.Title = "Home";
 }
 
@@ -7,42 +8,93 @@
     <p class="lead">På denne side findes sikkerhedsdatablade og forbrugerdatablade på Salling Groups produkter.</p>
 </div>
 
-<div class="search-section k-content">
-
-    <h4>Categories:</h4>
-    @(Html.Kendo().DropDownList()
-        .Name("categories")
-        .HtmlAttributes(new {style = "width:50%"})
-        .OptionLabel("Select category...")
-        .DataTextField("CategoryName")
-        .DataValueField("CategoryId")
-        .DataSource(source => { source.Read(read => { read.Action("Cascading_Get_Categories", "Home"); }); })
-        )
-
-    <h4 style="margin-top: 2em;">Products:</h4>
-    @(Html.Kendo().DropDownList()
-        .Name("products")
-        .HtmlAttributes(new {style = "width:50%"})
-        .OptionLabel("Select product...")
-        .DataTextField("ProductName")
-        .DataValueField("ProductID")
-        .DataSource(source =>
-        {
-            source.Read(read =>
-            {
-                read.Action("Cascading_Get_Products", "Home")
-                    .Data("filterProducts");
-            })
-                .ServerFiltering(true);
-        })
-        .Enable(false)
-        .AutoBind(false)
-        .CascadeFrom("categories")
-        )
-    <button class="k-button k-primary" id="get" style=" margin: 2px">Display files attached</button>
-
+<div id="main-section-header" class="row">
+    <h2 id="team-efficiency" class="col-xs-3">Products & Files</h2>
+    <div style="clear:both;"></div>
 </div>
 
+<div id="products-orders-main-content" class="main-section-content">
+    @(Html.Kendo().Grid<ProductViewModel>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.productID).Hidden();
+            columns.Bound(c => c.title).Width(230);
+            columns.Bound(c => c.productName).Width(300);
+            columns.Bound(c => c.productDescription).Width(230);
+            columns.Bound(c => c.EAN).Width(230);
+            columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
+                ViewBag.Category, "Value", "Text").Title("Category").Width(150);
+            columns.Command(command =>
+            {
+                command.Edit().UpdateText("Save");
+                command.Destroy();
+                command.Select();
+            }).Width(230);
+        })
+        .ToolBar(toolbar =>
+        {
+            toolbar.Create().Text("Add New Product");
+            toolbar.Search();
+        })
+        .Editable(editable => editable.Mode(GridEditMode.InLine))
+        .Pageable()
+        .Resizable(r => r.Columns(true))
+        .Sortable()
+        .Selectable()
+        .Search(s =>
+        {
+            s.Field(f => f.title);
+            s.Field(f => f.productName);
+            s.Field(f => f.productDescription);
+            s.Field(f => f.EAN);
+            s.Field(f => f.categoryID);
+        })
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .ServerOperation(false)
+            .PageSize(20)
+            .Read(read => read.Action("Product_Read", "Home"))
+            .Events(events => events.Error("error_handler"))
+            .Model(model => model.Id(c => c.productID))
+            .Create(update => update.Action("Products_Create", "Home"))
+            .Update(update => update.Action("Products_Update", "Home"))
+            .Destroy(update => update.Action("Products_Destroy", "Home"))
+        ))
+
+    <script type="text/javascript">
+                function error_handler(e) {
+                    if (e.errors) {
+                        let message = "Errors:\n";
+                        $.each(e.errors, function (key, value) {
+                            if ('errors' in value) {
+                                $.each(value.errors, function () {
+                                    message += this + "\n";
+                                });
+                            }
+                        });
+                        alert(message);
+                        location.reload();
+                    }
+                }
+    
+                $(document).ready(function() {
+    
+                    // Add minus icon for collapse element which is open by default
+                    $(".collapse.show").each(function(){
+                        $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+                    });
+            
+                    // Toggle plus minus icon on show hide of collapse element
+                    $(".collapse").on('show.bs.collapse', function(){
+                        $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+                    }).on('hide.bs.collapse', function(){
+                        $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+                    });
+    
+                });
+            </script>
+</div>
 
 <div class="row">
     <div class="col-md-4">
@@ -68,39 +120,21 @@
             <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>
         </p>
     </div>
+
 </div>
 
 
 <script>
-    function filterOrders() {
-        return {
-            products: $("#products").val()
-        };
-    }
 
-    function filterProducts() {
-        return {
-            categories: $("#categories").val()
-        };
-    }
-
-    $(document).ready( function () {
-        var categories = $("#categories").data("kendoDropDownList"),
-            products = $("#products").data("kendoDropDownList"),
-
-        $
-        ("#get").click(function () {
-            
-            var categoryInfo = "\nCategory: { id: " + categories.value() + ", name: " + categories.text() + " }",
-                productInfo = "\nProduct: { id: " + products.value() + ", name: " + products.text() + " }"
-
-
-            alert("Order details:\n" + categoryInfo + productInfo);
-        });
-    });
+  
 </script>
 <style>
     .k-readonly {
         color: gray;
+    }
+    .jumbotron
+    {
+        background-image: url("../../Pictures/sallingPicture.jpg");
+
     }
 </style>

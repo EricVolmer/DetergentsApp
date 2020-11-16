@@ -56,7 +56,6 @@
           <e p="Model1.tt" t="Include" />
           <e p="Product.cs" t="Include" />
           <e p="ProductViewModel.cs" t="Include" />
-          <e p="SearchViewModel.cs" t="Include" />
           <e p="UserFile.cs" t="Include" />
           <e p="UserFileViewModel.cs" t="Include" />
         </e>

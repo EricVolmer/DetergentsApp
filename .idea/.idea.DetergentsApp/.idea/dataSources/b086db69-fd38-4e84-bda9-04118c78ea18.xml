@@ -76,11 +76,13 @@
     </schema>
     <table id="22" parent="19" name="Category">
       <ObjectId>818101955</ObjectId>
+      <Outdated>1</Outdated>
       <CreatedTimestamp>2020-10-30.10:51:26.550</CreatedTimestamp>
       <ModifiedTimestamp>2020-10-30.10:51:26.550</ModifiedTimestamp>
     </table>
     <table id="23" parent="19" name="Product">
       <ObjectId>530100929</ObjectId>
+      <Outdated>1</Outdated>
       <CreatedTimestamp>2020-10-29.17:29:27.810</CreatedTimestamp>
       <ModifiedTimestamp>2020-10-29.17:35:57.580</ModifiedTimestamp>
     </table>

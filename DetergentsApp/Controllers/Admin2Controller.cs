@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Data.Entity;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DetergentsApp.Models;
@@ -14,27 +14,35 @@ namespace DetergentsApp.Controllers
 
         public ActionResult Admin2()
         {
-            //   var products = db.Products.Include(product => viewModel.categoryName);
-            var categories = db.Categories.Select(c => c.categoryName).ToList();
-            ViewBag.Category = categories;
+            try
+            {
+                var result = db.Categories;
 
-            ViewData["categories"] = categories;
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new ProductViewModel
+                    {
+                        categoryName = entity.categoryName,
+                        categoryID = entity.categoryID
+                    })
+                    .ToList();
+
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.categoryName, Value = productViewModel.categoryID.ToString()});
+
+                ViewBag.Category = containerList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
             return View();
         }
 
         public ActionResult Products_Read([DataSourceRequest] DataSourceRequest request)
         {
-            // IQueryable<Product> products = db.Products;
-            // DataSourceResult result = products.ToDataSourceResult(request, product => new {
-            //     ProductID = product.ProductID,
-            //     EAN = product.EAN,
-            //     Title = product.Title,
-            //     productName = product.productName,
-            //     productDescription = product.productDescription,
-            //     Category = product.Category.CategoryName
-            // });
-            // return Json(db.Products.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-
             try
             {
                 var result = db.Products;
@@ -46,7 +54,7 @@ namespace DetergentsApp.Controllers
                         title = entity.title,
                         productName = entity.productName,
                         productDescription = entity.productDescription,
-                        categoryName = entity.Category.categoryName
+                        categoryID = entity.Category.categoryID
                     })
                     .ToList();
                 return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -85,17 +93,19 @@ namespace DetergentsApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                var category = db.Categories.Find(product.categoryID);
                 var entity = new Product
+
                 {
-                    productID = product.productID,
                     EAN = product.EAN,
                     title = product.title,
                     productName = product.productName,
-                    productDescription = product.productDescription
+                    productDescription = product.productDescription,
+                    Category = category
                 };
-
-                db.Products.Attach(entity);
-                db.Entry(entity).State = EntityState.Modified;
+                product.productID = entity.productID;
+                product.categoryID = entity.categoryID;
+                db.Products.Add(entity);
                 db.SaveChanges();
             }
 

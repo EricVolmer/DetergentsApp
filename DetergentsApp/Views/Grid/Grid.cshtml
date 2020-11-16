@@ -31,7 +31,7 @@
             .Ajax()
             .PageSize(10)
             .Model(m => m.Id(f => f.Id))
-            .Read(read => read.Action("FilesRead", "Grid"))
+            //  .Read(read => read.Action("FilesRead", "Grid"))
             .Destroy(update => update.Action("FilesDestroy", "Grid"))
         )
         )
@@ -66,8 +66,7 @@
                                                                      columns.Bound(o => o.productDescription).Width(200);
                                                                      columns.Bound(o => o.EAN).Width(200);
                                                                      columns.Bound(o => o.Category.categoryName).Format("{0:d}");
-                                                                     columns.ForeignKey(c => c.Category.categoryName, (List<Category>)
-                                                                         ViewBag.Category, "CategoryID", "CategoryName").Title("Category").Width(150);
+
                                                                      columns.Command(command => { command.Edit(); }).Width(180);
                                                                  })
                                                                  .Pageable()
@@ -77,13 +76,11 @@
                                                                  .DataSource(dataSource => dataSource
                                                                      .Server()
                                                                      .PageSize(5)
-                                                                     .Model(model =>
-                                                                     {
-                                                                         model.Id(p => p.productID);
-                                                                         model.Field(p => p.productID).Editable(false);
-                                                                     })
-                                                                     .Create(create => create.Action("Products_Create", "Grid"))
+                                                                     .Model(model => { model.Id(p => p.productID); })
+                                                                     .Read(read => read.Action("Products_Read", "Grid"))
+                                                                     .Create(create => create.Action("Category_Create", "Grid"))
                                                                      .Update(update => update.Action("Products_Update", "Grid"))
+                                                                 //    .Destroy(destroy => destroy.Action("Products_Destroy", "Grid"))
                                                                  ))
 
 
@@ -112,7 +109,7 @@
             .Server()
             .PageSize(5)
             .Model(model => { model.Id(p => p.Products); })
-            //   .Read(read => read.Action("Products_Read", "Grid"))
+            .Read(read => read.Action("Products_Read", "Grid"))
             .Create(create => create.Action("Category_Create", "Grid"))
             .Update(update => update.Action("Products_Update", "Grid"))
         //    .Destroy(destroy => destroy.Action("Products_Destroy", "Grid"))
@@ -120,6 +117,67 @@
         .Sortable()
         .Render();
 }
+
+
+@(Html.Kendo().Grid<ProductViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(c => c.productID).Visible(false);
+
+        columns.Bound(o => o.title).Width(101);
+        columns.Bound(o => o.productName).Width(140);
+        columns.Bound(o => o.productDescription).Width(200);
+        columns.Bound(o => o.EAN).Width(200);
+
+        columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
+            ViewBag.Category, "Value", "Text").Title("Category").Width(150);
+
+        columns.Command(command =>
+        {
+            command.Edit();
+            command.Destroy();
+        }).Width(180);
+    })
+    .ToolBar(toolBar => { toolBar.Create(); })
+    .Editable(editable => editable.Mode(GridEditMode.InLine))
+    .Filterable()
+    .Groupable()
+    .Pageable()
+    .Scrollable()
+    .HtmlAttributes(new {style = "height:540px;"})
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Events(events => events.Error("errorHandler"))
+        .Model(model =>
+        {
+            model.Id(p => p.productID);
+            model.Field(p => p.productID).Editable(false);
+        })
+        .Read(read => read.Action("Products_Read", "Grid"))
+        .Update(update => update.Action("Products_Create_Update", "Grid"))
+        .Create(create => create.Action("Products_Create_Update", "Grid"))
+        .Destroy(destroy => destroy.Action("Products_Destroy", "Grid"))
+    )
+    )
+
+<script type="text/javascript">
+    function errorHandler(e) {    
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });        
+            alert(message);
+        }
+    }
+</script>
 
 <script type="text/javascript">
     function onUploadSuccess() {

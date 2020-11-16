@@ -3,6 +3,8 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using DetergentsApp.Models;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 
 namespace DetergentsApp.Controllers
 {
@@ -108,6 +110,33 @@ namespace DetergentsApp.Controllers
         {
             if (disposing) db.Dispose();
             base.Dispose(disposing);
+        }
+
+        ///////////////////////////////////////////////////////////////////////
+        ///
+        ///
+        public ActionResult Products_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(GetProducts().ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Get_Product(int ID)
+        {
+            return Json(GetProducts().Where(product => product.productID == ID).SingleOrDefault(), JsonRequestBehavior.AllowGet);
+        }
+
+
+        private static IQueryable<ProductViewModel> GetProducts()
+        {
+            var northwind = new DetergentsEntities();
+            var products = northwind.Products.Select(product => new ProductViewModel
+            {
+                productID = product.productID,
+                productName = product.productName,
+                categoryName = product.Category.categoryName
+            });
+
+            return products;
         }
     }
 }

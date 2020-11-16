@@ -7,14 +7,12 @@
     .Columns(columns =>
     {
         columns.Bound(c => c.productID).Hidden();
-
         columns.Bound(c => c.EAN);
         columns.Bound(c => c.title).Title("Title");
         columns.Bound(c => c.productName).Title("Product Name");
         columns.Bound(c => c.productDescription).Title("Product Description");
-        columns.Bound(c => c.categoryName).Title("Category Name");
-        //  columns.ForeignKey(c => c.categoryName, (List<ProductViewModel>)
-        //     @ViewBag.Category , "CategoryID", "CategoryName").Title("Category").Width(150);
+        columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
+            ViewBag.Category, "Value", "Text").Title("Category").Width(150);
         columns.Command(command =>
         {
             command.Edit();
@@ -22,17 +20,7 @@
         }).Width(180);
     })
     .ToolBar(toolbar => { toolbar.Create(); })
-    .ToolBar(t => t.Template(
-        @<text>
-            @(Html.Kendo().Upload()
-                .Name("files")
-                .Async(a => a.Save("Save", "Grid"))
-                .ShowFileList(true) // Hide the file list as we're displaying uploaded files in the Grid
-                )
-
-         </text>
-        ))
-    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .Editable(editable => editable.Mode(GridEditMode.InLine))
     .DataSource(dataSource => dataSource
         .Ajax()
         .ServerOperation(false)
@@ -42,7 +30,7 @@
             model.Id(p => p.productID);
             model.Field(p => p.productID).Editable(false);
         })
-        .Group(group => group.Add("categoryName", typeof(string), ListSortDirection.Descending))
+        .Group(group => group.Add("categoryID", typeof(string), ListSortDirection.Descending))
         .Read(read => read.Action("Products_Read", "Admin2"))
         .Create(create => create.Action("Products_Create", "Admin2"))
         .Update(update => update.Action("Products_Update", "Admin2"))

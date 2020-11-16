@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Entity.SqlServer;
 using System.IO;
 using System.Linq;
@@ -13,157 +12,100 @@ using Kendo.Mvc.UI;
 
 namespace DetergentsApp.Controllers
 {
-    public class ProductService : IDisposable
-    {
-        private readonly DetergentsEntities db;
-
-
-        public ProductService(DetergentsEntities db)
-        {
-            this.db = db;
-        }
-
-        public void Dispose()
-        {
-            db.Dispose();
-        }
-
-        public IEnumerable<Product> Read()
-        {
-            return db.Products;
-        }
-
-        public void Create(Product product)
-        {
-            db.Products.Add(product);
-            db.SaveChanges();
-
-            product.productID = product.productID;
-        }
-
-        public void CatCreat(Category category)
-        {
-            db.Categories.Add(category);
-            db.SaveChanges();
-
-            category.categoryID = category.categoryID;
-        }
-
-        public void Update(Product product)
-        {
-            db.Products.Attach(product);
-            db.Entry(product).State = EntityState.Modified;
-            db.SaveChanges();
-        }
-
-        public void Destroy(Product product)
-        {
-            var entity = new Product
-            {
-                productID = product.productID,
-                EAN = product.EAN,
-                title = product.title,
-                productName = product.productName,
-                productDescription = product.productDescription,
-                Category = product.Category
-            };
-
-            db.Products.Attach(entity);
-            db.Products.Remove(entity);
-            db.SaveChanges();
-        }
-    }
-
     public class GridController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
-        private readonly ProductService productService;
-
-        public GridController()
-        {
-            productService = new ProductService(new DetergentsEntities());
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            productService.Dispose();
-
-            base.Dispose(disposing);
-        }
 
 
         public ActionResult Grid()
         {
-            var categories = db.Categories.ToList();
+            try
+            {
+                var result = db.Categories;
 
-            ViewBag.Category = categories;
-            ViewData["categories"] = categories;
-            return View(new DetergentsEntities().Categories);
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new ProductViewModel
+                    {
+                        categoryName = entity.categoryName,
+                        categoryID = entity.categoryID
+                    })
+                    .ToList();
 
-            // var products = db.Products.Include(product => product.Category);
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.categoryName, Value = productViewModel.categoryID.ToString()});
 
-            // return View(products);
+                ViewBag.Category = containerList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            return View();
         }
 
         public ActionResult Products_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(db.Products.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            try
+            {
+                var result = db.Products;
+
+                var vesselsList = result.Select(entity => new ProductViewModel
+                    {
+                        title = entity.title,
+                        productID = entity.productID,
+                        productName = entity.productName,
+                        productDescription = entity.productDescription,
+                        EAN = entity.EAN,
+                        categoryID = entity.Category.categoryID
+                    })
+                    .ToList();
+
+
+                return Json(vesselsList.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Products_Create(Product product)
-
-
+        public ActionResult Products_Create_Update([DataSourceRequest] DataSourceRequest request,
+            ProductViewModel product)
         {
-            if (ModelState.IsValid)
+            try
             {
-                productService.Create(product);
+                var result = db.Products;
+
+                var vesselsList = result.Select(entity => new ProductViewModel
+                    {
+                        productID = entity.productID,
+                        productName = entity.productName,
+                        productDescription = entity.productDescription,
+                        EAN = entity.EAN,
+                        categoryName = entity.Category.categoryName
+                    })
+                    .ToList();
 
 
-                var routeValues = this.GridRouteValues();
-                return RedirectToAction("Grid", routeValues);
+                return Json(vesselsList.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
-
-            return View("Grid", productService.Read());
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Category_Create(Category category)
-
-        {
-            if (ModelState.IsValid)
+            catch (Exception e)
             {
-                productService.CatCreat(category);
-
-                var routeValues = this.GridRouteValues();
-                return RedirectToAction("Grid", routeValues);
+                Console.WriteLine(e);
+                throw;
             }
-
-            return View("Grid", productService.Read());
-        }
-
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Products_Update(Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                productService.Update(product);
-
-                var routeValues = this.GridRouteValues();
-                return RedirectToAction("Grid", routeValues);
-            }
-
-            return View("Grid", productService.Read());
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Products_Destroy(Product product)
         {
             RouteValueDictionary routeValues;
-
-            productService.Destroy(product);
 
             routeValues = this.GridRouteValues();
 
