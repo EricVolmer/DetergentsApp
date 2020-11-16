@@ -1,4 +1,5 @@
-﻿@using DetergentsApp.Models
+﻿@using System.ComponentModel
+@using DetergentsApp.Models
 @{
     ViewBag.Title = "Home";
 }
@@ -48,17 +49,19 @@
             s.Field(f => f.productName);
             s.Field(f => f.productDescription);
             s.Field(f => f.EAN);
-            s.Field(f => f.categoryID);
+            s.Field(f => f.categoryName);
         })
         .DataSource(dataSource => dataSource
             .Ajax()
             .ServerOperation(false)
             .PageSize(20)
+            .Group(group => group.Add("categoryID", typeof(string), ListSortDirection.Descending))
+
             .Read(read => read.Action("Product_Read", "Home"))
             .Events(events => events.Error("error_handler"))
             .Model(model => model.Id(c => c.productID))
-            .Create(update => update.Action("Products_Create", "Home"))
-            .Update(update => update.Action("Products_Update", "Home"))
+            .Create(update => update.Action("Products_Create_Update", "Home"))
+            .Update(update => update.Action("Products_Create_Update", "Home"))
             .Destroy(update => update.Action("Products_Destroy", "Home"))
         ))
 

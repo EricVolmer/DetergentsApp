@@ -68,10 +68,9 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-
-
+        
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Products_Create([DataSourceRequest] DataSourceRequest request, ProductViewModel product)
+        public ActionResult Products_Create_Update([DataSourceRequest] DataSourceRequest request, ProductViewModel product)
         {
             if (ModelState.IsValid)
             {
@@ -93,29 +92,7 @@ namespace DetergentsApp.Controllers
 
             return Json(new[] {product}.ToDataSourceResult(request, ModelState));
         }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Products_Update([DataSourceRequest] DataSourceRequest request, Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                var entity = new Product
-                {
-                    productID = product.productID,
-                    EAN = product.EAN,
-                    title = product.title,
-                    productName = product.productName,
-                    productDescription = product.productDescription
-                };
-
-                db.Products.Attach(entity);
-                db.Entry(entity).State = EntityState.Modified;
-                db.SaveChanges();
-            }
-
-            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
-        }
-
+        
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Products_Destroy([DataSourceRequest] DataSourceRequest request, Product product)
         {
