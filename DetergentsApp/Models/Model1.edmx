@@ -4,73 +4,122 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DetergentsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="categoryID" />
-          </Key>
-          <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="categoryName" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="productID" />
-          </Key>
-          <Property Name="productID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EAN" Type="bigint" Nullable="false" />
-          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="productName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="productDescription" Type="nvarchar" MaxLength="150" />
-          <Property Name="categoryID" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserFile">
-          <Key>
-            <PropertyRef Name="fileID" />
-          </Key>
-          <Property Name="fileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fileName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="fileData" Type="varbinary(max)" Nullable="false" />
-          <Property Name="productID" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK__Product__categor__3E1D39E1">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="categoryID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="categoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserFile__produc__40F9A68C">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="UserFile" Type="Self.UserFile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="productID" />
-            </Principal>
-            <Dependent Role="UserFile">
-              <PropertyRef Name="productID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="DetergentsModelStoreContainer">
-          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserFile" EntityType="Self.UserFile" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Product__categor__3E1D39E1" Association="Self.FK__Product__categor__3E1D39E1">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserFile__produc__40F9A68C" Association="Self.FK__UserFile__produc__40F9A68C">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="UserFile" EntitySet="UserFile" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="DetergentsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DetergentsModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="DetergentsModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="DetergentsModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SheetTypes" EntityType="DetergentsModel.Store.SheetTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserFiles" EntityType="DetergentsModel.Store.UserFiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductSheetType" EntityType="DetergentsModel.Store.ProductSheetType" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Product__categor__025D5595" Association="DetergentsModel.Store.FK__Product__categor__025D5595">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserFile__sheetT__0539C240" Association="DetergentsModel.Store.FK__UserFile__sheetT__0539C240">
+      <End Role="SheetType" EntitySet="SheetTypes" />
+      <End Role="UserFile" EntitySet="UserFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductSheetType_Product" Association="DetergentsModel.Store.FK_ProductSheetType_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductSheetType" EntitySet="ProductSheetType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductSheetType_SheetType" Association="DetergentsModel.Store.FK_ProductSheetType_SheetType">
+      <End Role="SheetType" EntitySet="SheetTypes" />
+      <End Role="ProductSheetType" EntitySet="ProductSheetType" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="categoryID" />
+    </Key>
+    <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryName" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="productID" />
+    </Key>
+    <Property Name="productID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EAN" Type="bigint" Nullable="false" />
+    <Property Name="sheetTypeID" Type="int" Nullable="false" />
+    <Property Name="productName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="productDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="categoryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SheetTypes">
+    <Key>
+      <PropertyRef Name="sheetTypeID" />
+    </Key>
+    <Property Name="sheetTypeID" Type="int" Nullable="false" />
+    <Property Name="sheetTypeName" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserFiles">
+    <Key>
+      <PropertyRef Name="fileID" />
+    </Key>
+    <Property Name="fileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fileName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="fileData" Type="varbinary(max)" Nullable="false" />
+    <Property Name="productID" Type="int" Nullable="false" />
+    <Property Name="sheetTypeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductSheetType">
+    <Key>
+      <PropertyRef Name="Product_productID" />
+      <PropertyRef Name="SheetType_sheetTypeID" />
+    </Key>
+    <Property Name="Product_productID" Type="int" Nullable="false" />
+    <Property Name="SheetType_sheetTypeID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Product__categor__025D5595">
+    <End Role="Category" Type="DetergentsModel.Store.Categories" Multiplicity="1" />
+    <End Role="Product" Type="DetergentsModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserFile__sheetT__0539C240">
+    <End Role="SheetType" Type="DetergentsModel.Store.SheetTypes" Multiplicity="1" />
+    <End Role="UserFile" Type="DetergentsModel.Store.UserFiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SheetType">
+        <PropertyRef Name="sheetTypeID" />
+      </Principal>
+      <Dependent Role="UserFile">
+        <PropertyRef Name="sheetTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductSheetType_Product">
+    <End Role="Product" Type="DetergentsModel.Store.Products" Multiplicity="1" />
+    <End Role="ProductSheetType" Type="DetergentsModel.Store.ProductSheetType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productID" />
+      </Principal>
+      <Dependent Role="ProductSheetType">
+        <PropertyRef Name="Product_productID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductSheetType_SheetType">
+    <End Role="ProductSheetType" Type="DetergentsModel.Store.ProductSheetType" Multiplicity="*" />
+    <End Role="SheetType" Type="DetergentsModel.Store.SheetTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SheetType">
+        <PropertyRef Name="sheetTypeID" />
+      </Principal>
+      <Dependent Role="ProductSheetType">
+        <PropertyRef Name="SheetType_sheetTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DetergentsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -80,7 +129,7 @@
           </Key>
           <Property Name="categoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="categoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Products" Relationship="Self.FK__Product__categor__3E1D39E1" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product__categor__025D5595" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -88,12 +137,21 @@
           </Key>
           <Property Name="productID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EAN" Type="Int64" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
           <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="productDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="categoryID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Product__categor__3E1D39E1" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="UserFiles" Relationship="Self.FK__UserFile__produc__40F9A68C" FromRole="Product" ToRole="UserFile" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Product__categor__025D5595" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="SheetType" Relationship="DetergentsModel.ProductSheetType" FromRole="Product" ToRole="SheetType" />
+        </EntityType>
+        <EntityType Name="SheetType">
+          <Key>
+            <PropertyRef Name="sheetTypeID" />
+          </Key>
+          <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
+          <Property Name="sheetTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserFiles" Relationship="Self.FK__UserFile__sheetT__0539C240" FromRole="SheetType" ToRole="UserFile" />
+          <NavigationProperty Name="Product" Relationship="DetergentsModel.ProductSheetType" FromRole="SheetType" ToRole="Product" />
         </EntityType>
         <EntityType Name="UserFile">
           <Key>
@@ -103,9 +161,10 @@
           <Property Name="fileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fileData" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="productID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__UserFile__produc__40F9A68C" FromRole="UserFile" ToRole="Product" />
+          <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SheetType" Relationship="Self.FK__UserFile__sheetT__0539C240" FromRole="UserFile" ToRole="SheetType" />
         </EntityType>
-        <Association Name="FK__Product__categor__3E1D39E1">
+        <Association Name="FK__Product__categor__025D5595">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,70 +176,95 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserFile__produc__40F9A68C">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+        <Association Name="FK__UserFile__sheetT__0539C240">
+          <End Role="SheetType" Type="Self.SheetType" Multiplicity="1" />
           <End Role="UserFile" Type="Self.UserFile" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="productID" />
+            <Principal Role="SheetType">
+              <PropertyRef Name="sheetTypeID" />
             </Principal>
             <Dependent Role="UserFile">
-              <PropertyRef Name="productID" />
+              <PropertyRef Name="sheetTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DetergentsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="SheetTypes" EntityType="Self.SheetType" />
           <EntitySet Name="UserFiles" EntityType="Self.UserFile" />
-          <AssociationSet Name="FK__Product__categor__3E1D39E1" Association="Self.FK__Product__categor__3E1D39E1">
+          <AssociationSet Name="FK__Product__categor__025D5595" Association="Self.FK__Product__categor__025D5595">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserFile__produc__40F9A68C" Association="Self.FK__UserFile__produc__40F9A68C">
-            <End Role="Product" EntitySet="Products" />
+          <AssociationSet Name="FK__UserFile__sheetT__0539C240" Association="Self.FK__UserFile__sheetT__0539C240">
+            <End Role="SheetType" EntitySet="SheetTypes" />
             <End Role="UserFile" EntitySet="UserFiles" />
           </AssociationSet>
+          <AssociationSet Name="ProductSheetType" Association="DetergentsModel.ProductSheetType">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="SheetType" EntitySet="SheetTypes" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="ProductSheetType">
+          <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="DetergentsModel.SheetType" Role="SheetType" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DetergentsModelStoreContainer" CdmEntityContainer="DetergentsEntities">
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="DetergentsModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
-                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="DetergentsModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="productID" ColumnName="productID" />
-                <ScalarProperty Name="EAN" ColumnName="EAN" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="productName" ColumnName="productName" />
-                <ScalarProperty Name="productDescription" ColumnName="productDescription" />
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserFiles">
-            <EntityTypeMapping TypeName="DetergentsModel.UserFile">
-              <MappingFragment StoreEntitySet="UserFile">
-                <ScalarProperty Name="fileID" ColumnName="fileID" />
-                <ScalarProperty Name="fileName" ColumnName="fileName" />
-                <ScalarProperty Name="fileData" ColumnName="fileData" />
-                <ScalarProperty Name="productID" ColumnName="productID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DetergentsModelStoreContainer" CdmEntityContainer="DetergentsEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="productID" ColumnName="productID" />
+          <ScalarProperty Name="EAN" ColumnName="EAN" />
+          <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="productDescription" ColumnName="productDescription" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SheetTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.SheetType)">
+        <MappingFragment StoreEntitySet="SheetTypes">
+          <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
+          <ScalarProperty Name="sheetTypeName" ColumnName="sheetTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserFiles">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.UserFile)">
+        <MappingFragment StoreEntitySet="UserFiles">
+          <ScalarProperty Name="fileID" ColumnName="fileID" />
+          <ScalarProperty Name="fileName" ColumnName="fileName" />
+          <ScalarProperty Name="fileData" ColumnName="fileData" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+          <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProductSheetType" TypeName="DetergentsModel.ProductSheetType" StoreEntitySet="ProductSheetType">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="productID" ColumnName="Product_productID" />
+      </EndProperty>
+      <EndProperty Name="SheetType">
+        <ScalarProperty Name="sheetTypeID" ColumnName="SheetType_sheetTypeID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -192,9 +276,9 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

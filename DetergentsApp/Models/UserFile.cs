@@ -18,7 +18,8 @@ namespace DetergentsApp.Models
         public string fileName { get; set; }
         public byte[] fileData { get; set; }
         public int productID { get; set; }
+        public int sheetTypeID { get; set; }
     
-        public virtual Product Product { get; set; }
+        public virtual SheetType SheetType { get; set; }
     }
 }

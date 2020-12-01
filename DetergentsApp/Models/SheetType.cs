@@ -12,23 +12,21 @@ namespace DetergentsApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class SheetType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public SheetType()
         {
-            this.SheetType = new HashSet<SheetType>();
+            this.UserFiles = new HashSet<UserFile>();
+            this.Product = new HashSet<Product>();
         }
     
-        public int productID { get; set; }
-        public long EAN { get; set; }
         public int sheetTypeID { get; set; }
-        public string productName { get; set; }
-        public string productDescription { get; set; }
-        public int categoryID { get; set; }
+        public string sheetTypeName { get; set; }
     
-        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SheetType> SheetType { get; set; }
+        public virtual ICollection<UserFile> UserFiles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿@using System.ComponentModel
+@using DetergentsApp.Models
 @model IEnumerable<DetergentsApp.Models.ProductViewModel>
 
 
@@ -8,7 +9,7 @@
     {
         columns.Bound(c => c.productID).Hidden();
         columns.Bound(c => c.EAN);
-        columns.Bound(c => c.title).Title("Title");
+        columns.Bound(c => c.sheetTypeName).Title("Sheet Type");
         columns.Bound(c => c.productName).Title("Product Name");
         columns.Bound(c => c.productDescription).Title("Product Description");
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
@@ -38,22 +39,41 @@
     )
     )
 
+@(Html.Kendo().Grid<UserFileViewModel>()
+    .Name("filesGrid")
+    .ToolBar(t => t.Template(
+        @<text>
+            @(Html.Kendo().Upload()
+                .Name("files")
+                .Async(a => a.Save("Save", "Grid"))
+                .Events(e => e.Success("onUpload"))
+                .ShowFileList(false))
+         </text>
+        ))
+    .Columns(columns =>
+    {
+        columns.Bound(f => f.Name).ClientTemplate("<a href='Home/Download?id=#= Id #'>#= Name #</a>").Title("File name");
+
+        // Calculate the file size in KB, round it up and display it in a client template
+        columns.Bound(f => f.DataLength).ClientTemplate("#= Math.ceil(DataLength / 1024) #").Title("File size in KB").Width(150);
+
+        columns.Command(command => command.Destroy()).Width(100);
+    })
+    .Sortable()
+    .Pageable()
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(10)
+        .Model(m => m.Id(f => f.Id))
+        .Read(read => read.Action("FilesRead", "FileUpload"))
+        .Destroy(update => update.Action("FilesDestroy", "FileUpload"))
+    ))
+
 <script>
 
-    function onEdit(e){
-        //Implement the event handler for Edit
-    }
-
-    function onChange(e){
-        //Implement the event handler for Change
-    }
-
-    function onRemove(e){
-        //Implement the event handler for Remove
-    }
-
-    function onCancel(e){
-        //Implement the event handler for Cancel
+    function inUpload(e) {
+            var additional = '@Html.Raw(Json.Encode(Model))';
+            e.data = JSON.parse(additional);
     }
 
 </script>

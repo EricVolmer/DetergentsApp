@@ -2,34 +2,51 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DetergentsModelStoreContainer" CdmEntityContainer="DetergentsEntities">
     <EntitySetMapping Name="Categories">
-      <EntityTypeMapping TypeName="DetergentsModel.Category">
-        <MappingFragment StoreEntitySet="Category">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Category)">
+        <MappingFragment StoreEntitySet="Categories">
           <ScalarProperty Name="categoryID" ColumnName="categoryID" />
           <ScalarProperty Name="categoryName" ColumnName="categoryName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="DetergentsModel.Product">
-        <MappingFragment StoreEntitySet="Product">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Product)">
+        <MappingFragment StoreEntitySet="Products">
           <ScalarProperty Name="productID" ColumnName="productID" />
           <ScalarProperty Name="EAN" ColumnName="EAN" />
-          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
           <ScalarProperty Name="productName" ColumnName="productName" />
           <ScalarProperty Name="productDescription" ColumnName="productDescription" />
           <ScalarProperty Name="categoryID" ColumnName="categoryID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SheetTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.SheetType)">
+        <MappingFragment StoreEntitySet="SheetTypes">
+          <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
+          <ScalarProperty Name="sheetTypeName" ColumnName="sheetTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="UserFiles">
-      <EntityTypeMapping TypeName="DetergentsModel.UserFile">
-        <MappingFragment StoreEntitySet="UserFile">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.UserFile)">
+        <MappingFragment StoreEntitySet="UserFiles">
           <ScalarProperty Name="fileID" ColumnName="fileID" />
           <ScalarProperty Name="fileName" ColumnName="fileName" />
           <ScalarProperty Name="fileData" ColumnName="fileData" />
           <ScalarProperty Name="productID" ColumnName="productID" />
+          <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="ProductSheetType" TypeName="DetergentsModel.ProductSheetType" StoreEntitySet="ProductSheetType">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="productID" ColumnName="Product_productID" />
+      </EndProperty>
+      <EndProperty Name="SheetType">
+        <ScalarProperty Name="sheetTypeID" ColumnName="SheetType_sheetTypeID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

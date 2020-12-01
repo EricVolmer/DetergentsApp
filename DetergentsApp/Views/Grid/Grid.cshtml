@@ -12,8 +12,7 @@
                     .Name("files")
                     .Async(a => a.Save("Save", "Grid"))
                     .Events(e => e.Success("onUploadSuccess"))
-                    .ShowFileList(false) // Hide the file list as we're displaying uploaded files in the Grid
-                    )
+                    .ShowFileList(false))
              </text>
             ))
         .Columns(columns =>
@@ -32,9 +31,8 @@
             .PageSize(10)
             .Model(m => m.Id(f => f.Id))
             //  .Read(read => read.Action("FilesRead", "Grid"))
-            .Destroy(update => update.Action("FilesDestroy", "Grid"))
-        )
-        )
+            .Destroy(update => update.Action("FilesDestroy", "FileUpload"))
+        ))
 }
 
 @{
@@ -61,7 +59,7 @@
                                                                      columns.Select().Width(75).HtmlAttributes(new {@class = "checkbox-align"}).HeaderHtmlAttributes(new {@class = "checkbox-align"}).Width(20);
                                                                      columns.Bound(c => c.productID).Visible(false);
 
-                                                                     columns.Bound(o => o.title).Width(101);
+                                                                     columns.Bound(o => o.sheetTypeID).Width(101);
                                                                      columns.Bound(o => o.productName).Width(140);
                                                                      columns.Bound(o => o.productDescription).Width(200);
                                                                      columns.Bound(o => o.EAN).Width(200);
@@ -125,7 +123,7 @@
     {
         columns.Bound(c => c.productID).Visible(false);
 
-        columns.Bound(o => o.title).Width(101);
+        columns.Bound(o => o.sheetTypeName).Width(101);
         columns.Bound(o => o.productName).Width(140);
         columns.Bound(o => o.productDescription).Width(200);
         columns.Bound(o => o.EAN).Width(200);

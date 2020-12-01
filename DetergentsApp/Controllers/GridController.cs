@@ -54,7 +54,7 @@ namespace DetergentsApp.Controllers
 
                 var vesselsList = result.Select(entity => new ProductViewModel
                     {
-                        title = entity.title,
+                    //    sheetTypeName = entity.SheetType.sheetTypeName,
                         productID = entity.productID,
                         productName = entity.productName,
                         productDescription = entity.productDescription,
@@ -113,55 +113,50 @@ namespace DetergentsApp.Controllers
         }
 
 
-        public ActionResult FilesRead([DataSourceRequest] DataSourceRequest request)
+        
+
+        
+
+        
+        public ActionResult ToolbarTemplate_Read([DataSourceRequest] DataSourceRequest request)
         {
-            var db = new DetergentsEntities();
-
-            var userFiles = db.UserFiles.Select(f => new UserFileViewModel
+            try
             {
-                Id = f.fileID,
-                Name = f.fileName,
-                DataLength = SqlFunctions.DataLength(f.fileData)
-            });
-
-            return Json(userFiles.ToDataSourceResult(request));
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult FilesDestroy([DataSourceRequest] DataSourceRequest request, ProductViewModel file)
-        {
-            if (file != null)
-            {
-                db.Products.Remove(db.Products.FirstOrDefault(f => f.productID == file.productID));
-
-                db.SaveChanges();
+                var result = db.Categories;
+                var vesselsList = result.Select(entity => new ProductViewModel()
+                    {
+                        categoryID = entity.categoryID,
+                        categoryName = entity.categoryName,
+                    })
+                    .ToList();
+                
+                return Json(vesselsList.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
-
-            return Json(new[] {file}.ToDataSourceResult(request, ModelState));
-        }
-
-        public ActionResult Save(IEnumerable<HttpPostedFileBase> files)
-        {
-            if (files != null)
+            catch (Exception e)
             {
-                foreach (var file in files)
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+        public ActionResult ToolbarTemplate_Categories()
+        {
+            var result = db.Categories;
+
+            var containerList = new List<SelectListItem>();
+            var productViewModels = result.Select(entity => new ProductViewModel
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    var physicalPath = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+                    categoryName = entity.categoryName,
+                    categoryID = entity.categoryID
+                })
+                .ToList();
 
-                    file.SaveAs(physicalPath);
+            foreach (var productViewModel in productViewModels)
+                containerList.Add(new SelectListItem
+                    {Text = productViewModel.categoryName, Value = productViewModel.categoryID.ToString()});
 
-                    // db.Products.Add(new Product()
-                    // {
-                    //     productName = Path.GetFileName(file.FileName),
-                    // });
-                }
+            ViewBag.Category = containerList;
 
-                db.SaveChanges();
-            }
-
-            // Return an empty string to signify success
-            return Content("");
+            return Json(containerList, JsonRequestBehavior.AllowGet);
         }
     }
 }

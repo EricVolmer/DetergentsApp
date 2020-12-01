@@ -30,6 +30,7 @@
         <e p="Controllers" t="Include">
           <e p="Admin2Controller.cs" t="Include" />
           <e p="CategoriesController.cs" t="Include" />
+          <e p="FileUploadController.cs" t="Include" />
           <e p="GridController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
@@ -53,9 +54,12 @@
           <e p="Model1.Designer.cs" t="Include" />
           <e p="Model1.edmx" t="Include" />
           <e p="Model1.edmx.diagram" t="Include" />
+          <e p="Model1.edmx.sql" t="Include" />
           <e p="Model1.tt" t="Include" />
           <e p="Product.cs" t="Include" />
           <e p="ProductViewModel.cs" t="Include" />
+          <e p="SheetType.cs" t="Include" />
+          <e p="sheetTypeViewModel.cs" t="Include" />
           <e p="UserFile.cs" t="Include" />
           <e p="UserFileViewModel.cs" t="Include" />
         </e>
@@ -105,6 +109,9 @@
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
           </e>
+          <e p="FileUpload" t="Include">
+            <e p="UploadedFiles.cshtml" t="Include" />
+          </e>
           <e p="Grid" t="Include">
             <e p="Grid.cshtml" t="Include" />
           </e>
@@ -113,7 +120,6 @@
             <e p="Scripts" t="Include">
               <e p="kendo.modernizr.custom.js" t="Include" />
             </e>
-            <e p="UploadedFiles.cshtml" t="Include" />
           </e>
           <e p="Products" t="Include">
             <e p="Create.cshtml" t="Include" />

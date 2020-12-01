@@ -33,3 +33,90 @@
     }
 
 </table>
+
+@(Html.Kendo().Grid<DetergentsApp.Models.ProductViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.categoryID).Visible(true).Width(100);
+        columns.Bound(p => p.categoryName);
+    })
+    .ToolBar(toolbar =>
+    {
+        toolbar.Template(@<text>
+            <div class="refreshBtnContainer">
+                <a href="\\#" class="k-pager-refresh k-link k-button k-button-icon" title="Refresh"><span class="k-icon k-i-reload"></span></a>
+            </div>
+           <div class="toolbar">
+                    <label class="category-label" for="category">Show products by category:</label>
+                        @(Html.Kendo().DropDownList()
+                            .Name("categories")
+                            .OptionLabel("All")
+                            .DataTextField("Text")
+                            .DataValueField("Value")
+                            .AutoBind(false)
+                            .Events(e => e.Change("categoriesChange"))
+                            
+                            .HtmlAttributes(new { style = "width: 150px;" })
+                            .DataSource(ds =>
+                            {
+                                ds.Read("ToolbarTemplate_Categories", "Grid");
+                            })
+                        )
+                        </div>
+        </text>);
+    })
+    .HtmlAttributes(new { style = "height: 550px" })
+    .Sortable()
+    .Scrollable()
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .ServerOperation(false)
+        .Model(model => model.Id(p => p.productID))
+        .Read("ToolbarTemplate_Read", "Grid")
+    )
+)
+
+<script>
+    $(document).ready( function () {
+        var grid = $("#grid");
+        grid.find(".k-grid-toolbar").on("click", ".k-pager-refresh", function (e) {
+            e.preventDefault();
+            grid.data("kendoGrid").dataSource.read();
+        });
+
+    });
+
+    function categoriesChange() {
+        var value = this.value(),
+		 	 grid = $("#grid").data("kendoGrid");
+
+        if (value) {
+            grid.dataSource.filter({ field: "CategoryID", operator: "eq", value: parseInt(value) });
+        } else {
+            grid.dataSource.filter({});
+        }
+    }
+</script>
+
+<style>
+    #grid .k-grid-toolbar
+    {
+        padding: .6em 1.3em .6em .4em;
+    }
+    .category-label
+    {
+        vertical-align: middle;
+        padding-right: .5em;
+    }
+    #category
+    {
+        vertical-align: middle;
+    }
+    .refreshBtnContainer {
+        display: inline-block;
+    }
+    .toolbar {
+        float: right;
+    }
+</style>

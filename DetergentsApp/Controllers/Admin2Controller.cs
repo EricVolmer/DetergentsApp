@@ -51,7 +51,6 @@ namespace DetergentsApp.Controllers
                     {
                         productID = entity.productID,
                         EAN = entity.EAN,
-                        title = entity.title,
                         productName = entity.productName,
                         productDescription = entity.productDescription,
                         categoryID = entity.Category.categoryID
@@ -74,7 +73,7 @@ namespace DetergentsApp.Controllers
                 var entity = new Product
                 {
                     EAN = product.EAN,
-                    title = product.title,
+                    SheetType = product.SheetType,
                     productName = product.productName,
                     productDescription = product.productDescription,
                     Category = product.Category
@@ -98,7 +97,6 @@ namespace DetergentsApp.Controllers
 
                 {
                     EAN = product.EAN,
-                    title = product.title,
                     productName = product.productName,
                     productDescription = product.productDescription,
                     Category = category
@@ -121,7 +119,6 @@ namespace DetergentsApp.Controllers
                 {
                     productID = product.productID,
                     EAN = product.EAN,
-                    title = product.title,
                     productName = product.productName,
                     productDescription = product.productDescription
                 };
@@ -140,4 +137,5 @@ namespace DetergentsApp.Controllers
             base.Dispose(disposing);
         }
     }
+    
 }

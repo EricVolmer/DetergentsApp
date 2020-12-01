@@ -13,59 +13,86 @@
     <h2 id="team-efficiency" class="col-xs-3">Products & Files</h2>
     <div style="clear:both;"></div>
 </div>
-
-<div id="products-orders-main-content" class="main-section-content">
-    @(Html.Kendo().Grid<ProductViewModel>()
-        .Name("grid")
-        .Columns(columns =>
+@(Html.Kendo().Grid<ProductViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(c => c.productID).Hidden();
+        // columns.ForeignKey(s => s.sheetTypeID, (List<SelectListItem>)
+        //     ViewBag.SheetType, "Value", "Text").Title("Sheet Type").Width(150);
+        columns.Bound(c => c.productName).Width(300);
+        columns.Bound(c => c.productDescription).Width(230);
+        columns.Bound(c => c.EAN).Width(230);
+        columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
+            ViewBag.Category, "Value", "Text").Title("Category").Width(150);
+        columns.Command(command =>
         {
-            columns.Bound(c => c.productID).Hidden();
-            columns.Bound(c => c.title).Width(230);
-            columns.Bound(c => c.productName).Width(300);
-            columns.Bound(c => c.productDescription).Width(230);
-            columns.Bound(c => c.EAN).Width(230);
-            columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
-                ViewBag.Category, "Value", "Text").Title("Category").Width(150);
-            columns.Command(command =>
-            {
-                command.Edit().UpdateText("Save");
-                command.Destroy();
-                command.Select();
-            }).Width(230);
-        })
-        .ToolBar(toolbar =>
-        {
-            toolbar.Create().Text("Add New Product");
-            toolbar.Search();
-        })
-        .Editable(editable => editable.Mode(GridEditMode.InLine))
-        .Pageable()
-        .Resizable(r => r.Columns(true))
-        .Sortable()
-        .Selectable()
-        .Search(s =>
-        {
-            s.Field(f => f.title);
-            s.Field(f => f.productName);
-            s.Field(f => f.productDescription);
-            s.Field(f => f.EAN);
-            s.Field(f => f.categoryName);
-        })
-        .DataSource(dataSource => dataSource
-            .Ajax()
-            .ServerOperation(false)
-            .PageSize(20)
-            .Group(group => group.Add("categoryID", typeof(string), ListSortDirection.Descending))
+            command.Edit().UpdateText("Save");
+            command.Destroy();
+            command.Custom("Show Files").Click("showFiles");
+        }).Width(230);
+    })
+    .ToolBar(toolbar =>
+    {
+        toolbar.Template(@<text>
+                             @* Refresh Button *@
+                             <div class="refreshBtnContainer">
+                                 <a href="\\#" class="k-pager-refresh k-link k-button k-button-icon" title="Refresh">
+                                     <span class="k-icon k-i-reload"></span>
+                                 </a>
+                             </div>
+                             @* Create button  *@
+                             <a class='k-button k-grid-add' href='#'>Add new Article</a>
+                             @* Search button *@
+                             <span class="k-textbox k-grid-search k-display-flex">
+                                 <input autocomplete="off" placeholder="Search..." title="Search..." class="k-input">
+                                 <span class="k-input-icon">
+                                     <span class="k-icon k-i-search"></span>
+                                 </span>
+                             </span>
 
-            .Read(read => read.Action("Product_Read", "Home"))
-            .Events(events => events.Error("error_handler"))
-            .Model(model => model.Id(c => c.productID))
-            .Create(update => update.Action("Products_Create_Update", "Home"))
-            .Update(update => update.Action("Products_Create_Update", "Home"))
-            .Destroy(update => update.Action("Products_Destroy", "Home"))
-        ))
+                             <div class="toolbar">
+                                 <label class="category-label" for="category">Data Sheet Types:</label>
+                                 @(Html.Kendo().DropDownList()
+                                     .Name("sheetTypeCategory")
+                                     .SelectedIndex(0)
+                                     .DataTextField("Text")
+                                     .DataValueField("Value")
+                                     .AutoBind(false)
+                                     .Events(e => e.Change("categoriesChange"))
+                                     .HtmlAttributes(new {style = "width: 150px;"})
+                                     .DataSource(ds => { ds.Read(read => read.Action("sheetType_Categories", "Home")); })
+                                     )
 
-    <script type="text/javascript">
+                             </div>
+                          </text>);
+    })
+    .Editable(editable => editable.Mode(GridEditMode.InLine))
+    .Pageable()
+    .Resizable(r => r.Columns(true))
+    .Sortable()
+    .Selectable()
+    .Search(s =>
+    {
+        s.Field(f => f.productName);
+        s.Field(f => f.productDescription);
+        s.Field(f => f.EAN);
+        s.Field(f => f.categoryName);
+    })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .ServerOperation(false)
+        .PageSize(20)
+        .Group(group => group.Add("categoryID", typeof(string), ListSortDirection.Descending))
+        .Read(read => read.Action("Product_Read", "Home"))
+        .Events(events => events.Error("error_handler"))
+        .Model(model => model.Id(c => c.productID))
+        .Create(update => update.Action("Products_Create_Update", "Home"))
+        .Update(update => update.Action("Products_Create_Update", "Home"))
+        .Destroy(update => update.Action("Products_Destroy", "Home"))
+    ))
+
+<script type="text/javascript">                
                 function error_handler(e) {
                     if (e.errors) {
                         let message = "Errors:\n";
@@ -80,7 +107,7 @@
                         location.reload();
                     }
                 }
-    
+                      
                 $(document).ready(function() {
     
                     // Add minus icon for collapse element which is open by default
@@ -96,41 +123,45 @@
                     });
     
                 });
-            </script>
-</div>
+                
+                $(document).ready( function () {
+                        var grid = $("#grid");
+                        grid.find(".k-grid-toolbar").on("click", ".k-pager-refresh", function (e) {
+                            e.preventDefault();
+                            grid.data("kendoGrid").dataSource.read();
+                        });
+                
+                });
+                
+                    function categoriesChange() {
+                        var value = this.value(),
+                		 	 grid = $("#grid").data("kendoGrid");
+                
+                        if (value) {
+                             // html.action("") custom action here, method is in controller
+                            grid.dataSource.filter({ field: "Value", operator: "eq", value: parseInt(value) });
+                        } else {
+                            grid.dataSource.filter({});
+                        }
+                    }
+                    
+                
+                    function showFiles(e) {
+                            
+                        e.preventDefault();
+                                var product = this.dataItem($(e.currentTarget).closest("tr"));
+                                var dropdownlist = $("#sheetTypeCategory").data("kendoDropDownList")
+                                console.log(product.productID)
+                                
+                                console.log(dropdownlist.value())
+                                
+                                  window.location.href = "@Url.Action("UploadedFiles", 
+                                                              "FileUpload")?productID=" + product.productID + "&sheetTypeID=" + dropdownlist.value();
+                        }
+                  
+   </script>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            På kommissionen pharmacos-website forefindes en sammenligningstabel mellem INCI-navnene, den europæiske farmakopé og CAS-numrene.
-        </p>
-        <p>
-            <a class="btn btn-default" href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:097:0001:0528:EN:PDF">Learn more &raquo;</a>
-        </p>
-    </div>
-    <div class="col-md-4">
-        <h2>Sikkerhedsdatabladene</h2>
-        <p>Sikkerhedsdatabladene indeholder oplysninger om produkternes sikkerheds-, sundheds- og miljømæssige egenskaber. Det er disse, der anvendes i erhvervsmæssig sammenhæng.</p>
-        <p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a>
-        </p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>
-        </p>
-    </div>
 
-</div>
-
-
-<script>
-
-  
-</script>
 <style>
     .k-readonly {
         color: gray;
@@ -140,4 +171,23 @@
         background-image: url("../../Pictures/sallingPicture.jpg");
 
     }
+    #grid .k-grid-toolbar
+        {
+            padding: .6em 1.3em .6em .4em;
+        }
+        .category-label
+        {
+            vertical-align: middle;
+            padding-right: .5em;
+        }
+        #category
+        {
+            vertical-align: middle;
+        }
+        .refreshBtnContainer {
+            display: inline-block;
+        }
+        .toolbar {
+            float: right;
+        }
 </style>

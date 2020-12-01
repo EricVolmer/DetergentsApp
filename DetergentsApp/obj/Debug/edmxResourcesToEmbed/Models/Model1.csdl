@@ -6,7 +6,7 @@
     </Key>
     <Property Name="categoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="categoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Products" Relationship="Self.FK__Product__categor__3E1D39E1" FromRole="Category" ToRole="Product" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Product__categor__025D5595" FromRole="Category" ToRole="Product" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -14,12 +14,21 @@
     </Key>
     <Property Name="productID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="EAN" Type="Int64" Nullable="false" />
-    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
     <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="productDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="categoryID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Category" Relationship="Self.FK__Product__categor__3E1D39E1" FromRole="Product" ToRole="Category" />
-    <NavigationProperty Name="UserFiles" Relationship="Self.FK__UserFile__produc__40F9A68C" FromRole="Product" ToRole="UserFile" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Product__categor__025D5595" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="SheetType" Relationship="DetergentsModel.ProductSheetType" FromRole="Product" ToRole="SheetType" />
+  </EntityType>
+  <EntityType Name="SheetType">
+    <Key>
+      <PropertyRef Name="sheetTypeID" />
+    </Key>
+    <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
+    <Property Name="sheetTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="UserFiles" Relationship="Self.FK__UserFile__sheetT__0539C240" FromRole="SheetType" ToRole="UserFile" />
+    <NavigationProperty Name="Product" Relationship="DetergentsModel.ProductSheetType" FromRole="SheetType" ToRole="Product" />
   </EntityType>
   <EntityType Name="UserFile">
     <Key>
@@ -29,9 +38,10 @@
     <Property Name="fileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="fileData" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="productID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Product" Relationship="Self.FK__UserFile__produc__40F9A68C" FromRole="UserFile" ToRole="Product" />
+    <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SheetType" Relationship="Self.FK__UserFile__sheetT__0539C240" FromRole="UserFile" ToRole="SheetType" />
   </EntityType>
-  <Association Name="FK__Product__categor__3E1D39E1">
+  <Association Name="FK__Product__categor__025D5595">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
@@ -43,29 +53,38 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserFile__produc__40F9A68C">
-    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+  <Association Name="FK__UserFile__sheetT__0539C240">
+    <End Role="SheetType" Type="Self.SheetType" Multiplicity="1" />
     <End Role="UserFile" Type="Self.UserFile" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="productID" />
+      <Principal Role="SheetType">
+        <PropertyRef Name="sheetTypeID" />
       </Principal>
       <Dependent Role="UserFile">
-        <PropertyRef Name="productID" />
+        <PropertyRef Name="sheetTypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DetergentsEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Categories" EntityType="Self.Category" />
     <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="SheetTypes" EntityType="Self.SheetType" />
     <EntitySet Name="UserFiles" EntityType="Self.UserFile" />
-    <AssociationSet Name="FK__Product__categor__3E1D39E1" Association="Self.FK__Product__categor__3E1D39E1">
+    <AssociationSet Name="FK__Product__categor__025D5595" Association="Self.FK__Product__categor__025D5595">
       <End Role="Category" EntitySet="Categories" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserFile__produc__40F9A68C" Association="Self.FK__UserFile__produc__40F9A68C">
-      <End Role="Product" EntitySet="Products" />
+    <AssociationSet Name="FK__UserFile__sheetT__0539C240" Association="Self.FK__UserFile__sheetT__0539C240">
+      <End Role="SheetType" EntitySet="SheetTypes" />
       <End Role="UserFile" EntitySet="UserFiles" />
     </AssociationSet>
+    <AssociationSet Name="ProductSheetType" Association="DetergentsModel.ProductSheetType">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="SheetType" EntitySet="SheetTypes" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="ProductSheetType">
+    <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" />
+    <End Type="DetergentsModel.SheetType" Role="SheetType" Multiplicity="*" />
+  </Association>
 </Schema>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace DetergentsApp.Models
@@ -7,11 +8,7 @@ namespace DetergentsApp.Models
     {
         public int productID { get; set; }
 
-        [Required]
-        [MaxLength(20)]
-        [DisplayName("Safety Sheet Type")]
-        public string title { get; set; }
-
+ 
         [Required]
         [MaxLength(50)]
         [DisplayName("Product Name")]
@@ -28,5 +25,9 @@ namespace DetergentsApp.Models
 
         public string categoryName { get; set; }
         public int categoryID { get; set; }
+        public int sheetTypeID { get; set; }
+        
+        public string sheetTypeName { get; set; }
+        public List<sheetTypeViewModel> sheetTypeList { get; set; }
     }
 }

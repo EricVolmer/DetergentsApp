@@ -1,0 +1,4 @@
+﻿Build started...
+1>------ Build started: Project: DetergentsApp, Configuration: Debug Any CPU ------
+1>  DetergentsApp -> C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\DetergentsApp.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

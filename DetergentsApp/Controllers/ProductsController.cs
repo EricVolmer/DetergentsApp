@@ -32,6 +32,8 @@ namespace DetergentsApp.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryID = new SelectList(db.Categories, "categoryID", "categoryName");
+            ViewBag.SheetTypeID = new SelectList(db.SheetTypes, "sheetTypeID", "sheetTypeName");
+
             return View();
         }
 
@@ -52,6 +54,7 @@ namespace DetergentsApp.Controllers
             }
 
             ViewBag.Category = new SelectList(db.Categories, "categoryID", "categoryName", product.Category);
+        //    ViewBag.Category = new SelectList(db.SheetTypes, "sheetTypeID", "sheetTypeName", product.SheetType);
             return View(product);
         }
 
