@@ -8,15 +8,14 @@ using System.Web.Mvc;
 using DetergentsApp.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+// ReSharper disable All
 
 namespace DetergentsApp.Controllers
 {
     public class FileUploadController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
-        // private int productID;
-        // private int sheetTypeID;
-
+        
         public ActionResult UploadedFiles(int productID, int sheetTypeID)
         {
             var product = db.Products.Find(productID);
@@ -27,11 +26,13 @@ namespace DetergentsApp.Controllers
 
             if (sheetTypeID == 0)
             {
-                foreach (var productSheetType in product.SheetType) userFiles.AddRange(productSheetType.UserFiles);
+                if (product != null)
+                    foreach (var productSheetType in product.SheetType)
+                        userFiles.AddRange(productSheetType.UserFiles);
             }
             else
             {
-                var sheetType = product.SheetType.FirstOrDefault(s => s.sheetTypeID == sheetTypeID);
+                var sheetType = product?.SheetType.FirstOrDefault(s => s.sheetTypeID == sheetTypeID);
                 if (sheetType != null) userFiles.AddRange(sheetType.UserFiles);
             }
 

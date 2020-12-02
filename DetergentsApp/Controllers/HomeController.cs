@@ -16,37 +16,9 @@ namespace DetergentsApp.Controllers
         public ActionResult Index()
         {
             CreateViewListCategory();
-            CreateViewListSheetType();
             return View();
         }
         
-        public void CreateViewListSheetType()
-        {
-            try
-            {
-                var result = db.SheetTypes;
-
-                var containerList = new List<SelectListItem>();
-                var productViewModels = result.Select(entity => new sheetTypeViewModel()
-                    {
-                        sheetTypeName = entity.sheetTypeName,
-                        sheetTypeID = entity.sheetTypeID
-                    })
-                    .ToList();
-
-                foreach (var productViewModel in productViewModels)
-                    containerList.Add(new SelectListItem
-                        {Text = productViewModel.sheetTypeName, Value = productViewModel.sheetTypeID.ToString()});
-
-                ViewBag.SheetType = containerList;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
         public void CreateViewListCategory()
         {
             try
@@ -73,7 +45,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-        
+
 
         public ActionResult Product_Read([DataSourceRequest] DataSourceRequest request)
         {
@@ -108,11 +80,11 @@ namespace DetergentsApp.Controllers
             {
                 var category = db.Categories.Find(product.categoryID);
                 var sheetTypes = db.SheetTypes.ToList();
-                
+
                 if (product.productID != 0)
                 {
                     var entity = db.Products.Find(product.productID);
-                    if (entity!=null)
+                    if (entity != null)
                     {
                         entity.EAN = product.EAN;
                         entity.productName = product.productName;
@@ -120,7 +92,7 @@ namespace DetergentsApp.Controllers
                         entity.Category = category;
                         ;
                         //   product.productID = entity.productID;
-                    
+
                         try
                         {
                             //    var existingProduct = db.Products.Find(product.productID);
@@ -132,9 +104,10 @@ namespace DetergentsApp.Controllers
                         {
                             Console.WriteLine(e);
                             throw;
-                        } 
+                        }
                     }
                 }
+
                 var newProduct = new Product
                 {
                     EAN = product.EAN,
@@ -142,7 +115,6 @@ namespace DetergentsApp.Controllers
                     productDescription = product.productDescription,
                     Category = category,
                     SheetType = sheetTypes
-                    
                 };
                 try
                 {
@@ -155,6 +127,7 @@ namespace DetergentsApp.Controllers
                     throw;
                 }
             }
+
             return Json(new[] {product}.ToDataSourceResult(request, ModelState));
         }
 
@@ -192,14 +165,14 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-            
+
 
         public ActionResult sheetType_Categories()
         {
             var result = db.SheetTypes;
 
             var containerList = new List<SelectListItem>();
-            var productViewModels = result.Select(entity => new sheetTypeViewModel()
+            var productViewModels = result.Select(entity => new sheetTypeViewModel
                 {
                     sheetTypeName = entity.sheetTypeName,
                     sheetTypeID = entity.sheetTypeID
@@ -207,7 +180,7 @@ namespace DetergentsApp.Controllers
                 .ToList();
             containerList.Add(new SelectListItem
                 {Text = "All", Value = "0"});
-            
+
             foreach (var productViewModel in productViewModels)
                 containerList.Add(new SelectListItem
                     {Text = productViewModel.sheetTypeName, Value = productViewModel.sheetTypeID.ToString()});

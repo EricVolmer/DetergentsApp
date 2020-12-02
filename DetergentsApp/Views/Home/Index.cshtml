@@ -18,8 +18,7 @@
     .Columns(columns =>
     {
         columns.Bound(c => c.productID).Hidden();
-        // columns.ForeignKey(s => s.sheetTypeID, (List<SelectListItem>)
-        //     ViewBag.SheetType, "Value", "Text").Title("Sheet Type").Width(150);
+        columns.Bound(c => c.sheetTypeID).Hidden().Title("SheetType");
         columns.Bound(c => c.productName).Width(300);
         columns.Bound(c => c.productDescription).Width(230);
         columns.Bound(c => c.EAN).Width(230);
@@ -55,13 +54,13 @@
                                  <label class="category-label" for="category">Data Sheet Types:</label>
                                  @(Html.Kendo().DropDownList()
                                      .Name("sheetTypeCategory")
-                                     .SelectedIndex(0)
                                      .DataTextField("Text")
                                      .DataValueField("Value")
                                      .AutoBind(false)
                                      .Events(e => e.Change("categoriesChange"))
                                      .HtmlAttributes(new {style = "width: 150px;"})
-                                     .DataSource(ds => { ds.Read(read => read.Action("sheetType_Categories", "Home")); })
+                                     .DataSource(ds => { ds.Read(read => 
+                                         read.Action("sheetType_Categories", "Home")); })
                                      )
 
                              </div>
@@ -133,16 +132,21 @@
                 
                 });
                 
-                    function categoriesChange() {
-                        var value = this.value(),
-                		 	 grid = $("#grid").data("kendoGrid");
-                
-                        if (value) {
-                             // html.action("") custom action here, method is in controller
-                            grid.dataSource.filter({ field: "Value", operator: "eq", value: parseInt(value) });
-                        } else {
-                            grid.dataSource.filter({});
-                        }
+                    function categoriesChange(e) {
+
+                        
+                        
+                        var selectedText = e.sender.dataItem(e).value;
+
+                        
+                        var tasksGrid = $("#grid").data("kendoGrid");
+                            if (!tasksGrid) {
+                                window.location.href = baseUrl + '/Home/Index';
+                            } else if (selectedText == 'All') {
+                                tasksGrid.dataSource.filter({});
+                            } else {
+                                tasksGrid.dataSource.filter({ field: "SheetType", operator: "contains", value: selectedText });
+                            }
                     }
                     
                 
@@ -155,7 +159,7 @@
                                 
                                 console.log(dropdownlist.value())
                                 
-                                  window.location.href = "@Url.Action("UploadedFiles", 
+                                  window.location.href = "@Url.Action("UploadedFiles",
                                                               "FileUpload")?productID=" + product.productID + "&sheetTypeID=" + dropdownlist.value();
                         }
                   
