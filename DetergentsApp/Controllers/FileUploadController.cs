@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using DetergentsApp.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+
 // ReSharper disable All
 
 namespace DetergentsApp.Controllers
@@ -15,7 +16,7 @@ namespace DetergentsApp.Controllers
     public class FileUploadController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
-        
+
         public ActionResult UploadedFiles(int productID, int sheetTypeID)
         {
             var product = db.Products.Find(productID);
@@ -41,11 +42,10 @@ namespace DetergentsApp.Controllers
 
         public ActionResult Save(IEnumerable<HttpPostedFileBase> files)
         {
-            var productID = (int)TempData["productID"];
-            var sheetTypeID = (int)TempData["sheetTypeID"];
+            var productID = (int) TempData["productID"];
+            var sheetTypeID = (int) TempData["sheetTypeID"];
             try
             {
-                
                 if (files != null)
                 {
                     foreach (var file in files)
@@ -68,20 +68,47 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-
-
-        public ActionResult FilesRead([DataSourceRequest] DataSourceRequest request)
+        public ActionResult FilesRead([DataSourceRequest] DataSourceRequest request, int productID, int sheetTypeID)
         {
             var db = new DetergentsEntities();
-
-            var userFiles = db.UserFiles.Select(f => new UserFileViewModel
+            try
             {
-                Id = f.fileID,
-                Name = f.fileName,
-                DataLength = SqlFunctions.DataLength(f.fileData)
-            });
+                if (sheetTypeID == 0)
+                {
+                    var userFiles = db.UserFiles.Where(x => x.productID == productID ).Select(
+                        f => new UserFileViewModel
+                        {
+                            Id = f.fileID,
+                            Name = f.fileName,
+                            productID = f.productID,
+                            sheetTypeID = f.sheetTypeID,
+                            DataLength = SqlFunctions.DataLength(f.fileData)
+                        });
+                    return Json(userFiles.ToDataSourceResult(request));
+                }
+                else
+                {
+                    var userFiles = db.UserFiles.Where(x => x.productID == productID && x.sheetTypeID == sheetTypeID).Select(
+                        f => new UserFileViewModel
+                        {
+                            Id = f.fileID,
+                            Name = f.fileName,
+                            productID = f.productID,
+                            sheetTypeID = f.sheetTypeID,
+                            DataLength = SqlFunctions.DataLength(f.fileData)
+                        });
+                    return Json(userFiles.ToDataSourceResult(request));
 
-            return Json(userFiles.ToDataSourceResult(request));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
+
+            return Json(request);
         }
 
         public static byte[] GetFilesBytes(HttpPostedFileBase file)

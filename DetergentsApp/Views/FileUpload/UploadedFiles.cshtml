@@ -36,7 +36,7 @@
         .Ajax()
         .PageSize(10)
         .Model(m => m.Id(f => f.Id))
-        .Read(read => read.Action("FilesRead", "FileUpload"))
+        .Read(read => read.Action("FilesRead", "FileUpload").Data("additionalInfo"))
         .Destroy(update => update.Action("FilesDestroy", "FileUpload"))
     ))
 
@@ -44,5 +44,27 @@
     function onUploadSuccess() {
         // Force the rebinding of the Grid on successful upload
         $("#filesGrid").data("kendoGrid").dataSource.read();
+    }
+    
+    function additionalInfo() {
+    return {
+        
+    productID: getUrlVars()["productID"],
+     
+    sheetTypeID: getUrlVars()["sheetTypeID"]
+    }
+    }
+    
+    function getUrlVars()
+    {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
     }
 </script>

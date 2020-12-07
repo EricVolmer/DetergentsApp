@@ -24,6 +24,8 @@
         columns.Bound(c => c.EAN).Width(230);
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(150);
+        // columns.ForeignKey(c => c.sheetTypeID, (List<SelectListItem>)
+        //     ViewBag.SheetType, "Value", "Text").Title("SheetType").Width(150);
         columns.Command(command =>
         {
             command.Edit().UpdateText("Save");
@@ -56,12 +58,14 @@
                                      .Name("sheetTypeCategory")
                                      .DataTextField("Text")
                                      .DataValueField("Value")
-                                     .AutoBind(false)
+                                     .AutoBind(true)
                                      .Events(e => e.Change("categoriesChange"))
                                      .HtmlAttributes(new {style = "width: 150px;"})
-                                     .DataSource(ds => { ds.Read(read => 
-                                         read.Action("sheetType_Categories", "Home")); })
-                                     )
+                                     .DataSource(ds =>
+                                     {
+                                         ds.Read(read =>
+                                             read.Action("sheetType_Categories", "Home"));
+                                     }))
 
                              </div>
                           </text>);
@@ -107,8 +111,15 @@
                     }
                 }
                       
-                $(document).ready(function() {
-    
+                $(document).ready(function() 
+                {
+                    
+                    var grid = $("#grid");
+                    
+                    $("#sheetTypeCategory").data("kendoDropDownList").select(0);
+                    debugger;
+
+
                     // Add minus icon for collapse element which is open by default
                     $(".collapse.show").each(function(){
                         $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
@@ -120,47 +131,60 @@
                     }).on('hide.bs.collapse', function(){
                         $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
                     });
+                    
+                    
+                    grid.find(".k-grid-toolbar").on("click", ".k-pager-refresh", function (e) 
+                    {
+                        e.preventDefault();
+                        grid.data("kendoGrid").dataSource.read();
+                    });
+                                            
+                    grid.find(".k-grid-toolbar").on("click", ".k-grid-add", function (e) 
+                    {
+                        e.preventDefault();
+                                                           
+                        if (e.values.name !== "") 
+                        {
+                            // the user changed the name field
+                            if (e.values.name !== e.model.name) 
+                            {
+                                console.log("name is modified");
+                            }
+                        } 
+                        else 
+                        {
+                          e.preventDefault();
+                          console.log("name cannot be empty");
+                        }
+                    });            
     
                 });
-                
-                $(document).ready( function () {
-                        var grid = $("#grid");
-                        grid.find(".k-grid-toolbar").on("click", ".k-pager-refresh", function (e) {
-                            e.preventDefault();
-                            grid.data("kendoGrid").dataSource.read();
-                        });
-                
-                });
-                
-                    function categoriesChange(e) {
 
-                        
-                        
-                        var selectedText = e.sender.dataItem(e).value;
-
-                        
-                        var tasksGrid = $("#grid").data("kendoGrid");
-                            if (!tasksGrid) {
-                                window.location.href = baseUrl + '/Home/Index';
-                            } else if (selectedText == 'All') {
-                                tasksGrid.dataSource.filter({});
-                            } else {
-                                tasksGrid.dataSource.filter({ field: "SheetType", operator: "contains", value: selectedText });
-                            }
+                    function categoriesChange() {
+                     
+                               // var grid = $("#grid").data("kendoGrid");
+                               //
+                               // var value = this.value();
+                               // if (value === "0") {
+                               //         grid.dataSource.filter({}); 
+                               // } 
+                               // else 
+                               // {
+                               //     grid.dataSource.filter({ field: "sheetTypeID", operator: "eq", value: value });
+                               // }
+                               
                     }
                     
                 
                     function showFiles(e) {
-                            
                         e.preventDefault();
                                 var product = this.dataItem($(e.currentTarget).closest("tr"));
-                                var dropdownlist = $("#sheetTypeCategory").data("kendoDropDownList")
-                                console.log(product.productID)
                                 
-                                console.log(dropdownlist.value())
-                                
-                                  window.location.href = "@Url.Action("UploadedFiles",
-                                                              "FileUpload")?productID=" + product.productID + "&sheetTypeID=" + dropdownlist.value();
+                                var dropdownlist = $("#sheetTypeCategory").data("kendoDropDownList").value();
+                                 
+                             //   var sheetTypeId = dropdownlist.val();                      
+                                window.location.href = "@Url.Action("UploadedFiles",
+                                                              "FileUpload")?productID=" + product.productID + "&sheetTypeID=" + dropdownlist;
                         }
                   
    </script>

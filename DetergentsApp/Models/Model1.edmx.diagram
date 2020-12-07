@@ -7,8 +7,8 @@
       <Diagram DiagramId="9a330c80295247a0ba7d3c68627dc668" Name="Diagram1">
         <EntityTypeShape EntityType="DetergentsModel.Category" Width="1.5" PointX="1.375" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DetergentsModel.Product" Width="1.5" PointX="3.875" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DetergentsModel.SheetType" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DetergentsModel.UserFile" Width="1.5" PointX="9.625" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DetergentsModel.SheetType" Width="1.5" PointX="6.125" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DetergentsModel.UserFile" Width="1.5" PointX="8.375" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DetergentsModel.FK__Product__categor__025D5595" ManuallyRouted="false" />
         <AssociationConnector Association="DetergentsModel.FK__UserFile__sheetT__0539C240" ManuallyRouted="false" />
         <AssociationConnector Association="DetergentsModel.ProductSheetType" />
