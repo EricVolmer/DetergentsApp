@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/27/2020 14:24:19
+-- Date Created: 12/11/2020 14:03:57
 -- Generated from EDMX file: C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -18,27 +18,36 @@ GO
 -- --------------------------------------------------
 
 IF OBJECT_ID(N'[dbo].[FK__Product__categor__025D5595]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Product] DROP CONSTRAINT [FK__Product__categor__025D5595];
+    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK__Product__categor__025D5595];
 GO
 IF OBJECT_ID(N'[dbo].[FK__UserFile__sheetT__0539C240]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserFile] DROP CONSTRAINT [FK__UserFile__sheetT__0539C240];
+    ALTER TABLE [dbo].[UserFiles] DROP CONSTRAINT [FK__UserFile__sheetT__0539C240];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProductSheetType_Product]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProductSheetType] DROP CONSTRAINT [FK_ProductSheetType_Product];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProductSheetType_SheetType]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProductSheetType] DROP CONSTRAINT [FK_ProductSheetType_SheetType];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Category]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Category];
+IF OBJECT_ID(N'[dbo].[Categories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Categories];
 GO
-IF OBJECT_ID(N'[dbo].[Product]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Product];
+IF OBJECT_ID(N'[dbo].[Products]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Products];
 GO
-IF OBJECT_ID(N'[dbo].[SheetType]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SheetType];
+IF OBJECT_ID(N'[dbo].[SheetTypes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SheetTypes];
 GO
-IF OBJECT_ID(N'[dbo].[UserFile]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[UserFile];
+IF OBJECT_ID(N'[dbo].[UserFiles]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserFiles];
+GO
+IF OBJECT_ID(N'[dbo].[ProductSheetType]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProductSheetType];
 GO
 
 -- --------------------------------------------------
@@ -76,7 +85,16 @@ CREATE TABLE [dbo].[UserFiles] (
     [fileName] varchar(50)  NOT NULL,
     [fileData] varbinary(max)  NOT NULL,
     [productID] int  NOT NULL,
-    [sheetTypeID] int  NOT NULL
+    [sheetTypeID] int  NOT NULL,
+    [vendorID] int  NULL,
+    [adminApproved] bit  NOT NULL
+);
+GO
+
+-- Creating table 'VendorSet'
+CREATE TABLE [dbo].[VendorSet] (
+    [vendorID] int IDENTITY(1,1) NOT NULL,
+    [vendorName] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -113,6 +131,12 @@ GO
 ALTER TABLE [dbo].[UserFiles]
 ADD CONSTRAINT [PK_UserFiles]
     PRIMARY KEY CLUSTERED ([fileID] ASC);
+GO
+
+-- Creating primary key on [vendorID] in table 'VendorSet'
+ALTER TABLE [dbo].[VendorSet]
+ADD CONSTRAINT [PK_VendorSet]
+    PRIMARY KEY CLUSTERED ([vendorID] ASC);
 GO
 
 -- Creating primary key on [Product_productID], [SheetType_sheetTypeID] in table 'ProductSheetType'

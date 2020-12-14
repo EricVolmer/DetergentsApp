@@ -106,9 +106,6 @@ namespace DetergentsApp.Controllers
                 Console.WriteLine(e);
                 throw;
             }
-            
-
-            return Json(request);
         }
 
         public static byte[] GetFilesBytes(HttpPostedFileBase file)

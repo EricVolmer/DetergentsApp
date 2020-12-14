@@ -10,6 +10,7 @@
     <EntitySet Name="Products" EntityType="DetergentsModel.Store.Products" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SheetTypes" EntityType="DetergentsModel.Store.SheetTypes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserFiles" EntityType="DetergentsModel.Store.UserFiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VendorSet" EntityType="DetergentsModel.Store.VendorSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductSheetType" EntityType="DetergentsModel.Store.ProductSheetType" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK__Product__categor__025D5595" Association="DetergentsModel.Store.FK__Product__categor__025D5595">
       <End Role="Category" EntitySet="Categories" />
@@ -62,6 +63,15 @@
     <Property Name="fileData" Type="varbinary(max)" Nullable="false" />
     <Property Name="productID" Type="int" Nullable="false" />
     <Property Name="sheetTypeID" Type="int" Nullable="false" />
+    <Property Name="vendorID" Type="int" Nullable="true" />
+    <Property Name="adminApproved" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VendorSet">
+    <Key>
+      <PropertyRef Name="vendorID" />
+    </Key>
+    <Property Name="vendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vendorName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductSheetType">
     <Key>
@@ -163,6 +173,8 @@
           <Property Name="productID" Type="Int32" Nullable="false" />
           <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SheetType" Relationship="Self.FK__UserFile__sheetT__0539C240" FromRole="UserFile" ToRole="SheetType" />
+          <Property Name="vendorID" Type="Int32" Nullable="true" />
+          <Property Name="adminApproved" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Product__categor__025D5595">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
@@ -205,11 +217,19 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="SheetType" EntitySet="SheetTypes" />
           </AssociationSet>
+          <EntitySet Name="VendorSet" EntityType="DetergentsModel.Vendor" />
         </EntityContainer>
         <Association Name="ProductSheetType">
           <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" />
           <End Type="DetergentsModel.SheetType" Role="SheetType" Multiplicity="*" />
         </Association>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="vendorID" />
+          </Key>
+          <Property Name="vendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vendorName" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -252,6 +272,16 @@
           <ScalarProperty Name="fileData" ColumnName="fileData" />
           <ScalarProperty Name="productID" ColumnName="productID" />
           <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
+          <ScalarProperty Name="vendorID" ColumnName="vendorID" />
+          <ScalarProperty Name="adminApproved" ColumnName="adminApproved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VendorSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Vendor)">
+        <MappingFragment StoreEntitySet="VendorSet">
+          <ScalarProperty Name="vendorID" ColumnName="vendorID" />
+          <ScalarProperty Name="vendorName" ColumnName="vendorName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

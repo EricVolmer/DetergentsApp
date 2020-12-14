@@ -16,7 +16,7 @@ namespace DetergentsApp.Controllers
         public ActionResult Index()
         {
             CreateViewListCategory();
-        //    CreateViewListSheetType();
+            CreateViewListSheetType();
             return View();
         }
         
@@ -46,34 +46,36 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-        // public void CreateViewListSheetType()
-        // {
-        //     try
-        //     {
-        //         var result = db.SheetTypes;
-        //
-        //         var containerList = new List<SelectListItem>();
-        //         var productViewModels = result.Select(entity => new ProductViewModel
-        //             {
-        //                 sheetTypeName = entity.sheetTypeName,
-        //                 sheetTypeID = entity.sheetTypeID
-        //             })
-        //             .ToList();
-        //
-        //         foreach (var productViewModel in productViewModels)
-        //             containerList.Add(new SelectListItem
-        //                 {Text = productViewModel.sheetTypeName, Value = productViewModel.sheetTypeID.ToString()});
-        //
-        //         ViewBag.SheetType = containerList;
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         Console.WriteLine(e);
-        //         throw;
-        //     }
-        // }
+        public void CreateViewListSheetType()
+        {
+            try
+            {
+                var result = db.SheetTypes;
+        
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new ProductViewModel
+                    {
+                        sheetTypeName = entity.sheetTypeName,
+                        sheetTypeID = entity.sheetTypeID
+                    })
+                    .ToList();
+        
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.sheetTypeName, Value = productViewModel.sheetTypeID.ToString()});
+        
+                ViewBag.SheetType = containerList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
         public ActionResult Product_Read([DataSourceRequest] DataSourceRequest request)
         {
+            var fileCount = db.UserFiles.Count();
+            
             try
             {
                 var result = db.Products;
@@ -84,7 +86,9 @@ namespace DetergentsApp.Controllers
                         productDescription = entity.productDescription,
                         EAN = entity.EAN,
                         categoryID = entity.Category.categoryID,
-                        sheetTypeID = entity.sheetTypeID
+                        sheetTypeID = entity.sheetTypeID,
+                        fileCount = fileCount,
+             //           listOfFiles = db.UserFiles.Where(file => file.productID == entity.productID).Select(file => new UserFile { fileName = file.fileName, fileID = file.fileID }).ToList()
                     })
                     .ToList();
                 return Json(productList.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);

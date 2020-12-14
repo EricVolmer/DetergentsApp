@@ -37,6 +37,16 @@
           <ScalarProperty Name="fileData" ColumnName="fileData" />
           <ScalarProperty Name="productID" ColumnName="productID" />
           <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
+          <ScalarProperty Name="vendorID" ColumnName="vendorID" />
+          <ScalarProperty Name="adminApproved" ColumnName="adminApproved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VendorSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Vendor)">
+        <MappingFragment StoreEntitySet="VendorSet">
+          <ScalarProperty Name="vendorID" ColumnName="vendorID" />
+          <ScalarProperty Name="vendorName" ColumnName="vendorName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

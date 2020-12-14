@@ -6,9 +6,9 @@ namespace DetergentsApp.Models
 {
     public class ProductViewModel
     {
+        public int fileCount;
         public int productID { get; set; }
-
- 
+        
         [Required]
         [MaxLength(50)]
         [DisplayName("Product Name")]
@@ -28,6 +28,7 @@ namespace DetergentsApp.Models
         public int sheetTypeID { get; set; }
         
         public string sheetTypeName { get; set; }
-        public List<sheetTypeViewModel> sheetTypeList { get; set; }
+        
+        public List<UserFile> listOfFiles { get; set; } 
     }
 }

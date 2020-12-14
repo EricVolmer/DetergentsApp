@@ -30,6 +30,7 @@
           <e p="GridController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
+          <e p="VendorController.cs" t="Include" />
         </e>
         <e p="DetergentsApp.csproj" t="IncludeRecursive" />
         <e p="favicon.ico" t="Include" />
@@ -58,6 +59,7 @@
           <e p="sheetTypeViewModel.cs" t="Include" />
           <e p="UserFile.cs" t="Include" />
           <e p="UserFileViewModel.cs" t="Include" />
+          <e p="Vendor.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
@@ -106,6 +108,7 @@
             <e p="Index.cshtml" t="Include" />
           </e>
           <e p="FileUpload" t="Include">
+            <e p="files" t="Include" />
             <e p="UploadedFiles.cshtml" t="Include" />
           </e>
           <e p="Grid" t="Include">
@@ -143,6 +146,9 @@
               <e p="Url.cshtml" t="Include" />
             </e>
             <e p="Error.cshtml" t="Include" />
+          </e>
+          <e p="Vendor" t="Include">
+            <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Web.config" t="Include" />
         </e>

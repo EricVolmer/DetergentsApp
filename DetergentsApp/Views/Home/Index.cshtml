@@ -24,14 +24,22 @@
         columns.Bound(c => c.EAN).Width(230);
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(150);
+      //  columns.Bound(c => c.fileCount).Width(20);
+        
         // columns.ForeignKey(c => c.sheetTypeID, (List<SelectListItem>)
-        //     ViewBag.SheetType, "Value", "Text").Title("SheetType").Width(150);
+        //      ViewBag.SheetType, "Value", "Text").Title("SheetType").Width(150);
+        //
+        // columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
+
+        
+        
         columns.Command(command =>
         {
             command.Edit().UpdateText("Save");
             command.Destroy();
             command.Custom("Show Files").Click("showFiles");
         }).Width(230);
+        
     })
     .ToolBar(toolbar =>
     {
@@ -117,7 +125,6 @@
                     var grid = $("#grid");
                     
                     $("#sheetTypeCategory").data("kendoDropDownList").select(0);
-                    debugger;
 
 
                     // Add minus icon for collapse element which is open by default
@@ -173,9 +180,7 @@
                                //     grid.dataSource.filter({ field: "sheetTypeID", operator: "eq", value: value });
                                // }
                                
-                    }
-                    
-                
+                    }                
                     function showFiles(e) {
                         e.preventDefault();
                                 var product = this.dataItem($(e.currentTarget).closest("tr"));
@@ -186,6 +191,33 @@
                                 window.location.href = "@Url.Action("UploadedFiles",
                                                               "FileUpload")?productID=" + product.productID + "&sheetTypeID=" + dropdownlist;
                         }
+                        
+                        
+                        function SheetFilesAvailable(data) {
+
+                                 //      var product = $("#grid").data("kendoGrid");
+                                       
+                               //       files = product.dataSource.getById(product.select().attr("data-uid"));
+                                      
+                                      
+                                      
+                                       
+                                    var template = "<ul>";
+                                    debugger;
+                                    for (var i = 0; i < data.listOfFiles.length; i++) 
+                                    {
+                                        var files = data.listOfFiles[i];
+                                        template += kendo.format("<li>Product: {0} </li>", files.listOfFiles) ;
+                                    }
+                                    template += "</ul>"
+                                    return template;
+                                    
+                                  //  <li><a href="linkof file">filename</a></li>
+                                    
+                        }
+                            
+                            
+                        
                   
    </script>
 
