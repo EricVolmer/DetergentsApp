@@ -29,7 +29,7 @@
         // columns.ForeignKey(c => c.sheetTypeID, (List<SelectListItem>)
         //      ViewBag.SheetType, "Value", "Text").Title("SheetType").Width(150);
         //
-        // columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
+         columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
 
         
         
@@ -203,11 +203,10 @@
                                       
                                        
                                     var template = "<ul>";
-                                    debugger;
                                     for (var i = 0; i < data.listOfFiles.length; i++) 
                                     {
                                         var files = data.listOfFiles[i];
-                                        template += kendo.format("<li>Product: {0} </li>", files.listOfFiles) ;
+                                        template += kendo.format("<li>Product: {0} </li>", files.fileName) ;
                                     }
                                     template += "</ul>"
                                     return template;

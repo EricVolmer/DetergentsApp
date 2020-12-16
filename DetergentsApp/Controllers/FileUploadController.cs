@@ -40,25 +40,34 @@ namespace DetergentsApp.Controllers
             return View();
         }
 
+
+
         public ActionResult Save(IEnumerable<HttpPostedFileBase> files)
         {
-            var productID = (int) TempData["productID"];
-            var sheetTypeID = (int) TempData["sheetTypeID"];
+            var productID = (int)TempData["productID"];
+            var sheetTypeID = (int)TempData["sheetTypeID"];
+            
             try
             {
                 if (files != null)
                 {
                     foreach (var file in files)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var physicalPath = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+                        
                         db.UserFiles.Add(new UserFile
                         {
-                            fileName = Path.GetFileName(file.FileName),
+                            fileName = fileName,
                             fileData = GetFilesBytes(file),
                             productID = productID,
-                            sheetTypeID = sheetTypeID
+                            sheetTypeID = sheetTypeID,
+                            adminApproved = true
                         });
-                    db.SaveChanges();
+                        db.SaveChanges();
+                        file.SaveAs(physicalPath);
+                    }
                 }
-
                 // Return an empty string to signify success
                 return Content("");
             }
@@ -68,6 +77,54 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+        public ActionResult VendorSave(IEnumerable<HttpPostedFileBase> files)
+        {
+            // var vendorID = (int)TempData["vendorID"];
+            // var ArticleEAN = (int)TempData["ArticleEAN"];
+            // var sheetTypeID = (int)TempData["sheetTypeID"];
+            // var vendorName = (string)TempData["vendorName"];
+            
+            try
+            {
+                if (files != null)
+                {
+                    foreach (var file in files)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        // ViewBag.vendorID = vendorID;
+                        // ViewBag.ArticleEAN = ArticleEAN;
+                        // ViewBag.sheetTypeID = sheetTypeID;
+                        // ViewBag.vendorName = vendorName;
+
+                        var physicalPath = Path.Combine(Server.MapPath("~/App_Data/Vendor"), fileName);
+                        
+                        db.UserFiles.Add(new UserFile
+                        {
+                            fileName = fileName,
+                            fileData = GetFilesBytes(file),
+                            // EAN = ArticleEAN,
+                            // sheetTypeID = sheetTypeID,
+                            // vendorID = vendorID,
+                            // vendorName = vendorName,
+                            adminApproved = false
+                            
+                            //language
+                            
+                        });
+                        db.SaveChanges();
+                        file.SaveAs(physicalPath);
+                    }
+                }
+                // Return an empty string to signify success
+                return Content("");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         public ActionResult FilesRead([DataSourceRequest] DataSourceRequest request, int productID, int sheetTypeID)
         {
             var db = new DetergentsEntities();
@@ -75,7 +132,7 @@ namespace DetergentsApp.Controllers
             {
                 if (sheetTypeID == 0)
                 {
-                    var userFiles = db.UserFiles.Where(x => x.productID == productID ).Select(
+                    var userFiles = db.UserFiles.Where(x => x.productID == productID).Select(
                         f => new UserFileViewModel
                         {
                             Id = f.fileID,
@@ -118,16 +175,25 @@ namespace DetergentsApp.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult FilesDestroy([DataSourceRequest] DataSourceRequest request, ProductViewModel file)
+        public ActionResult FilesDestroy([DataSourceRequest] DataSourceRequest request, UserFileViewModel file)
         {
-            if (file != null)
+            try
             {
-                db.Products.Remove(db.Products.FirstOrDefault(f => f.productID == file.productID));
+                if (file != null)
+                {
+                    db.UserFiles.Remove(db.UserFiles.FirstOrDefault(f => f.productID == file.productID));
 
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
+
+                return Json(new[] { file }.ToDataSourceResult(request, ModelState));
             }
-
-            return Json(new[] {file}.ToDataSourceResult(request, ModelState));
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
         }
     }
 }

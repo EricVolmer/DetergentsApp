@@ -34,6 +34,7 @@
         </e>
         <e p="DetergentsApp.csproj" t="IncludeRecursive" />
         <e p="favicon.ico" t="Include" />
+        <e p="files" t="Include" />
         <e p="fonts" t="Include">
           <e p="glyphicons-halflings-regular.eot" t="Include" />
           <e p="glyphicons-halflings-regular.svg" t="Include" />

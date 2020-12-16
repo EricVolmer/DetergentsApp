@@ -79,18 +79,48 @@ namespace DetergentsApp.Controllers
             try
             {
                 var result = db.Products;
-                var productList = result.Select(entity => new ProductViewModel
+                var productList = new List<ProductViewModel>();
+                foreach(var item in result)
+                {
+                    var product = new ProductViewModel();
+
+                    product.productID = item.productID;
+                    product.productName = item.productName;
+                    product.productDescription = item.productDescription;
+                    product.EAN = item.EAN;
+                    product.categoryID = item.Category.categoryID;
+                    product.sheetTypeID = item.sheetTypeID;
+                    product.fileCount = fileCount;
+                    var fileListName = db.UserFiles.Where(file => file.productID == item.productID).ToList();
+                    if(fileListName != null )
                     {
-                        productID = entity.productID,
-                        productName = entity.productName,
-                        productDescription = entity.productDescription,
-                        EAN = entity.EAN,
-                        categoryID = entity.Category.categoryID,
-                        sheetTypeID = entity.sheetTypeID,
-                        fileCount = fileCount,
-             //           listOfFiles = db.UserFiles.Where(file => file.productID == entity.productID).Select(file => new UserFile { fileName = file.fileName, fileID = file.fileID }).ToList()
-                    })
-                    .ToList();
+                        product.listOfFiles = new List<UserFile>();
+
+                        foreach(var file in fileListName)
+                        {
+                            UserFile userFiles = new UserFile();
+                            userFiles.fileName = file.fileName;
+                            userFiles.fileID = file.fileID;
+                            product.listOfFiles.Add(userFiles);
+                        }
+                    }
+                    productList.Add(product);
+                }
+
+
+
+                //var productList = result.Select(entity => new ProductViewModel
+                //    {
+                //        productID = entity.productID,
+                //        productName = entity.productName,
+                //        productDescription = entity.productDescription,
+                //        EAN = entity.EAN,
+                //        categoryID = entity.Category.categoryID,
+                //        sheetTypeID = entity.sheetTypeID,
+                //        fileCount = fileCount,
+                //        listOfFiles = db.UserFiles.Where(file => file.productID == entity.productID).Select(file => new UserFile { fileName = file.fileName, fileID = file.fileID }).ToList()
+                //    })
+                //    .ToList();
                 return Json(productList.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -208,6 +238,28 @@ namespace DetergentsApp.Controllers
             foreach (var productViewModel in productViewModels)
                 containerList.Add(new SelectListItem
                     {Text = productViewModel.sheetTypeName, Value = productViewModel.sheetTypeID.ToString()});
+
+            ViewBag.Category = containerList;
+
+            return Json(containerList, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult vendorEANDropDownList()
+        {
+            var result = db.Products;
+
+            var containerList = new List<SelectListItem>();
+            var productViewModels = result.Select(entity => new ProductViewModel()
+                {
+                    productID = entity.productID,
+                    EAN = entity.EAN,
+                    productName = entity.productName
+                    
+                })
+                .ToList();
+
+            foreach (var productViewModel in productViewModels)
+                containerList.Add(new SelectListItem
+                    {Text = productViewModel.productName + " - " + productViewModel.EAN , Value = productViewModel.productID.ToString()});
 
             ViewBag.Category = containerList;
 
