@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/11/2020 14:03:57
+-- Date Created: 12/17/2020 15:39:22
 -- Generated from EDMX file: C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -45,6 +45,9 @@ IF OBJECT_ID(N'[dbo].[SheetTypes]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[UserFiles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserFiles];
+GO
+IF OBJECT_ID(N'[dbo].[VendorSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[VendorSet];
 GO
 IF OBJECT_ID(N'[dbo].[ProductSheetType]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductSheetType];

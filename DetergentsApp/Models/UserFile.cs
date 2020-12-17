@@ -23,7 +23,5 @@ namespace DetergentsApp.Models
         public bool adminApproved { get; set; }
     
         public virtual SheetType SheetType { get; set; }
-        public int EAN { get; set; }
-        public string vendorName { get; set; }
     }
 }

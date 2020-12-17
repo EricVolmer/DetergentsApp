@@ -13,135 +13,174 @@
     TempData["sheetTypeID"] = ViewBag.SheetTypeID;
 }
 @{
-    TempData["vendorName"] = ViewBag.vendorName;
+    TempData["vendorName"] = ViewBag.vendorDetails;
 }
 
 <h2>Index</h2>
 
+
 <section class="well">
     <h2 class="ra-well-title">Vendor Upload</h2>
-    <div class="form-horizontal form-widgets col-sm-6">
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="name">Vendor Name</label>
-            <div class="col-sm-8 col-md-6">
-                @(Html.Kendo().TextBox()
-                    .Name("vendorName"))
 
+    <form method="post" action='@Url.Action("VendorSave")'>
+        <div class="demo-section k-content">
+
+            <div class="form-horizontal form-widgets col-sm-6">
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="name">Vendor Details</label>
+                    <div class="col-sm-8 col-md-6">
+                        @(Html.Kendo().DropDownList()
+                            .Name("vendorDetails")
+                            .DataTextField("Text")
+                            .DataValueField("Value")
+                            .MinLength(3)
+                            .Filter(FilterType.Contains)
+                            .OptionLabel("Vendor Details")
+                            .HtmlAttributes(new {style = "width: 400px;"})
+                            .DataSource(ds => { ds.Read(read => read.Action("vendorDropDownList", "Home")); }))
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="articleEAN">Article EAN</label>
+                    <div class="col-sm-8 col-md-6">
+                        @(Html.Kendo().DropDownList()
+                            .Name("articleEAN")
+                            .DataTextField("Text")
+                            .DataValueField("Value")
+                            .MinLength(3)
+                            .Filter(FilterType.Contains)
+                            .OptionLabel("Enter EAN...")
+                            .HtmlAttributes(new {style = "width: 400px;"})
+                            .DataSource(ds => { ds.Read(read => read.Action("vendorEANDropDownList", "Home")); }))
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="gender">Sheet Type</label>
+                    <div class="col-sm-8 col-md-6">
+                        @(Html.Kendo().DropDownList()
+                            .Name("sheetTypeCategory")
+                            .DataTextField("Text")
+                            .DataValueField("Value")
+                            .HtmlAttributes(new {style = "width: 400px;"})
+                            .DataSource(ds => { ds.Read(read => read.Action("sheetType_Categories", "Home")); }))
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="language">Language of the file</label>
+                    <div class="col-sm-8 col-md-6">
+                        @(Html.Kendo().DropDownList()
+                            .Name("language")
+                            .DataTextField("Text")
+                            .DataValueField("Value")
+                            .Value("English")
+                            .BindTo(new List<SelectListItem>
+                            {
+                                new SelectListItem
+                                {
+                                    Text = "Danish",
+                                    Value = "Danish"
+                                },
+                                new SelectListItem
+                                {
+                                    Text = "German",
+                                    Value = "German"
+                                },
+                                new SelectListItem
+                                {
+                                    Text = "English",
+                                    Value = "English"
+                                },
+                                new SelectListItem
+                                {
+                                    Text = "Polish",
+                                    Value = "Polish"
+                                }
+                            })
+                            )
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="form-horizontal form-widgets col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="fileUpload">File Upload</label>
+                        <div class="col-sm-10">
+                            @(Html.Kendo().Upload()
+                                .Name("files")
+                                )
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons-wrap">
+                    <button class="k-button k-state-default">Cancel</button>
+                    <button type="submit" id="uploadButton" class="k-button k-state-default">Upload</button>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="companyID">Vendor ID</label>
-            <div class="col-sm-8 col-md-6">
-                @(Html.Kendo().TextBox()
-                    .Name("vendorID"))
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="articleEAN">Article EAN</label>
-            <div class="col-sm-8 col-md-6">
-                @(Html.Kendo().DropDownList()
-                    .Name("articleEAN")
-                    .DataTextField("Text")
-                    .DataValueField("Value")
-                    .MinLength(3)
-                    .Filter(FilterType.Contains)
-                    .OptionLabel("Enter EAN...")
-                    .HtmlAttributes(new {style = "width: 400px;"})
-                    .DataSource(ds => { ds.Read(read => read.Action("vendorEANDropDownList", "Home")); }))
-            </div>
+    </form>
 
 
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="gender">Sheet Type</label>
-            <div class="col-sm-8 col-md-6">
-                @(Html.Kendo().DropDownList()
-                    .Name("sheetTypeCategory")
-                    .DataTextField("Text")
-                    .DataValueField("Value")
-                    .HtmlAttributes(new {style = "width: 400px;"})
-                    .DataSource(ds => { ds.Read(read => read.Action("sheetType_Categories", "Home")); }))
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="language">Language of the file</label>
-            <div class="col-sm-8 col-md-6">
-                @(Html.Kendo().DropDownList()
-                    .Name("language")
-                    .DataTextField("Text")
-                    .DataValueField("Value")
-                    .Value("English")
-                    .BindTo(new List<SelectListItem>
-                    {
-                        new SelectListItem
-                        {
-                            Text = "Danish",
-                            Value = "Danish"
-                        },
-                        new SelectListItem
-                        {
-                            Text = "German",
-                            Value = "German"
-                        },
-                        new SelectListItem
-                        {
-                            Text = "English",
-                            Value = "English"
-                        },
-                        new SelectListItem
-                        {
-                            Text = "Polish",
-                            Value = "Polish"
-                        }
-                    })
-                    )
-            </div>
-        </div>
-    </div>
-
-    <div class="clearfix"></div>
-
-
-    <div class="form-horizontal form-widgets col-sm-12">
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="fileUpload">File Upload</label>
-            <div class="col-sm-10">
-                @(Html.Kendo().Upload()
-                    .Name("files")
-                    
-                    .Async(a => a.Save("VendorSave", "FileUpload")
-                        .AutoUpload(false)
-                    )
-                    )
-                <p style="padding-top: 1em; text-align: right">
-                    <button type="submit" class="k-button k-primary">Submit</button>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="form-horizontal form-widgets col-sm-12">
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="fileUpload">File Upload</label>
-            <div class="col-sm-10">
-                @(Html.Kendo().Button()
-                    .Name("files")
-                    .Events(e => e.Click("onUploadSuccess"))
-                    )
-            </div>
-        </div>
-    </div>
-
-    <div class="buttons-wrap">
-        <button class="k-button k-state-default">Cancel</button>
-        <button class="k-button k-state-default">Upload</button>
-    </div>
 </section>
 
 <script>
+
+        // $(document).ready( function () {
+        //    
+        //               
+        //                
+        //                 $("#uploadButton").click(function(e) {
+        //                 e.preventDefault();
+        //                  var vendorDetails = $("#vendorDetails").data("kendoDropDownList")
+        //                  var articleEAN = $("#articleEAN").data("kendoDropDownList")
+        //                  var sheetTypeCategory = $("#sheetTypeCategory").data("kendoDropDownList")
+        //                  var language = $("#language").data("kendoDropDownList")
+        //                 
+        //                  var files = 
+        //                 
+        //                 
+        //                 $.ajax({
+        //                 url: '@Url.Action("VendorSave", "Vendor")',
+        //                 type: "POST",
+        //                 cache: false,
+        //                 data: {
+        //                 __RequestVerificationToken: getToken(),
+        //                 vendorDetails: vendorDetails,
+        //                 articleEAN: articleEAN,
+        //                 sheetTypeCategory: sheetTypeCategory,
+        //                 language: language
+        //                 },
+        //                 success: function(data) {
+        //                 if (data.success) {
+        //                 console.log(data);
+        //                 location.reload();
+        //                 }
+        //                 },
+        //                 error: function(xhr) {
+        //                 alert(xhr.responseText);
+        //                 }
+        //                 });
+        //                 });
+        //         function getFileInfo(e) {
+        //                 return $.map(e.files, function(file) {
+        //                     var info = file.name;
+        //        
+        //                     // File size is not available in all browsers
+        //                     if (file.size > 0) {
+        //                         info  += " (" + Math.ceil(file.size / 1024) + " KB)";
+        //                     }
+        //                     return info;
+        //                 }).join(", ");
+        //             }
+        //     },
+
+
+
 
 
 function onUploadSuccess(e) {
@@ -150,7 +189,7 @@ function onUploadSuccess(e) {
         var textboxEAN = $("#articleEAN").data("kendoDropDownList").value();
         var textboxSheetType = $("#sheetTypeCategory").data("kendoDropDownList").value();
         window.location.href = "@Url.Action("VendorSave",
-                                    "FileUpload")?vendorName=" + textboxName 
+                                    "Vendor")?vendorName=" + textboxName 
                                     + "&vendorID=" + textboxID 
                                     + "&articleEAN=" + textboxEAN 
                                     + "&sheetType=" + textboxSheetType;

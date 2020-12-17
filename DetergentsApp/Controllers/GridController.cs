@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.SqlServer;
-using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using DetergentsApp.Models;
@@ -54,7 +51,7 @@ namespace DetergentsApp.Controllers
 
                 var vesselsList = result.Select(entity => new ProductViewModel
                     {
-                    //    sheetTypeName = entity.SheetType.sheetTypeName,
+                        //    sheetTypeName = entity.SheetType.sheetTypeName,
                         productID = entity.productID,
                         productName = entity.productName,
                         productDescription = entity.productDescription,
@@ -113,23 +110,18 @@ namespace DetergentsApp.Controllers
         }
 
 
-        
-
-        
-
-        
         public ActionResult ToolbarTemplate_Read([DataSourceRequest] DataSourceRequest request)
         {
             try
             {
                 var result = db.Categories;
-                var vesselsList = result.Select(entity => new ProductViewModel()
+                var vesselsList = result.Select(entity => new ProductViewModel
                     {
                         categoryID = entity.categoryID,
-                        categoryName = entity.categoryName,
+                        categoryName = entity.categoryName
                     })
                     .ToList();
-                
+
                 return Json(vesselsList.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -138,6 +130,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+
         public ActionResult ToolbarTemplate_Categories()
         {
             var result = db.Categories;

@@ -19,7 +19,7 @@ namespace DetergentsApp.Controllers
             CreateViewListSheetType();
             return View();
         }
-        
+
         public void CreateViewListCategory()
         {
             try
@@ -46,12 +46,13 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+
         public void CreateViewListSheetType()
         {
             try
             {
                 var result = db.SheetTypes;
-        
+
                 var containerList = new List<SelectListItem>();
                 var productViewModels = result.Select(entity => new ProductViewModel
                     {
@@ -59,11 +60,11 @@ namespace DetergentsApp.Controllers
                         sheetTypeID = entity.sheetTypeID
                     })
                     .ToList();
-        
+
                 foreach (var productViewModel in productViewModels)
                     containerList.Add(new SelectListItem
                         {Text = productViewModel.sheetTypeName, Value = productViewModel.sheetTypeID.ToString()});
-        
+
                 ViewBag.SheetType = containerList;
             }
             catch (Exception e)
@@ -72,15 +73,16 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+
         public ActionResult Product_Read([DataSourceRequest] DataSourceRequest request)
         {
             var fileCount = db.UserFiles.Count();
-            
+
             try
             {
                 var result = db.Products;
                 var productList = new List<ProductViewModel>();
-                foreach(var item in result)
+                foreach (var item in result)
                 {
                     var product = new ProductViewModel();
 
@@ -90,23 +92,22 @@ namespace DetergentsApp.Controllers
                     product.EAN = item.EAN;
                     product.categoryID = item.Category.categoryID;
                     product.sheetTypeID = item.sheetTypeID;
-                    product.fileCount = fileCount;
                     var fileListName = db.UserFiles.Where(file => file.productID == item.productID).ToList();
-                    if(fileListName != null )
+                    if (fileListName != null)
                     {
                         product.listOfFiles = new List<UserFile>();
 
-                        foreach(var file in fileListName)
+                        foreach (var file in fileListName)
                         {
-                            UserFile userFiles = new UserFile();
+                            var userFiles = new UserFile();
                             userFiles.fileName = file.fileName;
                             userFiles.fileID = file.fileID;
                             product.listOfFiles.Add(userFiles);
                         }
                     }
+
                     productList.Add(product);
                 }
-
 
 
                 //var productList = result.Select(entity => new ProductViewModel
@@ -148,6 +149,8 @@ namespace DetergentsApp.Controllers
                         entity.productName = product.productName;
                         entity.productDescription = product.productDescription;
                         entity.Category = category;
+                        
+                        
                         try
                         {
                             //    var existingProduct = db.Products.Find(product.productID);
@@ -220,7 +223,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-        
+
         public ActionResult sheetType_Categories()
         {
             var result = db.SheetTypes;
@@ -243,23 +246,50 @@ namespace DetergentsApp.Controllers
 
             return Json(containerList, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult vendorEANDropDownList()
         {
             var result = db.Products;
 
             var containerList = new List<SelectListItem>();
-            var productViewModels = result.Select(entity => new ProductViewModel()
+            var productViewModels = result.Select(entity => new ProductViewModel
                 {
                     productID = entity.productID,
                     EAN = entity.EAN,
                     productName = entity.productName
-                    
                 })
                 .ToList();
 
             foreach (var productViewModel in productViewModels)
                 containerList.Add(new SelectListItem
-                    {Text = productViewModel.productName + " - " + productViewModel.EAN , Value = productViewModel.productID.ToString()});
+                {
+                    Text = productViewModel.productName + " - " + productViewModel.EAN,
+                    Value = productViewModel.productID.ToString()
+                });
+
+            ViewBag.Category = containerList;
+
+            return Json(containerList, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult vendorDropDownList()
+        {
+            var result = db.VendorSet;
+
+            var containerList = new List<SelectListItem>();
+            var productViewModels = result.Select(entity => new VendorViewModel
+                {
+                    vendorID = entity.vendorID,
+                    vendorName = entity.vendorName
+                })
+                .ToList();
+
+            foreach (var productViewModel in productViewModels)
+                containerList.Add(new SelectListItem
+                {
+                    Text = productViewModel.vendorName + " - " + productViewModel.vendorID,
+                    Value = productViewModel.vendorID.ToString()
+                });
 
             ViewBag.Category = containerList;
 

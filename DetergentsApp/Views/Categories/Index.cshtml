@@ -1,4 +1,5 @@
-﻿@model IEnumerable<DetergentsApp.Models.Category>
+﻿@using DetergentsApp.Models
+@model IEnumerable<DetergentsApp.Models.Category>
 
 
 @{
@@ -34,7 +35,7 @@
 
 </table>
 
-@(Html.Kendo().Grid<DetergentsApp.Models.ProductViewModel>()
+@(Html.Kendo().Grid<ProductViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
@@ -44,29 +45,27 @@
     .ToolBar(toolbar =>
     {
         toolbar.Template(@<text>
-            <div class="refreshBtnContainer">
-                <a href="\\#" class="k-pager-refresh k-link k-button k-button-icon" title="Refresh"><span class="k-icon k-i-reload"></span></a>
-            </div>
-           <div class="toolbar">
-                    <label class="category-label" for="category">Show products by category:</label>
-                        @(Html.Kendo().DropDownList()
-                            .Name("categories")
-                            .OptionLabel("All")
-                            .DataTextField("Text")
-                            .DataValueField("Value")
-                            .AutoBind(false)
-                            .Events(e => e.Change("categoriesChange"))
-                            
-                            .HtmlAttributes(new { style = "width: 150px;" })
-                            .DataSource(ds =>
-                            {
-                                ds.Read("ToolbarTemplate_Categories", "Grid");
-                            })
-                        )
-                        </div>
-        </text>);
+                             <div class="refreshBtnContainer">
+                                 <a href="\\#" class="k-pager-refresh k-link k-button k-button-icon" title="Refresh">
+                                     <span class="k-icon k-i-reload"></span>
+                                 </a>
+                             </div>
+                             <div class="toolbar">
+                                 <label class="category-label" for="category">Show products by category:</label>
+                                 @(Html.Kendo().DropDownList()
+                                     .Name("categories")
+                                     .OptionLabel("All")
+                                     .DataTextField("Text")
+                                     .DataValueField("Value")
+                                     .AutoBind(false)
+                                     .Events(e => e.Change("categoriesChange"))
+                                     .HtmlAttributes(new {style = "width: 150px;"})
+                                     .DataSource(ds => { ds.Read("ToolbarTemplate_Categories", "Grid"); })
+                                     )
+                             </div>
+                          </text>);
     })
-    .HtmlAttributes(new { style = "height: 550px" })
+    .HtmlAttributes(new {style = "height: 550px"})
     .Sortable()
     .Scrollable()
     .DataSource(dataSource => dataSource
@@ -75,7 +74,7 @@
         .Model(model => model.Id(p => p.productID))
         .Read("ToolbarTemplate_Read", "Grid")
     )
-)
+    )
 
 <script>
     $(document).ready( function () {

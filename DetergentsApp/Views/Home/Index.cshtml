@@ -24,22 +24,20 @@
         columns.Bound(c => c.EAN).Width(230);
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(150);
-      //  columns.Bound(c => c.fileCount).Width(20);
-        
+        //  columns.Bound(c => c.fileCount).Width(20);
+
         // columns.ForeignKey(c => c.sheetTypeID, (List<SelectListItem>)
         //      ViewBag.SheetType, "Value", "Text").Title("SheetType").Width(150);
         //
-         columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
+        columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
 
-        
-        
+
         columns.Command(command =>
         {
             command.Edit().UpdateText("Save");
             command.Destroy();
             command.Custom("Show Files").Click("showFiles");
         }).Width(230);
-        
     })
     .ToolBar(toolbar =>
     {
@@ -149,20 +147,9 @@
                     grid.find(".k-grid-toolbar").on("click", ".k-grid-add", function (e) 
                     {
                         e.preventDefault();
+                        
                                                            
-                        if (e.values.name !== "") 
-                        {
-                            // the user changed the name field
-                            if (e.values.name !== e.model.name) 
-                            {
-                                console.log("name is modified");
-                            }
-                        } 
-                        else 
-                        {
-                          e.preventDefault();
-                          console.log("name cannot be empty");
-                        }
+                        
                     });            
     
                 });
@@ -189,20 +176,18 @@
                                  
                              //   var sheetTypeId = dropdownlist.val();                      
                                 window.location.href = "@Url.Action("UploadedFiles",
-                                                              "FileUpload")?productID=" + product.productID + "&sheetTypeID=" + dropdownlist;
+                                                            "FileUpload")?productID=" + product.productID + "&sheetTypeID=" + dropdownlist;
                         }
                         
                         
                         function SheetFilesAvailable(data) {
 
-                                 //      var product = $("#grid").data("kendoGrid");
-                                       
-                               //       files = product.dataSource.getById(product.select().attr("data-uid"));
-                                      
-                                      
-                                      
-                                       
+                                
+
+                               if (data.listOfFiles !== undefined && data.listOfFiles !== null){
                                     var template = "<ul>";
+                                    console.log(data)
+                                   
                                     for (var i = 0; i < data.listOfFiles.length; i++) 
                                     {
                                         var files = data.listOfFiles[i];
@@ -210,6 +195,7 @@
                                     }
                                     template += "</ul>"
                                     return template;
+                               }
                                     
                                   //  <li><a href="linkof file">filename</a></li>
                                     

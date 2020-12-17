@@ -22,14 +22,14 @@
                 @Html.ValidationMessageFor(model => model.EAN, "", new {@class = "text-danger"})
             </div>
         </div>
-        
+
         <div class="form-group">
-                    @Html.LabelFor(model => model.sheetTypeID, "sheetTypeID", new {@class = "control-label col-md-2"})
-                    <div class="col-md-10">
-                        @Html.DropDownList("sheetTypeID", null, new {@class = "form-control"})
-                        @Html.ValidationMessageFor(model => model.sheetTypeID, "", new {@class = "text-danger"})
-                    </div>
-                </div>
+            @Html.LabelFor(model => model.sheetTypeID, "sheetTypeID", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownList("sheetTypeID", null, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.sheetTypeID, "", new {@class = "text-danger"})
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.productName, new {@class = "control-label col-md-2"})
