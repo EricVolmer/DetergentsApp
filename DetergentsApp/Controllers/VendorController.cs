@@ -18,25 +18,25 @@ namespace DetergentsApp.Controllers
             return View(db.VendorSet.ToList());
         }
 
-        public ActionResult VendorSave(IEnumerable<HttpPostedFileBase> files, int vendorDetails, int articleEAN, int sheetTypeCategory, string language)
+        public ActionResult VendorSave(IEnumerable<HttpPostedFileBase> files, int vendorDetails, int articleEAN,
+            int sheetTypeCategory, string language)
         {
-
-           // var product = db.Products.SingleOrDefault(x => x.EAN == articleEAN);
+            // var product = db.Products.SingleOrDefault(x => x.EAN == articleEAN);
             try
             {
                 if (files != null)
                     foreach (var file in files)
                     {
                         var fileName = Path.GetFileName(file.FileName);
-                         var physicalPath = Path.Combine(Server.MapPath("~/App_Data/Vendor"), fileName);
+                        var physicalPath = Path.Combine(Server.MapPath("~/App_Data/Vendor"), fileName);
 
                         db.UserFiles.Add(new UserFile
                         {
                             fileName = fileName,
                             fileData = GetFilesBytes(file),
                             productID = articleEAN,
-                             sheetTypeID = sheetTypeCategory,
-                             vendorID = vendorDetails,
+                            sheetTypeID = sheetTypeCategory,
+                            vendorID = vendorDetails,
                             adminApproved = false
 
                             //language

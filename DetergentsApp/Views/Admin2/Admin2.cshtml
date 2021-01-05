@@ -45,9 +45,12 @@
     .Columns(columns =>
     {
         columns.Bound(f => f.Name).ClientTemplate("<a href='files/?id=#= Id #'>#= Name #</a>").Title("File name");
+        columns.Bound(f => f.Id);
+        columns.Bound(f => f.productID);
+        columns.Bound(f => f.vendorID);
+        columns.Bound(f => f.sheetTypeID);
+        columns.Bound(f => f.adminApproved);
 
-        // Calculate the file size in KB, round it up and display it in a client template
-        columns.Bound(f => f.DataLength).ClientTemplate("#= Math.ceil(DataLength / 1024) #").Title("File size in KB").Width(150);
 
         columns.Command(command => command.Destroy()).Width(100);
     })
@@ -57,8 +60,8 @@
         .Ajax()
         .PageSize(10)
         .Model(m => m.Id(f => f.Id))
-        .Read(read => read.Action("FilesRead", "FileUpload"))
-        .Destroy(update => update.Action("FilesDestroy", "FileUpload"))
+        .Read(read => read.Action("FilesReadAdmin", "FileUpload"))
+        .Destroy(update => update.Action("FilesDestroyAdmin", "FileUpload"))
     ))
 
 <script>

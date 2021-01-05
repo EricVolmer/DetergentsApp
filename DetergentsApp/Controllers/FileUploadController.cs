@@ -77,7 +77,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-        
+
 
         public ActionResult FilesRead([DataSourceRequest] DataSourceRequest request, int productID, int sheetTypeID)
         {
@@ -119,6 +119,32 @@ namespace DetergentsApp.Controllers
             }
         }
 
+        public ActionResult FilesReadAdmin([DataSourceRequest] DataSourceRequest request)
+        {
+            var db = new DetergentsEntities();
+            try
+            {
+                var userFiles = db.UserFiles.Where(x => x.adminApproved == false)
+                    .Select(
+                        f => new UserFileViewModel
+                        {
+                            Id = f.fileID,
+                            Name = f.fileName,
+                            productID = f.productID,
+                            sheetTypeID = f.sheetTypeID,
+                            DataLength = SqlFunctions.DataLength(f.fileData),
+                            vendorID = f.vendorID,
+                            adminApproved = f.adminApproved
+                        });
+                return Json(userFiles.ToDataSourceResult(request));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         public static byte[] GetFilesBytes(HttpPostedFileBase file)
         {
             var target = new MemoryStream();
@@ -136,6 +162,26 @@ namespace DetergentsApp.Controllers
                 if (file != null)
                 {
                     db.UserFiles.Remove(db.UserFiles.FirstOrDefault(f => f.productID == file.productID));
+
+                    db.SaveChanges();
+                }
+
+                return Json(new[] {file}.ToDataSourceResult(request, ModelState));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public ActionResult FilesDestroyAdmin([DataSourceRequest] DataSourceRequest request, UserFileViewModel file)
+        {
+            try
+            {
+                if (file != null)
+                {
+                    db.UserFiles.Remove(db.UserFiles.FirstOrDefault(f => f.vendorID == file.vendorID));
 
                     db.SaveChanges();
                 }

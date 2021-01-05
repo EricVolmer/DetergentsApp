@@ -149,8 +149,8 @@ namespace DetergentsApp.Controllers
                         entity.productName = product.productName;
                         entity.productDescription = product.productDescription;
                         entity.Category = category;
-                        
-                        
+
+
                         try
                         {
                             //    var existingProduct = db.Products.Find(product.productID);
