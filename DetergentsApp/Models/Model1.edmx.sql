@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/17/2020 15:39:22
+-- Date Created: 01/06/2021 11:21:40
 -- Generated from EDMX file: C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -49,6 +49,9 @@ GO
 IF OBJECT_ID(N'[dbo].[VendorSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[VendorSet];
 GO
+IF OBJECT_ID(N'[dbo].[CountrySet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CountrySet];
+GO
 IF OBJECT_ID(N'[dbo].[ProductSheetType]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductSheetType];
 GO
@@ -67,11 +70,13 @@ GO
 -- Creating table 'Products'
 CREATE TABLE [dbo].[Products] (
     [productID] int IDENTITY(1,1) NOT NULL,
-    [EAN] bigint  NOT NULL,
+    [EAN] nvarchar(max)  NOT NULL,
     [sheetTypeID] int  NOT NULL,
     [productName] nvarchar(50)  NOT NULL,
     [productDescription] nvarchar(150)  NULL,
-    [categoryID] int  NOT NULL
+    [categoryID] int  NOT NULL,
+    [articleNumber] int  NOT NULL,
+    [vendorID] int  NOT NULL
 );
 GO
 
@@ -96,8 +101,15 @@ GO
 
 -- Creating table 'VendorSet'
 CREATE TABLE [dbo].[VendorSet] (
-    [vendorID] int IDENTITY(1,1) NOT NULL,
+    [vendorID] int  NOT NULL,
     [vendorName] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'CountrySet'
+CREATE TABLE [dbo].[CountrySet] (
+    [CountryID] int IDENTITY(1,1) NOT NULL,
+    [CountryName] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -140,6 +152,12 @@ GO
 ALTER TABLE [dbo].[VendorSet]
 ADD CONSTRAINT [PK_VendorSet]
     PRIMARY KEY CLUSTERED ([vendorID] ASC);
+GO
+
+-- Creating primary key on [CountryID] in table 'CountrySet'
+ALTER TABLE [dbo].[CountrySet]
+ADD CONSTRAINT [PK_CountrySet]
+    PRIMARY KEY CLUSTERED ([CountryID] ASC);
 GO
 
 -- Creating primary key on [Product_productID], [SheetType_sheetTypeID] in table 'ProductSheetType'
@@ -204,6 +222,21 @@ GO
 CREATE INDEX [IX_FK_ProductSheetType_SheetType]
 ON [dbo].[ProductSheetType]
     ([SheetType_sheetTypeID]);
+GO
+
+-- Creating foreign key on [vendorID] in table 'Products'
+ALTER TABLE [dbo].[Products]
+ADD CONSTRAINT [FK_VendorProduct]
+    FOREIGN KEY ([vendorID])
+    REFERENCES [dbo].[VendorSet]
+        ([vendorID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_VendorProduct'
+CREATE INDEX [IX_FK_VendorProduct]
+ON [dbo].[Products]
+    ([vendorID]);
 GO
 
 -- --------------------------------------------------

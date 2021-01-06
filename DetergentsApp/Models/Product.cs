@@ -21,14 +21,17 @@ namespace DetergentsApp.Models
         }
     
         public int productID { get; set; }
-        public long EAN { get; set; }
+        public string EAN { get; set; }
         public int sheetTypeID { get; set; }
         public string productName { get; set; }
         public string productDescription { get; set; }
         public int categoryID { get; set; }
+        public int articleNumber { get; set; }
+        public int vendorID { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SheetType> SheetType { get; set; }
+        public virtual Vendor Vendor { get; set; }
     }
 }

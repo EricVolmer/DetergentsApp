@@ -50,9 +50,10 @@
         columns.Bound(f => f.vendorID);
         columns.Bound(f => f.sheetTypeID);
         columns.Bound(f => f.adminApproved);
+        columns.Select();
 
 
-        columns.Command(command => command.Destroy()).Width(100);
+        columns.Command(command => { command.Destroy(); }).Width(180);
     })
     .Sortable()
     .Pageable()
@@ -65,6 +66,33 @@
     ))
 
 <script>
-
+                  
+                 
+                    
+                    $("#gridPopup").kendoGrid({
+                                            pageable: true,
+                                            height: 550,
+                                            toolbar: ["create"],
+                                            columns: [ { selectable: true, width:45},
+                                                { field:"ProductName", title: "Product Name" },
+                                                { field: "UnitPrice", title:"Unit Price", format: "{0:c}", width: "120px" },
+                                                { field: "UnitsInStock", title:"Units In Stock", width: "120px" },
+                                                { field: "Discontinued", width: "120px", editor: customBoolEditor },
+                                                { command: [ "destroy"], title: "&nbsp;", width: "250px" }],
+                                            editable: "popup"
+                                        })
+                                      
+                                      $("#filesGrid").on("click", ".k-checkbox", function(e){
+                                                          var grid = $("#filesGrid").data("kendoGrid");
+                                                          var selectedRow = $(e.target).closest("tr");
+                                                          grid.editRow(selectedRow);
+                                              
+                                    });
+                    
+                                    function customBoolEditor(container, options) {
+                                        var guid = kendo.guid();
+                                        $('<input class="k-checkbox" id="' + guid + '" type="checkbox" name="Discontinued" data-type="boolean" data-bind="checked:Discontinued">').appendTo(container);
+                                        $('<label class="k-checkbox-label" for="' + guid + '"></label>').appendTo(container);
+                                    }
 
 </script>

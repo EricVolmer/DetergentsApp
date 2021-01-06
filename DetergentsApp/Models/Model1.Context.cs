@@ -30,5 +30,6 @@ namespace DetergentsApp.Models
         public virtual DbSet<SheetType> SheetTypes { get; set; }
         public virtual DbSet<UserFile> UserFiles { get; set; }
         public virtual DbSet<Vendor> VendorSet { get; set; }
+        public virtual DbSet<Country> CountrySet { get; set; }
     }
 }

@@ -6,6 +6,7 @@
     <EntitySet Name="SheetTypes" EntityType="DetergentsModel.Store.SheetTypes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserFiles" EntityType="DetergentsModel.Store.UserFiles" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="VendorSet" EntityType="DetergentsModel.Store.VendorSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CountrySet" EntityType="DetergentsModel.Store.CountrySet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductSheetType" EntityType="DetergentsModel.Store.ProductSheetType" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK__Product__categor__025D5595" Association="DetergentsModel.Store.FK__Product__categor__025D5595">
       <End Role="Category" EntitySet="Categories" />
@@ -23,6 +24,10 @@
       <End Role="SheetType" EntitySet="SheetTypes" />
       <End Role="ProductSheetType" EntitySet="ProductSheetType" />
     </AssociationSet>
+    <AssociationSet Name="VendorProduct" Association="DetergentsModel.Store.VendorProduct">
+      <End Role="Vendor" EntitySet="VendorSet" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Categories">
     <Key>
@@ -36,11 +41,13 @@
       <PropertyRef Name="productID" />
     </Key>
     <Property Name="productID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="EAN" Type="bigint" Nullable="false" />
+    <Property Name="EAN" Type="nvarchar(max)" Nullable="false" />
     <Property Name="sheetTypeID" Type="int" Nullable="false" />
     <Property Name="productName" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="productDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
     <Property Name="categoryID" Type="int" Nullable="false" />
+    <Property Name="articleNumber" Type="int" Nullable="false" />
+    <Property Name="vendorID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SheetTypes">
     <Key>
@@ -65,8 +72,15 @@
     <Key>
       <PropertyRef Name="vendorID" />
     </Key>
-    <Property Name="vendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vendorID" Type="int" Nullable="false" />
     <Property Name="vendorName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CountrySet">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductSheetType">
     <Key>
@@ -97,6 +111,18 @@
       </Principal>
       <Dependent Role="UserFile">
         <PropertyRef Name="sheetTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VendorProduct">
+    <End Role="Vendor" Type="DetergentsModel.Store.VendorSet" Multiplicity="1" />
+    <End Role="Product" Type="DetergentsModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="vendorID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="vendorID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

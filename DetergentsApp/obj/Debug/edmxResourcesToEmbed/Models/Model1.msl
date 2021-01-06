@@ -18,6 +18,8 @@
           <ScalarProperty Name="productName" ColumnName="productName" />
           <ScalarProperty Name="productDescription" ColumnName="productDescription" />
           <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="articleNumber" ColumnName="articleNumber" />
+          <ScalarProperty Name="vendorID" ColumnName="vendorID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -47,6 +49,14 @@
         <MappingFragment StoreEntitySet="VendorSet">
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
           <ScalarProperty Name="vendorName" ColumnName="vendorName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountrySet">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Country)">
+        <MappingFragment StoreEntitySet="CountrySet">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

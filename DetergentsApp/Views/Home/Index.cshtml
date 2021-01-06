@@ -24,12 +24,14 @@
         columns.Bound(c => c.EAN).Width(230);
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(150);
-        //  columns.Bound(c => c.fileCount).Width(20);
-
-        // columns.ForeignKey(c => c.sheetTypeID, (List<SelectListItem>)
-        //      ViewBag.SheetType, "Value", "Text").Title("SheetType").Width(150);
-        //
+        columns.ForeignKey(c => c.vendorID, (List<SelectListItem>)
+            ViewBag.Vendor, "Value", "Text").Title("Vendor Name").Width(150);
+        
+        
         columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
+        
+        
+
 
 
         columns.Command(command =>

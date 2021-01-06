@@ -17,6 +17,7 @@ namespace DetergentsApp.Controllers
         {
             CreateViewListCategory();
             CreateViewListSheetType();
+            CreateViewListVendor();
             return View();
         }
 
@@ -73,6 +74,33 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+        public void CreateViewListVendor()
+        {
+            try
+            {
+                var result = db.VendorSet;
+
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new ProductViewModel
+                    {
+                        vendorName = entity.vendorName,
+                        vendorID = entity.vendorID
+                    })
+                    .ToList();
+
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.vendorName, Value = productViewModel.vendorID.ToString()});
+
+                ViewBag.Vendor = containerList;
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
 
         public ActionResult Product_Read([DataSourceRequest] DataSourceRequest request)
         {
@@ -91,6 +119,7 @@ namespace DetergentsApp.Controllers
                     product.productDescription = item.productDescription;
                     product.EAN = item.EAN;
                     product.categoryID = item.Category.categoryID;
+                    product.vendorID = item.Vendor.vendorID;
                     product.sheetTypeID = item.sheetTypeID;
                     var fileListName = db.UserFiles.Where(file => file.productID == item.productID).ToList();
                     if (fileListName != null)
@@ -149,7 +178,8 @@ namespace DetergentsApp.Controllers
                         entity.productName = product.productName;
                         entity.productDescription = product.productDescription;
                         entity.Category = category;
-
+                        entity.vendorID = product.vendorID;
+                        
 
                         try
                         {
@@ -172,7 +202,9 @@ namespace DetergentsApp.Controllers
                     productName = product.productName,
                     productDescription = product.productDescription,
                     Category = category,
-                    SheetType = sheetTypes
+                    SheetType = sheetTypes,
+                    vendorID = product.vendorID
+                    
                 };
                 try
                 {
@@ -193,6 +225,7 @@ namespace DetergentsApp.Controllers
         public ActionResult Products_Destroy([DataSourceRequest] DataSourceRequest request, ProductViewModel product)
         {
             var category = db.Categories.Find(product.categoryID);
+            var vendor = db.VendorSet.Find(product.vendorID);
             var sheetTypes = db.SheetTypes.ToList();
             try
             {
@@ -205,8 +238,10 @@ namespace DetergentsApp.Controllers
                         productName = product.productName,
                         productDescription = product.productDescription,
                         categoryID = product.categoryID,
+                        vendorID = product.vendorID,
                         sheetTypeID = product.sheetTypeID,
                         Category = category,
+                        Vendor = vendor,
                         SheetType = sheetTypes
                     };
 
