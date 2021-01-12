@@ -18,6 +18,8 @@ namespace DetergentsApp.Controllers
             CreateViewListCategory();
             CreateViewListSheetType();
             CreateViewListVendor();
+            CreateViewListCountry();
+            CreateViewListVendorName();
             return View();
         }
 
@@ -101,6 +103,60 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+        public void CreateViewListVendorName()
+        {
+            try
+            {
+                var result = db.VendorSet;
+
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new ProductViewModel
+                    {
+                        vendorName = entity.vendorName,
+                        vendorID = entity.vendorID
+                    })
+                    .ToList();
+
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.vendorName, Value = productViewModel.vendorID.ToString()});
+
+                ViewBag.VendorName = containerList;
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+        public void CreateViewListCountry()
+        {
+            try
+            {
+                var result = db.CountrySet;
+
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new countryViewModel()
+                    {
+                        CountryName = entity.CountryName,
+                        CountryID = entity.CountryID
+                    })
+                    .ToList();
+
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.CountryName, Value = productViewModel.CountryID.ToString()});
+
+                ViewBag.Country = containerList;
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
 
         public ActionResult Product_Read([DataSourceRequest] DataSourceRequest request)
         {
@@ -121,6 +177,7 @@ namespace DetergentsApp.Controllers
                     product.categoryID = item.Category.categoryID;
                     product.vendorID = item.Vendor.vendorID;
                     product.sheetTypeID = item.sheetTypeID;
+                    product.CountryID = item.countryID;
                     var fileListName = db.UserFiles.Where(file => file.productID == item.productID).ToList();
                     if (fileListName != null)
                     {
@@ -179,6 +236,7 @@ namespace DetergentsApp.Controllers
                         entity.productDescription = product.productDescription;
                         entity.Category = category;
                         entity.vendorID = product.vendorID;
+                        entity.countryID = product.CountryID;
                         
 
                         try
@@ -203,8 +261,9 @@ namespace DetergentsApp.Controllers
                     productDescription = product.productDescription,
                     Category = category,
                     SheetType = sheetTypes,
-                    vendorID = product.vendorID
-                    
+                    vendorID = product.vendorID,
+                    countryID = product.CountryID
+
                 };
                 try
                 {
@@ -240,6 +299,7 @@ namespace DetergentsApp.Controllers
                         categoryID = product.categoryID,
                         vendorID = product.vendorID,
                         sheetTypeID = product.sheetTypeID,
+                        countryID = product.CountryID,
                         Category = category,
                         Vendor = vendor,
                         SheetType = sheetTypes
@@ -281,54 +341,19 @@ namespace DetergentsApp.Controllers
 
             return Json(containerList, JsonRequestBehavior.AllowGet);
         }
-
-        public ActionResult vendorEANDropDownList()
+        public ActionResult Country()
         {
-            var result = db.Products;
 
-            var containerList = new List<SelectListItem>();
-            var productViewModels = result.Select(entity => new ProductViewModel
-                {
-                    productID = entity.productID,
-                    EAN = entity.EAN,
-                    productName = entity.productName
+            var dataContext = new DetergentsEntities();
+            var country = dataContext.CountrySet
+                .Select(c => new countryViewModel() {
+                    CountryID = c.CountryID,
+                    CountryName = c.CountryName
                 })
-                .ToList();
+                .OrderBy(e => e.CountryName);
 
-            foreach (var productViewModel in productViewModels)
-                containerList.Add(new SelectListItem
-                {
-                    Text = productViewModel.productName + " - " + productViewModel.EAN,
-                    Value = productViewModel.productID.ToString()
-                });
-
-            ViewBag.Category = containerList;
-
-            return Json(containerList, JsonRequestBehavior.AllowGet);
+            return Json(country, JsonRequestBehavior.AllowGet);
         }
-
-        public ActionResult vendorDropDownList()
-        {
-            var result = db.VendorSet;
-
-            var containerList = new List<SelectListItem>();
-            var productViewModels = result.Select(entity => new VendorViewModel
-                {
-                    vendorID = entity.vendorID,
-                    vendorName = entity.vendorName
-                })
-                .ToList();
-
-            foreach (var productViewModel in productViewModels)
-                containerList.Add(new SelectListItem
-                {
-                    Text = productViewModel.vendorName + " - " + productViewModel.vendorID,
-                    Value = productViewModel.vendorID.ToString()
-                });
-
-            ViewBag.Category = containerList;
-
-            return Json(containerList, JsonRequestBehavior.AllowGet);
-        }
+        
     }
 }

@@ -24,15 +24,16 @@
         columns.Bound(c => c.EAN).Width(230);
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(150);
+
+
         columns.ForeignKey(c => c.vendorID, (List<SelectListItem>)
-            ViewBag.Vendor, "Value", "Text").Title("Vendor Name").Width(150);
-        
-        
+            ViewBag.Vendor, "Value", "Text").Title("Vendor ID").Width(150);
+
+
+        columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
+            ViewBag.Country, "Value", "Text").Title("Country").Width(150);
+
         columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
-        
-        
-
-
 
         columns.Command(command =>
         {
@@ -67,12 +68,27 @@
                                      .DataTextField("Text")
                                      .DataValueField("Value")
                                      .AutoBind(true)
-                                     .Events(e => e.Change("categoriesChange"))
                                      .HtmlAttributes(new {style = "width: 150px;"})
                                      .DataSource(ds =>
                                      {
                                          ds.Read(read =>
                                              read.Action("sheetType_Categories", "Home"));
+                                     }))
+
+                             </div>
+                             <div class="toolbar">
+                                 <label class="country-label" for="country">Country:</label>
+                                 @(Html.Kendo().DropDownList()
+                                     .Name("country")
+                                     .DataTextField("CountryName")
+                                     .DataValueField("CountryID")
+                                     .AutoBind(true)
+                                     .Events(e => e.Change("countryChange"))
+                                     .HtmlAttributes(new {style = "width: 150px;"})
+                                     .DataSource(ds =>
+                                     {
+                                         ds.Read(read =>
+                                             read.Action("Country", "Home"));
                                      }))
 
                              </div>
@@ -97,7 +113,11 @@
         .Group(group => group.Add("categoryID", typeof(string), ListSortDirection.Descending))
         .Read(read => read.Action("Product_Read", "Home"))
         .Events(events => events.Error("error_handler"))
-        .Model(model => model.Id(c => c.productID))
+        .Model(model =>
+        {
+            model.Id(c => c.productID);
+            model.Field(p => p.vendorID).Editable(true);
+        })
         .Create(update => update.Action("Products_Create_Update", "Home"))
         .Update(update => update.Action("Products_Create_Update", "Home"))
         .Destroy(update => update.Action("Products_Destroy", "Home"))
@@ -125,6 +145,7 @@
                     var grid = $("#grid");
                     
                     $("#sheetTypeCategory").data("kendoDropDownList").select(0);
+                    $("#country").data("kendoDropDownList").select(0);
 
 
                     // Add minus icon for collapse element which is open by default
@@ -149,27 +170,23 @@
                     grid.find(".k-grid-toolbar").on("click", ".k-grid-add", function (e) 
                     {
                         e.preventDefault();
-                        
-                                                           
-                        
+  
                     });            
     
                 });
-
-                    function categoriesChange() {
-                     
-                               // var grid = $("#grid").data("kendoGrid");
-                               //
-                               // var value = this.value();
-                               // if (value === "0") {
-                               //         grid.dataSource.filter({}); 
-                               // } 
-                               // else 
-                               // {
-                               //     grid.dataSource.filter({ field: "sheetTypeID", operator: "eq", value: value });
-                               // }
-                               
-                    }                
+                
+                function countryChange() {
+                        var value = this.value(),
+                		 	 grid = $("#grid").data("kendoGrid");
+                
+                        if (value) {
+                            grid.dataSource.filter({ field: "CountryID", operator: "eq", value: parseInt(value) });
+                        } else {
+                            grid.dataSource.filter({});
+                        }
+                    }
+                
+                           
                     function showFiles(e) {
                         e.preventDefault();
                                 var product = this.dataItem($(e.currentTarget).closest("tr"));
@@ -183,8 +200,6 @@
                         
                         
                         function SheetFilesAvailable(data) {
-
-                                
 
                                if (data.listOfFiles !== undefined && data.listOfFiles !== null){
                                     var template = "<ul>";
@@ -202,10 +217,7 @@
                                   //  <li><a href="linkof file">filename</a></li>
                                     
                         }
-                            
-                            
-                        
-                  
+                                 
    </script>
 
 

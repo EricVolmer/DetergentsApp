@@ -20,6 +20,7 @@
           <ScalarProperty Name="categoryID" ColumnName="categoryID" />
           <ScalarProperty Name="articleNumber" ColumnName="articleNumber" />
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
+          <ScalarProperty Name="countryID" ColumnName="countryID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -41,6 +42,7 @@
           <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
           <ScalarProperty Name="adminApproved" ColumnName="adminApproved" />
+          <ScalarProperty Name="languageType" ColumnName="languageType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

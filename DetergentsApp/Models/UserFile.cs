@@ -21,6 +21,7 @@ namespace DetergentsApp.Models
         public int sheetTypeID { get; set; }
         public Nullable<int> vendorID { get; set; }
         public bool adminApproved { get; set; }
+        public string languageType { get; set; }
     
         public virtual SheetType SheetType { get; set; }
     }

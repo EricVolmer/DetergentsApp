@@ -3,21 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-@{
-    TempData["vendorID"] = ViewBag.vendorID;
-}
-@{
-    TempData["ArticleEAN"] = ViewBag.EAN;
-}
-@{
-    TempData["sheetTypeID"] = ViewBag.SheetTypeID;
-}
-@{
-    TempData["vendorName"] = ViewBag.vendorDetails;
-}
 
 <h2>Index</h2>
-
 
 <section class="well">
     <h2 class="ra-well-title">Vendor Upload</h2>
@@ -37,7 +24,7 @@
                             .Filter(FilterType.Contains)
                             .OptionLabel("Vendor Details")
                             .HtmlAttributes(new {style = "width: 400px;"})
-                            .DataSource(ds => { ds.Read(read => read.Action("vendorDropDownList", "Home")); }))
+                            .DataSource(ds => { ds.Read(read => read.Action("vendorDropDownList", "Vendor")); }))
                     </div>
                 </div>
 
@@ -53,7 +40,7 @@
                             .Filter(FilterType.Contains)
                             .OptionLabel("Enter EAN...")
                             .HtmlAttributes(new {style = "width: 400px;"})
-                            .DataSource(ds => { ds.Read(read => read.Action("vendorEANDropDownList", "Home")); }))
+                            .DataSource(ds => { ds.Read(read => read.Action("vendorEANDropDownList", "Vendor")); }))
                     </div>
                 </div>
 
@@ -130,76 +117,5 @@
 
 <script>
 
-        // $(document).ready( function () {
-        //    
-        //               
-        //                
-        //                 $("#uploadButton").click(function(e) {
-        //                 e.preventDefault();
-        //                  var vendorDetails = $("#vendorDetails").data("kendoDropDownList")
-        //                  var articleEAN = $("#articleEAN").data("kendoDropDownList")
-        //                  var sheetTypeCategory = $("#sheetTypeCategory").data("kendoDropDownList")
-        //                  var language = $("#language").data("kendoDropDownList")
-        //                 
-        //                  var files = 
-        //                 
-        //                 
-        //                 $.ajax({
-        //                 url: '@Url.Action("VendorSave", "Vendor")',
-        //                 type: "POST",
-        //                 cache: false,
-        //                 data: {
-        //                 __RequestVerificationToken: getToken(),
-        //                 vendorDetails: vendorDetails,
-        //                 articleEAN: articleEAN,
-        //                 sheetTypeCategory: sheetTypeCategory,
-        //                 language: language
-        //                 },
-        //                 success: function(data) {
-        //                 if (data.success) {
-        //                 console.log(data);
-        //                 location.reload();
-        //                 }
-        //                 },
-        //                 error: function(xhr) {
-        //                 alert(xhr.responseText);
-        //                 }
-        //                 });
-        //                 });
-        //         function getFileInfo(e) {
-        //                 return $.map(e.files, function(file) {
-        //                     var info = file.name;
-        //        
-        //                     // File size is not available in all browsers
-        //                     if (file.size > 0) {
-        //                         info  += " (" + Math.ceil(file.size / 1024) + " KB)";
-        //                     }
-        //                     return info;
-        //                 }).join(", ");
-        //             }
-        //     },
-
-
-
-
-
-function onUploadSuccess(e) {
-        var textboxName = $("#vendorName").data("kendoTextBox").value();
-        var textboxID = $("#vendorID").data("kendoTextBox").value();
-        var textboxEAN = $("#articleEAN").data("kendoDropDownList").value();
-        var textboxSheetType = $("#sheetTypeCategory").data("kendoDropDownList").value();
-        window.location.href = "@Url.Action("VendorSave",
-                                    "Vendor")?vendorName=" + textboxName 
-                                    + "&vendorID=" + textboxID 
-                                    + "&articleEAN=" + textboxEAN 
-                                    + "&sheetType=" + textboxSheetType;
-                                    
-        console.log(textboxName);
-        console.log(textboxID);
-        console.log(textboxEAN);
-        console.log(textboxSheetType);
-    }
-
-
-
+      
 </script>

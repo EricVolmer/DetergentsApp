@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/06/2021 11:21:40
+-- Date Created: 01/08/2021 20:16:16
 -- Generated from EDMX file: C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -28,6 +28,9 @@ IF OBJECT_ID(N'[dbo].[FK_ProductSheetType_Product]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProductSheetType_SheetType]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProductSheetType] DROP CONSTRAINT [FK_ProductSheetType_SheetType];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VendorProduct]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_VendorProduct];
 GO
 
 -- --------------------------------------------------
@@ -76,7 +79,8 @@ CREATE TABLE [dbo].[Products] (
     [productDescription] nvarchar(150)  NULL,
     [categoryID] int  NOT NULL,
     [articleNumber] int  NOT NULL,
-    [vendorID] int  NOT NULL
+    [vendorID] int  NOT NULL,
+    [countryID] int  NOT NULL
 );
 GO
 
@@ -95,7 +99,8 @@ CREATE TABLE [dbo].[UserFiles] (
     [productID] int  NOT NULL,
     [sheetTypeID] int  NOT NULL,
     [vendorID] int  NULL,
-    [adminApproved] bit  NOT NULL
+    [adminApproved] bit  NOT NULL,
+    [languageType] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -237,6 +242,21 @@ GO
 CREATE INDEX [IX_FK_VendorProduct]
 ON [dbo].[Products]
     ([vendorID]);
+GO
+
+-- Creating foreign key on [countryID] in table 'Products'
+ALTER TABLE [dbo].[Products]
+ADD CONSTRAINT [FK_CountryProduct]
+    FOREIGN KEY ([countryID])
+    REFERENCES [dbo].[CountrySet]
+        ([CountryID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CountryProduct'
+CREATE INDEX [IX_FK_CountryProduct]
+ON [dbo].[Products]
+    ([countryID]);
 GO
 
 -- --------------------------------------------------

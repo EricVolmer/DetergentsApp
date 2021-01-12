@@ -10,6 +10,14 @@ namespace DetergentsApp.Models
         public int categoryID { get; set; }
         public int sheetTypeID { get; set; }
         public int vendorID { get; set; }
+        
+        public int CountryID { get; set; }
+        
+        public countryViewModel Country
+        {
+            get;
+            set;
+        }
 
 
         [Required]

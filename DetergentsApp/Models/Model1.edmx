@@ -33,6 +33,10 @@
       <End Role="Vendor" EntitySet="VendorSet" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
+    <AssociationSet Name="CountryProduct" Association="DetergentsModel.Store.CountryProduct">
+      <End Role="Country" EntitySet="CountrySet" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Categories">
     <Key>
@@ -53,6 +57,7 @@
     <Property Name="categoryID" Type="int" Nullable="false" />
     <Property Name="articleNumber" Type="int" Nullable="false" />
     <Property Name="vendorID" Type="int" Nullable="false" />
+    <Property Name="countryID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SheetTypes">
     <Key>
@@ -72,6 +77,7 @@
     <Property Name="sheetTypeID" Type="int" Nullable="false" />
     <Property Name="vendorID" Type="int" Nullable="true" />
     <Property Name="adminApproved" Type="bit" Nullable="false" />
+    <Property Name="languageType" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="VendorSet">
     <Key>
@@ -131,6 +137,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="CountryProduct">
+    <End Role="Country" Type="DetergentsModel.Store.CountrySet" Multiplicity="1" />
+    <End Role="Product" Type="DetergentsModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="countryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ProductSheetType_Product">
     <End Role="Product" Type="DetergentsModel.Store.Products" Multiplicity="1" />
     <End Role="ProductSheetType" Type="DetergentsModel.Store.ProductSheetType" Multiplicity="*" />
@@ -182,6 +200,8 @@
           <Property Name="articleNumber" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Vendor" Relationship="DetergentsModel.VendorProduct" FromRole="Product" ToRole="Vendor" />
           <Property Name="vendorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="DetergentsModel.CountryProduct" FromRole="Product" ToRole="Country" />
+          <Property Name="countryID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="SheetType">
           <Key>
@@ -204,6 +224,7 @@
           <NavigationProperty Name="SheetType" Relationship="Self.FK__UserFile__sheetT__0539C240" FromRole="UserFile" ToRole="SheetType" />
           <Property Name="vendorID" Type="Int32" Nullable="true" />
           <Property Name="adminApproved" Type="Boolean" Nullable="false" />
+          <Property Name="languageType" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="FK__Product__categor__025D5595">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
@@ -252,6 +273,10 @@
             <End Role="Vendor" EntitySet="VendorSet" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
+          <AssociationSet Name="CountryProduct" Association="DetergentsModel.CountryProduct">
+            <End Role="Country" EntitySet="CountrySet" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="ProductSheetType">
           <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" />
@@ -271,6 +296,7 @@
           </Key>
           <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CountryName" Type="String" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="DetergentsModel.CountryProduct" FromRole="Country" ToRole="Product" />
         </EntityType>
         <Association Name="VendorProduct">
           <End Type="DetergentsModel.Vendor" Role="Vendor" Multiplicity="1" />
@@ -281,6 +307,18 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="vendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CountryProduct">
+          <End Type="DetergentsModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="countryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -309,6 +347,7 @@
           <ScalarProperty Name="categoryID" ColumnName="categoryID" />
           <ScalarProperty Name="articleNumber" ColumnName="articleNumber" />
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
+          <ScalarProperty Name="countryID" ColumnName="countryID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -330,6 +369,7 @@
           <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
           <ScalarProperty Name="adminApproved" ColumnName="adminApproved" />
+          <ScalarProperty Name="languageType" ColumnName="languageType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -37,7 +37,8 @@ namespace DetergentsApp.Controllers
                             productID = articleEAN,
                             sheetTypeID = sheetTypeCategory,
                             vendorID = vendorDetails,
-                            adminApproved = false
+                            adminApproved = false,
+                            languageType = language
 
                             //language
                         });
@@ -53,6 +54,55 @@ namespace DetergentsApp.Controllers
                 Console.WriteLine(e);
                 throw;
             }
+        }
+
+        public ActionResult vendorEANDropDownList()
+        {
+            var result = db.Products;
+
+            var containerList = new List<SelectListItem>();
+            var productViewModels = result.Select(entity => new ProductViewModel
+                {
+                    productID = entity.productID,
+                    EAN = entity.EAN,
+                    productName = entity.productName
+                })
+                .ToList();
+
+            foreach (var productViewModel in productViewModels)
+                containerList.Add(new SelectListItem
+                {
+                    Text = productViewModel.productName + " - " + productViewModel.EAN,
+                    Value = productViewModel.productID.ToString()
+                });
+
+            ViewBag.Category = containerList;
+
+            return Json(containerList, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult vendorDropDownList()
+        {
+            var result = db.VendorSet;
+
+            var containerList = new List<SelectListItem>();
+            var productViewModels = result.Select(entity => new VendorViewModel
+                {
+                    vendorID = entity.vendorID,
+                    vendorName = entity.vendorName
+                })
+                .ToList();
+
+            foreach (var productViewModel in productViewModels)
+                containerList.Add(new SelectListItem
+                {
+                    Text = productViewModel.vendorName + " - " + productViewModel.vendorID,
+                    Value = productViewModel.vendorID.ToString()
+                });
+
+            ViewBag.Category = containerList;
+
+            return Json(containerList, JsonRequestBehavior.AllowGet);
         }
 
         public static byte[] GetFilesBytes(HttpPostedFileBase file)

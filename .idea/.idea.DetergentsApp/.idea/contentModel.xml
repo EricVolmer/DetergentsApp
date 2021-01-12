@@ -48,6 +48,7 @@
         <e p="Models" t="Include">
           <e p="Category.cs" t="Include" />
           <e p="Country.cs" t="Include" />
+          <e p="countryViewModel.cs" t="Include" />
           <e p="Model1.Context.cs" t="Include" />
           <e p="Model1.Context.tt" t="Include" />
           <e p="Model1.cs" t="Include" />
