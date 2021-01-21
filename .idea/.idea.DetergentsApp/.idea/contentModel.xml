@@ -31,6 +31,7 @@
           <e p="GridController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
+          <e p="PublicController.cs" t="Include" />
           <e p="VendorController.cs" t="Include" />
         </e>
         <e p="DetergentsApp.csproj" t="IncludeRecursive" />
@@ -131,6 +132,10 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Public" t="Include">
+            <e p="Details.cshtml" t="Include" />
+            <e p="Public.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />

@@ -24,25 +24,21 @@
         columns.Bound(c => c.EAN).Width(150);
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(120);
-
-
-        //    columns.Bound(c => c.vendorName).Title("Vendor Name");
-        //    columns.Bound(c => c.vendorID).Title("Vendor Name");
-
-        columns.ForeignKey(c => c.vendorID, (List<SelectListItem>)
-            ViewBag.Vendor, "Value", "Text").Title("Vendor ID").Width(150);
-
-
+        
+    //    columns.Bound(c => c.vendorName).Title("Vendor Name");
+        columns.Bound(c => c.vendorID).Title("Vendor Name");
+        
         columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
             ViewBag.Country, "Value", "Text").Title("Country").Width(120);
 
         columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
-
+        
+        
         columns.Command(command =>
         {
-            command.Edit().UpdateText("Save");
-            command.Destroy();
-            command.Custom("Show Files").Click("showFiles");
+            @Html.ActionLink("Details", "Details", new {id = columns.Bound(c => c.productID)});
+
+            command.Custom("Details").Click("showFiles");
         }).Width(230);
     })
     .ToolBar(toolbar =>
@@ -54,8 +50,7 @@
                                      <span class="k-icon k-i-reload"></span>
                                  </a>
                              </div>
-                             @* Create button  *@
-                             <a class='k-button k-grid-add' href='#'>Add new Article</a>
+                             
                              @* Search button *@
                              <span class="k-textbox k-grid-search k-display-flex">
                                  <input autocomplete="off" placeholder="Search..." title="Search..." class="k-input">
@@ -63,22 +58,7 @@
                                      <span class="k-icon k-i-search"></span>
                                  </span>
                              </span>
-
-                             <div class="toolbar">
-                                 <label class="category-label" for="category">Data Sheet Types:</label>
-                                 @(Html.Kendo().DropDownList()
-                                     .Name("sheetTypeCategory")
-                                     .DataTextField("Text")
-                                     .DataValueField("Value")
-                                     .AutoBind(true)
-                                     .HtmlAttributes(new {style = "width: 150px;"})
-                                     .DataSource(ds =>
-                                     {
-                                         ds.Read(read =>
-                                             read.Action("sheetType_Categories", "Home"));
-                                     }))
-
-                             </div>
+                             
                              <div class="toolbar">
                                  <label class="country-label" for="country">Country:</label>
                                  @(Html.Kendo().DropDownList()
@@ -119,7 +99,6 @@
         .Model(model =>
         {
             model.Id(c => c.productID);
-            model.Field(p => p.vendorID).Editable(true);
         })
         .Create(update => update.Action("Products_Create_Update", "Home"))
         .Update(update => update.Action("Products_Create_Update", "Home"))
@@ -147,7 +126,6 @@
                     
                     var grid = $("#grid");
                     
-                    $("#sheetTypeCategory").data("kendoDropDownList").select(0);
                     $("#country").data("kendoDropDownList").select(0);
 
 
@@ -169,13 +147,6 @@
                         e.preventDefault();
                         grid.data("kendoGrid").dataSource.read();
                     });
-                                            
-                    grid.find(".k-grid-toolbar").on("click", ".k-grid-add", function (e) 
-                    {
-                        e.preventDefault();
-  
-                    });            
-    
                 });
                 
                 function countryChange() {
@@ -194,15 +165,16 @@
                         e.preventDefault();
                                 var product = this.dataItem($(e.currentTarget).closest("tr"));
                                 
-                                var dropdownlist = $("#sheetTypeCategory").data("kendoDropDownList").value();
                                  
                              //   var sheetTypeId = dropdownlist.val();                      
-                                window.location.href = "@Url.Action("UploadedFiles",
-                                                            "FileUpload")?productID=" + product.productID + "&sheetTypeID=" + dropdownlist;
+                                window.location.href = "@Url.Action("Details",
+                                                            "Public")?productID=" + product.productID;
                         }
                         
                                                
                         function SheetFilesAvailable(data) {
+
+                    //        if (($('#grid').find(data.listOfFiles)))
                     
                                if (data.listOfFiles !== undefined && data.listOfFiles !== null){
                                     var template = "<ul>";
@@ -215,9 +187,12 @@
                                     }
                                     template += "</ul>"
                                     return template;
-                               }     
-                        }              
+                               }
+                                    
+                        }
+                                 
    </script>
+
 
 <style>
     .k-readonly {

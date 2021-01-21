@@ -21,8 +21,10 @@
             command.Destroy();
         }).Width(180);
     })
-    .ToolBar(toolbar => { toolbar.Create(); })
     .Editable(editable => editable.Mode(GridEditMode.InLine))
+
+    .ToolBar(toolbar => { toolbar.Create(); })
+    
     .DataSource(dataSource => dataSource
         .Ajax()
         .ServerOperation(false)
@@ -45,16 +47,18 @@
     .Columns(columns =>
     {
         columns.Bound(f => f.Name).ClientTemplate("<a href='files/?id=#= Id #'>#= Name #</a>").Title("File name");
-        columns.Bound(f => f.Id);
         columns.Bound(f => f.productID);
         columns.Bound(f => f.vendorID);
-        columns.Bound(f => f.sheetTypeID);
         columns.Bound(f => f.adminApproved);
-        columns.Select();
+        
+        columns.ForeignKey(c => c.sheetTypeID, (List<SelectListItem>)
+            ViewBag.SheetType, "Value", "Text").Title("SheetType").Width(150);
 
-
-        columns.Command(command => { command.Destroy(); }).Width(180);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
     })
+    .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("Continue to delete this record?").DisplayDeleteConfirmation("Continue to delete this record?"))
+
+
     .Sortable()
     .Pageable()
     .DataSource(dataSource => dataSource
@@ -62,37 +66,10 @@
         .PageSize(10)
         .Model(m => m.Id(f => f.Id))
         .Read(read => read.Action("FilesReadAdmin", "FileUpload"))
+        .Update(update => update.Action("VendorFileUpdate", "FileUpload"))
         .Destroy(update => update.Action("FilesDestroyAdmin", "FileUpload"))
     ))
 
 <script>
-                  
-                 
-                    
-                    $("#gridPopup").kendoGrid({
-                                            pageable: true,
-                                            height: 550,
-                                            toolbar: ["create"],
-                                            columns: [ { selectable: true, width:45},
-                                                { field:"ProductName", title: "Product Name" },
-                                                { field: "UnitPrice", title:"Unit Price", format: "{0:c}", width: "120px" },
-                                                { field: "UnitsInStock", title:"Units In Stock", width: "120px" },
-                                                { field: "Discontinued", width: "120px", editor: customBoolEditor },
-                                                { command: [ "destroy"], title: "&nbsp;", width: "250px" }],
-                                            editable: "popup"
-                                        })
-                                      
-                                      $("#filesGrid").on("click", ".k-checkbox", function(e){
-                                                          var grid = $("#filesGrid").data("kendoGrid");
-                                                          var selectedRow = $(e.target).closest("tr");
-                                                          grid.editRow(selectedRow);
-                                              
-                                    });
-                    
-                                    function customBoolEditor(container, options) {
-                                        var guid = kendo.guid();
-                                        $('<input class="k-checkbox" id="' + guid + '" type="checkbox" name="Discontinued" data-type="boolean" data-bind="checked:Discontinued">').appendTo(container);
-                                        $('<label class="k-checkbox-label" for="' + guid + '"></label>').appendTo(container);
-                                    }
 
 </script>

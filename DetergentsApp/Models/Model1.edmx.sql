@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/08/2021 20:16:16
+-- Date Created: 01/19/2021 17:17:31
 -- Generated from EDMX file: C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -31,6 +31,9 @@ IF OBJECT_ID(N'[dbo].[FK_ProductSheetType_SheetType]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_VendorProduct]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_VendorProduct];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CountryProduct]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_CountryProduct];
 GO
 
 -- --------------------------------------------------
@@ -95,12 +98,12 @@ GO
 CREATE TABLE [dbo].[UserFiles] (
     [fileID] int IDENTITY(1,1) NOT NULL,
     [fileName] varchar(50)  NOT NULL,
-    [fileData] varbinary(max)  NOT NULL,
     [productID] int  NOT NULL,
     [sheetTypeID] int  NOT NULL,
     [vendorID] int  NULL,
     [adminApproved] bit  NOT NULL,
-    [languageType] nvarchar(max)  NOT NULL
+    [languageType] nvarchar(max)  NOT NULL,
+    [oldFile] bit  NOT NULL
 );
 GO
 

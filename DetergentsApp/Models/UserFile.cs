@@ -16,12 +16,12 @@ namespace DetergentsApp.Models
     {
         public int fileID { get; set; }
         public string fileName { get; set; }
-        public byte[] fileData { get; set; }
         public int productID { get; set; }
         public int sheetTypeID { get; set; }
         public Nullable<int> vendorID { get; set; }
         public bool adminApproved { get; set; }
         public string languageType { get; set; }
+        public bool oldFile { get; set; }
     
         public virtual SheetType SheetType { get; set; }
     }

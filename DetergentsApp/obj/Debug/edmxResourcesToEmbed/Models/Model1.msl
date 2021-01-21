@@ -37,12 +37,12 @@
         <MappingFragment StoreEntitySet="UserFiles">
           <ScalarProperty Name="fileID" ColumnName="fileID" />
           <ScalarProperty Name="fileName" ColumnName="fileName" />
-          <ScalarProperty Name="fileData" ColumnName="fileData" />
           <ScalarProperty Name="productID" ColumnName="productID" />
           <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
           <ScalarProperty Name="adminApproved" ColumnName="adminApproved" />
           <ScalarProperty Name="languageType" ColumnName="languageType" />
+          <ScalarProperty Name="oldFile" ColumnName="oldFile" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

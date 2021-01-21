@@ -1,0 +1,87 @@
+﻿@using System.ComponentModel
+@using DetergentsApp.Models
+
+@{
+    TempData["productID"] = ViewBag.ProductID;
+}
+
+
+<div class="jumbotron jumbotron-fluid m-0 jumbotron-splash tx-scrollview-container">
+    <div id="scrollview" class="tx-scrollview">
+        <h1 class="h1">Article Details</h1>
+        <p> Here is the description of the file and also the current available file. </p>
+        
+    </div>
+</div>
+<div class="tx-destination-summary">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                @(Html.Kendo().TabStrip()
+                                            .Animation(false)
+                                            .Scrollable(true)
+                                            .Name("tabStripInfo")
+                                            .Items(items =>
+                                            {
+                                                items.Add()
+                                                    .Text(string.Format("<span class='d-none d-sm-block'>Overview<span>"))
+                                                    .Encoded(false)
+                                                    .Selected(true)
+                                                    .Content(@<text>
+                                                       @(Html.Kendo().Grid<ProductViewModel>()
+                                                           .Name("grid")
+                                                           .Columns(columns =>
+                                                           {
+                                                               columns.Bound(c => c.productName).Width(200);
+                                                               columns.Bound(c => c.productDescription).Width(230);
+                                                               columns.Bound(c => c.EAN).Width(150);
+
+                                                           })
+                                                           .Pageable()
+                                                           .Resizable(r => r.Columns(true))
+                                                           .Sortable()
+                                                           .Selectable()
+                                                           
+                                                           .DataSource(dataSource => dataSource
+                                                               .Ajax()
+                                                               .ServerOperation(false)
+                                                               .PageSize(20)
+                                                               .Group(group => group.Add("categoryID", typeof(string), ListSortDirection.Descending))
+                                                               .Read(read => read.Action("Product_Read", "Home"))
+                                                               .Model(model =>
+                                                               {
+                                                                   model.Id(c => c.productID);
+                                                               })
+                                                               ))
+                
+                                                    </text>);
+                                                items.Add()
+                                                    .Text(string.Format(" <span class='d-none d-sm-block'>Old files</span>"))
+                                                    .Encoded(false);
+                                            })
+                        )
+
+            </div>
+            <div class="col-lg-4">
+
+                    @(Html.Kendo().Grid<UserFileViewModel>()
+                        .Name("filesGrid")
+                        .Columns(columns =>
+                        {
+                            columns.Bound(f => f.Name).ClientTemplate("<a href='files/?id=#= Id #'>#= Name #</a>").Title("File name");
+                            columns.Bound(f => f.productID);
+                            columns.Bound(f => f.vendorID);
+                        })
+                        .Sortable()
+                        .Pageable()
+                        .DataSource(dataSource => dataSource
+                            .Ajax()
+                            .PageSize(10)
+                            .Model(m => m.Id(f => f.Id))
+                            .Read(read => read.Action("FilesReadAdmin", "FileUpload"))
+                        ))
+                </div>
+        </div>
+    </div>
+</div>
+

@@ -1,202 +1,41 @@
-﻿@using DetergentsApp.Models
-@model IEnumerable<DetergentsApp.Models.Category>
+﻿@using System.ComponentModel
+@using DetergentsApp.Models
+@model IEnumerable<DetergentsApp.Models.ProductViewModel>
 
+<h2>All Files</h2>
 
-@helper RenderGrid()
-{
-    @(Html.Kendo().Grid<UserFileViewModel>()
-        .Name("filesGrid")
-        .ToolBar(t => t.Template(
-            @<text>
-                @(Html.Kendo().Upload()
-                    .Name("files")
-                    .Async(a => a.Save("Save", "Grid"))
-                    .Events(e => e.Success("onUploadSuccess"))
-                    .ShowFileList(false))
-             </text>
-            ))
+@(Html.Kendo().Grid<UserFileViewModel>()
+    .Name("filesGrid")
         .Columns(columns =>
         {
-            columns.Bound(f => f.Name).ClientTemplate("<a href='Home/Download?id=#= Id #'>#= Name #</a>").Title("File name");
-
-            // Calculate the file size in KB, round it up and display it in a client template
-            columns.Bound(f => f.DataLength).ClientTemplate("#= Math.ceil(DataLength / 1024) #").Title("File size in KB").Width(150);
-
-            columns.Command(command => command.Destroy()).Width(100);
+            columns.Bound(f => f.Id);
+            columns.Bound(f => f.Name).ClientTemplate("<a href='files/?id=#= Id #'>#= Name #</a>").Title("File name");
+            
+            columns.Bound(f => f.sheetTypeName);
+            
+            columns.Bound(f => f.productID);
+            
+            columns.Bound(f => f.vendorID);
+            columns.Bound(f => f.adminApproved);
+            
+            
+    
+            columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
         })
+        .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("Continue to delete this record?").DisplayDeleteConfirmation("Continue to delete this record?"))
+    
+    
         .Sortable()
         .Pageable()
         .DataSource(dataSource => dataSource
             .Ajax()
             .PageSize(10)
             .Model(m => m.Id(f => f.Id))
-            //  .Read(read => read.Action("FilesRead", "Grid"))
-            .Destroy(update => update.Action("FilesDestroy", "FileUpload"))
+            .Read(read => read.Action("FilesReadAll", "FileUpload"))
+            .Update(update => update.Action("VendorFileUpdate", "FileUpload"))
+            .Destroy(update => update.Action("FilesDestroyAdmin", "FileUpload"))
         ))
-}
 
-@{
-    Html.Kendo().Grid(Model)
-        .Name("Categories")
-        .Columns(columns =>
-        {
-            columns.Bound(e => e.categoryID).Width(140).Visible(false);
-            columns.Bound(e => e.categoryName).Width(140);
-        })
-        .DetailTemplate(e =>
-        {
-            Html.Kendo().TabStrip()
-                .Name("TabStrip_" + e.categoryID)
-                .SelectedIndex(0)
-                .Items(items =>
-                {
-                    items.Add().Text("Articles").Content(@<text>
+<script>
 
-                                                             @(Html.Kendo().Grid(e.Products)
-                                                                 .Name("Articles_" + e.categoryID)
-                                                                 .Columns(columns =>
-                                                                 {
-                                                                     columns.Select().Width(75).HtmlAttributes(new {@class = "checkbox-align"}).HeaderHtmlAttributes(new {@class = "checkbox-align"}).Width(20);
-                                                                     columns.Bound(c => c.productID).Visible(false);
-
-                                                                     columns.Bound(o => o.sheetTypeID).Width(101);
-                                                                     columns.Bound(o => o.productName).Width(140);
-                                                                     columns.Bound(o => o.productDescription).Width(200);
-                                                                     columns.Bound(o => o.EAN).Width(200);
-                                                                     columns.Bound(o => o.Category.categoryName).Format("{0:d}");
-
-                                                                     columns.Command(command => { command.Edit(); }).Width(180);
-                                                                 })
-                                                                 .Pageable()
-                                                                 .Sortable()
-                                                                 .ToolBar(toolbar => { toolbar.Create(); })
-                                                                 .Editable(editable => editable.Mode(GridEditMode.PopUp))
-                                                                 .DataSource(dataSource => dataSource
-                                                                     .Server()
-                                                                     .PageSize(5)
-                                                                     .Model(model => { model.Id(p => p.productID); })
-                                                                     .Read(read => read.Action("Products_Read", "Grid"))
-                                                                     .Create(create => create.Action("Category_Create", "Grid"))
-                                                                     .Update(update => update.Action("Products_Update", "Grid"))
-                                                                 //    .Destroy(destroy => destroy.Action("Products_Destroy", "Grid"))
-                                                                 ))
-
-
-                                                          </text>);
-                    items.Add().Text("List of files uploaded").Content(
-                        @<div class="file-details">
-                            <text>
-                                @RenderGrid()
-                            </text>
-
-                        </div>);
-                })
-                .Render();
-        })
-        .RowAction(row =>
-        {
-            if (row.Index == 0)
-            {
-                row.DetailRow.Expanded = true;
-            }
-        })
-        .Pageable()
-        .ToolBar(toolbar => { toolbar.Create(); })
-        .Editable(editable => editable.Mode(GridEditMode.PopUp))
-        .DataSource(dataSource => dataSource
-            .Server()
-            .PageSize(5)
-            .Model(model => { model.Id(p => p.Products); })
-            .Read(read => read.Action("Products_Read", "Grid"))
-            .Create(create => create.Action("Category_Create", "Grid"))
-            .Update(update => update.Action("Products_Update", "Grid"))
-        //    .Destroy(destroy => destroy.Action("Products_Destroy", "Grid"))
-        )
-        .Sortable()
-        .Render();
-}
-
-
-@(Html.Kendo().Grid<ProductViewModel>()
-    .Name("grid")
-    .Columns(columns =>
-    {
-        columns.Bound(c => c.productID).Visible(false);
-
-        columns.Bound(o => o.sheetTypeName).Width(101);
-        columns.Bound(o => o.productName).Width(140);
-        columns.Bound(o => o.productDescription).Width(200);
-        columns.Bound(o => o.EAN).Width(200);
-
-        columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
-            ViewBag.Category, "Value", "Text").Title("Category").Width(150);
-
-        columns.Command(command =>
-        {
-            command.Edit();
-            command.Destroy();
-        }).Width(180);
-    })
-    .ToolBar(toolBar => { toolBar.Create(); })
-    .Editable(editable => editable.Mode(GridEditMode.InLine))
-    .Filterable()
-    .Groupable()
-    .Pageable()
-    .Scrollable()
-    .HtmlAttributes(new {style = "height:540px;"})
-    .DataSource(dataSource => dataSource
-        .Ajax()
-        .PageSize(20)
-        .ServerOperation(false)
-        .Events(events => events.Error("errorHandler"))
-        .Model(model =>
-        {
-            model.Id(p => p.productID);
-            model.Field(p => p.productID).Editable(false);
-        })
-        .Read(read => read.Action("Products_Read", "Grid"))
-        .Update(update => update.Action("Products_Create_Update", "Grid"))
-        .Create(create => create.Action("Products_Create_Update", "Grid"))
-        .Destroy(destroy => destroy.Action("Products_Destroy", "Grid"))
-    )
-    )
-
-<script type="text/javascript">
-    function errorHandler(e) {    
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
-                }
-            });        
-            alert(message);
-        }
-    }
 </script>
-
-<script type="text/javascript">
-    function onUploadSuccess() {
-        // Force the rebinding of the Grid on successful upload
-        $("#filesGrid").data("kendoGrid").dataSource.read();
-    }
-</script>
-
-<style>
-	    .file-details ul
-        {
-            list-style:none;
-            font-style:italic;
-            margin-bottom: 20px;
-        }
-
-        .file-details label
-        {
-            display:inline-block;
-            width:90px;
-            font-style:normal;
-            font-weight:bold;
-        }
-    </style>

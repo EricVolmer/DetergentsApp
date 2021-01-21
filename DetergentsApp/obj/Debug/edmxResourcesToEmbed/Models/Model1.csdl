@@ -41,13 +41,13 @@
     </Key>
     <Property Name="fileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="fileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="fileData" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="productID" Type="Int32" Nullable="false" />
     <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="SheetType" Relationship="Self.FK__UserFile__sheetT__0539C240" FromRole="UserFile" ToRole="SheetType" />
     <Property Name="vendorID" Type="Int32" Nullable="true" />
     <Property Name="adminApproved" Type="Boolean" Nullable="false" />
     <Property Name="languageType" Type="String" Nullable="false" />
+    <Property Name="oldFile" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK__Product__categor__025D5595">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />

@@ -72,12 +72,12 @@
     </Key>
     <Property Name="fileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fileName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="fileData" Type="varbinary(max)" Nullable="false" />
     <Property Name="productID" Type="int" Nullable="false" />
     <Property Name="sheetTypeID" Type="int" Nullable="false" />
     <Property Name="vendorID" Type="int" Nullable="true" />
     <Property Name="adminApproved" Type="bit" Nullable="false" />
     <Property Name="languageType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="oldFile" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="VendorSet">
     <Key>
@@ -218,17 +218,19 @@
           </Key>
           <Property Name="fileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fileData" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="productID" Type="Int32" Nullable="false" />
           <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SheetType" Relationship="Self.FK__UserFile__sheetT__0539C240" FromRole="UserFile" ToRole="SheetType" />
           <Property Name="vendorID" Type="Int32" Nullable="true" />
           <Property Name="adminApproved" Type="Boolean" Nullable="false" />
           <Property Name="languageType" Type="String" Nullable="false" />
+          <Property Name="oldFile" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Product__categor__025D5595">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Role="Category" Type="Self.Category" Multiplicity="1" >
+          </End>
+          <End Role="Product" Type="Self.Product" Multiplicity="*" >
+          </End>
           <ReferentialConstraint>
             <Principal Role="Category">
               <PropertyRef Name="categoryID" />
@@ -240,7 +242,7 @@
         </Association>
         <Association Name="FK__UserFile__sheetT__0539C240">
           <End Role="SheetType" Type="Self.SheetType" Multiplicity="1" />
-          <End Role="UserFile" Type="Self.UserFile" Multiplicity="*" />
+          <End Role="UserFile" Type="Self.UserFile" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="SheetType">
               <PropertyRef Name="sheetTypeID" />
@@ -279,8 +281,10 @@
           </AssociationSet>
         </EntityContainer>
         <Association Name="ProductSheetType">
-          <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" />
-          <End Type="DetergentsModel.SheetType" Role="SheetType" Multiplicity="*" />
+          <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" >
+          </End>
+          <End Type="DetergentsModel.SheetType" Role="SheetType" Multiplicity="*" >
+          </End>
         </Association>
         <EntityType Name="Vendor">
           <Key>
@@ -364,12 +368,12 @@
         <MappingFragment StoreEntitySet="UserFiles">
           <ScalarProperty Name="fileID" ColumnName="fileID" />
           <ScalarProperty Name="fileName" ColumnName="fileName" />
-          <ScalarProperty Name="fileData" ColumnName="fileData" />
           <ScalarProperty Name="productID" ColumnName="productID" />
           <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
           <ScalarProperty Name="adminApproved" ColumnName="adminApproved" />
           <ScalarProperty Name="languageType" ColumnName="languageType" />
+          <ScalarProperty Name="oldFile" ColumnName="oldFile" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

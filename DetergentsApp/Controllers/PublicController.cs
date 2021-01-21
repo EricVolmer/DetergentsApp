@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using DetergentsApp.Models;
 using Kendo.Mvc.Extensions;
@@ -9,16 +10,16 @@ using Kendo.Mvc.UI;
 
 namespace DetergentsApp.Controllers
 {
-    public class HomeController : Controller
+    public class PublicController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
 
-        public ActionResult Index()
+        public ActionResult Public()
         {
+            
             CreateViewListCategory();
-            CreateViewListSheetType();
-            CreateViewListVendor();
             CreateViewListCountry();
+            
             return View();
         }
 
@@ -48,59 +49,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-
-        public void CreateViewListSheetType()
-        {
-            try
-            {
-                var result = db.SheetTypes;
-
-                var containerList = new List<SelectListItem>();
-                var productViewModels = result.Select(entity => new ProductViewModel
-                    {
-                        sheetTypeName = entity.sheetTypeName,
-                        sheetTypeID = entity.sheetTypeID
-                    })
-                    .ToList();
-
-                foreach (var productViewModel in productViewModels)
-                    containerList.Add(new SelectListItem
-                        {Text = productViewModel.sheetTypeName, Value = productViewModel.sheetTypeID.ToString()});
-
-                ViewBag.SheetType = containerList;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-        public void CreateViewListVendor()
-        {
-            try
-            {
-                var result = db.VendorSet;
-
-                var containerList = new List<SelectListItem>();
-                var productViewModels = result.Select(entity => new ProductViewModel
-                    {
-                        vendorName = entity.vendorName,
-                        vendorID = entity.vendorID
-                    })
-                    .ToList();
-
-                foreach (var productViewModel in productViewModels)
-                    containerList.Add(new SelectListItem
-                        {Text = productViewModel.vendorName + " - " + productViewModel.vendorID, Value = productViewModel.vendorID.ToString()});
-                ViewBag.Vendor = containerList;
-                
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
+        
         public void CreateViewListCountry()
         {
             try
@@ -317,6 +266,16 @@ namespace DetergentsApp.Controllers
 
             return Json(country, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Details(int productID)
+        {
+            var product = db.Products.Find(productID);
+
+            ViewBag.ProductID = productID;
+            
+            
+
+            return View();
+        }
         
     }
-}
+    }

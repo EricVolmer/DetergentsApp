@@ -14,6 +14,14 @@ namespace DetergentsApp.Controllers
 
         public ActionResult Admin2()
         {
+
+            CreateViewListCategory();
+            CreateViewListSheetType();
+            return View();
+        }
+        
+        public void CreateViewListCategory()
+        {
             try
             {
                 var result = db.Categories;
@@ -37,8 +45,32 @@ namespace DetergentsApp.Controllers
                 Console.WriteLine(e);
                 throw;
             }
+        }
+        public void CreateViewListSheetType()
+        {
+            try
+            {
+                var result = db.SheetTypes;
 
-            return View();
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new ProductViewModel
+                    {
+                        sheetTypeName = entity.sheetTypeName,
+                        sheetTypeID = entity.sheetTypeID
+                    })
+                    .ToList();
+
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.sheetTypeName, Value = productViewModel.sheetTypeID.ToString()});
+
+                ViewBag.SheetType = containerList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public ActionResult Products_Read([DataSourceRequest] DataSourceRequest request)
