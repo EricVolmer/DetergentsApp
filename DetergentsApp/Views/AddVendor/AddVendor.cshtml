@@ -1,0 +1,58 @@
+﻿@using DetergentsApp.Models
+<div class="demo-section k-content">
+    <h4>Grid Layout</h4>
+    <div id="validation-success"></div>
+    @(Html.Kendo().Form<VendorViewModel>()
+        .Name("exampleForm")
+        .HtmlAttributes(new {action = "VendorCreate", method = "POST"})
+        .Layout("grid")
+        .Grid(g => g.Cols(2).Gutter(20))
+        .Validatable(v =>
+        {
+            v.ValidateOnBlur(true);
+            v.ValidationSummary(vs => vs.Enable(false));
+        })
+        .Items(items =>
+        {
+            items.AddGroup()
+                .Label("Personal Information")
+                .Layout("grid")
+                .Grid(g => g.Cols(1).Gutter(10))
+                .Items(i =>
+                {
+                    i.Add()
+                        .Field(f => f.vendorID)
+                        .Label(l => l.Text("Vendor ID:"));
+                    i.Add()
+                        .Field(f => f.vendorName)
+                        .Label(l => l.Text("Name:"));
+                });
+        })
+        .Events(ev => ev.ValidateField("onFormValidateField").Submit("onFormSubmit").Clear("onFormClear"))
+        )
+</div>
+
+<script>
+    function onFormValidateField(e) {
+        $("#validation-success").html("");
+    }
+
+    function onFormSubmit(e) {
+        e.preventDefault();
+        $("#validation-success").html("<div class='k-messagebox k-messagebox-success'>Form data is valid!</div>");
+        window.location.href = "@Url.Action("VendorCreate",
+                                    "AddVendor")?vendorID=" + vendor.vendorID +
+                                                                    "&vendorName=" + vendor.vendorName ;
+    }
+
+    function onFormClear(e) {
+        $("#validation-success").html("");
+    }
+</script>
+
+<style>
+    #example .k-content {
+        max-width: 600px;
+        width: 600px;
+    }
+</style>

@@ -54,7 +54,7 @@ namespace DetergentsApp.Controllers
             }
 
             ViewBag.Category = new SelectList(db.Categories, "categoryID", "categoryName", product.Category);
-        //    ViewBag.Category = new SelectList(db.SheetTypes, "sheetTypeID", "sheetTypeName", product.SheetType);
+            //    ViewBag.Category = new SelectList(db.SheetTypes, "sheetTypeID", "sheetTypeName", product.SheetType);
             return View(product);
         }
 
@@ -116,8 +116,7 @@ namespace DetergentsApp.Controllers
         }
 
         ///////////////////////////////////////////////////////////////////////
-        ///
-        ///
+        /// 
         public ActionResult Products_Read([DataSourceRequest] DataSourceRequest request)
         {
             return Json(GetProducts().ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -125,7 +124,8 @@ namespace DetergentsApp.Controllers
 
         public ActionResult Get_Product(int ID)
         {
-            return Json(GetProducts().Where(product => product.productID == ID).SingleOrDefault(), JsonRequestBehavior.AllowGet);
+            return Json(GetProducts().Where(product => product.productID == ID).SingleOrDefault(),
+                JsonRequestBehavior.AllowGet);
         }
 
 

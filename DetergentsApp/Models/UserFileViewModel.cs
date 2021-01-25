@@ -4,9 +4,10 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int? DataLength { get; set; }
         public int productID { get; set; }
         public int sheetTypeID { get; set; }
+        
+        public string productName { get; set; }
         
         public string sheetTypeName { get; set; }        
         public int? vendorID { get; set; }

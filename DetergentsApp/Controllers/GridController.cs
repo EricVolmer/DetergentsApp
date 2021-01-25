@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-using System.Web.Routing;
+﻿using System.Web.Mvc;
 using DetergentsApp.Models;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
 
 namespace DetergentsApp.Controllers
 {

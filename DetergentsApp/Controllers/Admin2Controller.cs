@@ -14,12 +14,11 @@ namespace DetergentsApp.Controllers
 
         public ActionResult Admin2()
         {
-
             CreateViewListCategory();
             CreateViewListSheetType();
             return View();
         }
-        
+
         public void CreateViewListCategory()
         {
             try
@@ -46,6 +45,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+
         public void CreateViewListSheetType()
         {
             try

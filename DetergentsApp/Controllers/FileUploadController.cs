@@ -37,7 +37,35 @@ namespace DetergentsApp.Controllers
                 if (sheetType != null) userFiles.AddRange(sheetType.UserFiles);
             }
 
+            CreateViewListSheetType();
             return View();
+        }
+
+        public void CreateViewListSheetType()
+        {
+            try
+            {
+                var result = db.SheetTypes;
+
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new ProductViewModel
+                    {
+                        sheetTypeName = entity.sheetTypeName,
+                        sheetTypeID = entity.sheetTypeID
+                    })
+                    .ToList();
+
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.sheetTypeName, Value = productViewModel.sheetTypeID.ToString()});
+
+                ViewBag.SheetType = containerList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
 
@@ -70,7 +98,6 @@ namespace DetergentsApp.Controllers
 
                 // Return an empty string to signify success
                 return View("UploadedFiles");
-
             }
             catch (Exception e)
             {
@@ -78,8 +105,8 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-        
-       [AcceptVerbs(HttpVerbs.Post)]
+
+        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult VendorFileUpdate([DataSourceRequest] DataSourceRequest request,
             UserFileViewModel userFile)
         {
@@ -88,45 +115,91 @@ namespace DetergentsApp.Controllers
                 var sheetType = db.SheetTypes.Find(userFile.sheetTypeID);
                 var sheetTypes = db.SheetTypes.ToList();
 
-                
-                    var entity = db.UserFiles.Find(userFile.Id);
-                    if (entity != null)
+
+                var entity = db.UserFiles.Find(userFile.Id);
+                if (entity != null)
+                {
+                    if (entity.oldFile == false && db.Products.Find(entity.productID).Equals(userFile.productID))
                     {
-                        if (entity.oldFile == false && db.Products.Find(entity.productID).Equals(userFile.productID))
-                        {
-                            entity.oldFile = true;
-                        }
-                        else
-                        {
-                            entity.fileID = userFile.Id;
-                            entity.fileName = userFile.Name;
-                            entity.productID = userFile.productID;
-                            entity.vendorID = userFile.vendorID;
-                            entity.SheetType = sheetType;
-                            entity.adminApproved = userFile.adminApproved;
-                        }
-                        
-                        
-                        try
-                        {
-                            //    var existingProduct = db.Products.Find(product.productID);
-                            db.Entry(entity).State = EntityState.Modified;
-                            db.SaveChanges();
-                            return Json(new[] {userFile}.ToDataSourceResult(request, ModelState));
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                            throw;
-                        }
+                        entity.oldFile = true;
                     }
-                
+                    else
+                    {
+                        entity.fileID = userFile.Id;
+                        entity.fileName = userFile.Name;
+                        entity.productID = userFile.productID;
+                        entity.vendorID = userFile.vendorID;
+                        entity.SheetType = sheetType;
+                        entity.adminApproved = userFile.adminApproved;
+                    }
+
+
+                    try
+                    {
+                        //    var existingProduct = db.Products.Find(product.productID);
+                        db.Entry(entity).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return Json(new[] {userFile}.ToDataSourceResult(request, ModelState));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
             }
 
             return Json(new[] {userFile}.ToDataSourceResult(request, ModelState));
         }
-        
-        public ActionResult FilesRead([DataSourceRequest] DataSourceRequest request, int productID, int sheetTypeID)
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AdminFileUpdate([DataSourceRequest] DataSourceRequest request,
+            UserFileViewModel userFile)
+        {
+            if (ModelState.IsValid)
+            {
+                var sheetType = db.SheetTypes.Find(userFile.sheetTypeID);
+                var sheetTypes = db.SheetTypes.ToList();
+
+
+                var entity = db.UserFiles.Find(userFile.Id);
+                if (entity != null)
+                {
+                    if (entity.oldFile == false && db.Products.Find(entity.productID).Equals(userFile.productID))
+                    {
+                        entity.oldFile = true;
+                    }
+                    else
+                    {
+                        entity.fileID = userFile.Id;
+                        entity.fileName = userFile.Name;
+                        entity.productID = userFile.productID;
+                        entity.vendorID = userFile.vendorID;
+                        entity.SheetType = sheetType;
+                        entity.adminApproved = userFile.adminApproved;
+                    }
+
+
+                    try
+                    {
+                        //    var existingProduct = db.Products.Find(product.productID);
+                        db.Entry(entity).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return Json(new[] {userFile}.ToDataSourceResult(request, ModelState));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
+            }
+
+            return Json(new[] {userFile}.ToDataSourceResult(request, ModelState));
+        }
+
+        public ActionResult FilesRead([DataSourceRequest] DataSourceRequest request, int productID, int sheetTypeID,
+            string productName)
         {
             var db = new DetergentsEntities();
             try
@@ -140,12 +213,14 @@ namespace DetergentsApp.Controllers
                             Name = f.fileName,
                             productID = f.productID,
                             sheetTypeID = f.sheetTypeID,
+                            productName = productName
                         });
                     return Json(userFiles.ToDataSourceResult(request));
                 }
                 else
                 {
-                    var userFiles = db.UserFiles.Where(x => x.productID == productID && x.sheetTypeID == sheetTypeID && x.adminApproved == true )
+                    var userFiles = db.UserFiles.Where(x =>
+                            x.productID == productID && x.sheetTypeID == sheetTypeID && x.adminApproved == true)
                         .Select(
                             f => new UserFileViewModel
                             {
@@ -153,6 +228,7 @@ namespace DetergentsApp.Controllers
                                 Name = f.fileName,
                                 productID = f.productID,
                                 sheetTypeID = f.sheetTypeID,
+                                productName = productName
                             });
                     return Json(userFiles.ToDataSourceResult(request));
                 }
@@ -169,7 +245,6 @@ namespace DetergentsApp.Controllers
             var db = new DetergentsEntities();
             try
             {
-                
                 var userFiles = db.UserFiles.Where(x => x.adminApproved == false)
                     .Select(
                         f => new UserFileViewModel
@@ -191,12 +266,12 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+
         public ActionResult FilesReadAll([DataSourceRequest] DataSourceRequest request)
         {
             var db = new DetergentsEntities();
             try
             {
-                
                 var userFiles = db.UserFiles.Where(x => x.adminApproved == x.adminApproved)
                     .Select(
                         f => new UserFileViewModel

@@ -25,6 +25,7 @@
           <e p="Site.css" t="Include" />
         </e>
         <e p="Controllers" t="Include">
+          <e p="AddVendorController.cs" t="Include" />
           <e p="Admin2Controller.cs" t="Include" />
           <e p="CategoriesController.cs" t="Include" />
           <e p="FileUploadController.cs" t="Include" />
@@ -103,6 +104,9 @@
         </e>
         <e p="Views" t="Include">
           <e p="_ViewStart.cshtml" t="Include" />
+          <e p="AddVendor" t="Include">
+            <e p="AddVendor.cshtml" t="Include" />
+          </e>
           <e p="Admin2" t="Include">
             <e p="Admin2.cshtml" t="Include" />
           </e>

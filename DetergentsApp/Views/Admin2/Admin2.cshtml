@@ -22,9 +22,7 @@
         }).Width(180);
     })
     .Editable(editable => editable.Mode(GridEditMode.InLine))
-
     .ToolBar(toolbar => { toolbar.Create(); })
-    
     .DataSource(dataSource => dataSource
         .Ajax()
         .ServerOperation(false)
@@ -47,18 +45,21 @@
     .Columns(columns =>
     {
         columns.Bound(f => f.Name).ClientTemplate("<a href='files/?id=#= Id #'>#= Name #</a>").Title("File name");
-        columns.Bound(f => f.productID);
+        columns.Bound(f => f.productID).Locked();
         columns.Bound(f => f.vendorID);
-        columns.Bound(f => f.adminApproved);
-        
+        columns.Bound(f => f.adminApproved).ClientTemplate("#: adminApproved ? 'Approved' : 'Not approved' #");
+        ;
+
         columns.ForeignKey(c => c.sheetTypeID, (List<SelectListItem>)
             ViewBag.SheetType, "Value", "Text").Title("SheetType").Width(150);
 
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
+        columns.Command(command =>
+        {
+            command.Edit();
+            command.Destroy();
+        }).Width(250);
     })
     .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("Continue to delete this record?").DisplayDeleteConfirmation("Continue to delete this record?"))
-
-
     .Sortable()
     .Pageable()
     .DataSource(dataSource => dataSource

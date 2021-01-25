@@ -5,8 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DetergentsApp.Models;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
 
 namespace DetergentsApp.Controllers
 {
@@ -56,7 +54,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-        
+
         public ActionResult vendorEANDropDownList()
         {
             var result = db.Products;

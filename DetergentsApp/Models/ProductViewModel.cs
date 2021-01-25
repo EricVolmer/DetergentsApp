@@ -13,12 +13,7 @@ namespace DetergentsApp.Models
         
         public int CountryID { get; set; }
         
-        public countryViewModel Country
-        {
-            get;
-            set;
-        }
-
+        public countryViewModel Country { get; set; }
 
         [Required]
         [MaxLength(50)]

@@ -187,6 +187,7 @@
                         } else {
                             grid.dataSource.filter({});
                         }
+                        
                     }
                 
                            
@@ -198,7 +199,10 @@
                                  
                              //   var sheetTypeId = dropdownlist.val();                      
                                 window.location.href = "@Url.Action("UploadedFiles",
-                                                            "FileUpload")?productID=" + product.productID + "&sheetTypeID=" + dropdownlist;
+                                                            "FileUpload")?productID=" + product.productID +
+                                                            "&productName=" + product.productName +
+                                                            "&sheetTypeID=" + dropdownlist;
+                                                            
                         }
                         
                                                
@@ -211,7 +215,7 @@
                                     for (var i = 0; i < data.listOfFiles.length; i++) 
                                     {
                                         var files = data.listOfFiles[i];
-                                        template += kendo.format("<li>Product: {0} , {1} , {2} </li>", files.fileName, files.sheetTypeName, files.sheetTypeID) ;
+                                        template += kendo.format("<li>{1}: {0} </li>", files.fileName, files.SheetType.sheetTypeName) ;
                                     }
                                     template += "</ul>"
                                     return template;

@@ -207,6 +207,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddVendorController.cs" />
     <Compile Include="Controllers\Admin2Controller.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
@@ -306,6 +307,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\kendo.modernizr.custom.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\AddVendor\AddVendor.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />

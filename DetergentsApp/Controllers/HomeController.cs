@@ -75,6 +75,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+
         public void CreateViewListVendor()
         {
             try
@@ -91,9 +92,11 @@ namespace DetergentsApp.Controllers
 
                 foreach (var productViewModel in productViewModels)
                     containerList.Add(new SelectListItem
-                        {Text = productViewModel.vendorName + " - " + productViewModel.vendorID, Value = productViewModel.vendorID.ToString()});
+                    {
+                        Text = productViewModel.vendorName + " - " + productViewModel.vendorID,
+                        Value = productViewModel.vendorID.ToString()
+                    });
                 ViewBag.Vendor = containerList;
-                
             }
             catch (Exception e)
             {
@@ -101,6 +104,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+
         public void CreateViewListCountry()
         {
             try
@@ -108,7 +112,7 @@ namespace DetergentsApp.Controllers
                 var result = db.CountrySet;
 
                 var containerList = new List<SelectListItem>();
-                var productViewModels = result.Select(entity => new countryViewModel()
+                var productViewModels = result.Select(entity => new countryViewModel
                     {
                         CountryName = entity.CountryName,
                         CountryID = entity.CountryID
@@ -128,13 +132,11 @@ namespace DetergentsApp.Controllers
             }
         }
 
-        public ActionResult Product_Read([DataSourceRequest] DataSourceRequest request , sheetTypeViewModel sheetTypes)
+        public ActionResult Product_Read([DataSourceRequest] DataSourceRequest request)
         {
-
             try
             {
                 var result = db.Products;
-              //  var sheetType = db.SheetTypes.Find(sheetTypes.sheetTypeName); Gives Null
                 var productList = new List<ProductViewModel>();
                 foreach (var item in result)
                 {
@@ -147,10 +149,11 @@ namespace DetergentsApp.Controllers
                     product.categoryID = item.Category.categoryID;
                     product.vendorID = item.Vendor.vendorID;
                     product.vendorName = item.Vendor.vendorName;
-                    
+
                     product.CountryID = item.countryID;
-                    
-                    var fileListName = db.UserFiles.Where(file => file.productID == item.productID && file.adminApproved == true).ToList();
+
+                    var fileListName = db.UserFiles
+                        .Where(file => file.productID == item.productID && file.adminApproved).ToList();
 
                     if (fileListName != null)
                     {
@@ -158,21 +161,27 @@ namespace DetergentsApp.Controllers
 
                         foreach (var file in fileListName)
                         {
-                         //   var sheetTypeName = db.SheetTypes.Find(sheetTypes.sheetTypeName); Gives Null 
+                            //   var sheetTypeName = db.SheetTypes.Find(sheetTypes.sheetTypeName); Gives Null 
 
                             var userFiles = new UserFile();
                             userFiles.fileName = file.fileName;
                             userFiles.fileID = file.fileID;
-                            userFiles.sheetTypeID = file.SheetType.sheetTypeID;
-                         //   product.sheetTypeName = file.SheetType.sheetTypeName; Null
+
+                            userFiles.SheetType = new SheetType
+                            {
+                                sheetTypeID = file.SheetType.sheetTypeID,
+                                sheetTypeName = file.SheetType.sheetTypeName
+                            };
+                            userFiles.SheetType.sheetTypeName = file.SheetType.sheetTypeName;
+
                             product.listOfFiles.Add(userFiles);
-                            
                         }
                     }
 
                     productList.Add(product);
                 }
-                return Json(productList.ToDataSourceResult(request)                                                                                                                          , JsonRequestBehavior.AllowGet);
+
+                return Json(productList.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
@@ -201,7 +210,7 @@ namespace DetergentsApp.Controllers
                         entity.Category = category;
                         entity.vendorID = product.vendorID;
                         entity.countryID = product.CountryID;
-                        
+
                         try
                         {
                             //    var existingProduct = db.Products.Find(product.productID);
@@ -226,7 +235,6 @@ namespace DetergentsApp.Controllers
                     SheetType = sheetTypes,
                     vendorID = product.vendorID,
                     countryID = product.CountryID
-
                 };
                 try
                 {
@@ -304,12 +312,13 @@ namespace DetergentsApp.Controllers
 
             return Json(containerList, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult Country()
         {
-
             var dataContext = new DetergentsEntities();
             var country = dataContext.CountrySet
-                .Select(c => new countryViewModel() {
+                .Select(c => new countryViewModel
+                {
                     CountryID = c.CountryID,
                     CountryName = c.CountryName
                 })
@@ -317,6 +326,5 @@ namespace DetergentsApp.Controllers
 
             return Json(country, JsonRequestBehavior.AllowGet);
         }
-        
     }
 }
