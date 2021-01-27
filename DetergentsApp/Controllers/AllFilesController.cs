@@ -3,12 +3,12 @@ using DetergentsApp.Models;
 
 namespace DetergentsApp.Controllers
 {
-    public class GridController : Controller
+    public class AllFilesController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
 
 
-        public ActionResult Grid()
+        public ActionResult AllFiles()
         {
             return View();
         }

@@ -31,6 +31,7 @@
                                              .Name("grid")
                                              .Columns(columns =>
                                              {
+                                                 columns.Bound(c => c.productID).Width(200);
                                                  columns.Bound(c => c.productName).Width(200);
                                                  columns.Bound(c => c.productDescription).Width(230);
                                                  columns.Bound(c => c.EAN).Width(150);
@@ -44,7 +45,7 @@
                                                  .ServerOperation(false)
                                                  .PageSize(20)
                                                  .Group(group => group.Add("categoryID", typeof(string), ListSortDirection.Descending))
-                                                 .Read(read => read.Action("Details", "Public"))
+                                                 .Read(read => read.Action("DetailsRead", "Public"))
                                                  .Model(model => { model.Id(c => c.productID); })
                                              ))
 
@@ -72,7 +73,7 @@
                         .Ajax()
                         .PageSize(10)
                         .Model(m => m.Id(f => f.Id))
-                        .Read(read => read.Action("FilesReadAdmin", "FileUpload"))
+                        .Read(read => read.Action("FilesRead", "FileUpload"))
                     ))
             </div>
         </div>

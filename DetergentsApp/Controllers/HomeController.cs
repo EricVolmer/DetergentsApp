@@ -149,7 +149,6 @@ namespace DetergentsApp.Controllers
                     product.categoryID = item.Category.categoryID;
                     product.vendorID = item.Vendor.vendorID;
                     product.vendorName = item.Vendor.vendorName;
-
                     product.CountryID = item.countryID;
 
                     var fileListName = db.UserFiles
@@ -161,8 +160,6 @@ namespace DetergentsApp.Controllers
 
                         foreach (var file in fileListName)
                         {
-                            //   var sheetTypeName = db.SheetTypes.Find(sheetTypes.sheetTypeName); Gives Null 
-
                             var userFiles = new UserFile();
                             userFiles.fileName = file.fileName;
                             userFiles.fileID = file.fileID;

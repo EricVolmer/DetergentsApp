@@ -54,8 +54,10 @@
                                      <span class="k-icon k-i-reload"></span>
                                  </a>
                              </div>
+                             
                              @* Create button  *@
                              <a class='k-button k-grid-add' href='#'>Add new Article</a>
+                             
                              @* Search button *@
                              <span class="k-textbox k-grid-search k-display-flex">
                                  <input autocomplete="off" placeholder="Search..." title="Search..." class="k-input">
@@ -93,7 +95,7 @@
                                          ds.Read(read =>
                                              read.Action("Country", "Home"));
                                      }))
-
+                             
                              </div>
                           </text>);
     })
@@ -119,7 +121,6 @@
         .Model(model =>
         {
             model.Id(c => c.productID);
-            model.Field(p => p.vendorID).Editable(true);
         })
         .Create(update => update.Action("Products_Create_Update", "Home"))
         .Update(update => update.Action("Products_Create_Update", "Home"))

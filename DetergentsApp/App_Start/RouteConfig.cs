@@ -12,7 +12,7 @@ namespace DetergentsApp
             routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
-                new {controller = "Public", action = "Public", id = UrlParameter.Optional}
+                new {controller = "Home", action = "Index", id = UrlParameter.Optional}
             );
         }
     }

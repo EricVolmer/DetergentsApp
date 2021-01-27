@@ -211,7 +211,7 @@
     <Compile Include="Controllers\Admin2Controller.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
-    <Compile Include="Controllers\GridController.cs" />
+    <Compile Include="Controllers\AllFilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PublicController.cs" />
@@ -334,7 +334,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Grid\Grid.cshtml" />
+    <Content Include="Views\AllFiles\AllFiles.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Country.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Currency.cshtml" />

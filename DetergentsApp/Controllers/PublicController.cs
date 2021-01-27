@@ -243,54 +243,76 @@ namespace DetergentsApp.Controllers
 
             return Json(country, JsonRequestBehavior.AllowGet);
         }
-
-        public ActionResult Details(int productID, int EAN, string productName)
+        
+            
+            
+            
+            public ActionResult DetailsRead([DataSourceRequest] DataSourceRequest request, int productID, string EAN,
+            string productName)
+        // {
+        //       var product = db.Products.FirstOrDefault(p => p.productID == productID);
+        //       var userFiles = db.UserFiles.Where(p => p.productID == productID).ToList();
+        //
+        //       var model = new ProductViewModel();
+        //
+        //       model.productID = productID;
+        //       model.EAN = EAN;
+        //       model.productName = productName;
+        //       
+        //
+        //
+        //     // var product = db.Products.Find(productID);
+        //     // var ean = db.Products.Find(EAN);
+        //     // var nameOfProduct = db.Products.Find(productName);
+        //
+        //
+        //     ViewBag.ProductID = productID;
+        //     ViewBag.ProductID = EAN;
+        //     ViewBag.ProductID = productName;
+        //
+        //     
+        //     return View(model);
+        // }
+        
         {
-            //  var product = db.Products.FirstOrDefault(p => p.productID == productID);
-            //  var userFiles = db.UserFiles.Where(p => p.productID == productID).ToList();
-
-
-            // var product = db.Products.Find(productID);
-            // var ean = db.Products.Find(EAN);
-            // var nameOfProduct = db.Products.Find(productName);
-
-            var userFiles = new List<UserFile>();
-
-            ViewBag.ProductID = productID;
-            ViewBag.ProductID = EAN;
-            ViewBag.ProductID = productName;
-
-            //     if (product != null)
-            //             userFiles.AddRange(productSheetType.UserFiles);
-            //
-            // else
-            // {
-            //     var sheetType = product?.SheetType.FirstOrDefault(s => s.sheetTypeID == sheetTypeID);
-            //     if (sheetType != null) userFiles.AddRange(sheetType.UserFiles);
-            // }
-            //
-            // CreateViewListSheetType();
-            return View();
+            var db = new DetergentsEntities();
+            try
+            {
+                var userFiles = db.UserFiles.Where(x => x.productID == productID).Select(
+                        f => new ProductViewModel()
+                        {
+                            productID = productID,
+                            EAN = EAN,
+                            productName = productName
+                        });
+                    return Json(userFiles.ToDataSourceResult(request) , JsonRequestBehavior.AllowGet);
+                
+                
+                    // var userFiles1 = db.UserFiles.Where(x =>
+                    //         x.productID == productID && x.adminApproved == true)
+                    //     .Select(
+                    //         f => new UserFileViewModel
+                    //         {
+                    //             Id = f.fileID,
+                    //             Name = f.fileName,
+                    //             productID = f.productID,
+                    //             sheetTypeID = f.sheetTypeID,
+                    //             productName = productName
+                    //         });
+                    // return Json(userFiles1.ToDataSourceResult(request));
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
         }
+            public ActionResult Details(int productID, string EAN,
+                string productName)
+            {
+                return View();
+            }
     }
 }
-/*var product = db.Products.Find(productID);
-var userFiles = new List<UserFile>();
-
-ViewBag.ProductID = productID;
-
-    if (product != null)
-        foreach (var productSheetType in product.SheetType)
-            userFiles.AddRange(productSheetType.UserFiles);
-    
-return View();*/
-
-//  var stockReceipt = _stockReceiptRepository.GetAllStockReceipts().ToList().Where(r => r.StockReceiptID == stockReceiptId);
-
-//  var model = new StockReceiptViewModel();
-
-
-//  model.Notes = stockReceipt.First().Notes;
-
-
-//    return View("Index", model);

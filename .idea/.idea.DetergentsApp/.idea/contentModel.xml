@@ -27,9 +27,9 @@
         <e p="Controllers" t="Include">
           <e p="AddVendorController.cs" t="Include" />
           <e p="Admin2Controller.cs" t="Include" />
+          <e p="AllFilesController.cs" t="Include" />
           <e p="CategoriesController.cs" t="Include" />
           <e p="FileUploadController.cs" t="Include" />
-          <e p="GridController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
           <e p="PublicController.cs" t="Include" />
@@ -110,6 +110,9 @@
           <e p="Admin2" t="Include">
             <e p="Admin2.cshtml" t="Include" />
           </e>
+          <e p="AllFiles" t="Include">
+            <e p="AllFiles.cshtml" t="Include" />
+          </e>
           <e p="Categories" t="Include">
             <e p="Create.cshtml" t="Include" />
             <e p="Delete.cshtml" t="Include" />
@@ -120,9 +123,6 @@
           <e p="FileUpload" t="Include">
             <e p="files" t="Include" />
             <e p="UploadedFiles.cshtml" t="Include" />
-          </e>
-          <e p="Grid" t="Include">
-            <e p="Grid.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />
