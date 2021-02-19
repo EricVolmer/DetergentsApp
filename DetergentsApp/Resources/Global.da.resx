@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Products_Menu" xml:space="preserve">
-    <value>Asjad</value>
+    <value>Produkter</value>
   </data>
   <data name="APP_NAME" xml:space="preserve">
-    <value>Kemikaalide info</value>
+    <value>Detergents</value>
   </data>
   <data name="Category_Menu" xml:space="preserve">
-    <value>Kategooria</value>
+    <value>Kategori</value>
   </data>
   <data name="Home_Menu" xml:space="preserve">
-    <value>Kodu</value>
+    <value>Forside</value>
   </data>
 </root>

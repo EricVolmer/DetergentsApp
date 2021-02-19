@@ -25,10 +25,6 @@
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(120);
 
-
-        //    columns.Bound(c => c.vendorName).Title("Vendor Name");
-        //    columns.Bound(c => c.vendorID).Title("Vendor Name");
-
         columns.ForeignKey(c => c.vendorID, (List<SelectListItem>)
             ViewBag.Vendor, "Value", "Text").Title("Vendor ID").Width(150);
 

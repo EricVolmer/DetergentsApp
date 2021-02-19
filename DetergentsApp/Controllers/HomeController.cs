@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Mvc;
 using DetergentsApp.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using Newtonsoft.Json;
 
 namespace DetergentsApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
+        private readonly string baseUrl = "https://api.sallinggroup.com/v2/stores/";
+
 
         public ActionResult Index()
         {
@@ -19,7 +24,14 @@ namespace DetergentsApp.Controllers
             CreateViewListSheetType();
             CreateViewListVendor();
             CreateViewListCountry();
+            fetchAPI();
             return View();
+        }
+
+        public void fetchAPI()
+        {
+            
+            
         }
 
         public void CreateViewListCategory()
@@ -134,6 +146,32 @@ namespace DetergentsApp.Controllers
 
         public ActionResult Product_Read([DataSourceRequest] DataSourceRequest request)
         {
+            
+            IEnumerable<ProductViewModel> ordersTotal = new List<ProductViewModel>();
+
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(baseUrl);
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var responseTask = client.GetAsync("city");
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var read = result.Content.ReadAsStringAsync().Result;
+                        ordersTotal = JsonConvert.DeserializeObject<IEnumerable<ProductViewModel>>(read);
+                    }
+                
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
             try
             {
                 var result = db.Products;

@@ -60,6 +60,7 @@
           <e p="Model1.edmx.sql" t="Include" />
           <e p="Model1.tt" t="Include" />
           <e p="Product.cs" t="Include" />
+          <e p="productDetailsViewModel.cs" t="Include" />
           <e p="ProductViewModel.cs" t="Include" />
           <e p="SheetType.cs" t="Include" />
           <e p="sheetTypeViewModel.cs" t="Include" />
