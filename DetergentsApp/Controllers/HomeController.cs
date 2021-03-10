@@ -19,6 +19,7 @@ namespace DetergentsApp.Controllers
     public class HomeController : Controller
     {
         private readonly string baseUrl = "https://api.sallinggroup.com/";
+
         private readonly DetergentsEntities db = new DetergentsEntities();
 
 
