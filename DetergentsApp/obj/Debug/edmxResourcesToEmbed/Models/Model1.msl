@@ -49,7 +49,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Vendor">
-      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.VendorSet)">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Vendor)">
         <MappingFragment StoreEntitySet="Vendor">
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
           <ScalarProperty Name="vendorName" ColumnName="vendorName" />

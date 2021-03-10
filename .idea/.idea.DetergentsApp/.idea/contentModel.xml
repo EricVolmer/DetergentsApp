@@ -70,7 +70,7 @@
           <e p="StoreAPI.cs" t="Include" />
           <e p="UserFile.cs" t="Include" />
           <e p="UserFileViewModel.cs" t="Include" />
-          <e p="VendorSet.cs" t="Include" />
+          <e p="Vendor.cs" t="Include" />
           <e p="VendorViewModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />

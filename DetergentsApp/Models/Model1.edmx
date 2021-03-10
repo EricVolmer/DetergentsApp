@@ -324,7 +324,7 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="SheetType" EntitySet="SheetTypes" />
           </AssociationSet>
-          <EntitySet Name="Vendor" EntityType="DetergentsModel.VendorSet" />
+          <EntitySet Name="Vendor" EntityType="DetergentsModel.Vendor" />
           <EntitySet Name="Country" EntityType="DetergentsModel.Country" />
           <AssociationSet Name="VendorProduct" Association="DetergentsModel.VendorProduct">
             <End Role="Vendor" EntitySet="Vendor" />
@@ -351,7 +351,7 @@
           <End Type="DetergentsModel.SheetType" Role="SheetType" Multiplicity="*" >
           </End>
         </Association>
-        <EntityType Name="VendorSet">
+        <EntityType Name="Vendor">
           <Key>
             <PropertyRef Name="vendorID" />
           </Key>
@@ -368,7 +368,7 @@
           <NavigationProperty Name="Product" Relationship="DetergentsModel.CountryProduct" FromRole="Country" ToRole="Product" />
         </EntityType>
         <Association Name="VendorProduct">
-          <End Type="DetergentsModel.VendorSet" Role="Vendor" Multiplicity="1" />
+          <End Type="DetergentsModel.Vendor" Role="Vendor" Multiplicity="1" />
           <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vendor">
@@ -486,7 +486,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Vendor">
-      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.VendorSet)">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Vendor)">
         <MappingFragment StoreEntitySet="Vendor">
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
           <ScalarProperty Name="vendorName" ColumnName="vendorName" />

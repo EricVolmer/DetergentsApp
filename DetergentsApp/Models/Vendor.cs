@@ -12,10 +12,10 @@ namespace DetergentsApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class VendorSet
+    public partial class Vendor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public VendorSet()
+        public Vendor()
         {
             this.Product = new HashSet<Product>();
         }
