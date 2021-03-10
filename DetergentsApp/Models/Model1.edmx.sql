@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/05/2021 10:16:02
+-- Date Created: 03/10/2021 12:59:34
 -- Generated from EDMX file: C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -58,17 +58,17 @@ GO
 IF OBJECT_ID(N'[dbo].[UserFiles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserFiles];
 GO
-IF OBJECT_ID(N'[dbo].[VendorSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[VendorSet];
+IF OBJECT_ID(N'[dbo].[Vendor]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Vendor];
 GO
-IF OBJECT_ID(N'[dbo].[CountrySet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[CountrySet];
+IF OBJECT_ID(N'[dbo].[Country]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Country];
 GO
-IF OBJECT_ID(N'[dbo].[StoreAPISet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[StoreAPISet];
+IF OBJECT_ID(N'[dbo].[StoreAPI]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[StoreAPI];
 GO
-IF OBJECT_ID(N'[dbo].[articleDetailsAPISet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[articleDetailsAPISet];
+IF OBJECT_ID(N'[dbo].[articleDetailsAPI]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[articleDetailsAPI];
 GO
 IF OBJECT_ID(N'[dbo].[ProductSheetType]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductSheetType];

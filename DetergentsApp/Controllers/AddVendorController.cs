@@ -18,7 +18,7 @@ namespace DetergentsApp.Controllers
         public ActionResult VendorCreate([DataSourceRequest] DataSourceRequest request,
             VendorViewModel vendor)
         {
-            var newVendor = new Vendor
+            var newVendor = new VendorSet
             {
                 vendorName = vendor.vendorName,
                 vendorID = vendor.vendorID

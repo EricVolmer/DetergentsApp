@@ -28,8 +28,8 @@ namespace DetergentsApp.Controllers
             CreateViewListSheetType();
             CreateViewListVendor();
             CreateViewListCountry();
-            CreateViewListstoreID();
-            CreateViewListArticleID();
+           // CreateViewListstoreID();
+           // CreateViewListArticleID();
             return View();
         }
 

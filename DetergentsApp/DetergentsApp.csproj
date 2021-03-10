@@ -313,7 +313,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserFileViewModel.cs" />
-    <Compile Include="Models\Vendor.cs">
+    <Compile Include="Models\VendorSet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VendorViewModel.cs" />

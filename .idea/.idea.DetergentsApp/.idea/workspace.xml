@@ -25,217 +25,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="new view?">
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/ClaimsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/Startup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/Views/Claims/Index.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.JsonWebTokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Logging.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Protocols.OpenIdConnect.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Protocols.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Protocols.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Protocols.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Tokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.Owin.Host.SystemWeb.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.Owin.Host.SystemWeb.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.Owin.Security.Cookies.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.Owin.Security.Cookies.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.Owin.Security.OpenIdConnect.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.Owin.Security.OpenIdConnect.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.Owin.Security.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.Owin.Security.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.Owin.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.Owin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/Owin.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/RestSharp.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/RestSharp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/System.IdentityModel.Tokens.Jwt.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/Microsoft.IdentityModel.JsonWebTokens.5.3.0.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/net45/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/net45/Microsoft.IdentityModel.JsonWebTokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/net45/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/net451/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/net451/Microsoft.IdentityModel.JsonWebTokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/net451/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/net461/Microsoft.IdentityModel.JsonWebTokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/net461/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.JsonWebTokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/Microsoft.IdentityModel.Logging.5.3.0.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net45/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net45/Microsoft.IdentityModel.Logging.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net45/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net451/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net451/Microsoft.IdentityModel.Logging.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net451/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net461/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net461/Microsoft.IdentityModel.Logging.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net461/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Logging.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Logging.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/Microsoft.IdentityModel.Protocols.5.3.0.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/net45/Microsoft.IdentityModel.Protocols.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/net45/Microsoft.IdentityModel.Protocols.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/net45/Microsoft.IdentityModel.Protocols.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/net451/Microsoft.IdentityModel.Protocols.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/net451/Microsoft.IdentityModel.Protocols.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/net451/Microsoft.IdentityModel.Protocols.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/net461/Microsoft.IdentityModel.Protocols.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/net461/Microsoft.IdentityModel.Protocols.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/net461/Microsoft.IdentityModel.Protocols.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Protocols.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Protocols.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Protocols.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Protocols.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Protocols.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Protocols.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/net45/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/net45/Microsoft.IdentityModel.Protocols.OpenIdConnect.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/net45/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/net451/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/net451/Microsoft.IdentityModel.Protocols.OpenIdConnect.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/net451/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/net461/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/net461/Microsoft.IdentityModel.Protocols.OpenIdConnect.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/net461/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Protocols.OpenIdConnect.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/Microsoft.IdentityModel.Tokens.5.3.0.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net45/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net45/Microsoft.IdentityModel.Tokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net45/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net451/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net451/Microsoft.IdentityModel.Tokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net451/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net461/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net461/Microsoft.IdentityModel.Tokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net461/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Tokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Tokens.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.4.1.1/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.4.1.1/Microsoft.Owin.4.1.1.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.4.1.1/lib/net45/Microsoft.Owin.XML" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.4.1.1/lib/net45/Microsoft.Owin.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Host.SystemWeb.4.1.1/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Host.SystemWeb.4.1.1/Microsoft.Owin.Host.SystemWeb.4.1.1.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Host.SystemWeb.4.1.1/lib/net45/Microsoft.Owin.Host.SystemWeb.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Host.SystemWeb.4.1.1/lib/net45/Microsoft.Owin.Host.SystemWeb.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.4.1.1/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.4.1.1/Microsoft.Owin.Security.4.1.1.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.4.1.1/lib/net45/Microsoft.Owin.Security.XML" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.4.1.1/lib/net45/Microsoft.Owin.Security.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.Cookies.4.1.1/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.Cookies.4.1.1/Microsoft.Owin.Security.Cookies.4.1.1.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.Cookies.4.1.1/lib/net45/Microsoft.Owin.Security.Cookies.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.Cookies.4.1.1/lib/net45/Microsoft.Owin.Security.Cookies.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.OpenIdConnect.4.1.1/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.OpenIdConnect.4.1.1/Microsoft.Owin.Security.OpenIdConnect.4.1.1.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.OpenIdConnect.4.1.1/lib/net45/Microsoft.Owin.Security.OpenIdConnect.XML" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.OpenIdConnect.4.1.1/lib/net45/Microsoft.Owin.Security.OpenIdConnect.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.jQuery.Unobtrusive.Validation.3.2.12/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.jQuery.Unobtrusive.Validation.3.2.12/Content/Scripts/jquery.validate.unobtrusive.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.jQuery.Unobtrusive.Validation.3.2.12/Content/Scripts/jquery.validate.unobtrusive.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Microsoft.jQuery.Unobtrusive.Validation.3.2.12/Microsoft.jQuery.Unobtrusive.Validation.3.2.12.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Owin.1.0/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Owin.1.0/Owin.1.0.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/Owin.1.0/lib/net40/Owin.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/RestSharp.106.11.7/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/RestSharp.106.11.7/RestSharp.106.11.7.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/RestSharp.106.11.7/lib/net452/RestSharp.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/RestSharp.106.11.7/lib/net452/RestSharp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/RestSharp.106.11.7/lib/netstandard2.0/RestSharp.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/RestSharp.106.11.7/lib/netstandard2.0/RestSharp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/RestSharp.106.11.7/restsharp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/System.IdentityModel.Tokens.Jwt.5.3.0.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/net45/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/net45/System.IdentityModel.Tokens.Jwt.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/net45/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/net451/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/net451/System.IdentityModel.Tokens.Jwt.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/net451/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/net461/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/net461/System.IdentityModel.Tokens.Jwt.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/net461/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/netstandard1.4/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/netstandard1.4/System.IdentityModel.Tokens.Jwt.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/netstandard1.4/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.5.3.0/lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/jQuery.Validation.1.19.3/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/jQuery.Validation.1.19.3/Content/Scripts/jquery.validate-vsdoc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/jQuery.Validation.1.19.3/Content/Scripts/jquery.validate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/jQuery.Validation.1.19.3/Content/Scripts/jquery.validate.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/jQuery.Validation.1.19.3/jQuery.Validation.1.19.3.nupkg" afterDir="false" />
+    <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="StoreAPI Model Files">
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/Models/VendorSet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DetergentsApp/config/applicationhost.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/AddVendorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/AddVendorController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.Context.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.Context.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.diagram" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.diagram" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate-vsdoc.js" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate-vsdoc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate.unobtrusive.js" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate.unobtrusive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate.unobtrusive.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Scripts/jquery.validate.unobtrusive.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Vendor.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Web.config" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Web.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll.config" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferences.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferences.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.Resources.Global.da.resources" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.Resources.Global.da.resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.GenerateResource.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" afterDir="false" />
@@ -244,17 +52,6 @@
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.csdl" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.csdl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.msl" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.msl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.ssdl" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.ssdl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/packages.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/Microsoft.jQuery.Unobtrusive.Validation.3.2.11/.signature.p7s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/Microsoft.jQuery.Unobtrusive.Validation.3.2.11/Content/Scripts/jquery.validate.unobtrusive.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/Microsoft.jQuery.Unobtrusive.Validation.3.2.11/Content/Scripts/jquery.validate.unobtrusive.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/Microsoft.jQuery.Unobtrusive.Validation.3.2.11/Microsoft.jQuery.Unobtrusive.Validation.3.2.11.nupkg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/jQuery.Validation.1.19.2/.signature.p7s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/jQuery.Validation.1.19.2/Content/Scripts/jquery.validate-vsdoc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/jQuery.Validation.1.19.2/Content/Scripts/jquery.validate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/jQuery.Validation.1.19.2/Content/Scripts/jquery.validate.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/jQuery.Validation.1.19.2/jQuery.Validation.1.19.2.nupkg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,12 +145,12 @@
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/storeViewModel.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/AddVendorController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/AddVendorController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1hosMQCbLmUhIQlUT0gZJvhJoGG" />
@@ -502,7 +299,7 @@
       <workItem from="1614848270007" duration="73000" />
       <workItem from="1614848372276" duration="8855000" />
       <workItem from="1614862887190" duration="10739000" />
-      <workItem from="1615371184554" duration="1920000" />
+      <workItem from="1615371184554" duration="5662000" />
     </task>
     <task id="LOCAL-00001" summary="Kendo Grid start">
       <created>1600795493153</created>
@@ -672,7 +469,21 @@
       <option name="project" value="LOCAL" />
       <updated>1613730326266</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="The Store API has been implemented and is working, the Article Details View and Model has been created but the functionality in the Controller is not there.">
+      <created>1615375630768</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1615375630768</updated>
+    </task>
+    <task id="LOCAL-00026" summary="StoreAPI Model Files">
+      <created>1615376980885</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1615376980885</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -705,7 +516,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Kendo Grid start" />
     <MESSAGE value="Kendo UI edit delete tab half done" />
     <MESSAGE value="Working Add, Edit and Delete" />
     <MESSAGE value="View Update" />
@@ -729,7 +539,9 @@
     <MESSAGE value="Add Vendor working, few more changes working." />
     <MESSAGE value="Backup" />
     <MESSAGE value="public product details viewModel created" />
-    <option name="LAST_COMMIT_MESSAGE" value="public product details viewModel created" />
+    <MESSAGE value="The Store API has been implemented and is working, the Article Details View and Model has been created but the functionality in the Controller is not there." />
+    <MESSAGE value="StoreAPI Model Files" />
+    <option name="LAST_COMMIT_MESSAGE" value="StoreAPI Model Files" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
