@@ -21,6 +21,8 @@
           <ScalarProperty Name="articleNumber" ColumnName="articleNumber" />
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
           <ScalarProperty Name="countryID" ColumnName="countryID" />
+          <ScalarProperty Name="storeID" ColumnName="storeID" />
+          <ScalarProperty Name="articleID" ColumnName="articleID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -46,19 +48,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="VendorSet">
+    <EntitySetMapping Name="Vendor">
       <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Vendor)">
-        <MappingFragment StoreEntitySet="VendorSet">
+        <MappingFragment StoreEntitySet="Vendor">
           <ScalarProperty Name="vendorID" ColumnName="vendorID" />
           <ScalarProperty Name="vendorName" ColumnName="vendorName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CountrySet">
+    <EntitySetMapping Name="Country">
       <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.Country)">
-        <MappingFragment StoreEntitySet="CountrySet">
+        <MappingFragment StoreEntitySet="Country">
           <ScalarProperty Name="CountryID" ColumnName="CountryID" />
           <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoreAPI">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.StoreAPI)">
+        <MappingFragment StoreEntitySet="StoreAPI">
+          <ScalarProperty Name="storeID" ColumnName="storeID" />
+          <ScalarProperty Name="storeName" ColumnName="storeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="articleDetailsAPI">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.articleDetailsAPI)">
+        <MappingFragment StoreEntitySet="articleDetailsAPI">
+          <ScalarProperty Name="articleID" ColumnName="articleID" />
+          <ScalarProperty Name="articleTextReceipt" ColumnName="articleTextReceipt" />
+          <ScalarProperty Name="labelText1" ColumnName="labelText1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

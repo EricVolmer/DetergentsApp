@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/25/2021 01:07:02
+-- Date Created: 03/05/2021 10:16:02
 -- Generated from EDMX file: C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -35,6 +35,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CountryProduct]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_CountryProduct];
 GO
+IF OBJECT_ID(N'[dbo].[FK_StoreProduct]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_StoreProduct];
+GO
+IF OBJECT_ID(N'[dbo].[FK_articleDetailsProduct]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_articleDetailsProduct];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -57,6 +63,12 @@ IF OBJECT_ID(N'[dbo].[VendorSet]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[CountrySet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CountrySet];
+GO
+IF OBJECT_ID(N'[dbo].[StoreAPISet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[StoreAPISet];
+GO
+IF OBJECT_ID(N'[dbo].[articleDetailsAPISet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[articleDetailsAPISet];
 GO
 IF OBJECT_ID(N'[dbo].[ProductSheetType]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductSheetType];
@@ -83,7 +95,9 @@ CREATE TABLE [dbo].[Products] (
     [categoryID] int  NOT NULL,
     [articleNumber] int  NOT NULL,
     [vendorID] int  NOT NULL,
-    [countryID] int  NOT NULL
+    [countryID] int  NOT NULL,
+    [storeID] int  NOT NULL,
+    [articleID] bigint  NOT NULL
 );
 GO
 
@@ -107,17 +121,32 @@ CREATE TABLE [dbo].[UserFiles] (
 );
 GO
 
--- Creating table 'VendorSet'
-CREATE TABLE [dbo].[VendorSet] (
+-- Creating table 'Vendor'
+CREATE TABLE [dbo].[Vendor] (
     [vendorID] int  NOT NULL,
     [vendorName] nvarchar(max)  NOT NULL
 );
 GO
 
--- Creating table 'CountrySet'
-CREATE TABLE [dbo].[CountrySet] (
+-- Creating table 'Country'
+CREATE TABLE [dbo].[Country] (
     [CountryID] int IDENTITY(1,1) NOT NULL,
     [CountryName] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'StoreAPI'
+CREATE TABLE [dbo].[StoreAPI] (
+    [storeID] int IDENTITY(1,1) NOT NULL,
+    [storeName] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'articleDetailsAPI'
+CREATE TABLE [dbo].[articleDetailsAPI] (
+    [articleID] bigint IDENTITY(1,1) NOT NULL,
+    [articleTextReceipt] nvarchar(max)  NOT NULL,
+    [labelText1] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -156,16 +185,28 @@ ADD CONSTRAINT [PK_UserFiles]
     PRIMARY KEY CLUSTERED ([fileID] ASC);
 GO
 
--- Creating primary key on [vendorID] in table 'VendorSet'
-ALTER TABLE [dbo].[VendorSet]
-ADD CONSTRAINT [PK_VendorSet]
+-- Creating primary key on [vendorID] in table 'Vendor'
+ALTER TABLE [dbo].[Vendor]
+ADD CONSTRAINT [PK_Vendor]
     PRIMARY KEY CLUSTERED ([vendorID] ASC);
 GO
 
--- Creating primary key on [CountryID] in table 'CountrySet'
-ALTER TABLE [dbo].[CountrySet]
-ADD CONSTRAINT [PK_CountrySet]
+-- Creating primary key on [CountryID] in table 'Country'
+ALTER TABLE [dbo].[Country]
+ADD CONSTRAINT [PK_Country]
     PRIMARY KEY CLUSTERED ([CountryID] ASC);
+GO
+
+-- Creating primary key on [storeID] in table 'StoreAPI'
+ALTER TABLE [dbo].[StoreAPI]
+ADD CONSTRAINT [PK_StoreAPI]
+    PRIMARY KEY CLUSTERED ([storeID] ASC);
+GO
+
+-- Creating primary key on [articleID] in table 'articleDetailsAPI'
+ALTER TABLE [dbo].[articleDetailsAPI]
+ADD CONSTRAINT [PK_articleDetailsAPI]
+    PRIMARY KEY CLUSTERED ([articleID] ASC);
 GO
 
 -- Creating primary key on [Product_productID], [SheetType_sheetTypeID] in table 'ProductSheetType'
@@ -236,7 +277,7 @@ GO
 ALTER TABLE [dbo].[Products]
 ADD CONSTRAINT [FK_VendorProduct]
     FOREIGN KEY ([vendorID])
-    REFERENCES [dbo].[VendorSet]
+    REFERENCES [dbo].[Vendor]
         ([vendorID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -251,7 +292,7 @@ GO
 ALTER TABLE [dbo].[Products]
 ADD CONSTRAINT [FK_CountryProduct]
     FOREIGN KEY ([countryID])
-    REFERENCES [dbo].[CountrySet]
+    REFERENCES [dbo].[Country]
         ([CountryID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -260,6 +301,36 @@ GO
 CREATE INDEX [IX_FK_CountryProduct]
 ON [dbo].[Products]
     ([countryID]);
+GO
+
+-- Creating foreign key on [storeID] in table 'Products'
+ALTER TABLE [dbo].[Products]
+ADD CONSTRAINT [FK_StoreProduct]
+    FOREIGN KEY ([storeID])
+    REFERENCES [dbo].[StoreAPI]
+        ([storeID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_StoreProduct'
+CREATE INDEX [IX_FK_StoreProduct]
+ON [dbo].[Products]
+    ([storeID]);
+GO
+
+-- Creating foreign key on [articleID] in table 'Products'
+ALTER TABLE [dbo].[Products]
+ADD CONSTRAINT [FK_articleDetailsProduct]
+    FOREIGN KEY ([articleID])
+    REFERENCES [dbo].[articleDetailsAPI]
+        ([articleID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_articleDetailsProduct'
+CREATE INDEX [IX_FK_articleDetailsProduct]
+ON [dbo].[Products]
+    ([articleID]);
 GO
 
 -- --------------------------------------------------

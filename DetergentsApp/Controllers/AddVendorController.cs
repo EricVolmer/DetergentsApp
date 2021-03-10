@@ -25,7 +25,7 @@ namespace DetergentsApp.Controllers
             };
             try
             {
-                db.VendorSet.Add(newVendor);
+                db.Vendor.Add(newVendor);
                 db.SaveChanges();
             }
             catch (Exception e)

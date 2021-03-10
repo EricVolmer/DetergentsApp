@@ -1,4 +1,5 @@
-﻿@using Resources
+﻿@using System.Security.Claims
+@using Resources
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,6 +48,30 @@
                 <li>@Html.ActionLink("Vendor", "Index", "Vendor")</li>
                 <li>@Html.ActionLink("Public", "Public", "Public")</li>
                 <li>@Html.ActionLink("Add New Vendor", "AddVendor", "AddVendor")</li>
+
+
+                @if (!Request.IsAuthenticated)
+                {
+                    <li> @Html.ActionLink("Sign In", "SignIn", "Home") </li>
+                    <!-- If the user is not authenticated, display the sign-in button -->
+                    //<a href="@Url.Action("SignIn", "Home")" style="text-decoration: none;">
+                    //  <text x="470" y="357" fill="white" class="fnt0">Sign in with Microsoft</text>
+                    //</a>
+                }
+                else
+                {
+                    <span><br/>Hello @ClaimsPrincipal.Current.FindFirst("name").Value;</span>
+                    <br/>
+                    <br/>
+                    @Html.ActionLink("See Your Claims", "Index", "Claims")
+                    <br/>
+                    <br/>
+                    @Html.ActionLink("Sign out", "SignOut", "Home")
+                }
+                @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
+                {
+                    <div style="background-color:red;color:white;font-weight: bold;">Error: @Request.QueryString["errormessage"]</div>
+                }
 
             </ul>
         </div>

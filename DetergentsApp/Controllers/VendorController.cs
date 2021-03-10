@@ -15,7 +15,7 @@ namespace DetergentsApp.Controllers
         // GET: Vendor
         public ActionResult Index()
         {
-            return View(db.VendorSet.ToList());
+            return View(db.Vendor.ToList());
         }
 
         public ActionResult VendorSave(IEnumerable<HttpPostedFileBase> files, int vendorDetails, int articleEAN,
@@ -82,7 +82,7 @@ namespace DetergentsApp.Controllers
 
         public ActionResult vendorDropDownList()
         {
-            var result = db.VendorSet;
+            var result = db.Vendor;
 
             var containerList = new List<SelectListItem>();
             var productViewModels = result.Select(entity => new VendorViewModel

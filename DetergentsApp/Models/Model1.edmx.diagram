@@ -12,10 +12,14 @@
         <AssociationConnector Association="DetergentsModel.FK__Product__categor__025D5595" ManuallyRouted="false" />
         <AssociationConnector Association="DetergentsModel.FK__UserFile__sheetT__0539C240" ManuallyRouted="false" />
         <AssociationConnector Association="DetergentsModel.ProductSheetType" />
-        <EntityTypeShape EntityType="DetergentsModel.Vendor" Width="1.5" PointX="6.25" PointY="2.875" />
+        <EntityTypeShape EntityType="DetergentsModel.Vendor" Width="1.5" PointX="6.25" PointY="3.125" />
         <EntityTypeShape EntityType="DetergentsModel.Country" Width="1.5" PointX="1.375" PointY="3.125" />
         <AssociationConnector Association="DetergentsModel.VendorProduct" />
         <AssociationConnector Association="DetergentsModel.CountryProduct" />
+        <EntityTypeShape EntityType="DetergentsModel.StoreAPI" Width="1.5" PointX="4.75" PointY="5.875" />
+        <AssociationConnector Association="DetergentsModel.StoreProduct" />
+        <EntityTypeShape EntityType="DetergentsModel.articleDetailsAPI" Width="1.5" PointX="2.875" PointY="5.75" />
+        <AssociationConnector Association="DetergentsModel.articleDetailsProduct" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

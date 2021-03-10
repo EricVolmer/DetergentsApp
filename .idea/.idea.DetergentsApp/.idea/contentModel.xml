@@ -3,6 +3,7 @@
   <component name="ContentModelStore">
     <e p="C:\Users\Eric\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Eric\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_DetergentsApp.878162441.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Eric\AppData\Roaming\JetBrains\Rider2020.3\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\Eric\AppData\Roaming\JetBrains\Rider2020.3\extensions" t="IncludeRecursive" />
     <e p="C:\Users\Eric\Documents\GitHub\DetergentsApp" t="IncludeFlat">
       <e p="DetergentsApp" t="IncludeRecursive">
@@ -29,6 +30,7 @@
           <e p="Admin2Controller.cs" t="Include" />
           <e p="AllFilesController.cs" t="Include" />
           <e p="CategoriesController.cs" t="Include" />
+          <e p="ClaimsController.cs" t="Include" />
           <e p="FileUploadController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
@@ -48,6 +50,7 @@
         <e p="Global.asax" t="Include" />
         <e p="Global.asax.cs" t="Include" />
         <e p="Models" t="Include">
+          <e p="articleDetailsAPI.cs" t="Include" />
           <e p="Category.cs" t="Include" />
           <e p="Country.cs" t="Include" />
           <e p="countryViewModel.cs" t="Include" />
@@ -64,6 +67,7 @@
           <e p="ProductViewModel.cs" t="Include" />
           <e p="SheetType.cs" t="Include" />
           <e p="sheetTypeViewModel.cs" t="Include" />
+          <e p="StoreAPI.cs" t="Include" />
           <e p="UserFile.cs" t="Include" />
           <e p="UserFileViewModel.cs" t="Include" />
           <e p="Vendor.cs" t="Include" />
@@ -103,6 +107,7 @@
           <e p="kendo.modernizr.custom.js" t="Include" />
           <e p="modernizr-2.8.3.js" t="Include" />
         </e>
+        <e p="Startup.cs" t="Include" />
         <e p="Views" t="Include">
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="AddVendor" t="Include">
@@ -119,6 +124,9 @@
             <e p="Delete.cshtml" t="Include" />
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Claims" t="Include">
             <e p="Index.cshtml" t="Include" />
           </e>
           <e p="FileUpload" t="Include">

@@ -69,7 +69,7 @@
         {
             model.Id(c => c.Id);
             model.Field(c => c.productID).Editable(false);
-        })        .Read(read => read.Action("FilesReadAdmin", "FileUpload"))
+        }).Read(read => read.Action("FilesReadAdmin", "FileUpload"))
         .Update(update => update.Action("VendorFileUpdate", "FileUpload"))
         .Destroy(update => update.Action("FilesDestroyAdmin", "FileUpload"))
     ))

@@ -25,6 +25,10 @@
     <Property Name="vendorID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Country" Relationship="DetergentsModel.CountryProduct" FromRole="Product" ToRole="Country" />
     <Property Name="countryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Store" Relationship="DetergentsModel.StoreProduct" FromRole="Product" ToRole="Store" />
+    <Property Name="storeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="articleDetails" Relationship="DetergentsModel.articleDetailsProduct" FromRole="Product" ToRole="articleDetails" />
+    <Property Name="articleID" Type="Int64" Nullable="false" />
   </EntityType>
   <EntityType Name="SheetType">
     <Key>
@@ -90,14 +94,24 @@
       <End Role="Product" EntitySet="Products" />
       <End Role="SheetType" EntitySet="SheetTypes" />
     </AssociationSet>
-    <EntitySet Name="VendorSet" EntityType="DetergentsModel.Vendor" />
-    <EntitySet Name="CountrySet" EntityType="DetergentsModel.Country" />
+    <EntitySet Name="Vendor" EntityType="DetergentsModel.Vendor" />
+    <EntitySet Name="Country" EntityType="DetergentsModel.Country" />
     <AssociationSet Name="VendorProduct" Association="DetergentsModel.VendorProduct">
-      <End Role="Vendor" EntitySet="VendorSet" />
+      <End Role="Vendor" EntitySet="Vendor" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
     <AssociationSet Name="CountryProduct" Association="DetergentsModel.CountryProduct">
-      <End Role="Country" EntitySet="CountrySet" />
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <EntitySet Name="StoreAPI" EntityType="DetergentsModel.StoreAPI" />
+    <AssociationSet Name="StoreProduct" Association="DetergentsModel.StoreProduct">
+      <End Role="Store" EntitySet="StoreAPI" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <EntitySet Name="articleDetailsAPI" EntityType="DetergentsModel.articleDetailsAPI" />
+    <AssociationSet Name="articleDetailsProduct" Association="DetergentsModel.articleDetailsProduct">
+      <End Role="articleDetails" EntitySet="articleDetailsAPI" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
   </EntityContainer>
@@ -142,6 +156,47 @@
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="countryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="StoreAPI">
+    <Key>
+      <PropertyRef Name="storeID" />
+    </Key>
+    <Property Name="storeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="storeName" Type="String" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="DetergentsModel.StoreProduct" FromRole="Store" ToRole="Product" />
+  </EntityType>
+  <Association Name="StoreProduct">
+    <End Type="DetergentsModel.StoreAPI" Role="Store" Multiplicity="1" />
+    <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="storeID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="storeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="articleDetailsAPI">
+    <Key>
+      <PropertyRef Name="articleID" />
+    </Key>
+    <Property Name="articleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="articleTextReceipt" Type="String" Nullable="false" />
+    <Property Name="labelText1" Type="String" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="DetergentsModel.articleDetailsProduct" FromRole="articleDetails" ToRole="Product" />
+  </EntityType>
+  <Association Name="articleDetailsProduct">
+    <End Type="DetergentsModel.articleDetailsAPI" Role="articleDetails" Multiplicity="1" />
+    <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articleDetails">
+        <PropertyRef Name="articleID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="articleID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

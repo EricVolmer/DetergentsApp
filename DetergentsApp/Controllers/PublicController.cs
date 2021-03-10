@@ -52,7 +52,7 @@ namespace DetergentsApp.Controllers
         {
             try
             {
-                var result = db.CountrySet;
+                var result = db.Country;
 
                 var containerList = new List<SelectListItem>();
                 var productViewModels = result.Select(entity => new countryViewModel
@@ -172,7 +172,7 @@ namespace DetergentsApp.Controllers
         public ActionResult Products_Destroy([DataSourceRequest] DataSourceRequest request, ProductViewModel product)
         {
             var category = db.Categories.Find(product.categoryID);
-            var vendor = db.VendorSet.Find(product.vendorID);
+            var vendor = db.Vendor.Find(product.vendorID);
             var sheetTypes = db.SheetTypes.ToList();
             try
             {
@@ -233,7 +233,7 @@ namespace DetergentsApp.Controllers
         public ActionResult Country()
         {
             var dataContext = new DetergentsEntities();
-            var country = dataContext.CountrySet
+            var country = dataContext.Country
                 .Select(c => new countryViewModel
                 {
                     CountryID = c.CountryID,
@@ -243,76 +243,73 @@ namespace DetergentsApp.Controllers
 
             return Json(country, JsonRequestBehavior.AllowGet);
         }
-        
-            
-            
-            
-            public ActionResult DetailsRead([DataSourceRequest] DataSourceRequest request, int productID, string EAN,
-            string productName)
-        // {
-        //       var product = db.Products.FirstOrDefault(p => p.productID == productID);
-        //       var userFiles = db.UserFiles.Where(p => p.productID == productID).ToList();
-        //
-        //       var model = new ProductViewModel();
-        //
-        //       model.productID = productID;
-        //       model.EAN = EAN;
-        //       model.productName = productName;
-        //       
-        //
-        //
-        //     // var product = db.Products.Find(productID);
-        //     // var ean = db.Products.Find(EAN);
-        //     // var nameOfProduct = db.Products.Find(productName);
-        //
-        //
-        //     ViewBag.ProductID = productID;
-        //     ViewBag.ProductID = EAN;
-        //     ViewBag.ProductID = productName;
-        //
-        //     
-        //     return View(model);
-        // }
-        
+
+
+        public ActionResult DetailsRead([DataSourceRequest] DataSourceRequest request, int productID, string EAN,
+                string productName)
+            // {
+            //       var product = db.Products.FirstOrDefault(p => p.productID == productID);
+            //       var userFiles = db.UserFiles.Where(p => p.productID == productID).ToList();
+            //
+            //       var model = new ProductViewModel();
+            //
+            //       model.productID = productID;
+            //       model.EAN = EAN;
+            //       model.productName = productName;
+            //       
+            //
+            //
+            //     // var product = db.Products.Find(productID);
+            //     // var ean = db.Products.Find(EAN);
+            //     // var nameOfProduct = db.Products.Find(productName);
+            //
+            //
+            //     ViewBag.ProductID = productID;
+            //     ViewBag.ProductID = EAN;
+            //     ViewBag.ProductID = productName;
+            //
+            //     
+            //     return View(model);
+            // }
+
         {
             var db = new DetergentsEntities();
             try
             {
                 var userFiles = db.UserFiles.Where(x => x.productID == productID).Select(
-                        f => new ProductViewModel()
-                        {
-                            productID = productID,
-                            EAN = EAN,
-                            productName = productName
-                        });
-                    return Json(userFiles.ToDataSourceResult(request) , JsonRequestBehavior.AllowGet);
-                
-                
-                    // var userFiles1 = db.UserFiles.Where(x =>
-                    //         x.productID == productID && x.adminApproved == true)
-                    //     .Select(
-                    //         f => new UserFileViewModel
-                    //         {
-                    //             Id = f.fileID,
-                    //             Name = f.fileName,
-                    //             productID = f.productID,
-                    //             sheetTypeID = f.sheetTypeID,
-                    //             productName = productName
-                    //         });
-                    // return Json(userFiles1.ToDataSourceResult(request));
-                
+                    f => new ProductViewModel
+                    {
+                        productID = productID,
+                        EAN = EAN,
+                        productName = productName
+                    });
+                return Json(userFiles.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+
+
+                // var userFiles1 = db.UserFiles.Where(x =>
+                //         x.productID == productID && x.adminApproved == true)
+                //     .Select(
+                //         f => new UserFileViewModel
+                //         {
+                //             Id = f.fileID,
+                //             Name = f.fileName,
+                //             productID = f.productID,
+                //             sheetTypeID = f.sheetTypeID,
+                //             productName = productName
+                //         });
+                // return Json(userFiles1.ToDataSourceResult(request));
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw;
             }
-            
         }
-            public ActionResult Details(int productID, string EAN,
-                string productName)
-            {
-                return View();
-            }
+
+        public ActionResult Details(int productID, string EAN,
+            string productName)
+        {
+            return View();
+        }
     }
 }
