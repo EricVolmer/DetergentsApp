@@ -39,8 +39,10 @@ namespace DetergentsApp.Controllers
         {
             try
             {
-                var restClient = new RestClient("https://api.sallinggroup.com/v2/stores/");
-                restClient.Timeout = -1;
+                var restClient = new RestClient("https://api.sallinggroup.com/v2/stores/")
+                {
+                    Timeout = -1
+                };
                 var request2 = new RestRequest(Method.GET);
                 request2.AddHeader("Authorization",
                     "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTQ4NzEzNzcsImlzcyI6IjhiMmUzMmU1LWExNjYtNDdiYy05M2VkLWU4Y2Y5NDYyODc0NiIsIm10aCI6IkdFVCIsInN1YiI6Ii92Mi9zdG9yZXMvIn0.252MuW2ey19AKfu6NXSihJrUhwnzQVhSf7u91auNmeU");
@@ -239,22 +241,23 @@ namespace DetergentsApp.Controllers
                 var productList = new List<ProductViewModel>();
                 foreach (var item in result)
                 {
-                    var product = new ProductViewModel();
+                    var product = new ProductViewModel
+                    {
+                        productID = item.productID,
+                        productName = item.productName,
+                        productDescription = item.productDescription,
+                        EAN = item.EAN,
 
-                    product.productID = item.productID;
-                    product.productName = item.productName;
-                    product.productDescription = item.productDescription;
-                    product.EAN = item.EAN;
+                        categoryID = item.Category.categoryID,
 
-                    product.categoryID = item.Category.categoryID;
+                        vendorID = item.Vendor.vendorID,
+                        vendorName = item.Vendor.vendorName,
 
-                    product.vendorID = item.Vendor.vendorID;
-                    product.vendorName = item.Vendor.vendorName;
+                        CountryID = item.countryID,
 
-                    product.CountryID = item.countryID;
-
-                    product.vikingStoreId = item.Store.storeID;
-                    product.name = item.Store.storeName;
+                        vikingStoreId = item.Store.storeID,
+                        name = item.Store.storeName
+                    };
 
 
                     var fileListName = db.UserFiles
@@ -266,14 +269,16 @@ namespace DetergentsApp.Controllers
 
                         foreach (var file in fileListName)
                         {
-                            var userFiles = new UserFile();
-                            userFiles.fileName = file.fileName;
-                            userFiles.fileID = file.fileID;
-
-                            userFiles.SheetType = new SheetType
+                            var userFiles = new UserFile
                             {
-                                sheetTypeID = file.SheetType.sheetTypeID,
-                                sheetTypeName = file.SheetType.sheetTypeName
+                                fileName = file.fileName,
+                                fileID = file.fileID,
+
+                                SheetType = new SheetType
+                                {
+                                    sheetTypeID = file.SheetType.sheetTypeID,
+                                    sheetTypeName = file.SheetType.sheetTypeName
+                                }
                             };
                             userFiles.SheetType.sheetTypeName = file.SheetType.sheetTypeName;
 
