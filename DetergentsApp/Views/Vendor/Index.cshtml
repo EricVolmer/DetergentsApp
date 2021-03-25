@@ -4,13 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <section class="well">
-    <h2 class="ra-well-title">Vendor Upload</h2>
+    <div id="main-section-header" class="row">
+        <h2 id="team-efficiency" class="col-xs-3">Vendor Upload</h2>
+        <div style="clear:both;"></div>
+    </div>
 
     <form method="post" action='@Url.Action("VendorSave")'>
-        <div class="demo-section k-content">
 
             <div class="form-horizontal form-widgets col-sm-6">
                 <div class="form-group">
@@ -109,7 +109,6 @@
                     <button type="submit" id="uploadButton" class="k-button k-state-default">Upload</button>
                 </div>
             </div>
-        </div>
     </form>
 
 

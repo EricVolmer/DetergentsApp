@@ -22,7 +22,6 @@ namespace DetergentsApp.Models
     
         public long articleID { get; set; }
         public string articleTextReceipt { get; set; }
-        public string labelText1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }

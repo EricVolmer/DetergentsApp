@@ -4,10 +4,6 @@
     ViewBag.Title = "Home";
 }
 
-<div class="jumbotron">
-    <h1>Forbruger- og sikkerhedsdatablade</h1>
-    <p class="lead">På denne side findes sikkerhedsdatablade og forbrugerdatablade på Salling Groups produkter.</p>
-</div>
 
 <div id="main-section-header" class="row">
     <h2 id="team-efficiency" class="col-xs-3">Products & Files</h2>
@@ -18,19 +14,14 @@
     .Columns(columns =>
     {
         columns.Bound(c => c.productID).Hidden();
-        columns.Bound(c => c.sheetTypeID).Hidden().Title("SheetType");
-        columns.Bound(c => c.productName).Width(200);
         columns.Bound(c => c.productDescription).Width(230);
         columns.Bound(c => c.EAN).Width(150);
-        columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
-            ViewBag.Category, "Value", "Text").Title("Category").Width(120);
-
-        //    columns.Bound(c => c.vendorName).Title("Vendor Name");
-        columns.Bound(c => c.vendorID).Title("Vendor Name");
-
+        columns.Bound(c => c.vendorName).Title("Vendor Name");
         columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
             ViewBag.Country, "Value", "Text").Title("Country").Width(120);
 
+        columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
+            ViewBag.Category, "Value", "Text").Title("Category").Width(120).Hidden();
 
         columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
 
@@ -80,7 +71,6 @@
     .Selectable()
     .Search(s =>
     {
-        s.Field(f => f.productName);
         s.Field(f => f.productDescription);
         s.Field(f => f.EAN);
         s.Field(f => f.categoryName);
@@ -90,12 +80,9 @@
         .ServerOperation(false)
         .PageSize(20)
         .Group(group => group.Add("categoryID", typeof(string), ListSortDirection.Descending))
-        .Read(read => read.Action("Product_Read", "Home"))
+        .Read(read => read.Action("Product_Read", "Public"))
         .Events(events => events.Error("error_handler"))
         .Model(model => { model.Id(c => c.productID); })
-        .Create(update => update.Action("Products_Create_Update", "Home"))
-        .Update(update => update.Action("Products_Create_Update", "Home"))
-        .Destroy(update => update.Action("Products_Destroy", "Home"))
     ))
 
 <script type="text/javascript">                
@@ -191,31 +178,5 @@
 
 
 <style>
-    .k-readonly {
-        color: gray;
-    }
-    .jumbotron
-    {
-        background-image: url("../../Pictures/sallingPicture.jpg");
-
-    }
-    #grid .k-grid-toolbar
-        {
-            padding: .6em 1.3em .6em .4em;
-        }
-        .category-label
-        {
-            vertical-align: middle;
-            padding-right: .5em;
-        }
-        #category
-        {
-            vertical-align: middle;
-        }
-        .refreshBtnContainer {
-            display: inline-block;
-        }
-        .toolbar {
-            float: right;
-        }
+   
 </style>

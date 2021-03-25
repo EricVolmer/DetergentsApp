@@ -29,8 +29,8 @@ namespace DetergentsApp.Controllers
             CreateViewListSheetType();
             CreateViewListVendor();
             CreateViewListCountry();
-           // CreateViewListstoreID();
-           // CreateViewListArticleID();
+            CreateViewListstoreID();
+            CreateViewListArticleID();
             return View();
         }
 
@@ -38,27 +38,51 @@ namespace DetergentsApp.Controllers
         // you need to copy the Token from Postman in order to get a response.
         public void CreateViewListstoreID()
         {
+            // try
+            // {
+            //     // var restClient = new RestClient("https://api.sallinggroup.com/v2/stores/")
+            //     // {
+            //     //     Timeout = -1
+            //     // };
+            //     // var request2 = new RestRequest(Method.GET);
+            //     // request2.AddHeader("Authorization", "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTU0NzI1MjgsImlzcyI6IjhiMmUzMmU1LWExNjYtNDdiYy05M2VkLWU4Y2Y5NDYyODc0NiIsIm10aCI6IkdFVCIsInN1YiI6Ii92Mi9zdG9yZXMvP2NpdHk9VGlsc3QifQ.fF-jk_0BpJPIbJNU_C6IrcdNBCJMgeHtitryPx_2PR4");
+            //     // var response = restClient.Execute(request2);
+            //     // Console.WriteLine(response.Content);
+            //
+            //
+            //   //  var data = JsonConvert.DeserializeObject<List<ProductViewModel>>(response.Content);
+            //    // Console.WriteLine("here");
+            //     var containerList = new List<SelectListItem>();
+            //
+            //     var productViewModels = containerList.Select(entity => new ProductViewModel
+            //         {
+            //             
+            //             vikingStoreId = entity.vikingStoreId,
+            //             name = entity.name
+            //         })
+            //         .ToList();
+            //
+            //     foreach (var productViewModel in productViewModels)
+            //         containerList.Add(new SelectListItem
+            //             {Text = productViewModel.name, Value = productViewModel.vikingStoreId.ToString()});
+            //
+            //     ViewBag.storeID = containerList;
+            // }
+            // catch (Exception e)
+            // {
+            //     Console.WriteLine(e);
+            //     throw;
+            // }
+            
             try
             {
-                var restClient = new RestClient("https://api.sallinggroup.com/v2/stores/")
-                {
-                    Timeout = -1
-                };
-                var request2 = new RestRequest(Method.GET);
-                request2.AddHeader("Authorization",
-                    "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTQ4NzEzNzcsImlzcyI6IjhiMmUzMmU1LWExNjYtNDdiYy05M2VkLWU4Y2Y5NDYyODc0NiIsIm10aCI6IkdFVCIsInN1YiI6Ii92Mi9zdG9yZXMvIn0.252MuW2ey19AKfu6NXSihJrUhwnzQVhSf7u91auNmeU");
-                var response = restClient.Execute(request2);
-                Console.WriteLine(response.Content);
+                var result = db.StoreAPI;
 
-
-                var data = JsonConvert.DeserializeObject<List<ProductViewModel>>(response.Content);
-                Console.WriteLine("here");
                 var containerList = new List<SelectListItem>();
-
-                var productViewModels = data.Select(entity => new ProductViewModel
+                var productViewModels = result.Select(entity => new ProductViewModel
                     {
-                        vikingStoreId = entity.vikingStoreId,
-                        name = entity.name
+                        name = entity.storeName,
+                        vikingStoreId = entity.storeID
                     })
                     .ToList();
 
@@ -80,6 +104,31 @@ namespace DetergentsApp.Controllers
             // Here should be the code for the article details API, the dropdown list is done in the View/Home as
             // a ViewBag.ArticleID
             // https://api.sallinggroup.com/v1/viking/dk/enriched-articles
+            
+            try
+            {
+                var result = db.articleDetailsAPI;
+
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new ProductViewModel
+                    {
+                        articleId = entity.articleID,
+                        articleTextReceipt = entity.articleTextReceipt,
+                        
+                    })
+                    .ToList();
+
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.articleTextReceipt, Value = productViewModel.articleId.ToString()});
+
+                ViewBag.articleID = containerList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public void CreateViewListCategory()
@@ -238,6 +287,7 @@ namespace DetergentsApp.Controllers
 
             try
             {
+                
                 var result = db.Products;
                 var productList = new List<ProductViewModel>();
                 foreach (var item in result)
@@ -245,7 +295,6 @@ namespace DetergentsApp.Controllers
                     var product = new ProductViewModel
                     {
                         productID = item.productID,
-                        productName = item.productName,
                         productDescription = item.productDescription,
                         EAN = item.EAN,
 
@@ -257,12 +306,16 @@ namespace DetergentsApp.Controllers
                         CountryID = item.countryID,
 
                         vikingStoreId = item.Store.storeID,
-                        name = item.Store.storeName
+                        name = item.Store.storeName,
+                        
+                        articleId = item.articleID,
+                        articleTextReceipt = item.articleDetails.articleTextReceipt,
+
                     };
 
 
                     var fileListName = db.UserFiles
-                        .Where(file => file.productID == item.productID && file.adminApproved).ToList();
+                        .Where(file => file.productID == item.productID).ToList();
 
                     if (fileListName != null)
                     {
@@ -315,12 +368,13 @@ namespace DetergentsApp.Controllers
                     if (entity != null)
                     {
                         entity.EAN = product.EAN;
-                        entity.productName = product.productName;
                         entity.productDescription = product.productDescription;
                         entity.Category = category;
                         entity.vendorID = product.vendorID;
                         entity.countryID = product.CountryID;
                         entity.storeID = product.vikingStoreId;
+                        entity.articleID = product.articleId;
+                        entity.adminToPublic = false;
 
                         try
                         {
@@ -340,13 +394,14 @@ namespace DetergentsApp.Controllers
                 var newProduct = new Product
                 {
                     EAN = product.EAN,
-                    productName = product.productName,
                     productDescription = product.productDescription,
                     Category = category,
                     SheetType = sheetTypes,
                     vendorID = product.vendorID,
                     countryID = product.CountryID,
-                    storeID = product.vikingStoreId
+                    storeID = product.vikingStoreId,
+                    articleID = product.articleId,
+                    adminToPublic = false
                 };
                 try
                 {
@@ -377,7 +432,6 @@ namespace DetergentsApp.Controllers
                     {
                         productID = product.productID,
                         EAN = product.EAN,
-                        productName = product.productName,
                         productDescription = product.productDescription,
                         categoryID = product.categoryID,
                         vendorID = product.vendorID,

@@ -15,7 +15,6 @@
     <Property Name="productID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="EAN" Type="String" Nullable="false" FixedLength="false" Unicode="true" />
     <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
-    <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="productDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="categoryID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Category" Relationship="Self.FK__Product__categor__025D5595" FromRole="Product" ToRole="Category" />
@@ -29,6 +28,7 @@
     <Property Name="storeID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="articleDetails" Relationship="DetergentsModel.articleDetailsProduct" FromRole="Product" ToRole="articleDetails" />
     <Property Name="articleID" Type="Int64" Nullable="false" />
+    <Property Name="adminToPublic" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="SheetType">
     <Key>
@@ -185,7 +185,6 @@
     </Key>
     <Property Name="articleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="articleTextReceipt" Type="String" Nullable="false" />
-    <Property Name="labelText1" Type="String" Nullable="false" />
     <NavigationProperty Name="Product" Relationship="DetergentsModel.articleDetailsProduct" FromRole="articleDetails" ToRole="Product" />
   </EntityType>
   <Association Name="articleDetailsProduct">

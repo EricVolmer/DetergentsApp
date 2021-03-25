@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using DetergentsApp.Models;
@@ -16,9 +17,10 @@ namespace DetergentsApp.Controllers
         {
             CreateViewListCategory();
             CreateViewListSheetType();
+            
+            
             return View();
         }
-
         public void CreateViewListCategory()
         {
             try
@@ -82,10 +84,11 @@ namespace DetergentsApp.Controllers
                 var list = result.Select(entity => new ProductViewModel
                     {
                         productID = entity.productID,
-                        EAN = entity.EAN,
-                        productName = entity.productName,
                         productDescription = entity.productDescription,
-                        categoryID = entity.Category.categoryID
+                        EAN = entity.EAN,
+                        categoryID = entity.Category.categoryID,
+                        vendorID = entity.vendorID,
+                        adminToPublic = entity.adminToPublic
                     })
                     .ToList();
                 return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -96,7 +99,6 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Products_Create([DataSourceRequest] DataSourceRequest request, Product product)
         {
@@ -106,9 +108,9 @@ namespace DetergentsApp.Controllers
                 {
                     EAN = product.EAN,
                     SheetType = product.SheetType,
-                    productName = product.productName,
                     productDescription = product.productDescription,
-                    Category = product.Category
+                    Category = product.Category,
+                    adminToPublic = product.adminToPublic
                 };
 
                 db.Products.Add(entity);
@@ -125,21 +127,33 @@ namespace DetergentsApp.Controllers
             if (ModelState.IsValid)
             {
                 var category = db.Categories.Find(product.categoryID);
-                var entity = new Product
 
+                var entity = db.Products.Find(product.productID);
+                if (entity != null)
                 {
-                    EAN = product.EAN,
-                    productName = product.productName,
-                    productDescription = product.productDescription,
-                    Category = category
-                };
-                product.productID = entity.productID;
-                product.categoryID = entity.categoryID;
-                db.Products.Add(entity);
-                db.SaveChanges();
+                    
+                        entity.productID = product.productID;
+                        entity.productDescription = product.productDescription;
+                        entity.EAN = product.EAN;
+                        entity.Category = category;
+                        entity.vendorID = product.vendorID;
+                        entity.adminToPublic = product.adminToPublic;
+                        
+                    try
+                    {
+                        db.Entry(entity).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return Json(new[] {product}.ToDataSourceResult(request, ModelState));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
             }
-
             return Json(new[] {product}.ToDataSourceResult(request, ModelState));
+
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -151,7 +165,6 @@ namespace DetergentsApp.Controllers
                 {
                     productID = product.productID,
                     EAN = product.EAN,
-                    productName = product.productName,
                     productDescription = product.productDescription
                 };
 

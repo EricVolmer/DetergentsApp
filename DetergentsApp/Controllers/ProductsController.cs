@@ -135,7 +135,6 @@ namespace DetergentsApp.Controllers
             var products = northwind.Products.Select(product => new ProductViewModel
             {
                 productID = product.productID,
-                productName = product.productName,
                 categoryName = product.Category.categoryName
             });
 

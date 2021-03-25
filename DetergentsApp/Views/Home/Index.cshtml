@@ -4,11 +4,6 @@
     ViewBag.Title = "Home";
 }
 
-<div class="jumbotron">
-    <h1>Forbruger- og sikkerhedsdatablade</h1>
-    <p class="lead">På denne side findes sikkerhedsdatablade og forbrugerdatablade på Salling Groups produkter.</p>
-</div>
-
 <div id="main-section-header" class="row">
     <h2 id="team-efficiency" class="col-xs-3">Products & Files</h2>
 
@@ -21,16 +16,15 @@
     {
         columns.Bound(c => c.productID).Hidden();
         columns.Bound(c => c.sheetTypeID).Hidden().Title("SheetType");
-        columns.Bound(c => c.productName).Width(200);
         //  columns.Bound(c => c.vikingStoreId);
         columns.Bound(c => c.productDescription).Width(230);
         columns.Bound(c => c.EAN).Width(150);
 
-        //columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
-        //    ViewBag.articleID, "Value", "Text").Title("Store ID").Width(120);
+        columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
+            ViewBag.articleID, "Value", "Text").Title("Article ID").Width(120);
 
-      //  columns.ForeignKey(c => c.vikingStoreId, (List<SelectListItem>)
-        //    ViewBag.storeID, "Value", "Text").Title("Store ID").Width(120);
+        columns.ForeignKey(c => c.vikingStoreId, (List<SelectListItem>)
+            ViewBag.storeID, "Value", "Text").Title("Store ID").Width(120);
 
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(120);
@@ -79,6 +73,7 @@
                                      .DataTextField("Text")
                                      .DataValueField("Value")
                                      .AutoBind(true)
+                                     //.Events(e => e.Change("sheetTypeChange"))
                                      .HtmlAttributes(new {style = "width: 150px;"})
                                      .DataSource(ds =>
                                      {
@@ -112,7 +107,6 @@
     .Selectable()
     .Search(s =>
     {
-        s.Field(f => f.productName);
         s.Field(f => f.productDescription);
         s.Field(f => f.EAN);
         s.Field(f => f.categoryName);
@@ -192,11 +186,26 @@
                             grid.dataSource.filter({});
                         }
                         
-                    }
+                }
+                
+                // To Filter the files which are displayed on the page ( public, safety , medical)
+                
+                // function sheetTypeChange() {
+                //      var value = this.value(),
+                //          grid = $("#grid").data("kendoGrid");
+                //
+                //                                    
+                //      if (value) {
+                //          grid.dataSource.filter({ field: "listOfFiles", operator: "eq", value: parseInt(value) });
+                //      } else {
+                //          grid.dataSource.filter({});
+                //      }
+                // }
                 
                            
                     function showFiles(e) {
                         e.preventDefault();
+                                
                                 var product = this.dataItem($(e.currentTarget).closest("tr"));
                                 
                                 var dropdownlist = $("#sheetTypeCategory").data("kendoDropDownList").value();
@@ -204,7 +213,6 @@
                              //   var sheetTypeId = dropdownlist.val();                      
                                 window.location.href = "@Url.Action("UploadedFiles",
                                                             "FileUpload")?productID=" + product.productID +
-                                                            "&productName=" + product.productName +
                                                             "&sheetTypeID=" + dropdownlist;
                                                             
                         }
@@ -228,31 +236,5 @@
    </script>
 
 <style>
-    .k-readonly {
-        color: gray;
-    }
-    .jumbotron
-    {
-        background-image: url("../../Pictures/sallingPicture.jpg");
-
-    }
-    #grid .k-grid-toolbar
-        {
-            padding: .6em 1.3em .6em .4em;
-        }
-        .category-label
-        {
-            vertical-align: middle;
-            padding-right: .5em;
-        }
-        #category
-        {
-            vertical-align: middle;
-        }
-        .refreshBtnContainer {
-            display: inline-block;
-        }
-        .toolbar {
-            float: right;
-        }
+    
 </style>

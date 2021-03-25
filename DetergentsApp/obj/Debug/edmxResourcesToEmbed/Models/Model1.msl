@@ -15,7 +15,6 @@
           <ScalarProperty Name="productID" ColumnName="productID" />
           <ScalarProperty Name="EAN" ColumnName="EAN" />
           <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
-          <ScalarProperty Name="productName" ColumnName="productName" />
           <ScalarProperty Name="productDescription" ColumnName="productDescription" />
           <ScalarProperty Name="categoryID" ColumnName="categoryID" />
           <ScalarProperty Name="articleNumber" ColumnName="articleNumber" />
@@ -23,6 +22,7 @@
           <ScalarProperty Name="countryID" ColumnName="countryID" />
           <ScalarProperty Name="storeID" ColumnName="storeID" />
           <ScalarProperty Name="articleID" ColumnName="articleID" />
+          <ScalarProperty Name="adminToPublic" ColumnName="adminToPublic" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -77,7 +77,6 @@
         <MappingFragment StoreEntitySet="articleDetailsAPI">
           <ScalarProperty Name="articleID" ColumnName="articleID" />
           <ScalarProperty Name="articleTextReceipt" ColumnName="articleTextReceipt" />
-          <ScalarProperty Name="labelText1" ColumnName="labelText1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

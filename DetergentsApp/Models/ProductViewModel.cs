@@ -17,12 +17,7 @@ namespace DetergentsApp.Models
 
         
         public countryViewModel Country { get; set; }
-
-        [Required]
-        [MaxLength(50)]
-        [DisplayName("Product Name")]
-        public string productName { get; set; }
-
+        
         [Required]
         [MaxLength(50)]
         [DisplayName("Product Description")]
@@ -44,6 +39,8 @@ namespace DetergentsApp.Models
 
         public List<UserFile> listOfFiles { get; set; }
         
+        public bool adminToPublic { get; set; }
+        
         
         // Store name and ID 
         public int vikingStoreId { get; set; }
@@ -54,8 +51,6 @@ namespace DetergentsApp.Models
         public long articleId { get; set; }
         
         public string articleTextReceipt { get; set; }
-        
-        public string labelText1 { get; set; }
         
         // Article categorizing
         // This might be also useful to implement inside because these values are in the API and in the view.

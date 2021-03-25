@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/10/2021 14:45:28
+-- Date Created: 03/19/2021 10:06:31
 -- Generated from EDMX file: C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -90,14 +90,14 @@ CREATE TABLE [dbo].[Products] (
     [productID] int IDENTITY(1,1) NOT NULL,
     [EAN] nvarchar(max)  NOT NULL,
     [sheetTypeID] int  NOT NULL,
-    [productName] nvarchar(50)  NOT NULL,
     [productDescription] nvarchar(150)  NULL,
     [categoryID] int  NOT NULL,
     [articleNumber] int  NOT NULL,
     [vendorID] int  NOT NULL,
     [countryID] int  NOT NULL,
     [storeID] int  NOT NULL,
-    [articleID] bigint  NOT NULL
+    [articleID] bigint  NOT NULL,
+    [adminToPublic] bit  NOT NULL
 );
 GO
 
@@ -145,8 +145,7 @@ GO
 -- Creating table 'articleDetailsAPI'
 CREATE TABLE [dbo].[articleDetailsAPI] (
     [articleID] bigint IDENTITY(1,1) NOT NULL,
-    [articleTextReceipt] nvarchar(max)  NOT NULL,
-    [labelText1] nvarchar(max)  NOT NULL
+    [articleTextReceipt] nvarchar(max)  NOT NULL
 );
 GO
 

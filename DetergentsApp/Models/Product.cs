@@ -23,7 +23,6 @@ namespace DetergentsApp.Models
         public int productID { get; set; }
         public string EAN { get; set; }
         public int sheetTypeID { get; set; }
-        public string productName { get; set; }
         public string productDescription { get; set; }
         public int categoryID { get; set; }
         public int articleNumber { get; set; }
@@ -31,6 +30,7 @@ namespace DetergentsApp.Models
         public int countryID { get; set; }
         public int storeID { get; set; }
         public long articleID { get; set; }
+        public bool adminToPublic { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

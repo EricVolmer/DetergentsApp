@@ -89,7 +89,7 @@ namespace DetergentsApp.Controllers
                             productID = productID,
                             sheetTypeID = sheetTypeID,
                             languageType = language,
-                            adminApproved = true
+                            adminApproved = false
                         });
                         db.SaveChanges();
                         file.SaveAs(physicalPath);
@@ -212,8 +212,7 @@ namespace DetergentsApp.Controllers
                             Id = f.fileID,
                             Name = f.fileName,
                             productID = f.productID,
-                            sheetTypeID = f.sheetTypeID,
-                            productName = productName
+                            sheetTypeID = f.sheetTypeID
                         });
                     return Json(userFiles.ToDataSourceResult(request));
                 }
@@ -227,8 +226,7 @@ namespace DetergentsApp.Controllers
                                 Id = f.fileID,
                                 Name = f.fileName,
                                 productID = f.productID,
-                                sheetTypeID = f.sheetTypeID,
-                                productName = productName
+                                sheetTypeID = f.sheetTypeID
                             });
                     return Json(userFiles.ToDataSourceResult(request));
                 }
@@ -245,8 +243,7 @@ namespace DetergentsApp.Controllers
             var db = new DetergentsEntities();
             try
             {
-                var userFiles = db.UserFiles.Where(x => x.adminApproved == false)
-                    .Select(
+                var userFiles = db.UserFiles.Select(
                         f => new UserFileViewModel
                         {
                             Id = f.fileID,

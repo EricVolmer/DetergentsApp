@@ -64,14 +64,13 @@ namespace DetergentsApp.Controllers
                 {
                     productID = entity.productID,
                     EAN = entity.EAN,
-                    productName = entity.productName
                 })
                 .ToList();
 
             foreach (var productViewModel in productViewModels)
                 containerList.Add(new SelectListItem
                 {
-                    Text = productViewModel.productName + " - " + productViewModel.EAN,
+                    Text = productViewModel.productDescription + " - " + productViewModel.EAN,
                     Value = productViewModel.productID.ToString()
                 });
 

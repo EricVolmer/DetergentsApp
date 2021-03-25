@@ -57,7 +57,6 @@
     <Property Name="productID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EAN" Type="nvarchar(max)" Nullable="false" />
     <Property Name="sheetTypeID" Type="int" Nullable="false" />
-    <Property Name="productName" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="productDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
     <Property Name="categoryID" Type="int" Nullable="false" />
     <Property Name="articleNumber" Type="int" Nullable="false" />
@@ -65,6 +64,7 @@
     <Property Name="countryID" Type="int" Nullable="false" />
     <Property Name="storeID" Type="int" Nullable="false" />
     <Property Name="articleID" Type="bigint" Nullable="false" />
+    <Property Name="adminToPublic" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="SheetTypes">
     <Key>
@@ -113,7 +113,6 @@
     </Key>
     <Property Name="articleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="articleTextReceipt" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="labelText1" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductSheetType">
     <Key>

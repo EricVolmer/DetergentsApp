@@ -26,22 +26,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="Vendor change">
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/Models/Vendor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/App_Data/Detergents things to do.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/App_Data/New Text Document.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/New Text Document.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/AddVendorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/AddVendorController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.Context.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.Context.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.diagram" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.diagram" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/VendorSet.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/articleDetailsAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/articleDetailsAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Categories/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Categories/Details.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/FileUpload/UploadedFiles.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/FileUpload/UploadedFiles.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Products/Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Products/Delete.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Products/Details.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Public/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Public/Details.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" afterDir="false" />
@@ -50,6 +67,7 @@
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.csdl" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.csdl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.msl" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.msl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.ssdl" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/edmxResourcesToEmbed/Models/Model1.ssdl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,88 +86,92 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/022C6246-00A9-4FCA-A3D7-721DEB405534/b8/502b0f2a/UploadBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/022C6246-00A9-4FCA-A3D7-721DEB405534/f9/c3c371f7/WidgetFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/8b/fc849aa0/TempDataDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81C76C49-CBF1-49B9-B335-A27760C86298/e3/7aaacb12/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/AllFilesController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/60/5db934a4/WebViewPage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Models/StoreAPI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/ca/35e7d45c/ActionMethodDispatcher.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81C76C49-CBF1-49B9-B335-A27760C86298/89/252c096e/HttpApplication.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81C76C49-CBF1-49B9-B335-A27760C86298/54/421681cb/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/022C6246-00A9-4FCA-A3D7-721DEB405534/b8/502b0f2a/UploadBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/c3/cef9d729/ControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/AllFiles/AllFiles.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/022C6246-00A9-4FCA-A3D7-721DEB405534/f9/c3c371f7/WidgetFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/09/9d43b1a3/AsyncControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/8b/fc849aa0/TempDataDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Models/VendorViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/d0/5caee065/AsyncResultWrapper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/c5/d3cc64a6/ActionMethodDispatcher.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/2b/dd81cc1d/Controller.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/AllFilesController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Web.config" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/a3/f4983d18/ReflectedActionDescriptor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/AllFiles/AllFiles.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81C76C49-CBF1-49B9-B335-A27760C86298/e3/7aaacb12/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/60/5db934a4/WebViewPage.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/ca/35e7d45c/ActionMethodDispatcher.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81C76C49-CBF1-49B9-B335-A27760C86298/89/252c096e/HttpApplication.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Models/VendorViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81C76C49-CBF1-49B9-B335-A27760C86298/54/421681cb/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Models/sheetTypeViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Web.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/c3/cef9d729/ControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/09/9d43b1a3/AsyncControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/d0/5caee065/AsyncResultWrapper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/022C6246-00A9-4FCA-A3D7-721DEB405534/3c/58a104ef/GridBoundColumnBuilder`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/DetergentsApp/Models/countryViewModel.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/GridController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Grid/Grid.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/FileUpload/UploadedFiles.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/UserFile.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/VendorViewModel.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/AddVendor/AddVendor.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Edit.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Create.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/_ViewStart.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Delete.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Details.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Delete.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Details.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Details/Details.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/App_Start/RouteConfig.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Grid/AllFiles.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/AllFilesController.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Content/bootstrap.css" />
       <option value="$PROJECT_DIR$/DetergentsApp/Content/Site.css" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Public/Details.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/productDetailsViewModel.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Startup.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/ClaimsController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Claims/Index.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/storeViewModel.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/AllFiles/AllFiles.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/AddVendorController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Create.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Models/Model1.Context.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Details.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Create.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Delete.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Details.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Public/Details.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/FileUpload/UploadedFiles.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1hosMQCbLmUhIQlUT0gZJvhJoGG" />
@@ -167,6 +189,7 @@
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.35861322" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="XThreadsFramesViewSplitterKey" value="0.22666667" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -300,7 +323,16 @@
       <workItem from="1614862887190" duration="10739000" />
       <workItem from="1615371184554" duration="5839000" />
       <workItem from="1615382559508" duration="587000" />
-      <workItem from="1615383334458" duration="829000" />
+      <workItem from="1615383334458" duration="867000" />
+      <workItem from="1615447904054" duration="720000" />
+      <workItem from="1615471518152" duration="394000" />
+      <workItem from="1615472276974" duration="368000" />
+      <workItem from="1615534359061" duration="6676000" />
+      <workItem from="1616051772949" duration="17477000" />
+      <workItem from="1616140022777" duration="2143000" />
+      <workItem from="1616146372033" duration="1149000" />
+      <workItem from="1616656153050" duration="606000" />
+      <workItem from="1616657149919" duration="7340000" />
     </task>
     <task id="LOCAL-00001" summary="Kendo Grid start">
       <created>1600795493153</created>
@@ -498,7 +530,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615383362707</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary=" Database namings cleaned up">
+      <created>1615384192460</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1615384192461</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,7 +570,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="View Update" />
     <MESSAGE value="Categorize working, almost" />
     <MESSAGE value="Another categorizing update" />
     <MESSAGE value="File upload almost working" />
@@ -556,7 +594,8 @@
     <MESSAGE value="StoreAPI Model Files" />
     <MESSAGE value="Vendor change" />
     <MESSAGE value="kugy" />
-    <option name="LAST_COMMIT_MESSAGE" value="kugy" />
+    <MESSAGE value=" Database namings cleaned up" />
+    <option name="LAST_COMMIT_MESSAGE" value=" Database namings cleaned up" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

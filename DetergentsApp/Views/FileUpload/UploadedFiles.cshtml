@@ -77,7 +77,6 @@
                     {
                         columns.Bound(f => f.Name).ClientTemplate("<a href='files/?id=#= Id #'>#= Name #</a>").Title("File name");
                         columns.Bound(f => f.productID);
-                        columns.Bound(f => f.productName);
 
                         // columns.ForeignKey(c => c.sheetTypeID, (List<SelectListItem>)
                         //     ViewBag.SheetType, "Value", "Text").Title("SheetType").Width(150);
@@ -124,7 +123,6 @@
         
     productID: getUrlVars()["productID"],
     sheetTypeID: getUrlVars()["sheetTypeID"],
-    productName: getUrlVars()["productName"]
     }
     }
     

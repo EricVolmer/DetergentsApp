@@ -62,7 +62,6 @@
     <Property Name="productID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EAN" Type="nvarchar(max)" Nullable="false" />
     <Property Name="sheetTypeID" Type="int" Nullable="false" />
-    <Property Name="productName" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="productDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
     <Property Name="categoryID" Type="int" Nullable="false" />
     <Property Name="articleNumber" Type="int" Nullable="false" />
@@ -70,6 +69,7 @@
     <Property Name="countryID" Type="int" Nullable="false" />
     <Property Name="storeID" Type="int" Nullable="false" />
     <Property Name="articleID" Type="bigint" Nullable="false" />
+    <Property Name="adminToPublic" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="SheetTypes">
     <Key>
@@ -118,7 +118,6 @@
     </Key>
     <Property Name="articleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="articleTextReceipt" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="labelText1" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductSheetType">
     <Key>
@@ -243,7 +242,6 @@
           <Property Name="productID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EAN" Type="String" Nullable="false" FixedLength="false" Unicode="true" />
           <Property Name="sheetTypeID" Type="Int32" Nullable="false" />
-          <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="productDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="categoryID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK__Product__categor__025D5595" FromRole="Product" ToRole="Category" />
@@ -257,6 +255,7 @@
           <Property Name="storeID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="articleDetails" Relationship="DetergentsModel.articleDetailsProduct" FromRole="Product" ToRole="articleDetails" />
           <Property Name="articleID" Type="Int64" Nullable="false" />
+          <Property Name="adminToPublic" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="SheetType">
           <Key>
@@ -417,7 +416,6 @@
           </Key>
           <Property Name="articleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="articleTextReceipt" Type="String" Nullable="false" />
-          <Property Name="labelText1" Type="String" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="DetergentsModel.articleDetailsProduct" FromRole="articleDetails" ToRole="Product" />
         </EntityType>
         <Association Name="articleDetailsProduct">
@@ -452,7 +450,6 @@
           <ScalarProperty Name="productID" ColumnName="productID" />
           <ScalarProperty Name="EAN" ColumnName="EAN" />
           <ScalarProperty Name="sheetTypeID" ColumnName="sheetTypeID" />
-          <ScalarProperty Name="productName" ColumnName="productName" />
           <ScalarProperty Name="productDescription" ColumnName="productDescription" />
           <ScalarProperty Name="categoryID" ColumnName="categoryID" />
           <ScalarProperty Name="articleNumber" ColumnName="articleNumber" />
@@ -460,6 +457,7 @@
           <ScalarProperty Name="countryID" ColumnName="countryID" />
           <ScalarProperty Name="storeID" ColumnName="storeID" />
           <ScalarProperty Name="articleID" ColumnName="articleID" />
+          <ScalarProperty Name="adminToPublic" ColumnName="adminToPublic" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -514,7 +512,6 @@
         <MappingFragment StoreEntitySet="articleDetailsAPI">
           <ScalarProperty Name="articleID" ColumnName="articleID" />
           <ScalarProperty Name="articleTextReceipt" ColumnName="articleTextReceipt" />
-          <ScalarProperty Name="labelText1" ColumnName="labelText1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

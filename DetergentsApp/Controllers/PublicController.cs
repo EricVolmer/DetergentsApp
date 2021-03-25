@@ -79,126 +79,63 @@ namespace DetergentsApp.Controllers
         {
             try
             {
-                var result = db.Products;
+                // should be true not false
+                var result = db.Products.Where(x => x.adminToPublic == true);
                 var productList = new List<ProductViewModel>();
                 foreach (var item in result)
                 {
-                    var product = new ProductViewModel();
+                    var product = new ProductViewModel
+                    {
+                        productID = item.productID,
+                        productDescription = item.productDescription,
+                        EAN = item.EAN,
 
-                    product.productID = item.productID;
-                    product.productName = item.productName;
-                    product.productDescription = item.productDescription;
-                    product.EAN = item.EAN;
-                    product.categoryID = item.Category.categoryID;
-                    product.vendorID = item.Vendor.vendorID;
-                    product.vendorName = item.Vendor.vendorName;
+                        categoryID = item.Category.categoryID,
 
-                    product.CountryID = item.countryID;
+                        vendorID = item.Vendor.vendorID,
+                        vendorName = item.Vendor.vendorName,
+
+                        CountryID = item.countryID,
+
+                        vikingStoreId = item.Store.storeID,
+                        name = item.Store.storeName,
+                        
+                        articleId = item.articleID,
+                        articleTextReceipt = item.articleDetails.articleTextReceipt,
+
+                    };
+
+
+                    var fileListName = db.UserFiles
+                        .Where(file => file.productID == item.productID && file.adminApproved).ToList();
+
+                    if (fileListName != null)
+                    {
+                        product.listOfFiles = new List<UserFile>();
+
+                        foreach (var file in fileListName)
+                        {
+                            var userFiles = new UserFile
+                            {
+                                fileName = file.fileName,
+                                fileID = file.fileID,
+
+                                SheetType = new SheetType
+                                {
+                                    sheetTypeID = file.SheetType.sheetTypeID,
+                                    sheetTypeName = file.SheetType.sheetTypeName
+                                }
+                            };
+                            userFiles.SheetType.sheetTypeName = file.SheetType.sheetTypeName;
+
+                            product.listOfFiles.Add(userFiles);
+                        }
+                    }
 
                     productList.Add(product);
                 }
 
                 return Json(productList.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Products_Create_Update([DataSourceRequest] DataSourceRequest request,
-            ProductViewModel product)
-        {
-            if (ModelState.IsValid)
-            {
-                var category = db.Categories.Find(product.categoryID);
-                var sheetTypes = db.SheetTypes.ToList();
-
-                if (product.productID != 0)
-                {
-                    var entity = db.Products.Find(product.productID);
-                    if (entity != null)
-                    {
-                        entity.EAN = product.EAN;
-                        entity.productName = product.productName;
-                        entity.productDescription = product.productDescription;
-                        entity.Category = category;
-                        entity.vendorID = product.vendorID;
-                        entity.countryID = product.CountryID;
-
-                        try
-                        {
-                            //    var existingProduct = db.Products.Find(product.productID);
-                            db.Entry(entity).State = EntityState.Modified;
-                            db.SaveChanges();
-                            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                            throw;
-                        }
-                    }
-                }
-
-                var newProduct = new Product
-                {
-                    EAN = product.EAN,
-                    productName = product.productName,
-                    productDescription = product.productDescription,
-                    Category = category,
-                    SheetType = sheetTypes,
-                    vendorID = product.vendorID,
-                    countryID = product.CountryID
-                };
-                try
-                {
-                    db.Products.Add(newProduct);
-                    db.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-            }
-
-            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Products_Destroy([DataSourceRequest] DataSourceRequest request, ProductViewModel product)
-        {
-            var category = db.Categories.Find(product.categoryID);
-            var vendor = db.Vendor.Find(product.vendorID);
-            var sheetTypes = db.SheetTypes.ToList();
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var entity = new Product
-                    {
-                        productID = product.productID,
-                        EAN = product.EAN,
-                        productName = product.productName,
-                        productDescription = product.productDescription,
-                        categoryID = product.categoryID,
-                        vendorID = product.vendorID,
-                        sheetTypeID = product.sheetTypeID,
-                        countryID = product.CountryID,
-                        Category = category,
-                        Vendor = vendor,
-                        SheetType = sheetTypes
-                    };
-
-                    db.Products.Attach(entity);
-                    db.Products.Remove(entity);
-                    db.SaveChanges();
-                }
-
-                return Json(new[] {product}.ToDataSourceResult(request, ModelState));
             }
             catch (Exception e)
             {
@@ -281,7 +218,6 @@ namespace DetergentsApp.Controllers
                     {
                         productID = productID,
                         EAN = EAN,
-                        productName = productName
                     });
                 return Json(userFiles.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
 
