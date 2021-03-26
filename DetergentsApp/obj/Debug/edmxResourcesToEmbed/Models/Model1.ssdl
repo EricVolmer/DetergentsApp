@@ -9,6 +9,7 @@
     <EntitySet Name="Country" EntityType="DetergentsModel.Store.Country" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="StoreAPI" EntityType="DetergentsModel.Store.StoreAPI" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="articleDetailsAPI" EntityType="DetergentsModel.Store.articleDetailsAPI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="vendorLogin" EntityType="DetergentsModel.Store.vendorLogin" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductSheetType" EntityType="DetergentsModel.Store.ProductSheetType" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK__Product__categor__025D5595" Association="DetergentsModel.Store.FK__Product__categor__025D5595">
       <End Role="Category" EntitySet="Categories" />
@@ -113,6 +114,14 @@
     </Key>
     <Property Name="articleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="articleTextReceipt" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vendorLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductSheetType">
     <Key>

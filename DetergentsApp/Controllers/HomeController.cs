@@ -11,8 +11,8 @@ using Kendo.Mvc.UI;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
-using Newtonsoft.Json;
-using RestSharp;
+
+// ReSharper disable All
 
 namespace DetergentsApp.Controllers
 {
@@ -317,27 +317,24 @@ namespace DetergentsApp.Controllers
                     var fileListName = db.UserFiles
                         .Where(file => file.productID == item.productID).ToList();
 
-                    if (fileListName != null)
+                    product.listOfFiles = new List<UserFile>();
+
+                    foreach (var file in fileListName)
                     {
-                        product.listOfFiles = new List<UserFile>();
-
-                        foreach (var file in fileListName)
+                        var userFiles = new UserFile
                         {
-                            var userFiles = new UserFile
+                            fileName = file.fileName,
+                            fileID = file.fileID,
+
+                            SheetType = new SheetType
                             {
-                                fileName = file.fileName,
-                                fileID = file.fileID,
+                                sheetTypeID = file.SheetType.sheetTypeID,
+                                sheetTypeName = file.SheetType.sheetTypeName
+                            }
+                        };
+                        userFiles.SheetType.sheetTypeName = file.SheetType.sheetTypeName;
 
-                                SheetType = new SheetType
-                                {
-                                    sheetTypeID = file.SheetType.sheetTypeID,
-                                    sheetTypeName = file.SheetType.sheetTypeName
-                                }
-                            };
-                            userFiles.SheetType.sheetTypeName = file.SheetType.sheetTypeName;
-
-                            product.listOfFiles.Add(userFiles);
-                        }
+                        product.listOfFiles.Add(userFiles);
                     }
 
                     productList.Add(product);

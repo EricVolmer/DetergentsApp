@@ -114,6 +114,7 @@
       <End Role="articleDetails" EntitySet="articleDetailsAPI" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
+    <EntitySet Name="vendorLogin" EntityType="DetergentsModel.vendorLogin" />
   </EntityContainer>
   <Association Name="ProductSheetType">
     <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" />
@@ -199,4 +200,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="vendorLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" Nullable="false" />
+    <Property Name="password" Type="String" Nullable="false" />
+  </EntityType>
 </Schema>

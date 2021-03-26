@@ -110,6 +110,8 @@
         s.Field(f => f.productDescription);
         s.Field(f => f.EAN);
         s.Field(f => f.categoryName);
+        s.Field(f => f.listOfFiles);
+
     })
     .DataSource(dataSource => dataSource
         .Ajax()

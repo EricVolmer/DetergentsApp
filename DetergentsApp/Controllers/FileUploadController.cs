@@ -204,32 +204,15 @@ namespace DetergentsApp.Controllers
             var db = new DetergentsEntities();
             try
             {
-                if (sheetTypeID == 0)
-                {
-                    var userFiles = db.UserFiles.Where(x => x.productID == productID && x.adminApproved == true).Select(
-                        f => new UserFileViewModel
-                        {
-                            Id = f.fileID,
-                            Name = f.fileName,
-                            productID = f.productID,
-                            sheetTypeID = f.sheetTypeID
-                        });
-                    return Json(userFiles.ToDataSourceResult(request));
-                }
-                else
-                {
-                    var userFiles = db.UserFiles.Where(x =>
-                            x.productID == productID && x.sheetTypeID == sheetTypeID && x.adminApproved == true)
-                        .Select(
-                            f => new UserFileViewModel
-                            {
-                                Id = f.fileID,
-                                Name = f.fileName,
-                                productID = f.productID,
-                                sheetTypeID = f.sheetTypeID
-                            });
-                    return Json(userFiles.ToDataSourceResult(request));
-                }
+                var userFiles = db.UserFiles.Where(x => x.productID == productID && x.adminApproved == true).Select(
+                    f => new UserFileViewModel
+                    {
+                        Id = f.fileID,
+                        Name = f.fileName,
+                        productID = f.productID,
+                        sheetTypeID = f.sheetTypeID
+                    });
+                return Json(userFiles.ToDataSourceResult(request));
             }
             catch (Exception e)
             {
@@ -244,17 +227,17 @@ namespace DetergentsApp.Controllers
             try
             {
                 var userFiles = db.UserFiles.Select(
-                        f => new UserFileViewModel
-                        {
-                            Id = f.fileID,
-                            Name = f.fileName,
-                            productID = f.productID,
-                            sheetTypeName = f.SheetType.sheetTypeName,
-                            sheetTypeID = f.sheetTypeID,
-                            vendorID = f.vendorID,
-                            adminApproved = f.adminApproved,
-                            oldFile = f.oldFile
-                        });
+                    f => new UserFileViewModel
+                    {
+                        Id = f.fileID,
+                        Name = f.fileName,
+                        productID = f.productID,
+                        sheetTypeName = f.SheetType.sheetTypeName,
+                        sheetTypeID = f.sheetTypeID,
+                        vendorID = f.vendorID,
+                        adminApproved = f.adminApproved,
+                        oldFile = f.oldFile
+                    });
                 return Json(userFiles.ToDataSourceResult(request));
             }
             catch (Exception e)
@@ -269,18 +252,50 @@ namespace DetergentsApp.Controllers
             var db = new DetergentsEntities();
             try
             {
-                var userFiles = db.UserFiles.Where(x => x.adminApproved == x.adminApproved)
-                    .Select(
-                        f => new UserFileViewModel
+                var result = db.UserFiles;
+                var fileList = new List<UserFileViewModel>();
+                foreach (var item in result)
+                {
+                    var userFile = new UserFileViewModel()
+                    {
+                        Id = item.fileID,
+                        Name = item.fileName,
+                        productID = item.productID,
+                        sheetTypeName = item.SheetType.sheetTypeName,
+                        sheetTypeID = item.sheetTypeID,
+                        adminApproved = item.adminApproved
+                    };
+
+                    var fileListName = db.UserFiles
+                        .Where(file => file.productID == item.productID).ToList();
+
+                    if (fileListName != null)
+                    {
+                        userFile.listOfFiles = new List<UserFile>();
+
+                        foreach (var file in fileListName)
                         {
-                            Id = f.fileID,
-                            Name = f.fileName,
-                            productID = f.productID,
-                            sheetTypeName = f.SheetType.sheetTypeName,
-                            sheetTypeID = f.sheetTypeID,
-                            adminApproved = f.adminApproved
-                        });
-                return Json(userFiles.ToDataSourceResult(request));
+                            var userFiles = new UserFile
+                            {
+                                fileName = file.fileName,
+                                fileID = file.fileID,
+
+                                SheetType = new SheetType
+                                {
+                                    sheetTypeID = file.SheetType.sheetTypeID,
+                                    sheetTypeName = file.SheetType.sheetTypeName
+                                }
+                            };
+                            userFiles.SheetType.sheetTypeName = file.SheetType.sheetTypeName;
+
+                            userFile.listOfFiles.Add(userFiles);
+                        }
+                    }
+
+                    fileList.Add(userFile);
+                }
+
+                return Json(fileList.ToTreeDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {

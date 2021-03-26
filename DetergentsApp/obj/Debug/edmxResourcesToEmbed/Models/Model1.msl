@@ -80,6 +80,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vendorLogin">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.vendorLogin)">
+        <MappingFragment StoreEntitySet="vendorLogin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="ProductSheetType" TypeName="DetergentsModel.ProductSheetType" StoreEntitySet="ProductSheetType">
       <EndProperty Name="Product">
         <ScalarProperty Name="productID" ColumnName="Product_productID" />

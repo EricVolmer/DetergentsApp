@@ -14,6 +14,7 @@
     <EntitySet Name="Country" EntityType="DetergentsModel.Store.Country" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="StoreAPI" EntityType="DetergentsModel.Store.StoreAPI" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="articleDetailsAPI" EntityType="DetergentsModel.Store.articleDetailsAPI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="vendorLogin" EntityType="DetergentsModel.Store.vendorLogin" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductSheetType" EntityType="DetergentsModel.Store.ProductSheetType" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK__Product__categor__025D5595" Association="DetergentsModel.Store.FK__Product__categor__025D5595">
       <End Role="Category" EntitySet="Categories" />
@@ -118,6 +119,14 @@
     </Key>
     <Property Name="articleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="articleTextReceipt" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vendorLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductSheetType">
     <Key>
@@ -343,6 +352,7 @@
             <End Role="articleDetails" EntitySet="articleDetailsAPI" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="vendorLogin" EntityType="DetergentsModel.vendorLogin" />
         </EntityContainer>
         <Association Name="ProductSheetType">
           <End Type="DetergentsModel.Product" Role="Product" Multiplicity="*" >
@@ -430,6 +440,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vendorLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -512,6 +530,15 @@
         <MappingFragment StoreEntitySet="articleDetailsAPI">
           <ScalarProperty Name="articleID" ColumnName="articleID" />
           <ScalarProperty Name="articleTextReceipt" ColumnName="articleTextReceipt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vendorLogin">
+      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.vendorLogin)">
+        <MappingFragment StoreEntitySet="vendorLogin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="password" ColumnName="password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/19/2021 10:06:31
+-- Date Created: 03/26/2021 12:01:24
 -- Generated from EDMX file: C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -69,6 +69,9 @@ IF OBJECT_ID(N'[dbo].[StoreAPI]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[articleDetailsAPI]', 'U') IS NOT NULL
     DROP TABLE [dbo].[articleDetailsAPI];
+GO
+IF OBJECT_ID(N'[dbo].[vendorLogin]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[vendorLogin];
 GO
 IF OBJECT_ID(N'[dbo].[ProductSheetType]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductSheetType];
@@ -149,6 +152,14 @@ CREATE TABLE [dbo].[articleDetailsAPI] (
 );
 GO
 
+-- Creating table 'vendorLogin'
+CREATE TABLE [dbo].[vendorLogin] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [userName] nvarchar(max)  NOT NULL,
+    [password] nvarchar(max)  NOT NULL
+);
+GO
+
 -- Creating table 'ProductSheetType'
 CREATE TABLE [dbo].[ProductSheetType] (
     [Product_productID] int  NOT NULL,
@@ -206,6 +217,12 @@ GO
 ALTER TABLE [dbo].[articleDetailsAPI]
 ADD CONSTRAINT [PK_articleDetailsAPI]
     PRIMARY KEY CLUSTERED ([articleID] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'vendorLogin'
+ALTER TABLE [dbo].[vendorLogin]
+ADD CONSTRAINT [PK_vendorLogin]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Product_productID], [SheetType_sheetTypeID] in table 'ProductSheetType'

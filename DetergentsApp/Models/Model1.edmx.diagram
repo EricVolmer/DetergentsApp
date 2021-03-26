@@ -20,6 +20,7 @@
         <AssociationConnector Association="DetergentsModel.StoreProduct" />
         <EntityTypeShape EntityType="DetergentsModel.articleDetailsAPI" Width="1.5" PointX="2.875" PointY="5.75" />
         <AssociationConnector Association="DetergentsModel.articleDetailsProduct" />
+        <EntityTypeShape EntityType="DetergentsModel.vendorLogin" Width="1.5" PointX="7.5" PointY="5.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

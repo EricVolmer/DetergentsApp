@@ -33,5 +33,6 @@ namespace DetergentsApp.Models
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<StoreAPI> StoreAPI { get; set; }
         public virtual DbSet<articleDetailsAPI> articleDetailsAPI { get; set; }
+        public virtual DbSet<vendorLogin> vendorLogin { get; set; }
     }
 }

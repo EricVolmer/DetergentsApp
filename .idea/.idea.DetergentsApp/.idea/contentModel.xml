@@ -36,6 +36,7 @@
           <e p="ProductsController.cs" t="Include" />
           <e p="PublicController.cs" t="Include" />
           <e p="VendorController.cs" t="Include" />
+          <e p="vendorLoginController.cs" t="Include" />
         </e>
         <e p="DetergentsApp.csproj" t="IncludeRecursive" />
         <e p="favicon.ico" t="Include" />
@@ -71,6 +72,8 @@
           <e p="UserFile.cs" t="Include" />
           <e p="UserFileViewModel.cs" t="Include" />
           <e p="Vendor.cs" t="Include" />
+          <e p="vendorLogin.cs" t="Include" />
+          <e p="vendorLoginViewModel.cs" t="Include" />
           <e p="VendorViewModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
@@ -172,6 +175,9 @@
           </e>
           <e p="Vendor" t="Include">
             <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="vendorLogin" t="Include">
+            <e p="vendorLogin.cshtml" t="Include" />
           </e>
           <e p="Web.config" t="Include" />
         </e>
