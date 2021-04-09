@@ -1,14 +1,26 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DetergentsApp.Models
 {
     public class vendorLoginViewModel
     {
-        [Required(ErrorMessage = "UserName is required")]  
-        public string userName { get; set; }  
+        [Key, Column(Order = 1)]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         
-        [Required(ErrorMessage = "Password is required")]  
-        [DataType(DataType.Password)]  
-        public string password { get; set; }  
+        [Required]
+        [StringLength(50, MinimumLength = 3)]
+        public string userName { get; set; }
+        
+        [Required]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$")]
+        public string password { get; set; }
+        
+        [NotMapped]
+        [Required]
+        [System.ComponentModel.DataAnnotations.Compare("Password")]
+        public string ConfirmPassword { get; set; }
+        
     }
 }

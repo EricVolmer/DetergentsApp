@@ -390,6 +390,8 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Public\Details.cshtml" />
     <Content Include="Views\Public\Public.cshtml" />
+    <Content Include="Views\vendorLogin\Index.cshtml" />
+    <Content Include="Views\vendorLogin\Register.cshtml" />
     <Content Include="Views\vendorLogin\vendorLogin.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
