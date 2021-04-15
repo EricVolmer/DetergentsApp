@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<DetergentsApp.Models.Vendor>
+
+@{
     ViewBag.Title = "Index";
 }
 
@@ -19,3 +21,117 @@
 
     </div>
 </div>
+
+<section class="well">
+    <div id="main-section-header" class="row">
+        <h2 id="team-efficiency" class="col-xs-3">Vendor Upload</h2>
+        <div style="clear:both;"></div>
+    </div>
+
+    <form method="post" action='@Url.Action("VendorSave" , "Vendor")'>
+
+        <div class="form-horizontal form-widgets col-sm-6">
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="name">Vendor Details</label>
+                <div class="col-sm-8 col-md-6">
+                    @(Html.Kendo().DropDownList()
+                        .Name("vendorDetails")
+                        .DataTextField("Text")
+                        .DataValueField("Value")
+                        .MinLength(3)
+                        .Filter(FilterType.Contains)
+                        .OptionLabel("Vendor Details")
+                        .HtmlAttributes(new {style = "width: 400px;"})
+                        .DataSource(ds => { ds.Read(read => read.Action("vendorDropDownList", "Vendor")); }))
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="articleEAN">Article EAN</label>
+                <div class="col-sm-8 col-md-6">
+                    @(Html.Kendo().DropDownList()
+                        .Name("articleEAN")
+                        .DataTextField("Text")
+                        .DataValueField("Value")
+                        .MinLength(3)
+                        .Filter(FilterType.Contains)
+                        .OptionLabel("Enter EAN...")
+                        .HtmlAttributes(new {style = "width: 400px;"})
+                        .DataSource(ds => { ds.Read(read => read.Action("vendorEANDropDownList", "Vendor")); }))
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="gender">Sheet Type</label>
+                <div class="col-sm-8 col-md-6">
+                    @(Html.Kendo().DropDownList()
+                        .Name("sheetTypeCategory")
+                        .DataTextField("Text")
+                        .DataValueField("Value")
+                        .HtmlAttributes(new {style = "width: 400px;"})
+                        .DataSource(ds => { ds.Read(read => read.Action("sheetType_Categories", "Home")); }))
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="language">Language of the file</label>
+                <div class="col-sm-8 col-md-6">
+                    @(Html.Kendo().DropDownList()
+                        .Name("language")
+                        .DataTextField("Text")
+                        .DataValueField("Value")
+                        .Value("English")
+                        .BindTo(new List<SelectListItem>
+                        {
+                            new SelectListItem
+                            {
+                                Text = "Danish",
+                                Value = "Danish"
+                            },
+                            new SelectListItem
+                            {
+                                Text = "German",
+                                Value = "German"
+                            },
+                            new SelectListItem
+                            {
+                                Text = "English",
+                                Value = "English"
+                            },
+                            new SelectListItem
+                            {
+                                Text = "Polish",
+                                Value = "Polish"
+                            }
+                        })
+                        )
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="form-horizontal form-widgets col-sm-12">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="fileUpload">File Upload</label>
+                    <div class="col-sm-10">
+                        @(Html.Kendo().Upload()
+                            .Name("files")
+                            )
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons-wrap">
+                <button class="k-button k-state-default">Cancel</button>
+                <button type="submit" id="uploadButton" class="k-button k-state-default">Upload</button>
+            </div>
+        </div>
+    </form>
+    
+</section>
+
+<script>
+
+      
+</script>
