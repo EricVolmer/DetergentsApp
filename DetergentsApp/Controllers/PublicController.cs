@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using DetergentsApp.Models;
@@ -80,7 +79,7 @@ namespace DetergentsApp.Controllers
             try
             {
                 // should be true not false
-                var result = db.Products.Where(x => x.adminToPublic == true);
+                var result = db.Products.Where(x => x.adminToPublic);
                 var productList = new List<ProductViewModel>();
                 foreach (var item in result)
                 {
@@ -99,10 +98,9 @@ namespace DetergentsApp.Controllers
 
                         vikingStoreId = item.Store.storeID,
                         name = item.Store.storeName,
-                        
-                        articleId = item.articleID,
-                        articleTextReceipt = item.articleDetails.articleTextReceipt,
 
+                        articleId = item.articleID,
+                        articleTextReceipt = item.articleDetails.articleTextReceipt
                     };
 
 
@@ -217,7 +215,7 @@ namespace DetergentsApp.Controllers
                     f => new ProductViewModel
                     {
                         productID = productID,
-                        EAN = EAN,
+                        EAN = EAN
                     });
                 return Json(userFiles.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
 

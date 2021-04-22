@@ -17,10 +17,11 @@ namespace DetergentsApp.Controllers
         {
             CreateViewListCategory();
             CreateViewListSheetType();
-            
-            
+
+
             return View();
         }
+
         public void CreateViewListCategory()
         {
             try
@@ -99,6 +100,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Products_Create([DataSourceRequest] DataSourceRequest request, Product product)
         {
@@ -131,14 +133,13 @@ namespace DetergentsApp.Controllers
                 var entity = db.Products.Find(product.productID);
                 if (entity != null)
                 {
-                    
-                        entity.productID = product.productID;
-                        entity.productDescription = product.productDescription;
-                        entity.EAN = product.EAN;
-                        entity.Category = category;
-                        entity.vendorID = product.vendorID;
-                        entity.adminToPublic = product.adminToPublic;
-                        
+                    entity.productID = product.productID;
+                    entity.productDescription = product.productDescription;
+                    entity.EAN = product.EAN;
+                    entity.Category = category;
+                    entity.vendorID = product.vendorID;
+                    entity.adminToPublic = product.adminToPublic;
+
                     try
                     {
                         db.Entry(entity).State = EntityState.Modified;
@@ -152,8 +153,8 @@ namespace DetergentsApp.Controllers
                     }
                 }
             }
-            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
 
+            return Json(new[] {product}.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

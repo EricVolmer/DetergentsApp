@@ -14,7 +14,7 @@
         columns.Bound(c => c.productDescription).Width(230);
         columns.Bound(c => c.EAN).Width(150);
         columns.Bound(c => c.vendorID).Width(150);
-        
+
 
         // columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
         //     ViewBag.articleID, "Value", "Text").Title("Article ID").Width(120);
@@ -31,7 +31,7 @@
         //
         // columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
         //     ViewBag.Country, "Value", "Text").Title("Country").Width(120);
-        
+
         columns.Bound(c => c.adminToPublic).ClientTemplate("#: adminToPublic ? 'Approved To Public' : 'Not approved' #");
 
         columns.Command(command =>
@@ -54,7 +54,6 @@
         .Group(group => group.Add("categoryID", typeof(string), ListSortDirection.Descending))
         .Read(read => read.Action("Products_Read", "Admin2"))
         .Create(create => create.Action("Products_Create", "Admin2"))
-
         .Update(update => update.Action("Products_Update", "Admin2"))
         .Destroy(destroy => destroy.Action("Products_Destroy", "Admin2"))
     )

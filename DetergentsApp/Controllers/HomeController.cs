@@ -73,7 +73,7 @@ namespace DetergentsApp.Controllers
             //     Console.WriteLine(e);
             //     throw;
             // }
-            
+
             try
             {
                 var result = db.StoreAPI;
@@ -104,7 +104,7 @@ namespace DetergentsApp.Controllers
             // Here should be the code for the article details API, the dropdown list is done in the View/Home as
             // a ViewBag.ArticleID
             // https://api.sallinggroup.com/v1/viking/dk/enriched-articles
-            
+
             try
             {
                 var result = db.articleDetailsAPI;
@@ -113,8 +113,7 @@ namespace DetergentsApp.Controllers
                 var productViewModels = result.Select(entity => new ProductViewModel
                     {
                         articleId = entity.articleID,
-                        articleTextReceipt = entity.articleTextReceipt,
-                        
+                        articleTextReceipt = entity.articleTextReceipt
                     })
                     .ToList();
 
@@ -287,7 +286,6 @@ namespace DetergentsApp.Controllers
 
             try
             {
-                
                 var result = db.Products;
                 var productList = new List<ProductViewModel>();
                 foreach (var item in result)
@@ -307,10 +305,9 @@ namespace DetergentsApp.Controllers
 
                         vikingStoreId = item.Store.storeID,
                         name = item.Store.storeName,
-                        
-                        articleId = item.articleID,
-                        articleTextReceipt = item.articleDetails.articleTextReceipt,
 
+                        articleId = item.articleID,
+                        articleTextReceipt = item.articleDetails.articleTextReceipt
                     };
 
 

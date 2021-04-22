@@ -1,4 +1,5 @@
-﻿@model IEnumerable<DetergentsApp.Models.Category>
+﻿@using DetergentsApp.Models
+@model IEnumerable<Category>
 
 
 @{
@@ -13,7 +14,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.categoryName)
+            @Html.DisplayNameFor<Category, string>(model => model.categoryName)
         </th>
         <th></th>
     </tr>

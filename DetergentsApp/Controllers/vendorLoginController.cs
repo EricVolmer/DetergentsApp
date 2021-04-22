@@ -79,12 +79,12 @@ namespace DetergentsApp.Controllers
         //
         //     return View();
         // }
-        
-         public ActionResult vendorLogin()
-         {
-             return View();
-         }
-        
+
+        public ActionResult vendorLogin()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult vendorLogin(vendorLogin _login, string userName, string password)
@@ -96,29 +96,33 @@ namespace DetergentsApp.Controllers
                 using (var _entity = new DetergentsEntities()) // out Entity name is "SampleMenuMasterDBEntites"  
                 {
                     isExist = _entity.vendorLogin
-                        .Any(x => x.userName.Trim().ToLower() == _login.userName.Trim().ToLower() && x.password == f_password); //validating the user name in tblLogin table whether the user name is exist or not  
+                        .Any(x => x.userName.Trim().ToLower() == _login.userName.Trim().ToLower() &&
+                                  x.password ==
+                                  f_password); //validating the user name in tblLogin table whether the user name is exist or not  
                     if (isExist)
                     {
                         var _loginCredentials = _entity.vendorLogin.ToList()
                             .Where(x => x.userName.Trim().ToLower() == _login.userName.Trim().ToLower()).Select(x =>
-                                new vendorLogin()
+                                new vendorLogin
                                 {
                                     userName = x.userName,
                                     Id = x.Id,
                                     password = x.password
-                                    
                                 }).FirstOrDefault(); // Get the login user details and bind it to LoginModels class  
                         //Get the Menu details from entity and bind it in MenuModels list.  
                         FormsAuthentication.SetAuthCookie(_loginCredentials.userName,
                             false); // set the formauthentication cookie  
-                        Session["LoginCredentials"] = _loginCredentials; // Bind the _logincredentials details to "LoginCredentials" session  
+                        Session["LoginCredentials"] =
+                            _loginCredentials; // Bind the _logincredentials details to "LoginCredentials" session  
                         Session["UserName"] = _loginCredentials.userName;
-                        return RedirectToAction("Public", "Public");
+                        return RedirectToAction("Index", "Vendor");
                     }
+
                     ViewBag.ErrorMsg = "Please enter the valid credentials!...";
                     return View();
                 }
             }
+
             return View();
         }
 

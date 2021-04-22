@@ -30,7 +30,7 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top">
 
-    <div class="container">
+    <div class="container col-lg-12">
 
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -39,94 +39,68 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a href="@Url.Action("Index", "Home")">
+            <a href="@Url.Action("Public", "Public")">
                 <img src="~/Pictures/SallingGroup.png" alt="SG" class="navbar-brand"/>
             </a>
 
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                @if (User.Identity.IsAuthenticated)
-                {
-                    //Link to show only to logged users
-                    <li>@Html.ActionLink("Vendor", "Index", "Vendor")</li>
-                    //  Link show only to Admin
-                    if (User.IsInRole("Admin"))
-                    {
-                        <li>@Html.ActionLink(Global.Home_Menu, "Index", "Home")</li>
-                        <li>@Html.ActionLink(Global.Category_Menu, "Index", "Categories")</li>
-                        <li>@Html.ActionLink("All Files", "AllFiles", "AllFiles")</li>
-                        <li>@Html.ActionLink("Admin", "Admin2", "Admin2")</li>
-                        <li>@Html.ActionLink("Public", "Public", "Public")</li>
-                        <li>@Html.ActionLink("Vendor", "Index", "Vendor")</li>
 
-                      //  <li>@Html.ActionLink("Add New Vendor", "AddVendor", "AddVendor")</li>
-                    //    <li>@Html.ActionLink("Vendor Login", "vendorLogin", "vendorLogin")</li>
-                     //   <li>@Html.ActionLink("Vendor Register", "Register", "vendorLogin")</li>
+
+                @if (Session["LoginCredentials"] != null)
+                {
+                    <li>@Html.ActionLink("Vendor", "Index", "Vendor")</li>
+
+                    if (Session["LoginCredentials"] != null)
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "vendorLogin")</li>
                     }
                 }
                 else
                 {
                     <li>@Html.ActionLink("Public", "Public", "Public")</li>
-                                                                      
-                    <ul class="nav navbar-nav navbar-right">  
-                        @if (Session["LoginCredentials"] != null)  
-                        {  
-                            <li>@Html.ActionLink("Logout", "Logout", "vendorLogin")</li>  
-                        }  
-                        else  
-                        {  
-                            <li>@Html.ActionLink("Login", "vendorLogin", "vendorLogin")</li>  
-                        }  
-      
-                    </ul>  
-                    // links that will show to authenticated and unauthenticated users
-                }
+
+                    if (!Request.IsAuthenticated)
+                    {
+                        <li> @Html.ActionLink("Admin Login In", "SignIn", "Home") </li>
+                    }
+                    else
+                    {
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink(Global.Home_Menu, "Index", "Home")</li>
+                            <li>@Html.ActionLink(Global.Category_Menu, "Index", "Categories")</li>
+                            <li>@Html.ActionLink("All Files", "AllFiles", "AllFiles")</li>
+                            <li>@Html.ActionLink("Admin", "Admin2", "Admin2")</li>
+                            <li>@Html.ActionLink("Public", "Public", "Public")</li>
+                            <li>@Html.ActionLink("Vendor", "Index", "Vendor") </li>
 
 
-                @if (!Request.IsAuthenticated)
-                {
-                    <li> @Html.ActionLink("Sign In", "SignIn", "Home") </li>
-                    <!-- If the user is not authenticated, display the sign-in button -->
-                    //<a href="@Url.Action("SignIn", "Home")" style="text-decoration: none;">
-                    //  <text x="470" y="357" fill="white" class="fnt0">Sign in with Microsoft</text>
-                    //</a>
-                }
-                else
-                {
-                    <span><br/>Hello @ClaimsPrincipal.Current.FindFirst("name").Value;</span>
-                    <br/>
-                    <br/>
-                    @Html.ActionLink("See Your Claims", "Index", "Claims")
-                    <br/>
-                    <br/>
-                    @Html.ActionLink("Sign out", "SignOut", "Home")
-                }
-                @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
-                {
-                    <div style="background-color:red;color:white;font-weight: bold;">Error: @Request.QueryString["errormessage"]</div>
-                }
-                @* @if (!Request.IsAuthenticated) *@
-                @* { *@
-                @*     <li> @Html.ActionLink("Sign In Vendor", "vendorLogin", "vendorLogin") </li> *@
-                @*     <!-- If the user is not authenticated, display the sign-in button --> *@
-                @*     //<a href="@Url.Action("SignIn", "Home")" style="text-decoration: none;"> *@
-                @*     //  <text x="470" y="357" fill="white" class="fnt0">Sign in with Microsoft</text> *@
-                @*     //</a> *@
-                @* } *@
-                @* else *@
-                @* { *@
-                @*     <span><br/>Hello @ClaimsPrincipal.Current.FindFirst("name").Value;</span> *@
-                @*     <br/> *@
-                @*     <br/> *@
-                @*     @Html.ActionLink("Sign out", "Logout", "vendorLogin") *@
-                @* } *@
-                @* @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"])) *@
-                @* { *@
-                @*     <div style="background-color:red;color:white;font-weight: bold;">Error: @Request.QueryString["errormessage"]</div> *@
-                @* } *@
+                            <li>@Html.ActionLink("Add New Vendor", "AddVendor", "AddVendor")</li>
+                            <li>@Html.ActionLink("Vendor Login", "vendorLogin", "vendorLogin")</li>
+                            <li>@Html.ActionLink("Vendor Register", "Register", "vendorLogin")</li>
+                        }
 
 
+                        //  <li> @Html.ActionLink("See Your Claims", "Index", "Claims")</li>
+
+                        <li>
+                            <a>
+                                <b>Hello @ClaimsPrincipal.Current.FindFirst("name").Value </b>
+                            </a>
+                        </li>
+                        <li> @Html.ActionLink("Sign out", "SignOut", "Home")</li>
+                    }
+
+                    <li>@Html.ActionLink("Vendor Login", "vendorLogin", "vendorLogin")</li>
+
+
+                    if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
+                    {
+                        <div style="background-color:red;color:white;font-weight: bold;">Error: @Request.QueryString["errormessage"]</div>
+                    }
+                }
             </ul>
         </div>
     </div>
@@ -135,8 +109,6 @@
     @RenderBody()
     <hr/>
     <footer>
-
-
         <p>&copy; @DateTime.Now.Year - Detergents</p>
     </footer>
 </div>
@@ -150,10 +122,16 @@
 </html>
 
 <style>
+
+
+    
   
    .navbar-inverse{
    background: none;
    border: none;  
+   padding-left: 35px;
+   padding-right: 35px;
+   text-align: center;
    }   
    
    .navbar-inverse .navbar-nav > li > a:hover,  

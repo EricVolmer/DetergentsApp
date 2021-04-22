@@ -11,11 +11,12 @@ namespace DetergentsApp.Controllers
     public class VendorController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
-        
+
         public ActionResult Index()
         {
             return View(db.Vendor.ToList());
         }
+
         public ActionResult VendorSave(IEnumerable<HttpPostedFileBase> files, int vendorDetails, int articleEAN,
             int sheetTypeCategory, string language)
         {
