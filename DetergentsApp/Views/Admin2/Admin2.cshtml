@@ -13,8 +13,8 @@
         //  columns.Bound(c => c.vikingStoreId);
         columns.Bound(c => c.productDescription).Width(230);
         columns.Bound(c => c.EAN).Width(150);
-        columns.Bound(c => c.vendorID).Width(150);
-
+        columns.ForeignKey(c => c.vendorID, (List<SelectListItem>)
+            ViewBag.Vendor, "Value", "Text").Title("Vendor ID").Width(150);
 
         // columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
         //     ViewBag.articleID, "Value", "Text").Title("Article ID").Width(120);
@@ -67,10 +67,10 @@
     {
         columns.Bound(f => f.Name).ClientTemplate("<a href='files/?id=#= Id #'>#= Name #</a>").Title("File name");
         columns.Bound(f => f.productID);
-        columns.Bound(f => f.vendorID);
-        columns.Bound(f => f.adminApproved).ClientTemplate("#: adminApproved ? 'Approved' : 'Not approved' #");
-        ;
 
+        columns.ForeignKey(c => c.vendorID, (List<SelectListItem>)
+            ViewBag.Vendor, "Value", "Text").Title("Vendor ID").Width(150);
+        columns.Bound(f => f.adminApproved).ClientTemplate("#: adminApproved ? 'Approved' : 'Not approved' #");
         columns.ForeignKey(c => c.sheetTypeID, (List<SelectListItem>)
             ViewBag.SheetType, "Value", "Text").Title("SheetType").Width(150);
 
@@ -90,6 +90,7 @@
         {
             model.Id(c => c.Id);
             model.Field(c => c.productID).Editable(false);
+            model.Field(c => c.vendorID).Editable(false);
         }).Read(read => read.Action("FilesReadAdmin", "FileUpload"))
         .Update(update => update.Action("VendorFileUpdate", "FileUpload"))
         .Destroy(update => update.Action("FilesDestroyAdmin", "FileUpload"))

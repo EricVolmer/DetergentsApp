@@ -89,7 +89,7 @@
             {
 #>
     <#=
-                        codeStringGenerator.Property(complexProperty) #>
+                    codeStringGenerator.Property(complexProperty) #>
 <#
             }
         }
@@ -181,7 +181,7 @@
             {
 #>
     <#=
-                        codeStringGenerator.Property(edmProperty) #>
+                    codeStringGenerator.Property(edmProperty) #>
 <#
             }
         }

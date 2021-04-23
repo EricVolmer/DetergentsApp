@@ -19,6 +19,7 @@
     <script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.aspnetmvc.min.js"></script>
     <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
     <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
 </head>
 <body>
 
@@ -39,14 +40,13 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a href="@Url.Action("Public", "Public")">
+            <a>
                 <img src="~/Pictures/SallingGroup.png" alt="SG" class="navbar-brand"/>
             </a>
 
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-
 
                 @if (Session["LoginCredentials"] != null)
                 {
@@ -59,31 +59,31 @@
                 }
                 else
                 {
-                    <li>@Html.ActionLink("Public", "Public", "Public")</li>
+                    <li>@Html.ActionLink("Admin Login In", "SignIn", "Home") </li>
 
                     if (!Request.IsAuthenticated)
                     {
-                        <li> @Html.ActionLink("Admin Login In", "SignIn", "Home") </li>
+                        <li>@Html.ActionLink("Public", "Public", "Public")</li>
+                        <li>@Html.ActionLink("Vendor Login", "vendorLogin", "vendorLogin")</li>
                     }
                     else
                     {
                         if (User.Identity.IsAuthenticated)
                         {
                             <li>@Html.ActionLink(Global.Home_Menu, "Index", "Home")</li>
+                            <li>@Html.ActionLink("Public View", "Public", "Public")</li>
                             <li>@Html.ActionLink(Global.Category_Menu, "Index", "Categories")</li>
-                            <li>@Html.ActionLink("All Files", "AllFiles", "AllFiles")</li>
-                            <li>@Html.ActionLink("Admin", "Admin2", "Admin2")</li>
-                            <li>@Html.ActionLink("Public", "Public", "Public")</li>
-                            <li>@Html.ActionLink("Vendor", "Index", "Vendor") </li>
-
-
-                            <li>@Html.ActionLink("Add New Vendor", "AddVendor", "AddVendor")</li>
-                            <li>@Html.ActionLink("Vendor Login", "vendorLogin", "vendorLogin")</li>
-                            <li>@Html.ActionLink("Vendor Register", "Register", "vendorLogin")</li>
+                            <li>@Html.ActionLink("All Article Files", "AllFiles", "AllFiles")</li>
+                            <li>@Html.ActionLink("Approvals", "Admin2", "Admin2")</li>
+                            <li class="dropdown">
+                                <a aria-expanded="true" data-toggle="dropdown" class="dropdown-toggle" href="#">Vendor<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Vendor", "Index", "Vendor") </li>
+                                    <li>@Html.ActionLink("Add New Vendor", "AddVendor", "AddVendor")</li>
+                                    <li>@Html.ActionLink("Vendor Register", "Register", "vendorLogin")</li>
+                                </ul>
+                            </li>
                         }
-
-
-                        //  <li> @Html.ActionLink("See Your Claims", "Index", "Claims")</li>
 
                         <li>
                             <a>
@@ -92,9 +92,6 @@
                         </li>
                         <li> @Html.ActionLink("Sign out", "SignOut", "Home")</li>
                     }
-
-                    <li>@Html.ActionLink("Vendor Login", "vendorLogin", "vendorLogin")</li>
-
 
                     if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
                     {
@@ -113,19 +110,12 @@
     </footer>
 </div>
 
-
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", false)
-@RenderSection("styles", false)
-
 </body>
 </html>
 
+
 <style>
 
-
-    
-  
    .navbar-inverse{
    background: none;
    border: none;  
@@ -144,6 +134,25 @@
     width: 100%;
     
     }
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover{
+      color: #000000;
+      background-color: white;
+    }
+.dropdown-menu > li > a
+    {
+    color: #9d9d9d;
+    }
+    
+
+    
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+      color: #0f0f0f;
+      text-decoration: none;
+      background-color: white;
+      font-size: large;
+    }
+    
+
     
     
     .k-readonly {

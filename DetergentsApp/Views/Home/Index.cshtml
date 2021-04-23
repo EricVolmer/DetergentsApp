@@ -21,10 +21,10 @@
         columns.Bound(c => c.EAN).Width(150);
 
         columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
-            ViewBag.articleID, "Value", "Text").Title("Article ID").Width(120);
+            ViewBag.articleID, "Value", "Text").Title("Article Name").Width(120);
 
         columns.ForeignKey(c => c.vikingStoreId, (List<SelectListItem>)
-            ViewBag.storeID, "Value", "Text").Title("Store ID").Width(120);
+            ViewBag.storeID, "Value", "Text").Title("Store Name").Width(120);
 
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(120);
@@ -36,14 +36,14 @@
         columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
             ViewBag.Country, "Value", "Text").Title("Country").Width(120);
 
-        columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
+        columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #").Title("Data Sheets");
 
         columns.Command(command =>
         {
             command.Edit().UpdateText("Save");
             command.Destroy();
             command.Custom("Show Files").Click("showFiles");
-        }).Width(230);
+        }).Width(200);
     })
     .ToolBar(toolbar =>
     {

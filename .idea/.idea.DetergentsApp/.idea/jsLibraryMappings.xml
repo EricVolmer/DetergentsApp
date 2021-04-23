@@ -18,7 +18,6 @@
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/AllFilesController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/ClaimsController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" libraries="{bootstrap}" />
@@ -85,7 +84,6 @@
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Details.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Edit.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Claims/Index.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/FileUpload/UploadedFiles.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Home/Scripts/kendo.modernizr.custom.js" libraries="{bootstrap}" />

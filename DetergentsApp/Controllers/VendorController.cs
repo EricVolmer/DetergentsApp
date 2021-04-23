@@ -62,6 +62,7 @@ namespace DetergentsApp.Controllers
             var productViewModels = result.Select(entity => new ProductViewModel
                 {
                     productID = entity.productID,
+                    productDescription = entity.productDescription,
                     EAN = entity.EAN
                 })
                 .ToList();

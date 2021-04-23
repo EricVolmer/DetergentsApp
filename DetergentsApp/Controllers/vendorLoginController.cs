@@ -27,7 +27,6 @@ namespace DetergentsApp.Controllers
 
         //POST: Register
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Register(vendorLogin _user)
         {
             if (ModelState.IsValid)
@@ -39,7 +38,7 @@ namespace DetergentsApp.Controllers
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.vendorLogin.Add(_user);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Home");
                 }
 
                 ViewBag.error = "Email already exists";
@@ -48,37 +47,6 @@ namespace DetergentsApp.Controllers
 
             return View();
         }
-
-        // public ActionResult vendorLogin()
-        // {
-        //     return View();
-        // }
-        //
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public ActionResult vendorLogin(string userName, string password)
-        // {
-        //     if (ModelState.IsValid)
-        //     {
-        //         var f_password = GetMD5(password);
-        //         var data = db.vendorLogin.Where(s => s.userName.Equals(userName) && s.password.Equals(f_password))
-        //             .ToList();
-        //         if (data.Count() > 0)
-        //         {
-        //             //add session
-        //             FormsAuthentication.SetAuthCookie(.userName, false); // set the formauthentication cookie  
-        //
-        //             Session["UserName"] = data.FirstOrDefault().userName;
-        //             Session["Id"] = data.FirstOrDefault().Id;
-        //             return RedirectToAction("Index");
-        //         }
-        //
-        //         ViewBag.error = "Login failed";
-        //          return RedirectToAction("vendorLogin");
-        //     }
-        //
-        //     return View();
-        // }
 
         public ActionResult vendorLogin()
         {

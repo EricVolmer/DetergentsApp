@@ -14,30 +14,23 @@
     .Columns(columns =>
     {
         columns.Bound(c => c.productID).Hidden();
-        columns.Bound(c => c.productDescription).Width(230);
-        columns.Bound(c => c.EAN).Width(150);
-        columns.Bound(c => c.vendorName).Title("Vendor Name");
-        columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
-            ViewBag.Country, "Value", "Text").Title("Country").Width(120);
-
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(120).Hidden();
 
-        columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #");
 
+        columns.Bound(c => c.productDescription).Width(350);
+        columns.Bound(c => c.EAN).Width(150);
+        columns.Bound(c => c.vendorName).Title("Vendor Name").Width(150);
+        columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
+            ViewBag.Country, "Value", "Text").Title("Country").Width(120);
+
+        columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #").Title("Data Sheets");
 
         columns.Command(command => { command.Custom("Details").Click("showFiles"); }).Width(230);
     })
     .ToolBar(toolbar =>
     {
         toolbar.Template(@<text>
-                             @* Refresh Button *@
-                             <div class="refreshBtnContainer">
-                                 <a href="\\#" class="k-pager-refresh k-link k-button k-button-icon" title="Refresh">
-                                     <span class="k-icon k-i-reload"></span>
-                                 </a>
-                             </div>
-
                              @* Search button *@
                              <span class="k-textbox k-grid-search k-display-flex">
                                  <input autocomplete="off" placeholder="Search..." title="Search..." class="k-input">
@@ -120,13 +113,6 @@
                     }).on('hide.bs.collapse', function(){
                         $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
                     });
-                    
-                    
-                    grid.find(".k-grid-toolbar").on("click", ".k-pager-refresh", function (e) 
-                    {
-                        e.preventDefault();
-                        grid.data("kendoGrid").dataSource.read();
-                    });
                 });
                 
                 function countryChange() {
@@ -139,8 +125,7 @@
                             grid.dataSource.filter({});
                         }
                     }
-                
-                           
+     
                     function showFiles(e) {
                                             e.preventDefault();
                                             
@@ -175,8 +160,6 @@
                         }
                                  
    </script>
-
-
 <style>
    
 </style>

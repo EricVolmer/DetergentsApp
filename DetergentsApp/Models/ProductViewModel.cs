@@ -28,10 +28,6 @@ namespace DetergentsApp.Models
 
         public string vendorName { get; set; }
 
-        //  [Display(Name = "ID"), JsonProperty("ID")] public int vikingStoreId = 5251;
-
-        //  [JsonProperty("City")] public string city { get; set; }
-
         public List<UserFile> listOfFiles { get; set; }
 
         public bool adminToPublic { get; set; }

@@ -262,7 +262,6 @@
     <Compile Include="Controllers\AddVendorController.cs" />
     <Compile Include="Controllers\Admin2Controller.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\ClaimsController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\AllFilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -379,7 +378,6 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Claims\Index.cshtml" />
     <Content Include="Views\FileUpload\UploadedFiles.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Scripts\kendo.modernizr.custom.js" />
