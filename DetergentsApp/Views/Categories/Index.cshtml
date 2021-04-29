@@ -1,57 +1,54 @@
 ﻿@using DetergentsApp.Models
-@model IEnumerable<Category>
+<div class="demo-section k-content">
+    <h2>Add Category</h2>
+    <div id="validation-success"></div>
+    @(Html.Kendo().Form<ProductViewModel>()
+        .Name("exampleForm")
+        .HtmlAttributes(new {action = "CategoryCreate", method = "POST"})
+        .Layout("grid")
+        .Grid(g => g.Cols(2).Gutter(20))
+        .Validatable(v =>
+        {
+            v.ValidateOnBlur(true);
+            v.ValidationSummary(vs => vs.Enable(false));
+        })
+        .Items(items =>
+        {
+            items.AddGroup()
+                .Label("Category")
+                .Layout("grid")
+                .Grid(g => g.Cols(1).Gutter(10))
+                .Items(i =>
+                {
+                    i.Add()
+                        .Field(f => f.categoryName)
+                        .Label(l => l.Text("Category name:"));
+                });
+        })
+        .Events(ev => ev.ValidateField("onFormValidateField").Submit("onFormSubmit").Clear("onFormClear"))
+        )
+</div>
 
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor<Category, string>(model => model.categoryName)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.categoryName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.categoryID}) |
-                @Html.ActionLink("Details", "Details", new {id = item.categoryID}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.categoryID})
-            </td>
-        </tr>
+<script>
+    function onFormValidateField(e) {
+        $("#validation-success").html("");
     }
 
-</table>
+    function onFormSubmit(e) {
+        e.preventDefault();
+        $("#validation-success").html("<div class='k-messagebox k-messagebox-success'>Form data is valid!</div>");
+        window.location.href = "@Url.Action("CategoryCreate",
+                                    "Categories")?categoryName=" + category.categoryName;
+    }
+
+    function onFormClear(e) {
+        $("#validation-success").html("");
+    }
+</script>
+
 <style>
-    #grid .k-grid-toolbar
-    {
-        padding: .6em 1.3em .6em .4em;
-    }
-    .category-label
-    {
-        vertical-align: middle;
-        padding-right: .5em;
-    }
-    #category
-    {
-        vertical-align: middle;
-    }
-    .refreshBtnContainer {
-        display: inline-block;
-    }
-    .toolbar {
-        float: right;
+    #example .k-content {
+        max-width: 600px;
+        width: 600px;
     }
 </style>

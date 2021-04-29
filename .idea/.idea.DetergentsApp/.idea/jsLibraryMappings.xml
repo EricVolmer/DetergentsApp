@@ -79,10 +79,6 @@
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/AddVendor/AddVendor.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/AllFiles/AllFiles.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Create.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Delete.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Details.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Edit.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/FileUpload/UploadedFiles.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" libraries="{bootstrap}" />
