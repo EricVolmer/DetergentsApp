@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Products_Menu" xml:space="preserve">
-    <value>Products</value>
-  </data>
   <data name="APP_NAME" xml:space="preserve">
     <value>DetergentsData</value>
   </data>
@@ -128,5 +125,35 @@
   </data>
   <data name="Home_Menu" xml:space="preserve">
     <value>Admin View</value>
+  </data>
+  <data name="Add_New_Vendor" xml:space="preserve">
+    <value>Add New Vendor</value>
+  </data>
+  <data name="Admin Login" xml:space="preserve">
+    <value>Admin Login</value>
+  </data>
+  <data name="All_Article_Files" xml:space="preserve">
+    <value>All Article Files</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>Approvals</value>
+  </data>
+  <data name="APP_NAME1" xml:space="preserve">
+    <value>Detergents</value>
+  </data>
+  <data name="Public_Menu" xml:space="preserve">
+    <value>Public</value>
+  </data>
+  <data name="Register_Vendor" xml:space="preserve">
+    <value>Register Vendor</value>
+  </data>
+  <data name="Sign_out" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="Vendor" xml:space="preserve">
+    <value>Vendor</value>
+  </data>
+  <data name="Vendor Login" xml:space="preserve">
+    <value>Vendor login</value>
   </data>
 </root>

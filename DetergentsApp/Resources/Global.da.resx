@@ -117,16 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Products_Menu" xml:space="preserve">
-    <value>Produkter</value>
+  <data name="Public_Menu" xml:space="preserve">
+    <value>Offentlig</value>
   </data>
   <data name="APP_NAME" xml:space="preserve">
     <value>Detergents</value>
   </data>
-  <data name="Category_Menu" xml:space="preserve">
-    <value>Kategori</value>
-  </data>
   <data name="Home_Menu" xml:space="preserve">
     <value>Forside</value>
+  </data>
+  <data name="Add_New_Vendor" xml:space="preserve">
+    <value>Tilføj ny leverandør</value>
+  </data>
+  <data name="Admin Login" xml:space="preserve">
+    <value>Admin log på</value>
+  </data>
+  <data name="All_Article_Files" xml:space="preserve">
+    <value>Alle Artikelfiler</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>Godkendelser</value>
+  </data>
+  <data name="Register_Vendor" xml:space="preserve">
+    <value>Registrer sælger</value>
+  </data>
+  <data name="Sign_out" xml:space="preserve">
+    <value>Log ud</value>
+  </data>
+  <data name="Vendor" xml:space="preserve">
+    <value>Sælger</value>
+  </data>
+  <data name="Vendor Login" xml:space="preserve">
+    <value>Sælger log på</value>
   </data>
 </root>
