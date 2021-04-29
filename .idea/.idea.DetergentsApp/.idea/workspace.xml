@@ -25,31 +25,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/Bodypump.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/Calculator on Steroids.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/App_Data/bingo.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Categories/Create.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Categories/Delete.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Categories/Details.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Categories/Edit.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.GenerateResource.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" afterDir="false" />
-    </list>
+    <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -351,7 +327,7 @@
       <workItem from="1619098431045" duration="9532000" />
       <workItem from="1619167219631" duration="6806000" />
       <workItem from="1619676218593" duration="1870000" />
-      <workItem from="1619679245602" duration="3655000" />
+      <workItem from="1619679245602" duration="3890000" />
     </task>
     <task id="LOCAL-00001" summary="Kendo Grid start">
       <created>1600795493153</created>
@@ -598,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619173272976</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Categories optimized">
+      <created>1619685122422</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1619685122422</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,7 +614,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Category dropdown working as should. Controller methods updated" />
     <MESSAGE value="Small update / backup before adding Sheets category into code" />
     <MESSAGE value="Sheet Types mostly working, file upload theoretically is working after filtering sheet types" />
     <MESSAGE value="backup" />
@@ -656,7 +638,8 @@
     <MESSAGE value="Vendor Login optimized and code ready for displaying the right menu tabs for spesific users" />
     <MESSAGE value="All Done" />
     <MESSAGE value="All done , execpt the report" />
-    <option name="LAST_COMMIT_MESSAGE" value="All done , execpt the report" />
+    <MESSAGE value="Categories optimized" />
+    <option name="LAST_COMMIT_MESSAGE" value="Categories optimized" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

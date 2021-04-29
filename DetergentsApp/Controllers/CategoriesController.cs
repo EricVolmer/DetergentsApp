@@ -23,6 +23,7 @@ namespace DetergentsApp.Controllers
                 categoryName = category.categoryName
             };
             try
+            
             {
                 db.Categories.Add(newCategory);
                 db.SaveChanges();
