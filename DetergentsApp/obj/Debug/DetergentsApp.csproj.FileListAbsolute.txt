@@ -123,7 +123,6 @@ C:\Users\Eric\source\repos\DetergentsApp\DetergentsApp\bin\NLite.xml
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\DetergentsApp.dll.config
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\DetergentsApp.dll
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\DetergentsApp.pdb
-C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\da\DetergentsApp.resources.dll
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\roslyn\csc.exe
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\roslyn\csc.exe.config
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\roslyn\csc.rsp
@@ -267,10 +266,8 @@ C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\uk-UA\Kendo.Mvc.r
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\zh-CN\Kendo.Mvc.resources.dll
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csprojAssemblyReference.cache
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.Resources.Global.resources
-C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.Resources.Global.da.resources
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csproj.GenerateResource.cache
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csproj.CoreCompileInputs.cache
-C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\da\DetergentsApp.resources.dll
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csproj.CopyComplete
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.dll
 C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.pdb
@@ -428,3 +425,6 @@ C:\Users\289663\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\da\Deterg
 C:\Users\289663\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.csproj.CopyComplete
 C:\Users\289663\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.dll
 C:\Users\289663\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.pdb
+C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\bin\da-dk\DetergentsApp.resources.dll
+C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\DetergentsApp.Resources.Global.da-dk.resources
+C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\obj\Debug\da-dk\DetergentsApp.resources.dll

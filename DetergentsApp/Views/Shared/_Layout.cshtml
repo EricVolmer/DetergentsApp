@@ -1,5 +1,5 @@
 ﻿@using System.Security.Claims
-@using Resources
+@using DetergentsApp.Resources
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +22,6 @@
 
 </head>
 <body>
-
 <div class="jumbotron">
     <h1>Forbruger- og sikkerhedsdatablade</h1>
     <p class="lead">På denne side findes sikkerhedsdatablade og forbrugerdatablade på Salling Groups produkter.</p>
@@ -50,36 +49,36 @@
 
                 @if (Session["LoginCredentials"] != null)
                 {
-                    <li>@Html.ActionLink("Vendor", "Index", "Vendor")</li>
+                    <li>@Html.ActionLink(Global.Vendor, "Index", "Vendor")</li>
 
                     if (Session["LoginCredentials"] != null)
                     {
-                        <li>@Html.ActionLink("Logout", "Logout", "vendorLogin")</li>
+                        <li>@Html.ActionLink(Global.Log_Out, "Logout", "vendorLogin")</li>
                     }
                 }
                 else
                 {
-                    <li>@Html.ActionLink("Admin Login In", "SignIn", "Home") </li>
+                    <li>@Html.ActionLink(Global.Admin_Login, "SignIn", "Home") </li>
 
                     if (!Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Public", "Public", "Public")</li>
-                        <li>@Html.ActionLink("Vendor Login", "vendorLogin", "vendorLogin")</li>
+                        <li>@Html.ActionLink(Global.Public, "Public", "Public")</li>
+                        <li>@Html.ActionLink(Global.Vendor_Login, "vendorLogin", "vendorLogin")</li>
                     }
                     else
                     {
                         if (User.Identity.IsAuthenticated)
                         {
-                            <li>@Html.ActionLink(Global.Home_Menu, "Index", "Home")</li>
-                            <li>@Html.ActionLink("Public View", "Public", "Public")</li>
-                            <li>@Html.ActionLink(Global.Category_Menu, "Index", "Categories")</li>
-                            <li>@Html.ActionLink("All Article Files", "AllFiles", "AllFiles")</li>
-                            <li>@Html.ActionLink("Approvals", "Admin2", "Admin2")</li>
+                            <li>@Html.ActionLink(Global.Admin_View, "Index", "Home")</li>
+                            <li>@Html.ActionLink(Global.Public, "Public", "Public")</li>
+                            <li>@Html.ActionLink(Global.Category, "Index", "Categories")</li>
+                            <li>@Html.ActionLink(Global.All_Article_Files, "AllFiles", "AllFiles")</li>
+                            <li>@Html.ActionLink(Global.Approvals, "Admin2", "Admin2")</li>
                             <li class="dropdown">
                                 <a aria-expanded="true" data-toggle="dropdown" class="dropdown-toggle" href="#">Vendor<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Vendor", "Index", "Vendor") </li>
-                                    <li>@Html.ActionLink("Add New Vendor", "AddVendor", "AddVendor")</li>
+                                    <li>@Html.ActionLink(Global.Vendor, "Index", "Vendor") </li>
+                                    <li>@Html.ActionLink(Global.Add_New_Vendor, "AddVendor", "AddVendor")</li>
                                     <li>@Html.ActionLink("Vendor Register", "Register", "vendorLogin")</li>
                                 </ul>
                             </li>
@@ -90,7 +89,7 @@
                                 <b>Hello @ClaimsPrincipal.Current.FindFirst("name").Value </b>
                             </a>
                         </li>
-                        <li> @Html.ActionLink("Sign out", "SignOut", "Home")</li>
+                        <li> @Html.ActionLink(Global.Log_Out, "SignOut", "Home")</li>
                     }
 
                     if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))

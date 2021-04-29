@@ -1,11 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
-<root>
-    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <xsd:element name="root" msdata:IsDataSet="true">
-            
-        </xsd:element>
-    </xsd:schema>
+﻿<root>
     <resheader name="resmimetype">
         <value>text/microsoft-resx</value>
     </resheader>
@@ -19,36 +12,36 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="Public" xml:space="preserve">
-        <value>Public</value>
+        <value>Offentlig</value>
     </data>
     <data name="Vendor" xml:space="preserve">
-        <value>Vendor</value>
+        <value>Sælger</value>
     </data>
     <data name="Vendor_Login" xml:space="preserve">
-        <value>Vendor Login</value>
+        <value>Sælger log på</value>
     </data>
     <data name="Log_Out" xml:space="preserve">
-        <value>Logout</value>
+        <value>Log ud</value>
     </data>
     <data name="Add_New_Vendor" xml:space="preserve">
-        <value>Add New Vendor</value>
+        <value>Tilføj ny leverandør</value>
     </data>
     <data name="Admin_Login" xml:space="preserve">
-        <value>Admin Login</value>
+        <value>Admin log på</value>
     </data>
     <data name="All_Article_Files" xml:space="preserve">
-        <value>All Article Files</value>
+        <value>Alle artikelfiler</value>
     </data>
     <data name="Approvals" xml:space="preserve">
-        <value>Approvals</value>
+        <value>Godkendelser</value>
     </data>
     <data name="Category" xml:space="preserve">
-        <value>Category</value>
+        <value>Kategori</value>
     </data>
     <data name="Admin_View" xml:space="preserve">
-        <value>Home</value>
+        <value>Forside</value>
     </data>
     <data name="Register_Vendor" xml:space="preserve">
-        <value>Register Vendor</value>
+        <value>Registrer sælger</value>
     </data>
 </root>

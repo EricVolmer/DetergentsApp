@@ -54,10 +54,6 @@
     <file url="file://$PROJECT_DIR$/DetergentsApp/Pictures/SallingGroup.png" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Pictures/sallingPicture.jpg" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Properties/AssemblyInfo.cs" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Resources/Global.Designer.cs" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Resources/Global.da.Designer.cs" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Resources/Global.da.resx" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Resources/Global.resx" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Scripts/bootstrap.js" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Scripts/bootstrap.min.js" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Scripts/jquery-3.3.1.intellisense.js" libraries="{bootstrap}" />

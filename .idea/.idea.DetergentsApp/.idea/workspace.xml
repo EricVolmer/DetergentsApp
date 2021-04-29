@@ -25,7 +25,66 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="" />
+    <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/Resources/Global.da-dk.resx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/bin/da-DK/DetergentsApp.resources.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.Resources.Global.da-dk.resources" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/TempPE/Resources.Resource1.Designer.cs.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da-dk/DetergentsApp.resources.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DetergentsApp/config/applicationhost.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Detergents things to do.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/New Text Document.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Untitled.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/Bodypump.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/Calculator on Steroids.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/Certificate.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/Kalkulatsioon.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/New Text Document.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/Untitled.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/Week 13-14 Logbook.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/Week 6-8 Logbook.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/astah_faculty_license.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/safety sheets.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/sql code.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/testFile.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/Week 6-8 Logbook.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/bingo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/code.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/medical sheets.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/note.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/public sheets.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/safety sheets.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/sql code.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/App_Data/zakopane.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Resources/Global.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Resources/Global.da.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Resources/Global.da.resx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Resources/Global.da1.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Resources/Global.resx" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Resources/Global.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Resources/Global1.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Web.config" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Web.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll.config" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/da/DetergentsApp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferences.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferences.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.Resources.Global.da.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.Resources.Global.resources" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.Resources.Global.resources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da/DetergentsApp.resources.dll" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,9 +153,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Details/Details.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Grid/AllFiles.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/AllFilesController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/productDetailsViewModel.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Startup.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/ClaimsController.cs" />
@@ -128,13 +184,11 @@
       <option value="$PROJECT_DIR$/DetergentsApp/Views/vendorLogin/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Web.config" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Web.config" />
       <option value="$PROJECT_DIR$/DetergentsApp/Content/bootstrap.css" />
       <option value="$PROJECT_DIR$/DetergentsApp/Content/Site.css" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Public/Details.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/vendorLogin/vendorLogin.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Resources/Global.resx" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/vendorLogin/Register.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/vendorLoginController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
@@ -144,6 +198,11 @@
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Resources/Language.da.resx" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Resources/Language.resx" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Resources/Global.resx" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Resources/Global.Designer.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Web.config" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" />
     </changedPaths>
   </component>
@@ -328,6 +387,7 @@
       <workItem from="1619167219631" duration="6806000" />
       <workItem from="1619676218593" duration="1870000" />
       <workItem from="1619679245602" duration="3890000" />
+      <workItem from="1619695404505" duration="1875000" />
     </task>
     <task id="LOCAL-00001" summary="Kendo Grid start">
       <created>1600795493153</created>
