@@ -98,9 +98,7 @@ namespace DetergentsApp.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            Session.Abandon();
-            Session.RemoveAll();
-            Session.Clear(); //remove session
+            Session["LoginCredentials"] = null;
             return RedirectToAction("vendorLogin");
         }
 

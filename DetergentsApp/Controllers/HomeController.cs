@@ -18,7 +18,9 @@ namespace DetergentsApp.Controllers
 {
     public class HomeController : Controller
     {
+#pragma warning disable 414
         private readonly string baseUrl = "https://api.sallinggroup.com/";
+#pragma warning restore 414
 
         private readonly DetergentsEntities db = new DetergentsEntities();
 
@@ -240,7 +242,9 @@ namespace DetergentsApp.Controllers
             }
         }
 
+#pragma warning disable 1998
         public async Task<ActionResult> Product_Read([DataSourceRequest] DataSourceRequest request)
+#pragma warning restore 1998
         {
             // responseJson = JSON.parse(responseBody);
 

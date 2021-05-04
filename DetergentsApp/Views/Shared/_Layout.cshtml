@@ -18,7 +18,7 @@
     <script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.all.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.aspnetmvc.min.js"></script>
     <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>õ
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
 
 </head>
 <body>
@@ -46,57 +46,53 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-
+                
+                @if ( Session["LoginCredentials"] == null && (!User.Identity.IsAuthenticated))
+                {
+                    <li>@Html.ActionLink(Global.Public, "Public", "Public")</li>
+                    <li>@Html.ActionLink(Global.Admin_Login, "SignIn", "Home") </li>
+                    <li>@Html.ActionLink(Global.Vendor_Login, "vendorLogin", "vendorLogin")</li> 
+                }
                 @if (Session["LoginCredentials"] != null)
                 {
                     <li>@Html.ActionLink(Global.Vendor, "Index", "Vendor")</li>
-
-                    if (Session["LoginCredentials"] != null)
-                    {
-                        <li>@Html.ActionLink(Global.Log_Out, "Logout", "vendorLogin")</li>
-                    }
+                    <li>@Html.ActionLink(Global.Log_Out, "Logout", "vendorLogin")</li>
                 }
-                else
+                
+
+                @*   @if (!User.Identity.IsAuthenticated) *@
+                @*   @if (!User.Identity.IsAuthenticated || Session["LoginCredentials"] == null) *@
+                @if (Request.IsAuthenticated)
                 {
-                    <li>@Html.ActionLink(Global.Admin_Login, "SignIn", "Home") </li>
-
-                    if (!Request.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink(Global.Public, "Public", "Public")</li>
-                        <li>@Html.ActionLink(Global.Vendor_Login, "vendorLogin", "vendorLogin")</li>
-                    }
-                    else
-                    {
-                        if (User.Identity.IsAuthenticated)
-                        {
-                            <li>@Html.ActionLink(Global.Admin_View, "Index", "Home")</li>
-                            <li>@Html.ActionLink(Global.Public, "Public", "Public")</li>
-                            <li>@Html.ActionLink(Global.Category, "Index", "Categories")</li>
-                            <li>@Html.ActionLink(Global.All_Article_Files, "AllFiles", "AllFiles")</li>
-                            <li>@Html.ActionLink(Global.Approvals, "Admin2", "Admin2")</li>
-                            <li class="dropdown">
-                                <a aria-expanded="true" data-toggle="dropdown" class="dropdown-toggle" href="#">Vendor<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink(Global.Vendor, "Index", "Vendor") </li>
-                                    <li>@Html.ActionLink(Global.Add_New_Vendor, "AddVendor", "AddVendor")</li>
-                                    <li>@Html.ActionLink("Vendor Register", "Register", "vendorLogin")</li>
-                                </ul>
-                            </li>
-                        }
-
-                        <li>
-                            <a>
-                                <b>Hello @ClaimsPrincipal.Current.FindFirst("name").Value </b>
-                            </a>
-                        </li>
-                        <li> @Html.ActionLink(Global.Log_Out, "SignOut", "Home")</li>
-                    }
-
-                    if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
-                    {
-                        <div style="background-color:red;color:white;font-weight: bold;">Error: @Request.QueryString["errormessage"]</div>
-                    }
+                    
                 }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink(Global.Admin_View, "Index", "Home")</li>
+                    <li>@Html.ActionLink(Global.Public, "Public", "Public")</li>
+                    <li>@Html.ActionLink(Global.Category, "Index", "Categories")</li>
+                    <li>@Html.ActionLink(Global.All_Article_Files, "AllFiles", "AllFiles")</li>
+                    <li>@Html.ActionLink(Global.Approvals, "Admin2", "Admin2")</li>
+                    <li class="dropdown">
+                        <a aria-expanded="true" data-toggle="dropdown" class="dropdown-toggle" href="#">Vendor<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink(Global.Vendor, "Index", "Vendor") </li>
+                            <li>@Html.ActionLink(Global.Add_New_Vendor, "AddVendor", "AddVendor")</li>
+                            <li>@Html.ActionLink("Vendor Register", "Register", "vendorLogin")</li>
+                        </ul>
+                    </li>
+                    <li> @Html.ActionLink(Global.Log_Out, "SignOut", "Home")</li>
+                
+                                                                            
+                    
+                }
+                
+
+                @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
+                {
+                    <div style="background-color:red;color:white;font-weight: bold;">Error: @Request.QueryString["errormessage"]</div>
+                }
+
             </ul>
         </div>
     </div>
