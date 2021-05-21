@@ -91,16 +91,9 @@ namespace DetergentsApp.Controllers
 
                         categoryID = item.Category.categoryID,
 
-                        vendorID = item.Vendor.vendorID,
-                        vendorName = item.Vendor.vendorName,
-
                         CountryID = item.countryID,
-
-                        vikingStoreId = item.Store.storeID,
-                        name = item.Store.storeName,
-
+                        
                         articleId = item.articleID,
-                        articleTextReceipt = item.articleDetails.articleTextReceipt
                     };
 
 

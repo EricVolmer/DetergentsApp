@@ -18,9 +18,7 @@ namespace DetergentsApp.Controllers
 {
     public class HomeController : Controller
     {
-#pragma warning disable 414
         private readonly string baseUrl = "https://api.sallinggroup.com/";
-#pragma warning restore 414
 
         private readonly DetergentsEntities db = new DetergentsEntities();
 
@@ -31,106 +29,12 @@ namespace DetergentsApp.Controllers
             CreateViewListSheetType();
             CreateViewListVendor();
             CreateViewListCountry();
-            CreateViewListstoreID();
-            CreateViewListArticleID();
             return View();
         }
 
         // There is a problem with the Authorization Token that ever time when you run the program
         // you need to copy the Token from Postman in order to get a response.
-        public void CreateViewListstoreID()
-        {
-            // try
-            // {
-            //     // var restClient = new RestClient("https://api.sallinggroup.com/v2/stores/")
-            //     // {
-            //     //     Timeout = -1
-            //     // };
-            //     // var request2 = new RestRequest(Method.GET);
-            //     // request2.AddHeader("Authorization", "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTU0NzI1MjgsImlzcyI6IjhiMmUzMmU1LWExNjYtNDdiYy05M2VkLWU4Y2Y5NDYyODc0NiIsIm10aCI6IkdFVCIsInN1YiI6Ii92Mi9zdG9yZXMvP2NpdHk9VGlsc3QifQ.fF-jk_0BpJPIbJNU_C6IrcdNBCJMgeHtitryPx_2PR4");
-            //     // var response = restClient.Execute(request2);
-            //     // Console.WriteLine(response.Content);
-            //
-            //
-            //   //  var data = JsonConvert.DeserializeObject<List<ProductViewModel>>(response.Content);
-            //    // Console.WriteLine("here");
-            //     var containerList = new List<SelectListItem>();
-            //
-            //     var productViewModels = containerList.Select(entity => new ProductViewModel
-            //         {
-            //             
-            //             vikingStoreId = entity.vikingStoreId,
-            //             name = entity.name
-            //         })
-            //         .ToList();
-            //
-            //     foreach (var productViewModel in productViewModels)
-            //         containerList.Add(new SelectListItem
-            //             {Text = productViewModel.name, Value = productViewModel.vikingStoreId.ToString()});
-            //
-            //     ViewBag.storeID = containerList;
-            // }
-            // catch (Exception e)
-            // {
-            //     Console.WriteLine(e);
-            //     throw;
-            // }
-
-            try
-            {
-                var result = db.StoreAPI;
-
-                var containerList = new List<SelectListItem>();
-                var productViewModels = result.Select(entity => new ProductViewModel
-                    {
-                        name = entity.storeName,
-                        vikingStoreId = entity.storeID
-                    })
-                    .ToList();
-
-                foreach (var productViewModel in productViewModels)
-                    containerList.Add(new SelectListItem
-                        {Text = productViewModel.name, Value = productViewModel.vikingStoreId.ToString()});
-
-                ViewBag.storeID = containerList;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        public void CreateViewListArticleID()
-        {
-            // Here should be the code for the article details API, the dropdown list is done in the View/Home as
-            // a ViewBag.ArticleID
-            // https://api.sallinggroup.com/v1/viking/dk/enriched-articles
-
-            try
-            {
-                var result = db.articleDetailsAPI;
-
-                var containerList = new List<SelectListItem>();
-                var productViewModels = result.Select(entity => new ProductViewModel
-                    {
-                        articleId = entity.articleID,
-                        articleTextReceipt = entity.articleTextReceipt
-                    })
-                    .ToList();
-
-                foreach (var productViewModel in productViewModels)
-                    containerList.Add(new SelectListItem
-                        {Text = productViewModel.articleTextReceipt, Value = productViewModel.articleId.ToString()});
-
-                ViewBag.articleID = containerList;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
+        
 
         public void CreateViewListCategory()
         {
@@ -284,6 +188,8 @@ namespace DetergentsApp.Controllers
             //     //    responseTask.Wait();
             // }
             // //Console.WriteLine("here" + vikingStoreId);
+            
+            
 
 
             IEnumerable<ProductViewModel> productDescription = new List<ProductViewModel>();
@@ -306,12 +212,8 @@ namespace DetergentsApp.Controllers
                         vendorName = item.Vendor.vendorName,
 
                         CountryID = item.countryID,
-
-                        vikingStoreId = item.Store.storeID,
-                        name = item.Store.storeName,
-
+                        
                         articleId = item.articleID,
-                        articleTextReceipt = item.articleDetails.articleTextReceipt
                     };
 
 
@@ -357,7 +259,6 @@ namespace DetergentsApp.Controllers
             if (ModelState.IsValid)
             {
                 var category = db.Categories.Find(product.categoryID);
-                //  var store = db.StoreSet.Find(product.vikingStoreId);
                 var sheetTypes = db.SheetTypes.ToList();
 
                 if (product.productID != 0)
@@ -370,7 +271,6 @@ namespace DetergentsApp.Controllers
                         entity.Category = category;
                         entity.vendorID = product.vendorID;
                         entity.countryID = product.CountryID;
-                        entity.storeID = product.vikingStoreId;
                         entity.articleID = product.articleId;
                         entity.adminToPublic = false;
 
@@ -397,7 +297,6 @@ namespace DetergentsApp.Controllers
                     SheetType = sheetTypes,
                     vendorID = product.vendorID,
                     countryID = product.CountryID,
-                    storeID = product.vikingStoreId,
                     articleID = product.articleId,
                     adminToPublic = false
                 };
@@ -493,10 +392,14 @@ namespace DetergentsApp.Controllers
 
         public void SignIn()
         {
+            // Response.Cookies["ASPXPIKESADMINAUTH"].Expires = DateTime.Now.AddDays(-1);
+            // Session["LoginCredentials"] = null;
+            
             if (!Request.IsAuthenticated)
                 HttpContext.GetOwinContext().Authentication.Challenge(
                     new AuthenticationProperties {RedirectUri = "/"},
                     OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            
         }
 
         /// <summary>

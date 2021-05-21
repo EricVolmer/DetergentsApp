@@ -17,14 +17,14 @@
         columns.Bound(c => c.productID).Hidden();
         columns.Bound(c => c.sheetTypeID).Hidden().Title("SheetType");
         //  columns.Bound(c => c.vikingStoreId);
-        columns.Bound(c => c.productDescription).Width(230);
         columns.Bound(c => c.EAN).Width(150);
+        columns.Bound(c => c.productDescription).Width(230);
 
-        columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
-            ViewBag.articleID, "Value", "Text").Title("Article Name").Width(120);
+       // columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
+        //    ViewBag.articleID, "Value", "Text").Title("Article Name").Width(120);
 
-        columns.ForeignKey(c => c.vikingStoreId, (List<SelectListItem>)
-            ViewBag.storeID, "Value", "Text").Title("Store Name").Width(120);
+      //  columns.ForeignKey(c => c.vikingStoreId, (List<SelectListItem>)
+        //    ViewBag.storeID, "Value", "Text").Title("Store Name").Width(120);
 
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
             ViewBag.Category, "Value", "Text").Title("Category").Width(120);

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/26/2021 12:01:24
+-- Date Created: 05/19/2021 16:41:14
 -- Generated from EDMX file: C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -35,12 +35,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CountryProduct]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_CountryProduct];
 GO
-IF OBJECT_ID(N'[dbo].[FK_StoreProduct]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_StoreProduct];
-GO
-IF OBJECT_ID(N'[dbo].[FK_articleDetailsProduct]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_articleDetailsProduct];
-GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -63,12 +57,6 @@ IF OBJECT_ID(N'[dbo].[Vendor]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Country]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Country];
-GO
-IF OBJECT_ID(N'[dbo].[StoreAPI]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[StoreAPI];
-GO
-IF OBJECT_ID(N'[dbo].[articleDetailsAPI]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[articleDetailsAPI];
 GO
 IF OBJECT_ID(N'[dbo].[vendorLogin]', 'U') IS NOT NULL
     DROP TABLE [dbo].[vendorLogin];
@@ -138,20 +126,6 @@ CREATE TABLE [dbo].[Country] (
 );
 GO
 
--- Creating table 'StoreAPI'
-CREATE TABLE [dbo].[StoreAPI] (
-    [storeID] int IDENTITY(1,1) NOT NULL,
-    [storeName] nvarchar(max)  NOT NULL
-);
-GO
-
--- Creating table 'articleDetailsAPI'
-CREATE TABLE [dbo].[articleDetailsAPI] (
-    [articleID] bigint IDENTITY(1,1) NOT NULL,
-    [articleTextReceipt] nvarchar(max)  NOT NULL
-);
-GO
-
 -- Creating table 'vendorLogin'
 CREATE TABLE [dbo].[vendorLogin] (
     [Id] int IDENTITY(1,1) NOT NULL,
@@ -205,18 +179,6 @@ GO
 ALTER TABLE [dbo].[Country]
 ADD CONSTRAINT [PK_Country]
     PRIMARY KEY CLUSTERED ([CountryID] ASC);
-GO
-
--- Creating primary key on [storeID] in table 'StoreAPI'
-ALTER TABLE [dbo].[StoreAPI]
-ADD CONSTRAINT [PK_StoreAPI]
-    PRIMARY KEY CLUSTERED ([storeID] ASC);
-GO
-
--- Creating primary key on [articleID] in table 'articleDetailsAPI'
-ALTER TABLE [dbo].[articleDetailsAPI]
-ADD CONSTRAINT [PK_articleDetailsAPI]
-    PRIMARY KEY CLUSTERED ([articleID] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'vendorLogin'
@@ -317,36 +279,6 @@ GO
 CREATE INDEX [IX_FK_CountryProduct]
 ON [dbo].[Products]
     ([countryID]);
-GO
-
--- Creating foreign key on [storeID] in table 'Products'
-ALTER TABLE [dbo].[Products]
-ADD CONSTRAINT [FK_StoreProduct]
-    FOREIGN KEY ([storeID])
-    REFERENCES [dbo].[StoreAPI]
-        ([storeID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_StoreProduct'
-CREATE INDEX [IX_FK_StoreProduct]
-ON [dbo].[Products]
-    ([storeID]);
-GO
-
--- Creating foreign key on [articleID] in table 'Products'
-ALTER TABLE [dbo].[Products]
-ADD CONSTRAINT [FK_articleDetailsProduct]
-    FOREIGN KEY ([articleID])
-    REFERENCES [dbo].[articleDetailsAPI]
-        ([articleID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_articleDetailsProduct'
-CREATE INDEX [IX_FK_articleDetailsProduct]
-ON [dbo].[Products]
-    ([articleID]);
 GO
 
 -- --------------------------------------------------

@@ -1,17 +1,20 @@
 ﻿@model IEnumerable<DetergentsApp.Models.Vendor>
 
-<section class="well">
     <div id="main-section-header" class="row">
         <h2 id="team-efficiency" class="col-xs-3">Vendor Upload</h2>
         <div style="clear:both;"></div>
     </div>
 
-    <form method="post" action='@Url.Action("VendorSave")'>
+<div class="demo-section k-content">
 
-        <div class="form-horizontal form-widgets col-sm-6">
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="name">Vendor Details</label>
-                <div class="col-sm-8 col-md-6">
+    <div id="validation-summary">
+    </div>
+
+    <form id="ticketsForm" class="k-form k-form-vertical" method="post" action='@Url.Action("VendorSave")'>
+        <ul class="k-form-group">
+            <li class="k-form-field">
+                <label for="vendorDetails" class="k-form-label">Vendor Details</label>
+                <span class="k-form-field-wrap">
                     @(Html.Kendo().DropDownList()
                         .Name("vendorDetails")
                         .DataTextField("Text")
@@ -19,15 +22,14 @@
                         .MinLength(3)
                         .Filter(FilterType.Contains)
                         .OptionLabel("Vendor Details")
-                        .HtmlAttributes(new {style = "width: 400px;"})
+                        .HtmlAttributes(new { placeholder = "Vendor Details", required = "required", validationmessage = "Enter {0}" ,style = "width: 400px;" })
+
                         .DataSource(ds => { ds.Read(read => read.Action("vendorDropDownList", "Vendor")); }))
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="articleEAN">Article EAN</label>
-                <div class="col-sm-8 col-md-6">
+                </span>
+            </li>
+            <li class="k-form-field">
+                <label for="search" class="k-form-label">EAN</label>
+                <span class="k-form-field-wrap">
                     @(Html.Kendo().DropDownList()
                         .Name("articleEAN")
                         .DataTextField("Text")
@@ -35,81 +37,97 @@
                         .MinLength(3)
                         .Filter(FilterType.Contains)
                         .OptionLabel("Enter EAN...")
-                        .HtmlAttributes(new {style = "width: 400px;"})
-                        .DataSource(ds => { ds.Read(read => read.Action("vendorEANDropDownList", "Vendor")); }))
-                </div>
-            </div>
+                        .HtmlAttributes(new { placeholder = "Article EAN", required = "required", validationmessage = "Enter {0}" , style = "width: 400px;" })
 
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="gender">Sheet Type</label>
-                <div class="col-sm-8 col-md-6">
+                        .DataSource(ds => { ds.Read(read => read.Action("vendorEANDropDownList", "Vendor")); }))
+                    <span class="k-invalid-msg" data-for="search"></span>
+                </span>
+            </li>
+            <li class="k-form-field">
+                <label for="time" class="k-form-label">Sheet Type</label>
+                <span class="k-form-field-wrap">
                     @(Html.Kendo().DropDownList()
                         .Name("sheetTypeCategory")
                         .DataTextField("Text")
                         .DataValueField("Value")
-                        .HtmlAttributes(new {style = "width: 400px;"})
+                        .HtmlAttributes(new { placeholder = "Sheet Type", required = "required", validationmessage = "Enter {0}", style = "width: 400px;"})
                         .DataSource(ds => { ds.Read(read => read.Action("sheetType_Categories", "Home")); }))
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="language">Language of the file</label>
-                <div class="col-sm-8 col-md-6">
+                    <span class="k-invalid-msg" data-for="time"></span>
+                </span>
+            </li>
+            <li class="k-form-field">
+                <label for="amount" class="k-form-label">Language</label>
+                <span class="k-form-field-wrap">
                     @(Html.Kendo().DropDownList()
-                        .Name("language")
-                        .DataTextField("Text")
-                        .DataValueField("Value")
-                        .Value("English")
-                        .BindTo(new List<SelectListItem>
-                        {
-                            new SelectListItem
-                            {
-                                Text = "Danish",
-                                Value = "Danish"
-                            },
-                            new SelectListItem
-                            {
-                                Text = "German",
-                                Value = "German"
-                            },
-                            new SelectListItem
-                            {
-                                Text = "English",
-                                Value = "English"
-                            },
-                            new SelectListItem
-                            {
-                                Text = "Polish",
-                                Value = "Polish"
-                            }
-                        })
+                                            .Name("language")
+                                            .DataTextField("Text")
+                                            .DataValueField("Value")
+                                            .Value("English")
+                                            .HtmlAttributes(new { placeholder = "Language", required = "required", validationmessage = "Enter {0}" ,style = "width: 400px;" })
+                    
+                                            .BindTo(new List<SelectListItem>
+                                            {
+                                                new SelectListItem
+                                                {
+                                                    Text = "Danish",
+                                                    Value = "Danish"
+                                                },
+                                                new SelectListItem
+                                                {
+                                                    Text = "German",
+                                                    Value = "German"
+                                                },
+                                                new SelectListItem
+                                                {
+                                                    Text = "English",
+                                                    Value = "English"
+                                                },
+                                                new SelectListItem
+                                                {
+                                                    Text = "Polish",
+                                                    Value = "Polish"
+                                                }
+                                            })
+                                            )
+                    <span class="k-invalid-msg" data-for="Amount"></span>
+                </span>
+            </li>
+            <li class="k-form-field">
+                <label for="email" class="k-form-label">Email</label>
+                <span class="k-form-field-wrap">
+                    @(Html.Kendo().Upload()
+                        .Name("files")
+                                
+                        .Validation(validation => validation.AllowedExtensions(new string[] { ".pdf" }))
                         )
-                </div>
-            </div>
-            <div class="clearfix"></div>
-
-            <div class="form-horizontal form-widgets col-sm-12">
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="fileUpload">File Upload</label>
-                    <div class="col-sm-10">
-                        @(Html.Kendo().Upload()
-                            .Name("files")
-                            )
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="buttons-wrap">
-                <button class="k-button k-state-default">Cancel</button>
+                </span>
+            </li>
+            <li class="k-form-buttons">
                 <button type="submit" id="uploadButton" class="k-button k-state-default">Upload</button>
-            </div>
-        </div>
+                <button class="k-button k-state-default">Cancel</button>
+            </li>
+        </ul>
     </form>
+</div>
 
-</section>
+
+<style>
+</style>
+
 
 <script>
+    $(document).ready( function () {
+        var validator = $("#ticketsForm").kendoValidator().data("kendoValidator");
+        var validationSummary = $("#validation-summary");
 
-      
+        $("form").submit(function(event) {
+            event.preventDefault();
+
+            if (validator.validate()) {
+                validationSummary.html("<div class='k-messagebox k-messagebox-success'>File has been uploaded</div>");
+            } else {
+                validationSummary.html("<div class='k-messagebox k-messagebox-error'>File upload unsucessful</div>");
+            }
+        });
+    });
 </script>

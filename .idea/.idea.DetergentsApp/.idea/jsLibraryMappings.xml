@@ -40,12 +40,10 @@
     <file url="file://$PROJECT_DIR$/DetergentsApp/Models/Product.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Models/SheetType.cs" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Models/StoreAPI.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Models/UserFile.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Models/Vendor.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Models/VendorViewModel.cs" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Models/articleDetailsAPI.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Models/countryViewModel.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Models/productDetailsViewModel.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Models/sheetTypeViewModel.cs" libraries="{bootstrap}" />

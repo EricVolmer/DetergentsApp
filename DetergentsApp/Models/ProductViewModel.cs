@@ -34,7 +34,6 @@ namespace DetergentsApp.Models
 
 
         // Store name and ID 
-        public int vikingStoreId { get; set; }
         public string name { get; set; }
 
         //Article name , description and id
@@ -42,10 +41,6 @@ namespace DetergentsApp.Models
         public long articleId { get; set; }
 
         public string articleTextReceipt { get; set; }
-
-        // Article categorizing
-        // This might be also useful to implement inside because these values are in the API and in the view.
-        public int articleGroupId { get; set; }
-        public string articleGroupDescription { get; set; }
+        
     }
 }

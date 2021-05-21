@@ -20,7 +20,6 @@
 
         columns.Bound(c => c.productDescription).Width(350);
         columns.Bound(c => c.EAN).Width(150);
-        columns.Bound(c => c.vendorName).Title("Vendor Name").Width(150);
         columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
             ViewBag.Country, "Value", "Text").Title("Country").Width(120);
 
@@ -100,8 +99,6 @@
                     var grid = $("#grid");
                     
                     $("#country").data("kendoDropDownList").select(0);
-
-
                     // Add minus icon for collapse element which is open by default
                     $(".collapse.show").each(function(){
                         $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
@@ -141,7 +138,6 @@
                         
                                                
                         function SheetFilesAvailable(data) {
-
                     //        if (($('#grid').find(data.listOfFiles)))
                     
                                if (data.listOfFiles !== undefined && data.listOfFiles !== null){

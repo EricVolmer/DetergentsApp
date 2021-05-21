@@ -64,22 +64,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="StoreAPI">
-      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.StoreAPI)">
-        <MappingFragment StoreEntitySet="StoreAPI">
-          <ScalarProperty Name="storeID" ColumnName="storeID" />
-          <ScalarProperty Name="storeName" ColumnName="storeName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="articleDetailsAPI">
-      <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.articleDetailsAPI)">
-        <MappingFragment StoreEntitySet="articleDetailsAPI">
-          <ScalarProperty Name="articleID" ColumnName="articleID" />
-          <ScalarProperty Name="articleTextReceipt" ColumnName="articleTextReceipt" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="vendorLogin">
       <EntityTypeMapping TypeName="IsTypeOf(DetergentsModel.vendorLogin)">
         <MappingFragment StoreEntitySet="vendorLogin">

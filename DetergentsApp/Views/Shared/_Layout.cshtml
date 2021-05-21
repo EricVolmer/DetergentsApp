@@ -71,21 +71,27 @@
                     <li>@Html.ActionLink(Global.Admin_View, "Index", "Home")</li>
                     <li>@Html.ActionLink(Global.Public, "Public", "Public")</li>
                     <li>@Html.ActionLink(Global.Category, "Index", "Categories")</li>
-                    <li>@Html.ActionLink(Global.All_Article_Files, "AllFiles", "AllFiles")</li>
                     <li>@Html.ActionLink(Global.Approvals, "Admin2", "Admin2")</li>
                     <li class="dropdown">
-                        <a aria-expanded="true" data-toggle="dropdown" class="dropdown-toggle" href="#">Vendor<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink(Global.Vendor, "Index", "Vendor") </li>
-                            <li>@Html.ActionLink(Global.Add_New_Vendor, "AddVendor", "AddVendor")</li>
-                            <li>@Html.ActionLink("Vendor Register", "Register", "vendorLogin")</li>
-                        </ul>
+                        <a aria-expanded="true" data-toggle="dropdown" class="dropdown-toggle" href="#">Vendor<span class="caret"></span>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink(Global.Vendor, "Index", "Vendor") </li>
+                                <li>@Html.ActionLink(Global.Add_New_Vendor, "AddVendor", "AddVendor")</li>
+                                <li>@Html.ActionLink("Vendor Register", "Register", "vendorLogin")</li>
+                            </ul>
+                            
+                        </a>
+                        
                     </li>
+                    
+                    
+                    
                     <li> @Html.ActionLink(Global.Log_Out, "SignOut", "Home")</li>
                 
                                                                             
                     
                 }
+                
                 
 
                 @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))

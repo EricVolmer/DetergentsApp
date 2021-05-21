@@ -37,7 +37,5 @@ namespace DetergentsApp.Models
         public virtual ICollection<SheetType> SheetType { get; set; }
         public virtual Vendor Vendor { get; set; }
         public virtual Country Country { get; set; }
-        public virtual StoreAPI Store { get; set; }
-        public virtual articleDetailsAPI articleDetails { get; set; }
     }
 }

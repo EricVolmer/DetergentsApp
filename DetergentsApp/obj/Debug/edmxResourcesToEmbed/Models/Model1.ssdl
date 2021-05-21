@@ -7,8 +7,6 @@
     <EntitySet Name="UserFiles" EntityType="DetergentsModel.Store.UserFiles" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Vendor" EntityType="DetergentsModel.Store.Vendor" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Country" EntityType="DetergentsModel.Store.Country" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="StoreAPI" EntityType="DetergentsModel.Store.StoreAPI" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="articleDetailsAPI" EntityType="DetergentsModel.Store.articleDetailsAPI" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="vendorLogin" EntityType="DetergentsModel.Store.vendorLogin" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductSheetType" EntityType="DetergentsModel.Store.ProductSheetType" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK__Product__categor__025D5595" Association="DetergentsModel.Store.FK__Product__categor__025D5595">
@@ -33,14 +31,6 @@
     </AssociationSet>
     <AssociationSet Name="CountryProduct" Association="DetergentsModel.Store.CountryProduct">
       <End Role="Country" EntitySet="Country" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-    <AssociationSet Name="StoreProduct" Association="DetergentsModel.Store.StoreProduct">
-      <End Role="Store" EntitySet="StoreAPI" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-    <AssociationSet Name="articleDetailsProduct" Association="DetergentsModel.Store.articleDetailsProduct">
-      <End Role="articleDetails" EntitySet="articleDetailsAPI" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
   </EntityContainer>
@@ -100,20 +90,6 @@
     </Key>
     <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CountryName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="StoreAPI">
-    <Key>
-      <PropertyRef Name="storeID" />
-    </Key>
-    <Property Name="storeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="storeName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="articleDetailsAPI">
-    <Key>
-      <PropertyRef Name="articleID" />
-    </Key>
-    <Property Name="articleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="articleTextReceipt" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="vendorLogin">
     <Key>
@@ -176,30 +152,6 @@
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="countryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="StoreProduct">
-    <End Role="Store" Type="DetergentsModel.Store.StoreAPI" Multiplicity="1" />
-    <End Role="Product" Type="DetergentsModel.Store.Products" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Store">
-        <PropertyRef Name="storeID" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="storeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="articleDetailsProduct">
-    <End Role="articleDetails" Type="DetergentsModel.Store.articleDetailsAPI" Multiplicity="1" />
-    <End Role="Product" Type="DetergentsModel.Store.Products" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="articleDetails">
-        <PropertyRef Name="articleID" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="articleID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
