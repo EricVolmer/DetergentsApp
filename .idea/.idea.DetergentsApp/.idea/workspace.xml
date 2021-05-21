@@ -25,16 +25,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="Small changes to vendor view">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/da-DK/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/da-DK/DetergentsApp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da-dk/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da-dk/DetergentsApp.resources.dll" afterDir="false" />
+    <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="Filter added to public">
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +134,6 @@
       <option value="$PROJECT_DIR$/DetergentsApp/Views/vendorLogin/Register.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Resources/Language.da.resx" />
@@ -152,7 +144,6 @@
       <option value="$PROJECT_DIR$/DetergentsApp/Global.asax.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/vendorLoginController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Web.config" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/Model1.Context.cs" />
@@ -161,6 +152,8 @@
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1hosMQCbLmUhIQlUT0gZJvhJoGG" />
@@ -364,7 +357,7 @@
       <workItem from="1621336395796" duration="8911000" />
       <workItem from="1621430573402" duration="3343000" />
       <workItem from="1621492228169" duration="7145000" />
-      <workItem from="1621579576365" duration="4749000" />
+      <workItem from="1621579576365" duration="5304000" />
     </task>
     <task id="LOCAL-00001" summary="Kendo Grid start">
       <created>1600795493153</created>
@@ -639,7 +632,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621580280845</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Filter added to public">
+      <created>1621585180235</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1621585180235</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -672,7 +672,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Vender view made without functionality" />
     <MESSAGE value="new view?" />
     <MESSAGE value="Vendor page improvements in dropdown list wise. Half of TempData is done, values missing" />
     <MESSAGE value="Vendor File Upload and Admin vendor file delete working &#10;Entity framework updated to 6.4.4" />
@@ -697,7 +696,8 @@
     <MESSAGE value="Language added" />
     <MESSAGE value="All done, only admin login is not working and report is yet to be done." />
     <MESSAGE value="Small changes to vendor view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small changes to vendor view" />
+    <MESSAGE value="Filter added to public" />
+    <option name="LAST_COMMIT_MESSAGE" value="Filter added to public" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

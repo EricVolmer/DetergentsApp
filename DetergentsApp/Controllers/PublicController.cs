@@ -92,8 +92,8 @@ namespace DetergentsApp.Controllers
                         categoryID = item.Category.categoryID,
 
                         CountryID = item.countryID,
-                        
-                        articleId = item.articleID,
+
+                        articleId = item.articleID
                     };
 
 

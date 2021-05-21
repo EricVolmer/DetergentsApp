@@ -34,7 +34,7 @@ namespace DetergentsApp.Controllers
 
         // There is a problem with the Authorization Token that ever time when you run the program
         // you need to copy the Token from Postman in order to get a response.
-        
+
 
         public void CreateViewListCategory()
         {
@@ -188,8 +188,6 @@ namespace DetergentsApp.Controllers
             //     //    responseTask.Wait();
             // }
             // //Console.WriteLine("here" + vikingStoreId);
-            
-            
 
 
             IEnumerable<ProductViewModel> productDescription = new List<ProductViewModel>();
@@ -212,8 +210,8 @@ namespace DetergentsApp.Controllers
                         vendorName = item.Vendor.vendorName,
 
                         CountryID = item.countryID,
-                        
-                        articleId = item.articleID,
+
+                        articleId = item.articleID
                     };
 
 
@@ -394,12 +392,11 @@ namespace DetergentsApp.Controllers
         {
             // Response.Cookies["ASPXPIKESADMINAUTH"].Expires = DateTime.Now.AddDays(-1);
             // Session["LoginCredentials"] = null;
-            
+
             if (!Request.IsAuthenticated)
                 HttpContext.GetOwinContext().Authentication.Challenge(
                     new AuthenticationProperties {RedirectUri = "/"},
                     OpenIdConnectAuthenticationDefaults.AuthenticationType);
-            
         }
 
         /// <summary>

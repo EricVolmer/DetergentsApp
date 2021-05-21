@@ -20,10 +20,10 @@
         columns.Bound(c => c.EAN).Width(150);
         columns.Bound(c => c.productDescription).Width(230);
 
-       // columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
+        // columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
         //    ViewBag.articleID, "Value", "Text").Title("Article Name").Width(120);
 
-      //  columns.ForeignKey(c => c.vikingStoreId, (List<SelectListItem>)
+        //  columns.ForeignKey(c => c.vikingStoreId, (List<SelectListItem>)
         //    ViewBag.storeID, "Value", "Text").Title("Store Name").Width(120);
 
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
@@ -103,6 +103,16 @@
     .Editable(editable => editable.Mode(GridEditMode.InLine))
     .Pageable()
     .Resizable(r => r.Columns(true))
+    .Filterable(filterable => filterable
+        .Extra(false)
+        .Operators(operators => operators
+            .ForString(str => str.Clear()
+                .Contains("Search")
+            )
+            .ForEnums(num => num.Clear()
+                .IsEqualTo("Select")
+            ))
+    )
     .Sortable()
     .Selectable()
     .Search(s =>

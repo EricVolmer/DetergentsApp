@@ -77,6 +77,5 @@ namespace DetergentsApp
             context.Response.Redirect("/?errormessage=" + context.Exception.Message);
             return Task.FromResult(0);
         }
-        
     }
 }

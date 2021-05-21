@@ -41,6 +41,16 @@
         }).Width(180);
     })
     .Editable(editable => editable.Mode(GridEditMode.InLine))
+    .Filterable(filterable => filterable
+        .Extra(false)
+        .Operators(operators => operators
+            .ForString(str => str.Clear()
+                .Contains("Search")
+            )
+            .ForEnums(num => num.Clear()
+                .IsEqualTo("Select")
+            ))
+    )
     .ToolBar(toolbar => { toolbar.Create(); })
     .DataSource(dataSource => dataSource
         .Ajax()
@@ -82,6 +92,16 @@
     })
     .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("Continue to delete this record?").DisplayDeleteConfirmation("Continue to delete this record?"))
     .Sortable()
+    .Filterable(filterable => filterable
+        .Extra(false)
+        .Operators(operators => operators
+            .ForString(str => str.Clear()
+                .Contains("Search")
+            )
+            .ForEnums(num => num.Clear()
+                .IsEqualTo("Select")
+            ))
+    )
     .Pageable()
     .DataSource(dataSource => dataSource
         .Ajax()

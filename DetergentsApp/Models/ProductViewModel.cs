@@ -41,6 +41,5 @@ namespace DetergentsApp.Models
         public long articleId { get; set; }
 
         public string articleTextReceipt { get; set; }
-        
     }
 }

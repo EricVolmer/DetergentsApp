@@ -1,13 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DetergentsApp.Models;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OpenIdConnect;
 
 namespace DetergentsApp.Controllers
 {
@@ -78,7 +74,7 @@ namespace DetergentsApp.Controllers
                                 new vendorLogin
                                 {
                                     userName = x.userName,
-                                    Id = x.Id,  
+                                    Id = x.Id,
                                     password = x.password
                                 }).FirstOrDefault(); // Get the login user details and bind it to LoginModels class  
                         //Get the Menu details from entity and bind it in MenuModels list.  
@@ -102,9 +98,9 @@ namespace DetergentsApp.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-      //      Response.Cookies["ASPXPIKESADMINAUTH"].Expires = DateTime.Now.AddDays(-1);
+            //      Response.Cookies["ASPXPIKESADMINAUTH"].Expires = DateTime.Now.AddDays(-1);
             Session["LoginCredentials"] = null;
-            return RedirectToAction("Public","Public");
+            return RedirectToAction("Public", "Public");
         }
 
         //create a string MD5

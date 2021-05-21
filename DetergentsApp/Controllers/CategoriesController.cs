@@ -18,12 +18,12 @@ namespace DetergentsApp.Controllers
         public ActionResult CategoryCreate([DataSourceRequest] DataSourceRequest request,
             ProductViewModel category)
         {
-            var newCategory = new Category()
+            var newCategory = new Category
             {
                 categoryName = category.categoryName
             };
             try
-            
+
             {
                 db.Categories.Add(newCategory);
                 db.SaveChanges();

@@ -1,5 +1,4 @@
-﻿@using System.Security.Claims
-@using DetergentsApp.Resources
+﻿@using DetergentsApp.Resources
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,25 +45,24 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                
-                @if ( Session["LoginCredentials"] == null && (!User.Identity.IsAuthenticated))
+
+                @if (Session["LoginCredentials"] == null && !User.Identity.IsAuthenticated)
                 {
                     <li>@Html.ActionLink(Global.Public, "Public", "Public")</li>
                     <li>@Html.ActionLink(Global.Admin_Login, "SignIn", "Home") </li>
-                    <li>@Html.ActionLink(Global.Vendor_Login, "vendorLogin", "vendorLogin")</li> 
+                    <li>@Html.ActionLink(Global.Vendor_Login, "vendorLogin", "vendorLogin")</li>
                 }
                 @if (Session["LoginCredentials"] != null)
                 {
                     <li>@Html.ActionLink(Global.Vendor, "Index", "Vendor")</li>
                     <li>@Html.ActionLink(Global.Log_Out, "Logout", "vendorLogin")</li>
                 }
-                
+
 
                 @*   @if (!User.Identity.IsAuthenticated) *@
                 @*   @if (!User.Identity.IsAuthenticated || Session["LoginCredentials"] == null) *@
                 @if (Request.IsAuthenticated)
                 {
-                    
                 }
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -73,26 +71,23 @@
                     <li>@Html.ActionLink(Global.Category, "Index", "Categories")</li>
                     <li>@Html.ActionLink(Global.Approvals, "Admin2", "Admin2")</li>
                     <li class="dropdown">
-                        <a aria-expanded="true" data-toggle="dropdown" class="dropdown-toggle" href="#">Vendor<span class="caret"></span>
+                        <a aria-expanded="true" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            Vendor<span class="caret"></span>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink(Global.Vendor, "Index", "Vendor") </li>
                                 <li>@Html.ActionLink(Global.Add_New_Vendor, "AddVendor", "AddVendor")</li>
                                 <li>@Html.ActionLink("Vendor Register", "Register", "vendorLogin")</li>
                             </ul>
-                            
+
                         </a>
-                        
+
                     </li>
-                    
-                    
-                    
+
+
                     <li> @Html.ActionLink(Global.Log_Out, "SignOut", "Home")</li>
-                
-                                                                            
-                    
                 }
-                
-                
+
+
 
                 @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
                 {

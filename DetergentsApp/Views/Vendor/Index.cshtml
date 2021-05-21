@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<DetergentsApp.Models.Vendor>
 
-    <div id="main-section-header" class="row">
-        <h2 id="team-efficiency" class="col-xs-3">Vendor Upload</h2>
-        <div style="clear:both;"></div>
-    </div>
+<div id="main-section-header" class="row">
+    <h2 id="team-efficiency" class="col-xs-3">Vendor Upload</h2>
+    <div style="clear:both;"></div>
+</div>
 
 <div class="demo-section k-content">
 
@@ -22,8 +22,7 @@
                         .MinLength(3)
                         .Filter(FilterType.Contains)
                         .OptionLabel("Vendor Details")
-                        .HtmlAttributes(new { placeholder = "Vendor Details", required = "required", validationmessage = "Enter {0}" ,style = "width: 400px;" })
-
+                        .HtmlAttributes(new {placeholder = "Vendor Details", required = "required", validationmessage = "Enter {0}", style = "width: 400px;"})
                         .DataSource(ds => { ds.Read(read => read.Action("vendorDropDownList", "Vendor")); }))
                 </span>
             </li>
@@ -37,8 +36,7 @@
                         .MinLength(3)
                         .Filter(FilterType.Contains)
                         .OptionLabel("Enter EAN...")
-                        .HtmlAttributes(new { placeholder = "Article EAN", required = "required", validationmessage = "Enter {0}" , style = "width: 400px;" })
-
+                        .HtmlAttributes(new {placeholder = "Article EAN", required = "required", validationmessage = "Enter {0}", style = "width: 400px;"})
                         .DataSource(ds => { ds.Read(read => read.Action("vendorEANDropDownList", "Vendor")); }))
                     <span class="k-invalid-msg" data-for="search"></span>
                 </span>
@@ -50,7 +48,7 @@
                         .Name("sheetTypeCategory")
                         .DataTextField("Text")
                         .DataValueField("Value")
-                        .HtmlAttributes(new { placeholder = "Sheet Type", required = "required", validationmessage = "Enter {0}", style = "width: 400px;"})
+                        .HtmlAttributes(new {placeholder = "Sheet Type", required = "required", validationmessage = "Enter {0}", style = "width: 400px;"})
                         .DataSource(ds => { ds.Read(read => read.Action("sheetType_Categories", "Home")); }))
                     <span class="k-invalid-msg" data-for="time"></span>
                 </span>
@@ -59,36 +57,35 @@
                 <label for="amount" class="k-form-label">Language</label>
                 <span class="k-form-field-wrap">
                     @(Html.Kendo().DropDownList()
-                                            .Name("language")
-                                            .DataTextField("Text")
-                                            .DataValueField("Value")
-                                            .Value("English")
-                                            .HtmlAttributes(new { placeholder = "Language", required = "required", validationmessage = "Enter {0}" ,style = "width: 400px;" })
-                    
-                                            .BindTo(new List<SelectListItem>
-                                            {
-                                                new SelectListItem
-                                                {
-                                                    Text = "Danish",
-                                                    Value = "Danish"
-                                                },
-                                                new SelectListItem
-                                                {
-                                                    Text = "German",
-                                                    Value = "German"
-                                                },
-                                                new SelectListItem
-                                                {
-                                                    Text = "English",
-                                                    Value = "English"
-                                                },
-                                                new SelectListItem
-                                                {
-                                                    Text = "Polish",
-                                                    Value = "Polish"
-                                                }
-                                            })
-                                            )
+                        .Name("language")
+                        .DataTextField("Text")
+                        .DataValueField("Value")
+                        .Value("English")
+                        .HtmlAttributes(new {placeholder = "Language", required = "required", validationmessage = "Enter {0}", style = "width: 400px;"})
+                        .BindTo(new List<SelectListItem>
+                        {
+                            new SelectListItem
+                            {
+                                Text = "Danish",
+                                Value = "Danish"
+                            },
+                            new SelectListItem
+                            {
+                                Text = "German",
+                                Value = "German"
+                            },
+                            new SelectListItem
+                            {
+                                Text = "English",
+                                Value = "English"
+                            },
+                            new SelectListItem
+                            {
+                                Text = "Polish",
+                                Value = "Polish"
+                            }
+                        })
+                        )
                     <span class="k-invalid-msg" data-for="Amount"></span>
                 </span>
             </li>
@@ -97,8 +94,7 @@
                 <span class="k-form-field-wrap">
                     @(Html.Kendo().Upload()
                         .Name("files")
-                                
-                        .Validation(validation => validation.AllowedExtensions(new string[] { ".pdf" }))
+                        .Validation(validation => validation.AllowedExtensions(new[] {".pdf"}))
                         )
                 </span>
             </li>
