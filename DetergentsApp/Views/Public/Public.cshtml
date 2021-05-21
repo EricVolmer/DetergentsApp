@@ -4,7 +4,6 @@
     ViewBag.Title = "Home";
 }
 
-
 <div id="main-section-header" class="row">
     <h2 id="team-efficiency" class="col-xs-3">Products & Files</h2>
     <div style="clear:both;"></div>
@@ -15,8 +14,7 @@
     {
         columns.Bound(c => c.productID).Hidden();
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
-            ViewBag.Category, "Value", "Text").Title("Category").Width(120).Hidden();
-
+            ViewBag.Category, "Value", "Text").Title("Category").Width(120);
 
         columns.Bound(c => c.productDescription).Width(350);
         columns.Bound(c => c.EAN).Width(150);
@@ -59,6 +57,17 @@
     .Editable(editable => editable.Mode(GridEditMode.InLine))
     .Pageable()
     .Resizable(r => r.Columns(true))
+    .Filterable(filterable => filterable
+        .Extra(false)
+        .Operators(operators => operators
+            .ForString(str => str.Clear()
+                .Contains("Search")
+            )
+            .ForEnums(num => num.Clear()
+                .IsEqualTo("Select")
+                ))
+        
+    )
     .Sortable()
     .Selectable()
     .Search(s =>
