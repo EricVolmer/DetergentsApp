@@ -48,7 +48,7 @@
                         .Name("sheetTypeCategory")
                         .DataTextField("Text")
                         .DataValueField("Value")
-                        .HtmlAttributes(new {placeholder = "Sheet Type", required = "required", validationmessage = "Enter {0}", style = "width: 400px;"})
+                        .HtmlAttributes(new {style = "width: 400px;"})
                         .DataSource(ds => { ds.Read(read => read.Action("sheetType_Categories", "Home")); }))
                     <span class="k-invalid-msg" data-for="time"></span>
                 </span>
@@ -61,7 +61,7 @@
                         .DataTextField("Text")
                         .DataValueField("Value")
                         .Value("English")
-                        .HtmlAttributes(new {placeholder = "Language", required = "required", validationmessage = "Enter {0}", style = "width: 400px;"})
+                        .HtmlAttributes(new {style = "width: 400px;"})
                         .BindTo(new List<SelectListItem>
                         {
                             new SelectListItem
@@ -112,18 +112,21 @@
 
 
 <script>
-    $(document).ready( function () {
-        var validator = $("#ticketsForm").kendoValidator().data("kendoValidator");
-        var validationSummary = $("#validation-summary");
 
-        $("form").submit(function(event) {
-            event.preventDefault();
+// IF this is not commented, then the vendor file upload does not work. 
 
-            if (validator.validate()) {
-                validationSummary.html("<div class='k-messagebox k-messagebox-success'>File has been uploaded</div>");
-            } else {
-                validationSummary.html("<div class='k-messagebox k-messagebox-error'>File upload unsucessful</div>");
-            }
-        });
-    });
+    // $(document).ready( function () {
+    //     var validator = $("#ticketsForm").kendoValidator().data("kendoValidator");
+    //     var validationSummary = $("#validation-summary");
+    //
+    //     $("form").submit(function(event) {
+    //         event.preventDefault();
+    //
+    //         if (validator.validate()) {
+    //             validationSummary.html("<div class='k-messagebox k-messagebox-success'>File has been uploaded</div>");
+    //         } else {
+    //             validationSummary.html("<div class='k-messagebox k-messagebox-error'>File upload unsucessful</div>");
+    //         }
+    //     });
+    // });
 </script>

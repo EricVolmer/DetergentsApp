@@ -17,6 +17,9 @@ namespace DetergentsApp.Controllers
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
 
+        
+        
+        
         public ActionResult UploadedFiles(int productID, int sheetTypeID)
         {
             var product = db.Products.Find(productID);
@@ -38,9 +41,38 @@ namespace DetergentsApp.Controllers
             }
 
             CreateViewListSheetType();
+            CreateViewListVendor();
             return View();
         }
+        
+        public void CreateViewListVendor()
+        {
+            try
+            {
+                var result = db.Vendor;
 
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new ProductViewModel
+                    {
+                        vendorName = entity.vendorName,
+                        vendorID = entity.vendorID
+                    })
+                    .ToList();
+
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                    {
+                        Text = productViewModel.vendorName + " - " + productViewModel.vendorID,
+                        Value = productViewModel.vendorID.ToString()
+                    });
+                ViewBag.Vendor = containerList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
         public void CreateViewListSheetType()
         {
             try

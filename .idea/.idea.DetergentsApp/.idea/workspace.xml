@@ -25,9 +25,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="Filter added to public">
+    <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="Solution cleaned and added Filters to all grid columns">
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/2018 29-6 - Erik.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/App_Data/Vendor/Instructor certification.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/da-DK/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/da-DK/DetergentsApp.resources.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da-dk/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da-dk/DetergentsApp.resources.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +83,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/a0/f66a889f/WebViewPage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/db/87a6508a/LinkExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5D97019F-7842-404A-9A90-62A0F80FCAE1/fc/077ef05c/WebPageBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/022C6246-00A9-4FCA-A3D7-721DEB405534/42/8eacdf16/GridBuilder`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Web.config" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Eric/Documents/GitHub/DetergentsApp/DetergentsApp/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/AllFilesController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Models/VendorViewModel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -116,9 +130,7 @@
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/FileUpload/UploadedFiles.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/AllFiles/AllFiles.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/AddVendor/AddVendor.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Register.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/vendorLoginViewModel.cs" />
@@ -150,10 +162,12 @@
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1hosMQCbLmUhIQlUT0gZJvhJoGG" />
@@ -357,7 +371,7 @@
       <workItem from="1621336395796" duration="8911000" />
       <workItem from="1621430573402" duration="3343000" />
       <workItem from="1621492228169" duration="7145000" />
-      <workItem from="1621579576365" duration="5304000" />
+      <workItem from="1621579576365" duration="13089000" />
     </task>
     <task id="LOCAL-00001" summary="Kendo Grid start">
       <created>1600795493153</created>
@@ -639,7 +653,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621585180235</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Solution cleaned and added Filters to all grid columns">
+      <created>1621585877924</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1621585877924</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -672,7 +693,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="new view?" />
     <MESSAGE value="Vendor page improvements in dropdown list wise. Half of TempData is done, values missing" />
     <MESSAGE value="Vendor File Upload and Admin vendor file delete working &#10;Entity framework updated to 6.4.4" />
     <MESSAGE value="BackUp" />
@@ -697,7 +717,8 @@
     <MESSAGE value="All done, only admin login is not working and report is yet to be done." />
     <MESSAGE value="Small changes to vendor view" />
     <MESSAGE value="Filter added to public" />
-    <option name="LAST_COMMIT_MESSAGE" value="Filter added to public" />
+    <MESSAGE value="Solution cleaned and added Filters to all grid columns" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solution cleaned and added Filters to all grid columns" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -716,9 +737,35 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml</url>
-          <line>64</line>
-          <properties documentPath="C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Views\Shared\_Layout.cshtml" initialLine="64" isMultiMethodBreakpoint="true">
+          <url>file://$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs</url>
+          <line>96</line>
+          <properties documentPath="C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Controllers\FileUploadController.cs" initialLine="96" containingFunctionPresentation="method 'CreateViewArticleDescription'">
+            <startOffsets>
+              <option value="3167" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3199" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs</url>
+          <line>43</line>
+          <properties documentPath="C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Controllers\FileUploadController.cs" initialLine="43" containingFunctionPresentation="method 'UploadedFiles'">
+            <startOffsets>
+              <option value="1254" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1285" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml</url>
+          <line>80</line>
+          <properties documentPath="C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Views\Admin2\Admin2.cshtml" initialLine="80" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>
               <option value="-1" />
@@ -727,39 +774,13 @@
               <option value="-1" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml</url>
-          <line>68</line>
-          <properties documentPath="C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Views\Shared\_Layout.cshtml" initialLine="68" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs</url>
-          <line>397</line>
-          <properties documentPath="C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Controllers\HomeController.cs" initialLine="495" containingFunctionPresentation="method 'SignIn'">
-            <startOffsets>
-              <option value="14832" />
-            </startOffsets>
-            <endOffsets>
-              <option value="14861" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="Frame#DetergentsApp.Controllers.FileUploadController.FilesReadAdmin" memberName="db" />
         <PinnedItemInfo parentTag="Type#Kendo.Mvc.UI.Fluent.GridColumnFactory`1" memberName="ColumnsContainer" />
       </pinned-members>
     </pin-to-top-manager>
