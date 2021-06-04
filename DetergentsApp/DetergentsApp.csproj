@@ -386,6 +386,7 @@
     <Content Include="Views\vendorLogin\Index.cshtml" />
     <Content Include="Views\vendorLogin\Register.cshtml" />
     <Content Include="Views\vendorLogin\vendorLogin.cshtml" />
+    <Content Include="Views\Vendor\VendorEdit.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

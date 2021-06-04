@@ -354,7 +354,6 @@ namespace DetergentsApp.Controllers
         public ActionResult sheetType_Categories()
         {
             var result = db.SheetTypes;
-
             var containerList = new List<SelectListItem>();
             var productViewModels = result.Select(entity => new sheetTypeViewModel
                 {
@@ -376,16 +375,24 @@ namespace DetergentsApp.Controllers
 
         public ActionResult Country()
         {
-            var dataContext = new DetergentsEntities();
-            var country = dataContext.Country
-                .Select(c => new countryViewModel
+            var result = db.Country;
+            var containerList = new List<SelectListItem>();
+            var country = result.Select(entitiy => new countryViewModel()
                 {
-                    CountryID = c.CountryID,
-                    CountryName = c.CountryName
+                    CountryID = entitiy.CountryID,
+                    CountryName = entitiy.CountryName
                 })
-                .OrderBy(e => e.CountryName);
-
-            return Json(country, JsonRequestBehavior.AllowGet);
+                .ToList();
+            containerList.Add(new SelectListItem
+                {Text = "All", Value = "0"});
+            
+            foreach (var countryViewModel in country)
+                containerList.Add(new SelectListItem
+                    {Text = countryViewModel.CountryName, Value = countryViewModel.CountryID.ToString()});
+            
+            ViewBag.Country = containerList;
+            
+            return Json(containerList, JsonRequestBehavior.AllowGet);
         }
 
         public void SignIn()

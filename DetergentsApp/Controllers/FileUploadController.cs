@@ -264,11 +264,13 @@ namespace DetergentsApp.Controllers
                         Id = f.fileID,
                         Name = f.fileName,
                         productID = f.productID,
+                        productDescription = f.productID.ToString(),
                         sheetTypeName = f.SheetType.sheetTypeName,
                         sheetTypeID = f.sheetTypeID,
                         vendorID = f.vendorID,
                         adminApproved = f.adminApproved,
-                        oldFile = f.oldFile
+                        oldFile = f.oldFile,
+                        languageType = f.languageType,
                     });
                 return Json(userFiles.ToDataSourceResult(request));
             }
@@ -278,6 +280,24 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+        
+        //
+        public ActionResult CategoryRead([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(GetCategory().ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+        private static IQueryable<ProductViewModel> GetCategory()
+        {
+            var northwind = new DetergentsEntities();
+            var products = northwind.Products.Select(product => new ProductViewModel
+            {
+                categoryID = product.categoryID,
+                categoryName = product.Category.categoryName
+            });
+
+            return products;
+        }
+        //
 
         public ActionResult FilesReadAll([DataSourceRequest] DataSourceRequest request)
         {

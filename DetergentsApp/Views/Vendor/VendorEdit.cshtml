@@ -1,0 +1,32 @@
+﻿@using DetergentsApp.Models
+<div class="col-lg-4">
+    
+    @(Html.Kendo().Grid<Vendor>()
+        .Name("filesGrid")
+        .Columns(columns =>
+        {
+            columns.Bound(f => f.vendorID).Width(150);
+            columns.Bound(f => f.vendorName);
+        
+            columns.Command(command =>
+            {
+                command.Edit();
+                command.Destroy();
+            }).Width(250);
+        })
+        .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("Continue to delete this record?").DisplayDeleteConfirmation("Continue to delete this record?"))
+        .Sortable()
+        .Pageable()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(10)
+            .Model(model =>
+            {
+                model.Id(c => c.vendorID);
+                model.Field(c => c.vendorID).Editable(true);
+            })
+            .Read(read => read.Action("VendorRead", "Vendor"))
+            .Update(update => update.Action("VendorUpdate", "Vendor"))
+            .Destroy(update => update.Action("VendorDestroy", "Vendor"))
+        ))
+</div>

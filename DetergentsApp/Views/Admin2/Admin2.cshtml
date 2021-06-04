@@ -1,16 +1,15 @@
 ﻿@using System.ComponentModel
 @using DetergentsApp.Models
-@model IEnumerable<DetergentsApp.Models.ProductViewModel>
+
 
 <h2>Articles</h2>
 
-@(Html.Kendo().Grid(Model)
+@(Html.Kendo().Grid<ProductViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
         columns.Bound(c => c.productID).Hidden();
         columns.Bound(c => c.sheetTypeID).Hidden().Title("SheetType");
-        //  columns.Bound(c => c.vikingStoreId);
         columns.Bound(c => c.productDescription).Width(230);
         columns.Bound(c => c.EAN).Width(150);
         columns.ForeignKey(c => c.vendorID, (List<SelectListItem>)
@@ -29,8 +28,8 @@
         //     ViewBag.Vendor, "Value", "Text").Title("Vendor ID").Width(150);
         //
         //
-        // columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
-        //     ViewBag.Country, "Value", "Text").Title("Country").Width(120);
+         columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
+             ViewBag.Country, "Value", "Text").Title("Country").Width(120);
 
         columns.Bound(c => c.adminToPublic).ClientTemplate("#: adminToPublic ? 'Approved To Public' : 'Not approved' #");
 
@@ -51,7 +50,6 @@
                 .IsEqualTo("Select")
             ))
     )
-    .ToolBar(toolbar => { toolbar.Create(); })
     .DataSource(dataSource => dataSource
         .Ajax()
         .ServerOperation(false)
@@ -63,7 +61,6 @@
         })
         .Group(group => group.Add("categoryID", typeof(string), ListSortDirection.Descending))
         .Read(read => read.Action("Products_Read", "Admin2"))
-        .Create(create => create.Action("Products_Create", "Admin2"))
         .Update(update => update.Action("Products_Update", "Admin2"))
         .Destroy(destroy => destroy.Action("Products_Destroy", "Admin2"))
     )
@@ -77,9 +74,13 @@
     {
         columns.Bound(f => f.Name).ClientTemplate("<a href='files/?id=#= Id #'>#= Name #</a>").Title("File name");
         columns.Bound(f => f.productID);
+        columns.Bound(f => f.languageType);
        // this should display the product name
-      //  columns.Bound(f => f.productDescription);
+        columns.Bound(f => f.productDescription);
         
+        
+        columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
+            ViewBag.Country, "Value", "Text").Title("Country").Width(120);
 
         columns.ForeignKey(c => c.vendorID, (List<SelectListItem>)
             ViewBag.Vendor, "Value", "Text").Title("Vendor ID").Width(150);
@@ -114,7 +115,8 @@
             model.Id(c => c.Id);
             model.Field(c => c.productID).Editable(false);
             model.Field(c => c.vendorID).Editable(false);
-        }).Read(read => read.Action("FilesReadAdmin", "FileUpload"))
+        })
+        .Read(read => read.Action("FilesReadAdmin", "FileUpload"))
         .Update(update => update.Action("VendorFileUpdate", "FileUpload"))
         .Destroy(update => update.Action("FilesDestroyAdmin", "FileUpload"))
     ))

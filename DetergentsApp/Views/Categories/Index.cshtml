@@ -27,6 +27,37 @@
         })
         .Events(ev => ev.ValidateField("onFormValidateField").Submit("onFormSubmit").Clear("onFormClear"))
         )
+    <div class="col-lg-4">
+
+        @(Html.Kendo().Grid<ProductViewModel>()
+            .Name("filesGrid")
+            .Columns(columns =>
+            {
+                columns.Bound(f => f.categoryID).Width(50).Hidden(true);
+                columns.Bound(f => f.categoryName);
+    
+                columns.Command(command =>
+                {
+                    command.Edit();
+                    command.Destroy();
+                }).Width(250);
+            })
+            .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("Continue to delete this record?").DisplayDeleteConfirmation("Continue to delete this record?"))
+            .Sortable()
+            .Pageable()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .PageSize(10)
+                .Model(model =>
+                {
+                    model.Id(c => c.categoryID);
+                    model.Field(c => c.categoryID).Editable(false);
+                })
+                .Read(read => read.Action("CategoryRead", "Categories"))
+                .Update(update => update.Action("CategoryUpdate", "Categories"))
+                .Destroy(update => update.Action("CategoryDestroy", "Categories"))
+            ))
+    </div>
 </div>
 
 <script>

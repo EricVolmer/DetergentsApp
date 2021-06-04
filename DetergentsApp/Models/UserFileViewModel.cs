@@ -8,6 +8,10 @@ namespace DetergentsApp.Models
         public string Name { get; set; }
         public int productID { get; set; }
         public int sheetTypeID { get; set; }
+        
+        public int CountryID { get; set; }
+        public string productDescription { get; set; }
+        
 
         public string sheetTypeName { get; set; }
         public int? vendorID { get; set; }
@@ -17,5 +21,8 @@ namespace DetergentsApp.Models
 
 
         public bool oldFile { get; set; }
+        
+        public string languageType { get; set; }
+
     }
 }

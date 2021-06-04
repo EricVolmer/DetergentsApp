@@ -1,14 +1,38 @@
 ﻿@using System.ComponentModel
 @using DetergentsApp.Models
+
 @{
     ViewBag.Title = "Home";
 }
+@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
+}
+
+<script type="text/javascript">
+    //set the Kendo UI culture
+    kendo.culture("@culture");
+</script>
 
 <div id="main-section-header" class="row">
     <h2 id="team-efficiency" class="col-xs-3">Products & Files</h2>
 
 
     <div style="clear:both;"></div>
+</div>
+<div class="configurator">
+    <div class="box-col">
+        <h4>Choose culture</h4>
+        <ul class="options">
+            <li>
+                @(Html.Kendo().DropDownList()
+                .Name("CulturesSelector")
+                .BindTo(new[] { "en-US", "de-DE", "pl-PL"})
+                .Value(culture)
+                .Events(events => events.Change("cultureChange"))
+            )
+            </li>
+        </ul>
+    </div>
 </div>
 @(Html.Kendo().Grid<ProductViewModel>()
     .Name("grid")
@@ -30,7 +54,7 @@
             ViewBag.Category, "Value", "Text").Title("Category").Width(120);
 
         columns.ForeignKey(c => c.vendorID, (List<SelectListItem>)
-            ViewBag.Vendor, "Value", "Text").Title("Vendor ID").Width(150);
+            ViewBag.Vendor, "Value", "Text").Title("Vendor ID").Width(200);
 
 
         columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
@@ -86,8 +110,8 @@
                                  <label class="country-label" for="country">Country:</label>
                                  @(Html.Kendo().DropDownList()
                                      .Name("country")
-                                     .DataTextField("CountryName")
-                                     .DataValueField("CountryID")
+                                     .DataTextField("Text")
+                                     .DataValueField("Value")
                                      .AutoBind(true)
                                      .Events(e => e.Change("countryChange"))
                                      .HtmlAttributes(new {style = "width: 150px;"})
@@ -135,7 +159,27 @@
         .Destroy(update => update.Action("Products_Destroy", "Home"))
     ))
 
-<script type="text/javascript">                
+
+<script src="@Url.Content("~/Scripts/cultures/kendo.culture." + culture + ".min.js")"></script>
+
+
+<script type="text/javascript">         
+    var href = window.location.href;
+
+function sendCulture() {
+        return {
+            culture: "@culture"
+        }
+    }
+    function cultureChange() {
+        var value = this.value();
+        if (href.indexOf('culture') > -1) {
+            href = href.replace(/culture=([^&]*)/, 'culture=' + value);
+        } else {
+            href += href.indexOf('?') > -1 ? '&culture=' + value : '?culture=' + value;
+        }
+        window.location.href = href;
+    }       
                 function error_handler(e) {
                     if (e.errors) {
                         let message = "Errors:\n";

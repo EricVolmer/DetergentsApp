@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DetergentsApp.Models;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 
 namespace DetergentsApp.Controllers
 {
     public class VendorController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
-
         public ActionResult Index()
         {
             return View(db.Vendor.ToList());
@@ -27,7 +29,7 @@ namespace DetergentsApp.Controllers
                     foreach (var file in files)
                     {
                         var fileName = Path.GetFileName(file.FileName);
-                        var physicalPath = Path.Combine(Server.MapPath("~/App_Data/Vendor"), fileName);
+                        var physicalPath = Path.Combine(Server.MapPath("~/App_Data"), fileName);
 
                         db.UserFiles.Add(new UserFile
                         {
@@ -111,6 +113,8 @@ namespace DetergentsApp.Controllers
 
             return target.ToArray();
         }
+        
+        
 
         // public ActionResult vendorLogin([DataSourceRequest] DataSourceRequest request ,string username, vendorLoginViewModel password )
         // {
@@ -169,5 +173,86 @@ namespace DetergentsApp.Controllers
         //     }
         //     return byte2String;
         // }
+        
+        public ActionResult VendorEdit()
+        {
+            return View(db.Vendor.ToList());
+        }
+        
+        public ActionResult VendorRead([DataSourceRequest] DataSourceRequest request)
+        {
+            try
+            {
+                var result = db.Vendor;
+
+                var list = result.Select(entity => new VendorViewModel()
+                    {
+                        vendorID = entity.vendorID,
+                        vendorName = entity.vendorName
+                        
+                    })
+                    .ToList();
+                return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }        
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult VendorUpdate([DataSourceRequest] DataSourceRequest request, Vendor vendor)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var entity = db.Vendor.Find(vendor.vendorID);
+                if (entity != null)
+                {
+                    entity.vendorID = vendor.vendorID;
+                    entity.vendorName = vendor.vendorName;
+
+                    try
+                    {
+                        db.Entry(entity).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return Json(new[] {vendor}.ToDataSourceResult(request, ModelState));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
+            }
+
+            return Json(new[] {vendor}.ToDataSourceResult(request, ModelState));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult VendorDestroy([DataSourceRequest] DataSourceRequest request, Vendor vendor)
+        {
+            if (ModelState.IsValid)
+            {
+                var entity = new Vendor()
+                {
+                    vendorID = vendor.vendorID,
+                    vendorName = vendor.vendorName
+                };
+
+                db.Vendor.Attach(entity);
+                db.Vendor.Remove(entity);
+                db.SaveChanges();
+            }
+
+            return Json(new[] {vendor}.ToDataSourceResult(request, ModelState));
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
+
     }
 }

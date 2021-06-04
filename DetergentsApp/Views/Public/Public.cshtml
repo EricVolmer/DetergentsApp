@@ -23,7 +23,6 @@
 
         columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #").Title("Data Sheets");
 
-        columns.Command(command => { command.Custom("Details").Click("showFiles"); }).Width(230);
     })
     .ToolBar(toolbar =>
     {
@@ -40,8 +39,8 @@
                                  <label class="country-label" for="country">Country:</label>
                                  @(Html.Kendo().DropDownList()
                                      .Name("country")
-                                     .DataTextField("CountryName")
-                                     .DataValueField("CountryID")
+                                     .DataTextField("Text")
+                                     .DataValueField("Value")
                                      .AutoBind(true)
                                      .Events(e => e.Change("countryChange"))
                                      .HtmlAttributes(new {style = "width: 150px;"})

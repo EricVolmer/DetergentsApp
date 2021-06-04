@@ -18,7 +18,7 @@ namespace DetergentsApp.Controllers
             CreateViewListCategory();
             CreateViewListSheetType();
             CreateViewListVendor();
-
+            CreateViewListCountry();
 
             return View();
         }
@@ -105,6 +105,33 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+        
+        public void CreateViewListCountry()
+        {
+            try
+            {
+                var result = db.Country;
+
+                var containerList = new List<SelectListItem>();
+                var productViewModels = result.Select(entity => new countryViewModel
+                    {
+                        CountryName = entity.CountryName,
+                        CountryID = entity.CountryID
+                    })
+                    .ToList();
+
+                foreach (var productViewModel in productViewModels)
+                    containerList.Add(new SelectListItem
+                        {Text = productViewModel.CountryName, Value = productViewModel.CountryID.ToString()});
+
+                ViewBag.Country = containerList;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
 
         public ActionResult Products_Read([DataSourceRequest] DataSourceRequest request)
         {
@@ -117,6 +144,7 @@ namespace DetergentsApp.Controllers
                         productID = entity.productID,
                         productDescription = entity.productDescription,
                         EAN = entity.EAN,
+                        CountryID = entity.Country.CountryID,
                         categoryID = entity.Category.categoryID,
                         vendorID = entity.vendorID,
                         adminToPublic = entity.adminToPublic
