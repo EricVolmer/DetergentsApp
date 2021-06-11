@@ -1,38 +1,14 @@
 ﻿@using System.ComponentModel
 @using DetergentsApp.Models
-
 @{
     ViewBag.Title = "Home";
 }
-@{
-    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
-}
-
-<script type="text/javascript">
-    //set the Kendo UI culture
-    kendo.culture("@culture");
-</script>
-
+<script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.all.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.aspnetmvc.min.js"></script>
 <div id="main-section-header" class="row">
     <h2 id="team-efficiency" class="col-xs-3">Products & Files</h2>
 
-
     <div style="clear:both;"></div>
-</div>
-<div class="configurator">
-    <div class="box-col">
-        <h4>Choose culture</h4>
-        <ul class="options">
-            <li>
-                @(Html.Kendo().DropDownList()
-                .Name("CulturesSelector")
-                .BindTo(new[] { "en-US", "de-DE", "pl-PL"})
-                .Value(culture)
-                .Events(events => events.Change("cultureChange"))
-            )
-            </li>
-        </ul>
-    </div>
 </div>
 @(Html.Kendo().Grid<ProductViewModel>()
     .Name("grid")
@@ -41,13 +17,13 @@
         columns.Bound(c => c.productID).Hidden();
         columns.Bound(c => c.sheetTypeID).Hidden().Title("SheetType");
         //  columns.Bound(c => c.vikingStoreId);
-        columns.Bound(c => c.EAN).Width(150);
-        columns.Bound(c => c.productDescription).Width(230);
 
-        // columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
+        columns.Bound(c => c.EAN).Width(150).EditorTemplateName("EANAutoComplete");
+        columns.Bound(c => c.productDescription).Width(230);
+        //columns.ForeignKey(c => c.articleId, (List<SelectListItem>)
         //    ViewBag.articleID, "Value", "Text").Title("Article Name").Width(120);
 
-        //  columns.ForeignKey(c => c.vikingStoreId, (List<SelectListItem>)
+        //columns.ForeignKey(c => c.vikingStoreId, (List<SelectListItem>)
         //    ViewBag.storeID, "Value", "Text").Title("Store Name").Width(120);
 
         columns.ForeignKey(c => c.categoryID, (List<SelectListItem>)
@@ -78,10 +54,8 @@
                                      <span class="k-icon k-i-reload"></span>
                                  </a>
                              </div>
-
                              @* Create button  *@
                              <a class='k-button k-grid-add' href='#'>Add new Article</a>
-
                              @* Search button *@
                              <span class="k-textbox k-grid-search k-display-flex">
                                  <input autocomplete="off" placeholder="Search..." title="Search..." class="k-input">
@@ -89,7 +63,6 @@
                                      <span class="k-icon k-i-search"></span>
                                  </span>
                              </span>
-
                              <div class="toolbar">
                                  <label class="category-label" for="category">Data Sheet Types:</label>
                                  @(Html.Kendo().DropDownList()
@@ -104,14 +77,13 @@
                                          ds.Read(read =>
                                              read.Action("sheetType_Categories", "Home"));
                                      }))
-
                              </div>
                              <div class="toolbar">
                                  <label class="country-label" for="country">Country:</label>
                                  @(Html.Kendo().DropDownList()
                                      .Name("country")
-                                     .DataTextField("Text")
-                                     .DataValueField("Value")
+                                     .DataTextField("CountryName")
+                                     .DataValueField("CountryID")
                                      .AutoBind(true)
                                      .Events(e => e.Change("countryChange"))
                                      .HtmlAttributes(new {style = "width: 150px;"})
@@ -120,7 +92,6 @@
                                          ds.Read(read =>
                                              read.Action("Country", "Home"));
                                      }))
-
                              </div>
                           </text>);
     })
@@ -158,28 +129,7 @@
         .Update(update => update.Action("Products_Create_Update", "Home"))
         .Destroy(update => update.Action("Products_Destroy", "Home"))
     ))
-
-
-<script src="@Url.Content("~/Scripts/cultures/kendo.culture." + culture + ".min.js")"></script>
-
-
-<script type="text/javascript">         
-    var href = window.location.href;
-
-function sendCulture() {
-        return {
-            culture: "@culture"
-        }
-    }
-    function cultureChange() {
-        var value = this.value();
-        if (href.indexOf('culture') > -1) {
-            href = href.replace(/culture=([^&]*)/, 'culture=' + value);
-        } else {
-            href += href.indexOf('?') > -1 ? '&culture=' + value : '?culture=' + value;
-        }
-        window.location.href = href;
-    }       
+<script type="text/javascript">
                 function error_handler(e) {
                     if (e.errors) {
                         let message = "Errors:\n";
@@ -194,12 +144,12 @@ function sendCulture() {
                         location.reload();
                     }
                 }
-                      
-                $(document).ready(function() 
+
+                $(document).ready(function()
                 {
-                    
+
                     var grid = $("#grid");
-                    
+
                     $("#sheetTypeCategory").data("kendoDropDownList").select(0);
                     $("#country").data("kendoDropDownList").select(0);
 
@@ -208,88 +158,93 @@ function sendCulture() {
                     $(".collapse.show").each(function(){
                         $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
                     });
-            
+
                     // Toggle plus minus icon on show hide of collapse element
                     $(".collapse").on('show.bs.collapse', function(){
                         $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
                     }).on('hide.bs.collapse', function(){
                         $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
                     });
-                    
-                    
-                    grid.find(".k-grid-toolbar").on("click", ".k-pager-refresh", function (e) 
+
+
+                    grid.find(".k-grid-toolbar").on("click", ".k-pager-refresh", function (e)
                     {
                         e.preventDefault();
                         grid.data("kendoGrid").dataSource.read();
                     });
-                                            
-                    grid.find(".k-grid-toolbar").on("click", ".k-grid-add", function (e) 
+
+                    grid.find(".k-grid-toolbar").on("click", ".k-grid-add", function (e)
                     {
                         e.preventDefault();
-  
-                    });            
-    
+
+                    });
+
                 });
-                
+
                 function countryChange() {
                         var value = this.value(),
                 		 	 grid = $("#grid").data("kendoGrid");
-                
+
                         if (value) {
                             grid.dataSource.filter({ field: "CountryID", operator: "eq", value: parseInt(value) });
                         } else {
                             grid.dataSource.filter({});
                         }
-                        
+
                 }
-                
+
                 // To Filter the files which are displayed on the page ( public, safety , medical)
-                
+
                 // function sheetTypeChange() {
                 //      var value = this.value(),
                 //          grid = $("#grid").data("kendoGrid");
                 //
-                //                                    
+                //
                 //      if (value) {
                 //          grid.dataSource.filter({ field: "listOfFiles", operator: "eq", value: parseInt(value) });
                 //      } else {
                 //          grid.dataSource.filter({});
                 //      }
                 // }
-                
-                           
+
+
                     function showFiles(e) {
                         e.preventDefault();
-                                
+
                                 var product = this.dataItem($(e.currentTarget).closest("tr"));
-                                
+
                                 var dropdownlist = $("#sheetTypeCategory").data("kendoDropDownList").value();
-                                 
-                             //   var sheetTypeId = dropdownlist.val();                      
+
+                             //   var sheetTypeId = dropdownlist.val();
                                 window.location.href = "@Url.Action("UploadedFiles",
                                                             "FileUpload")?productID=" + product.productID +
                                                             "&sheetTypeID=" + dropdownlist;
-                                                            
+
                         }
-                        
-                                               
+
+
                         function SheetFilesAvailable(data) {
-                    
+
                                if (data.listOfFiles !== undefined && data.listOfFiles !== null){
                                     var template = "<ul>";
                                     console.log(data)
-                                   
-                                    for (var i = 0; i < data.listOfFiles.length; i++) 
+
+                                    for (var i = 0; i < data.listOfFiles.length; i++)
                                     {
                                         var files = data.listOfFiles[i];
                                         template += kendo.format("<li>{1}: {0} </li>", files.fileName, files.SheetType.sheetTypeName) ;
                                     }
                                     template += "</ul>"
                                     return template;
-                               }     
-                        }              
-   </script>
+                               }
+                        }
+    function onChange(e) {
+        if ($("#EAN").data("kendoAutoComplete").dataSource.data().length > 0) {
+          this.element.closest("tr").find("#productDescription").val($("#EAN").data("kendoAutoComplete").dataSource.data()[0].articleTextReceipt)
+        }
+    }
+                        
 
+</script>
 <style>
-    
 </style>

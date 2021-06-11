@@ -17,9 +17,6 @@ namespace DetergentsApp.Controllers
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
 
-        
-        
-        
         public ActionResult UploadedFiles(int productID, int sheetTypeID)
         {
             var product = db.Products.Find(productID);
@@ -44,7 +41,7 @@ namespace DetergentsApp.Controllers
             CreateViewListVendor();
             return View();
         }
-        
+
         public void CreateViewListVendor()
         {
             try
@@ -73,6 +70,7 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
+
         public void CreateViewListSheetType()
         {
             try
@@ -270,7 +268,7 @@ namespace DetergentsApp.Controllers
                         vendorID = f.vendorID,
                         adminApproved = f.adminApproved,
                         oldFile = f.oldFile,
-                        languageType = f.languageType,
+                        languageType = f.languageType
                     });
                 return Json(userFiles.ToDataSourceResult(request));
             }
@@ -280,12 +278,13 @@ namespace DetergentsApp.Controllers
                 throw;
             }
         }
-        
+
         //
         public ActionResult CategoryRead([DataSourceRequest] DataSourceRequest request)
         {
             return Json(GetCategory().ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
+
         private static IQueryable<ProductViewModel> GetCategory()
         {
             var northwind = new DetergentsEntities();

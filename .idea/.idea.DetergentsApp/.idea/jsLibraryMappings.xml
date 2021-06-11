@@ -16,11 +16,9 @@
     <file url="file://$PROJECT_DIR$/DetergentsApp/Content/bootstrap.min.css.map" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/AddVendorController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/AllFilesController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Controllers/vendorLoginController.cs" libraries="{bootstrap}" />
@@ -72,17 +70,10 @@
     <file url="file://$PROJECT_DIR$/DetergentsApp/Startup.cs" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/AddVendor/AddVendor.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/AllFiles/AllFiles.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/FileUpload/UploadedFiles.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Home/Scripts/kendo.modernizr.custom.js" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Products/Create.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Products/Delete.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Products/Details.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" libraries="{bootstrap}" />
-    <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Public/Details.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Shared/EditorTemplates/Boolean.cshtml" libraries="{bootstrap}" />
     <file url="file://$PROJECT_DIR$/DetergentsApp/Views/Shared/EditorTemplates/Country.cshtml" libraries="{bootstrap}" />

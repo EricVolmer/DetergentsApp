@@ -39,6 +39,7 @@ namespace DetergentsApp.Controllers
 
             return View("Index");
         }
+
         public ActionResult CategoryRead([DataSourceRequest] DataSourceRequest request)
         {
             try
@@ -57,14 +58,14 @@ namespace DetergentsApp.Controllers
             {
                 Console.WriteLine(e);
                 throw;
-            }        
+            }
         }
+
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult CategoryUpdate([DataSourceRequest] DataSourceRequest request, Category category)
         {
             if (ModelState.IsValid)
             {
-
                 var entity = db.Categories.Find(category.categoryID);
                 if (entity != null)
                 {
@@ -93,7 +94,7 @@ namespace DetergentsApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var entity = new Category()
+                var entity = new Category
                 {
                     categoryID = category.categoryID,
                     categoryName = category.categoryName

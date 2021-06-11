@@ -14,6 +14,7 @@ namespace DetergentsApp.Controllers
     public class VendorController : Controller
     {
         private readonly DetergentsEntities db = new DetergentsEntities();
+
         public ActionResult Index()
         {
             return View(db.Vendor.ToList());
@@ -113,83 +114,22 @@ namespace DetergentsApp.Controllers
 
             return target.ToArray();
         }
-        
-        
 
-        // public ActionResult vendorLogin([DataSourceRequest] DataSourceRequest request ,string username, vendorLoginViewModel password )
-        // {
-        //     if (ModelState.IsValid)
-        //     {
-        //         // try
-        //         // {
-        //         //     var result = db.vendorLogin;
-        //         //
-        //         //     var list = result.Select(entity => new vendorLoginViewModel()
-        //         //         {
-        //         //             userName = entity.userName,
-        //         //             password = entity.password
-        //         //         })
-        //         //         .ToList();
-        //         //     return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        //         // }
-        //         // catch (Exception e)
-        //         // {
-        //         //     Console.WriteLine(e);
-        //         //     throw;
-        //         // }
-        //
-        //
-        //         var loginPassword = db.vendorLogin.Select(entity => new vendorLoginViewModel()
-        //             {
-        //                 userName = entity.userName,
-        //                 password = entity.password
-        //             }).ToString();
-        //         var f_password = GetMD5(loginPassword);
-        //         var data =db.vendorLogin.Where(s => s.userName.Equals(username) && s.password.Equals(f_password)).ToList();
-        //         
-        //     }
-        //     return View();
-        // }
-        //
-        //
-        // //Logout
-        // public ActionResult Logout()
-        // {
-        //     Session.Clear();//remove session
-        //     return RedirectToAction("Index");
-        // }
-        //
-        // public static string GetMD5(string str)
-        // {
-        //     MD5 md5 = new MD5CryptoServiceProvider();
-        //     byte[] fromData = Encoding.UTF8.GetBytes(str);
-        //     byte[] targetData = md5.ComputeHash(fromData);
-        //     string byte2String = null;
-        //
-        //     for (int i = 0; i < targetData.Length; i++)
-        //     {
-        //         byte2String += targetData[i].ToString("x2");
-        //
-        //     }
-        //     return byte2String;
-        // }
-        
         public ActionResult VendorEdit()
         {
             return View(db.Vendor.ToList());
         }
-        
+
         public ActionResult VendorRead([DataSourceRequest] DataSourceRequest request)
         {
             try
             {
                 var result = db.Vendor;
 
-                var list = result.Select(entity => new VendorViewModel()
+                var list = result.Select(entity => new VendorViewModel
                     {
                         vendorID = entity.vendorID,
                         vendorName = entity.vendorName
-                        
                     })
                     .ToList();
                 return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -198,14 +138,14 @@ namespace DetergentsApp.Controllers
             {
                 Console.WriteLine(e);
                 throw;
-            }        
+            }
         }
+
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult VendorUpdate([DataSourceRequest] DataSourceRequest request, Vendor vendor)
         {
             if (ModelState.IsValid)
             {
-
                 var entity = db.Vendor.Find(vendor.vendorID);
                 if (entity != null)
                 {
@@ -234,7 +174,7 @@ namespace DetergentsApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var entity = new Vendor()
+                var entity = new Vendor
                 {
                     vendorID = vendor.vendorID,
                     vendorName = vendor.vendorName
@@ -253,6 +193,5 @@ namespace DetergentsApp.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
-
     }
 }

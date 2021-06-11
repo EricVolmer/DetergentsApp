@@ -26,36 +26,127 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1157f864-21e8-4206-a0a6-b53676c6bd70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/App_Data/Instructor certification.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/Views/Vendor/VendorEdit.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DetergentsApp/Models/ArticleViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.6.11.0/.signature.p7s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.6.11.0/Microsoft.IdentityModel.JsonWebTokens.6.11.0.nupkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.6.11.0/lib/net45/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.6.11.0/lib/net45/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.6.11.0/lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.6.11.0/lib/net461/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.6.11.0/lib/net472/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.6.11.0/lib/net472/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.6.11.0/lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.JsonWebTokens.6.11.0/lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.6.11.1/.signature.p7s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.6.11.1/Microsoft.IdentityModel.Logging.6.11.1.nupkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.6.11.1/lib/net45/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.6.11.1/lib/net45/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.6.11.1/lib/net461/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.6.11.1/lib/net461/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.6.11.1/lib/net472/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.6.11.1/lib/net472/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.6.11.1/lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.6.11.1/lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.6.11.1/.signature.p7s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.6.11.1/Microsoft.IdentityModel.Tokens.6.11.1.nupkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.6.11.1/lib/net45/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.6.11.1/lib/net45/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.6.11.1/lib/net461/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.6.11.1/lib/net461/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.6.11.1/lib/net472/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.6.11.1/lib/net472/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.6.11.1/lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.6.11.1/lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.OAuth.4.1.1/.signature.p7s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.OAuth.4.1.1/Microsoft.Owin.Security.OAuth.4.1.1.nupkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.OAuth.4.1.1/lib/net45/Microsoft.Owin.Security.OAuth.XML" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/Microsoft.Owin.Security.OAuth.4.1.1/lib/net45/Microsoft.Owin.Security.OAuth.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.6.11.0/.signature.p7s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.6.11.0/System.IdentityModel.Tokens.Jwt.6.11.0.nupkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.6.11.0/lib/net45/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.6.11.0/lib/net45/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.6.11.0/lib/net461/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.6.11.0/lib/net461/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.6.11.0/lib/net472/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.6.11.0/lib/net472/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.6.11.0/lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/System.IdentityModel.Tokens.Jwt.6.11.0/lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DetergentsApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DetergentsApp/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/AllFilesController.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/DetergentsApp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.diagram" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/Model1.edmx.diagram" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/AllFiles/AllFiles.cshtml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Create.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Delete.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Details.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Products/Index.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Views/Public/Details.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/Web.config" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/Web.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll.config" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.dll.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/DetergentsApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Logging.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Logging.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Logging.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Logging.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Tokens.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/bin/da-DK/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/bin/da-DK/DetergentsApp.resources.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.csprojAssemblyReference.cache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/DetergentsApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/TempPE/Models.Model1.Designer.cs.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/TempPE/Models.Model1.Designer.cs.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/TempPE/Models.Model1.cs.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/TempPE/Models.Model1.cs.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da-dk/DetergentsApp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/obj/Debug/da-dk/DetergentsApp.resources.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetergentsApp/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/DetergentsApp/packages.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/Microsoft.IdentityModel.Logging.5.3.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net45/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net45/Microsoft.IdentityModel.Logging.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net45/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net451/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net451/Microsoft.IdentityModel.Logging.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net451/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net461/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net461/Microsoft.IdentityModel.Logging.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/net461/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Logging.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Logging.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Logging.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/Microsoft.IdentityModel.Tokens.5.3.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net45/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net45/Microsoft.IdentityModel.Tokens.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net45/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net451/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net451/Microsoft.IdentityModel.Tokens.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net451/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net461/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net461/Microsoft.IdentityModel.Tokens.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/net461/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Tokens.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Tokens.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Microsoft.IdentityModel.Tokens.5.3.0/lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +171,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81C76C49-CBF1-49B9-B335-A27760C86298/89/252c096e/HttpApplication.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81C76C49-CBF1-49B9-B335-A27760C86298/54/421681cb/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/98/37fb7c53/ReflectedActionDescriptor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/AllFiles/AllFiles.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5CF2D85E-2CC8-4309-9661-13429D7E16A1/13/e413d22a/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/39/86310814/ControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
@@ -106,10 +196,8 @@
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/11/43c526d9/SelectListItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/AllFilesController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Models/VendorViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5D97019F-7842-404A-9A90-62A0F80FCAE1/fd/3afcf08f/WebPageRenderingBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -133,9 +221,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Create.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Details.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Create.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Delete.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Details.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Products/Edit.cshtml" />
@@ -159,22 +244,14 @@
       <option value="$PROJECT_DIR$/DetergentsApp/Resources/Language.resx" />
       <option value="$PROJECT_DIR$/DetergentsApp/Resources/Global.resx" />
       <option value="$PROJECT_DIR$/DetergentsApp/Resources/Global.Designer.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Startup.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Global.asax.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/vendorLoginController.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Web.config" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/Product.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/Model1.Context.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03C98CFC-8623-445A-8DB7-B66C6FFA5DEF/11/43c526d9/SelectListItem.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Public/Public.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/Admin2Controller.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Models/UserFileViewModel.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/ProductsController.cs" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Admin2/Admin2.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Controllers/CategoriesController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Categories/Index.cshtml" />
@@ -182,8 +259,19 @@
       <option value="$PROJECT_DIR$/DetergentsApp/Views/VendorEdit/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Vendor/Index.cshtml" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Vendor/VendorEdit.cshtml" />
-      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" />
       <option value="$PROJECT_DIR$/DetergentsApp/Views/Shared/_Layout.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/AllFilesController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/FileUploadController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/PublicController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/VendorController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/vendorLoginController.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Models/ArticleViewModel.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Models/ProductViewModel.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Web.config" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Startup.cs" />
+      <option value="$PROJECT_DIR$/DetergentsApp/packages.config" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Views/Home/Index.cshtml" />
+      <option value="$PROJECT_DIR$/DetergentsApp/Controllers/HomeController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1hosMQCbLmUhIQlUT0gZJvhJoGG" />
@@ -390,7 +478,14 @@
       <workItem from="1621579576365" duration="15487000" />
       <workItem from="1622702788497" duration="4412000" />
       <workItem from="1622791131021" duration="14000" />
-      <workItem from="1622791241562" duration="11748000" />
+      <workItem from="1622791241562" duration="12493000" />
+      <workItem from="1622810479128" duration="1199000" />
+      <workItem from="1622844170969" duration="664000" />
+      <workItem from="1622920704064" duration="428000" />
+      <workItem from="1623011951425" duration="4626000" />
+      <workItem from="1623227165110" duration="1235000" />
+      <workItem from="1623309302796" duration="2965000" />
+      <workItem from="1623392523126" duration="188000" />
     </task>
     <task id="LOCAL-00001" summary="Kendo Grid start">
       <created>1600795493153</created>
@@ -693,7 +788,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621597490800</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Bug fixes and improvements">
+      <created>1622810292906</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1622810292907</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -726,7 +828,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="BackUp" />
     <MESSAGE value="Country Filtering working on main page" />
     <MESSAGE value="Public view added, all file list added, small changes more need to be done." />
     <MESSAGE value="Add Vendor working, few more changes working." />
@@ -751,24 +852,12 @@
     <MESSAGE value="Solution cleaned and added Filters to all grid columns" />
     <MESSAGE value="Vendor file upload made work" />
     <MESSAGE value="Text added on the bottom" />
-    <option name="LAST_COMMIT_MESSAGE" value="Text added on the bottom" />
+    <MESSAGE value="Bug fixes and improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes and improvements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/DetergentsApp/Startup.cs</url>
-          <line>74</line>
-          <properties documentPath="C:\Users\Eric\Documents\GitHub\DetergentsApp\DetergentsApp\Startup.cs" initialLine="76" containingFunctionPresentation="method 'OnAuthenticationFailed'">
-            <startOffsets>
-              <option value="3856" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3857" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/DetergentsApp/Views/FileUpload/UploadedFiles.cshtml</url>
           <line>128</line>

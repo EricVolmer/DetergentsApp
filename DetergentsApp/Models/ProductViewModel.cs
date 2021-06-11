@@ -34,12 +34,14 @@ namespace DetergentsApp.Models
 
 
         // Store name and ID 
-        public string name { get; set; }
+        //public string name { get; set; }
 
         //Article name , description and id
 
-        public long articleId { get; set; }
+        //  public long articleId { get; set; }
 
-        public string articleTextReceipt { get; set; }
+        // public string articleTextReceipt { get; set; }
+        public int articleGroupId { get; set; }
+        public string articleGroupDescription { get; set; }
     }
 }

@@ -1,13 +1,13 @@
 ﻿@using DetergentsApp.Models
 <div class="col-lg-4">
-    
+
     @(Html.Kendo().Grid<Vendor>()
         .Name("filesGrid")
         .Columns(columns =>
         {
             columns.Bound(f => f.vendorID).Width(150);
             columns.Bound(f => f.vendorName);
-        
+
             columns.Command(command =>
             {
                 command.Edit();

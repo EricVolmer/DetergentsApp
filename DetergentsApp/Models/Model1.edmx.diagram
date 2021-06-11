@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="DetergentsModel.Country" Width="1.5" PointX="1.375" PointY="3.125" />
         <AssociationConnector Association="DetergentsModel.VendorProduct" />
         <AssociationConnector Association="DetergentsModel.CountryProduct" />
-        <EntityTypeShape EntityType="DetergentsModel.vendorLogin" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DetergentsModel.vendorLogin" Width="1.5" PointX="3.75" PointY="5.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

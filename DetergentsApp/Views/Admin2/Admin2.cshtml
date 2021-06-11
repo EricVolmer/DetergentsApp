@@ -1,7 +1,5 @@
 ﻿@using System.ComponentModel
 @using DetergentsApp.Models
-
-
 <h2>Articles</h2>
 
 @(Html.Kendo().Grid<ProductViewModel>()
@@ -28,8 +26,8 @@
         //     ViewBag.Vendor, "Value", "Text").Title("Vendor ID").Width(150);
         //
         //
-         columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
-             ViewBag.Country, "Value", "Text").Title("Country").Width(120);
+        columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
+            ViewBag.Country, "Value", "Text").Title("Country").Width(120);
 
         columns.Bound(c => c.adminToPublic).ClientTemplate("#: adminToPublic ? 'Approved To Public' : 'Not approved' #");
 
@@ -75,10 +73,10 @@
         columns.Bound(f => f.Name).ClientTemplate("<a href='files/?id=#= Id #'>#= Name #</a>").Title("File name");
         columns.Bound(f => f.productID);
         columns.Bound(f => f.languageType);
-       // this should display the product name
+        // this should display the product name
         columns.Bound(f => f.productDescription);
-        
-        
+
+
         columns.ForeignKey(c => c.CountryID, (List<SelectListItem>)
             ViewBag.Country, "Value", "Text").Title("Country").Width(120);
 

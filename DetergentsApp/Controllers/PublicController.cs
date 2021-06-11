@@ -91,9 +91,9 @@ namespace DetergentsApp.Controllers
 
                         categoryID = item.Category.categoryID,
 
-                        CountryID = item.countryID,
+                        CountryID = item.countryID
 
-                        articleId = item.articleID
+                        //  articleId = item.articleID
                     };
 
 
@@ -170,73 +170,6 @@ namespace DetergentsApp.Controllers
                 .OrderBy(e => e.CountryName);
 
             return Json(country, JsonRequestBehavior.AllowGet);
-        }
-
-
-        public ActionResult DetailsRead([DataSourceRequest] DataSourceRequest request, int productID, string EAN,
-                string productName)
-            // {
-            //       var product = db.Products.FirstOrDefault(p => p.productID == productID);
-            //       var userFiles = db.UserFiles.Where(p => p.productID == productID).ToList();
-            //
-            //       var model = new ProductViewModel();
-            //
-            //       model.productID = productID;
-            //       model.EAN = EAN;
-            //       model.productName = productName;
-            //       
-            //
-            //
-            //     // var product = db.Products.Find(productID);
-            //     // var ean = db.Products.Find(EAN);
-            //     // var nameOfProduct = db.Products.Find(productName);
-            //
-            //
-            //     ViewBag.ProductID = productID;
-            //     ViewBag.ProductID = EAN;
-            //     ViewBag.ProductID = productName;
-            //
-            //     
-            //     return View(model);
-            // }
-
-        {
-            var db = new DetergentsEntities();
-            try
-            {
-                var userFiles = db.UserFiles.Where(x => x.productID == productID).Select(
-                    f => new ProductViewModel
-                    {
-                        productID = productID,
-                        EAN = EAN
-                    });
-                return Json(userFiles.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-
-
-                // var userFiles1 = db.UserFiles.Where(x =>
-                //         x.productID == productID && x.adminApproved == true)
-                //     .Select(
-                //         f => new UserFileViewModel
-                //         {
-                //             Id = f.fileID,
-                //             Name = f.fileName,
-                //             productID = f.productID,
-                //             sheetTypeID = f.sheetTypeID,
-                //             productName = productName
-                //         });
-                // return Json(userFiles1.ToDataSourceResult(request));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        public ActionResult Details(int productID, string EAN,
-            string productName)
-        {
-            return View();
         }
     }
 }

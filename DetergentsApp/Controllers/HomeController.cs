@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
+using System.Diagnostics;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using DetergentsApp.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
+using Newtonsoft.Json;
 
 // ReSharper disable All
 
@@ -18,9 +27,38 @@ namespace DetergentsApp.Controllers
 {
     public class HomeController : Controller
     {
+#pragma warning disable 414
         private readonly string baseUrl = "https://api.sallinggroup.com/";
+#pragma warning restore 414
 
         private readonly DetergentsEntities db = new DetergentsEntities();
+        private HttpClientHandler _handler = null;
+
+        private HttpClientHandler ClientHandler
+        {
+            get
+            {
+                if (Debugger.IsAttached)
+                {
+                    if (_handler == null)
+                    {
+                        _handler = new HttpClientHandler
+                        {
+                            Proxy = new WebProxy("prx.dsg.dk:8080", false)
+                            {
+                                Credentials = CredentialCache.DefaultNetworkCredentials
+                            }
+                        };
+                    }
+                }
+                else
+                {
+                    _handler = new HttpClientHandler();
+                }
+
+                return _handler;
+            }
+        }
 
 
         public ActionResult Index()
@@ -146,50 +184,118 @@ namespace DetergentsApp.Controllers
             }
         }
 
+        public string generateJWTToken(string key, string issuer, string apiURL)
+        {
+            byte[] symmetricKey = Encoding.ASCII.GetBytes(key);
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var now = DateTime.UtcNow;
+            int expireMinutes = 5;
+            var uri = new Uri(apiURL);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Issuer = issuer,
+                Audience = issuer,
+                TokenType = "JWT",
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Name, issuer),
+                    new Claim(ClaimTypes.Uri, apiURL.ToString()),
+                    new Claim("sub", uri.PathAndQuery.ToString()),
+                    new Claim("mth", "GET")
+                }),
+                Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
+                SigningCredentials = new SigningCredentials(new
+                        SymmetricSecurityKey(symmetricKey),
+                    SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var stoken = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenHandler.WriteToken(stoken);
+
+            return token;
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> FetchArticles(string ids)
+        {
+            string authorizationToken = "";
+            string apiURL = ConfigurationManager.AppSettings["apiUrl"];
+            string articleServiceUrl = "";
+            string strStores = ConfigurationManager.AppSettings["Stores"];
+            int[] stores;
+            stores = strStores.Split(',').Select(int.Parse).ToArray();
+            List<ArticleViewModel> articleList = new List<ArticleViewModel>();
+            ArticleData responseItem = null;
+
+            try
+            {
+                foreach (int store in stores)
+                {
+                    articleServiceUrl = string.Concat(apiURL,
+                        string.Format("?store={0}&chain={1}&ids={2}",
+                            store.ToString(),
+                            "0",
+                            ids));
+
+                    authorizationToken = this.generateJWTToken(
+                        Convert.ToString(ConfigurationManager.AppSettings["Secret"]),
+                        Convert.ToString(ConfigurationManager.AppSettings["Issuer"]),
+                        articleServiceUrl);
+
+                    using (HttpClient client = new HttpClient(ClientHandler, false))
+                    {
+                        client.MaxResponseContentBufferSize = 1000000;
+
+                        client.DefaultRequestHeaders.Add("Authorization", string.Format("JWT {0}", authorizationToken));
+                        client.DefaultRequestHeaders.Add("Accept", "application/json;charset=UTF-8");
+
+                        string args = string.Format("store={0}&chain={1}&ids={2}",
+                            store.ToString(),
+                            "0",
+                            ids);
+
+                        HttpResponseMessage response = await client.GetAsync(articleServiceUrl);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            responseItem = JsonConvert.DeserializeObject<ArticleData>(
+                                response.Content.ReadAsStringAsync().Result);
+
+                            if (responseItem != null)
+                            {
+                                string resultInfo = string.Format("Successfully call API with args: {0}", args);
+                                if (responseItem.articles.Count > 0)
+                                {
+                                    responseItem.articles.ForEach(article => articleList.Add(article));
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                string resultInfo = string.Format("Failed to call API. args: {0}", args);
+                            }
+                        }
+                        else
+                        {
+                            string resultInfo = string.Format("Failed to call API. args: {0}", args);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            return Json(articleList, JsonRequestBehavior.AllowGet);
+        }
+
 #pragma warning disable 1998
         public async Task<ActionResult> Product_Read([DataSourceRequest] DataSourceRequest request)
 #pragma warning restore 1998
         {
-            // responseJson = JSON.parse(responseBody);
-
-
-            //var vikingStoreId = new ProductViewModel().vikingStoreId;
-            //string url = baseUrl + string.Format("v2/stores/?vikingStoreId={0}", vikingStoreId);
-            //var restclient = new RestClient(url);
-            //restclient.Timeout = -1;
-
-
-            //var request2 = new RestRequest(Method.GET);
-            //request2.AddHeader("Authorization", "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTQzNDE1MDcsImlzcyI6IjhiMmUzMmU1LWExNjYtNDdiYy05M2VkLWU4Y2Y5NDYyODc0NiIsIm10aCI6IkdFVCIsInN1YiI6Ii92Mi9zdG9yZXMvP3Zpa2luZ1N0b3JlSWQ9NTI1MSJ9.cb_qTQsMBXikhIiiOiiN4OqePU9XW3BJD87tHBVcQfc");
-            //IRestResponse response = restclient.Execute(request2);
-            //Console.WriteLine(response.Content);
-
-
-            //  var restClient = new RestClient("https://api.sallinggroup.com/v2/stores/");
-            // restClient.Timeout = -1;
-            //  var request2 = new RestRequest(Method.GET);
-            //  request2.AddHeader("Authorization", "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTQ4NTgwMjQsImlzcyI6IjhiMmUzMmU1LWExNjYtNDdiYy05M2VkLWU4Y2Y5NDYyODc0NiIsIm10aCI6IkdFVCIsInN1YiI6Ii92Mi9zdG9yZXMvIn0.VsemQEdxupziO-LxK1yG3ddHMwedM066XmzA4z8-tVc");
-            //  IRestResponse response = restClient.Execute(request2);
-            //  Console.WriteLine(response.Content);
-
-
-            // using (var client = new HttpClient())
-            // {
-            //     //client.BaseAddress = new Uri(baseUrl);
-            //     string url = "https://api.sallinggroup.com/v2/stores/";
-            //     client.DefaultRequestHeaders.Add("Authorization", "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTQzNDMxNDgsImlzcyI6IjhiMmUzMmU1LWExNjYtNDdiYy05M2VkLWU4Y2Y5NDYyODc0NiIsIm10aCI6IkdFVCIsInN1YiI6Ii92Mi9zdG9yZXMvIn0.ph6cGOeXzxXcBaSPbm23c5x5A12T079k7O90TvsfPyE");
-            //
-            //     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //
-            //     var responseTask = await client.GetAsync(url);
-            //
-            //     // var responseModel = JsonConvert.DeserializeObject<List<storeIDResponse>>(responseTask.Content.ToString());
-            //
-            //     //    responseTask.Wait();
-            // }
-            // //Console.WriteLine("here" + vikingStoreId);
-
-
             IEnumerable<ProductViewModel> productDescription = new List<ProductViewModel>();
 
             try
@@ -209,9 +315,7 @@ namespace DetergentsApp.Controllers
                         vendorID = item.Vendor.vendorID,
                         vendorName = item.Vendor.vendorName,
 
-                        CountryID = item.countryID,
-
-                        articleId = item.articleID
+                        CountryID = item.countryID
                     };
 
 
@@ -269,7 +373,7 @@ namespace DetergentsApp.Controllers
                         entity.Category = category;
                         entity.vendorID = product.vendorID;
                         entity.countryID = product.CountryID;
-                        entity.articleID = product.articleId;
+                        // entity.articleID = product.articleId;
                         entity.adminToPublic = false;
 
                         try
@@ -295,7 +399,7 @@ namespace DetergentsApp.Controllers
                     SheetType = sheetTypes,
                     vendorID = product.vendorID,
                     countryID = product.CountryID,
-                    articleID = product.articleId,
+                    // articleID = product.articleId,
                     adminToPublic = false
                 };
                 try
@@ -385,21 +489,18 @@ namespace DetergentsApp.Controllers
                 .ToList();
             containerList.Add(new SelectListItem
                 {Text = "All", Value = "0"});
-            
+
             foreach (var countryViewModel in country)
                 containerList.Add(new SelectListItem
                     {Text = countryViewModel.CountryName, Value = countryViewModel.CountryID.ToString()});
-            
+
             ViewBag.Country = containerList;
-            
+
             return Json(containerList, JsonRequestBehavior.AllowGet);
         }
 
         public void SignIn()
         {
-            // Response.Cookies["ASPXPIKESADMINAUTH"].Expires = DateTime.Now.AddDays(-1);
-            // Session["LoginCredentials"] = null;
-
             if (!Request.IsAuthenticated)
                 HttpContext.GetOwinContext().Authentication.Challenge(
                     new AuthenticationProperties {RedirectUri = "/"},

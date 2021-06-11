@@ -22,7 +22,6 @@
             ViewBag.Country, "Value", "Text").Title("Country").Width(120);
 
         columns.Bound(c => c.listOfFiles).ClientTemplate("#= SheetFilesAvailable(data) #").Title("Data Sheets");
-
     })
     .ToolBar(toolbar =>
     {
